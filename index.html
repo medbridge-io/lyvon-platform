@@ -1,24 +1,37 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <!-- 🔥 Redirect: http → https & www → non-www -->
+  <script>
+    if (location.protocol !== "https:" || location.hostname === "www.lyvon.io") {
+      location.href = "https://lyvon.io" + location.pathname;
+    }
+  </script>
 
-<title>LYVON — Medical Admission System</title>
+  <!-- 기본 설정 -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<meta name="description" content="LYVON is a structured medical admission system combining strategy and execution." />
+  <!-- 타이틀 -->
+  <title>LYVON — Premium Medical Admission System</title>
 
-<meta property="og:title" content="LYVON" />
-<meta property="og:description" content="Medical Admission System (MedPath + MedBridge)" />
-<meta property="og:image" content="https://lyvon.io/lyvon-og.png" />
-<meta property="og:url" content="https://lyvon.io" />
-<meta property="og:type" content="website" />
+  <!-- SEO -->
+  <meta name="description" content="LYVON is a premium medical admission system where language becomes outcome." />
 
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="LYVON" />
-<meta name="twitter:description" content="Medical Admission System" />
-<meta name="twitter:image" content="https://lyvon.io/lyvon-og.png" />
-</head>
+  <!-- 🔥 Open Graph (카톡 / 슬랙 / 디스코드) -->
+  <meta property="og:title" content="LYVON" />
+  <meta property="og:description" content="Premium Medical Admission System" />
+  <meta property="og:image" content="https://lyvon.io/lyvon-og.png" />
+  <meta property="og:url" content="https://lyvon.io" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <!-- 🔥 Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="LYVON" />
+  <meta name="twitter:description" content="Premium Medical Admission System" />
+  <meta name="twitter:image" content="https://lyvon.io/lyvon-og.png" />
 
   <!-- 🔥 favicon -->
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
@@ -34,9 +47,13 @@
   <!-- 🎨 Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Syne:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600&family=Syne:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
 
   <!-- 🎨 Style -->
+  <style>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Syne:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
