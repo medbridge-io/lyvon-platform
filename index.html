@@ -1,36 +1,37 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <!-- 🔥 Redirect: http → https & www → non-www -->
-  <script>
-    if (location.protocol !== "https:" || location.hostname === "www.lyvon.io") {
-      location.href = "https://lyvon.io" + location.pathname;
-    }
-  </script>
-
   <!-- 기본 설정 -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- 타이틀 -->
-  <title>LYVON — Premium Medical Admission System</title>
+  <!-- 🔥 Title -->
+  <title>LYVON — Medical Admission System</title>
 
-  <!-- SEO -->
+  <!-- 🔥 SEO -->
   <meta name="description" content="LYVON is a premium medical admission system where language becomes outcome." />
+  <meta name="robots" content="index, follow" />
 
-  <!-- 🔥 Open Graph (카톡 / 슬랙 / 디스코드) -->
-  <meta property="og:title" content="LYVON" />
-  <meta property="og:description" content="Premium Medical Admission System" />
-  <meta property="og:image" content="https://lyvon.io/lyvon-og.png" />
-  <meta property="og:url" content="https://lyvon.io" />
+  <!-- 🔥 Open Graph (Kakao / Facebook / Slack / Discord) -->
   <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="LYVON" />
+
+  <meta property="og:title" content="LYVON — Medical Admission System" />
+  <meta property="og:description" content="Strategic system for medical school admission: MedPath (Strategy) + MedBridge (Execution)" />
+
+  <!-- ⚠️ 페이지별 URL 반드시 변경 -->
+  <meta property="og:url" content="https://lyvon.io" />
+
+  <!-- ⚠️ 반드시 public / fast / 200 OK 이미지 -->
+  <meta property="og:image" content="https://lyvon.io/lyvon-og.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
+  <meta property="og:image:type" content="image/png" />
 
   <!-- 🔥 Twitter / X -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="LYVON" />
-  <meta name="twitter:description" content="Premium Medical Admission System" />
+  <meta name="twitter:title" content="LYVON — Medical Admission System" />
+  <meta name="twitter:description" content="Strategic system: MedPath + MedBridge" />
   <meta name="twitter:image" content="https://lyvon.io/lyvon-og.png" />
 
   <!-- 🔥 favicon -->
@@ -47,7 +48,7 @@
   <!-- 🎨 Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600&family=Syne:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Syne:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
 
   <!-- 🎨 Style -->
   <style>
