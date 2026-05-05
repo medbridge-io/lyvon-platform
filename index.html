@@ -1,0 +1,1279 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LYVON — MedPath Premium Medical Admission System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Syne:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black:   #0a0a0a;
+      --white:   #f5f4f0;
+      --warm:    #ede9e0;
+      --accent:  #c8a96e;
+      --accent2: #8b6f47;
+      --muted:   #6b6b6b;
+      --border:  rgba(245,244,240,0.1);
+      --card-bg: rgba(245,244,240,0.04);
+
+      --font-display: 'Cormorant Garamond', serif;
+      --font-ui:      'Syne', sans-serif;
+      --font-body:    'DM Sans', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ── UTILITY ── */
+    .container { max-width: 1140px; margin: 0 auto; padding: 0 32px; }
+    .label {
+      font-family: var(--font-ui);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    .line { display: block; width: 40px; height: 1px; background: var(--accent); margin-bottom: 28px; }
+
+    /* ── ANIMATIONS ── */
+    .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 20px 0;
+      border-bottom: 1px solid transparent;
+      transition: background 0.4s, border-color 0.4s, padding 0.4s;
+    }
+    nav.scrolled {
+      background: rgba(10,10,10,0.92);
+      backdrop-filter: blur(20px);
+      border-color: var(--border);
+      padding: 14px 0;
+    }
+    nav .inner {
+      display: flex; align-items: center; justify-content: space-between;
+      max-width: 1140px; margin: 0 auto; padding: 0 32px;
+    }
+    .nav-logo {
+      text-decoration: none;
+      font-family: var(--font-ui);
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      color: var(--white);
+    }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 40px; list-style: none; }
+    .nav-links a {
+      font-family: var(--font-ui);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav-cta {
+      font-family: var(--font-ui);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 10px 22px;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      text-decoration: none;
+      transition: background 0.3s, color 0.3s;
+    }
+    .nav-cta:hover { background: var(--accent); color: var(--black); }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 0 0 100px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 60% 40%, rgba(200,169,110,0.08) 0%, transparent 70%),
+                  radial-gradient(ellipse 50% 80% at 20% 60%, rgba(139,111,71,0.05) 0%, transparent 60%);
+    }
+    .hero-bg::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 79px,
+        rgba(245,244,240,0.02) 79px,
+        rgba(245,244,240,0.02) 80px
+      );
+    }
+    .hero-eyebrow {
+      font-family: var(--font-ui);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 28px;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.3s ease forwards;
+    }
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(52px, 8vw, 110px);
+      font-weight: 300;
+      line-height: 1.0;
+      letter-spacing: -0.02em;
+      margin-bottom: 32px;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.5s ease forwards;
+    }
+    .hero-title em { font-style: italic; color: var(--accent); }
+    .hero-sub {
+      font-family: var(--font-display);
+      font-size: clamp(18px, 2.5vw, 26px);
+      font-weight: 300;
+      font-style: italic;
+      color: rgba(245,244,240,0.65);
+      max-width: 600px;
+      margin-bottom: 16px;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.7s ease forwards;
+    }
+    .hero-support {
+      font-size: 14px;
+      color: var(--muted);
+      max-width: 480px;
+      margin-bottom: 52px;
+      line-height: 1.8;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.85s ease forwards;
+    }
+    .hero-actions {
+      display: flex; gap: 16px; flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 0.9s 1s ease forwards;
+    }
+
+    /* ── BUTTONS ── */
+    .btn-primary {
+      display: inline-block;
+      font-family: var(--font-ui);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 16px 36px;
+      background: var(--accent);
+      color: var(--black);
+      text-decoration: none;
+      transition: background 0.3s, transform 0.2s;
+    }
+    .btn-primary:hover { background: #d4b77a; transform: translateY(-1px); }
+    .btn-ghost {
+      display: inline-block;
+      font-family: var(--font-ui);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 16px 36px;
+      border: 1px solid rgba(245,244,240,0.25);
+      color: var(--white);
+      text-decoration: none;
+      transition: border-color 0.3s, background 0.3s;
+    }
+    .btn-ghost:hover { border-color: var(--white); background: rgba(245,244,240,0.05); }
+    .btn-sm-gold {
+      display: inline-block;
+      font-family: var(--font-ui);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 12px 28px;
+      border: 1px solid rgba(200,169,110,0.5);
+      color: var(--accent);
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+    .btn-sm-gold:hover { background: var(--accent); color: var(--black); border-color: var(--accent); }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+      from { opacity: 0; transform: translateY(24px); }
+    }
+
+    /* ── SECTION BASE ── */
+    section { padding: 140px 0; }
+
+    /* ── PROBLEM ── */
+    #problem { border-top: 1px solid var(--border); }
+    .problem-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+      margin-top: 72px;
+    }
+    .problem-headline {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 4vw, 52px);
+      font-weight: 300;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+    }
+    .problem-headline em { font-style: italic; color: var(--accent); }
+    .problem-cards { display: flex; flex-direction: column; gap: 2px; }
+    .problem-card {
+      padding: 28px 32px;
+      border: 1px solid var(--border);
+      background: var(--card-bg);
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s, background 0.3s;
+    }
+    .problem-card::before {
+      content: '';
+      position: absolute; left: 0; top: 0; bottom: 0;
+      width: 2px;
+      background: var(--accent);
+      transform: scaleY(0);
+      transform-origin: bottom;
+      transition: transform 0.4s ease;
+    }
+    .problem-card:hover { border-color: rgba(200,169,110,0.3); background: rgba(200,169,110,0.03); }
+    .problem-card:hover::before { transform: scaleY(1); }
+    .problem-card-title {
+      font-family: var(--font-ui);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+    .problem-card p { font-size: 14px; color: var(--muted); line-height: 1.7; }
+
+    /* ── SOLUTION ── */
+    #solution { background: rgba(245,244,240,0.02); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .solution-header { text-align: center; max-width: 700px; margin: 0 auto 96px; }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(36px, 5vw, 64px);
+      font-weight: 300;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+    }
+    .section-title em { font-style: italic; color: var(--accent); }
+    .section-body { font-size: 15px; color: var(--muted); max-width: 540px; margin: 0 auto; }
+
+    /* Process flow */
+    .process {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0;
+      margin-top: 32px;
+      position: relative;
+    }
+    .process::before {
+      content: '';
+      position: absolute;
+      top: 32px; left: 10%; right: 10%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    }
+    .process-step { text-align: center; padding: 0 16px; }
+    .process-num {
+      width: 64px; height: 64px;
+      border: 1px solid var(--accent);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 24px;
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 300;
+      color: var(--accent);
+      background: var(--black);
+      position: relative; z-index: 1;
+      transition: background 0.3s, color 0.3s;
+    }
+    .process-step:hover .process-num { background: var(--accent); color: var(--black); }
+    .process-label {
+      font-family: var(--font-ui);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .process-desc { font-size: 12px; color: var(--muted); line-height: 1.7; }
+    .solution-note {
+      text-align: center;
+      margin-top: 72px;
+      font-family: var(--font-display);
+      font-size: clamp(22px, 3vw, 32px);
+      font-style: italic;
+      color: rgba(245,244,240,0.5);
+    }
+    .solution-note strong { color: var(--white); font-style: normal; font-weight: 300; }
+
+    /* ── PROGRAMS ── */
+    #programs { border-top: 1px solid var(--border); }
+    .programs-header { margin-bottom: 72px; }
+    .programs-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      align-items: end;
+    }
+    .prog-card {
+      border: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+      transition: opacity 0.4s, border-color 0.4s;
+    }
+    /* Starter — shortest, most muted */
+    .prog-card.stage-1 {
+      padding: 40px 36px;
+      opacity: 0.55;
+    }
+    .prog-card.stage-1 .prog-name { font-size: 32px; }
+
+    /* Core — medium gold */
+    .prog-card.stage-2 {
+      padding: 56px 40px;
+      opacity: 0.88;
+      background: rgba(200,169,110,0.045);
+      border-color: rgba(200,169,110,0.28);
+      box-shadow: inset 0 1px 0 rgba(200,169,110,0.18),
+                  0 0 40px -10px rgba(200,169,110,0.08);
+    }
+    .prog-card.stage-2 .prog-name { font-size: 42px; }
+
+    /* Pro — tallest, full gold treatment */
+    .prog-card.stage-3 {
+      padding: 72px 44px 64px;
+      opacity: 1;
+      border-color: rgba(200,169,110,0.6);
+      background: rgba(200,169,110,0.09);
+      box-shadow: inset 0 1px 0 rgba(200,169,110,0.35),
+                  0 0 60px -10px rgba(200,169,110,0.14);
+    }
+    .prog-card.stage-3 .prog-name { font-size: 54px; }
+    .prog-card.stage-3 .prog-tagline { color: rgba(245,244,240,0.75); }
+    .prog-card.stage-3 .prog-features li { color: rgba(245,244,240,0.7); }
+
+    /* gold top bar on Pro */
+    .prog-card.stage-3::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--accent) 40%, transparent);
+    }
+    .prog-card::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 80% at 50% 110%, rgba(200,169,110,0.07) 0%, transparent 70%);
+      opacity: 0; transition: opacity 0.4s;
+    }
+    .prog-card:hover { opacity: 1 !important; border-color: rgba(200,169,110,0.4); }
+    .prog-card:hover::after { opacity: 1; }
+
+    .prog-tier {
+      font-family: var(--font-ui);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(200,169,110,0.7);
+      margin-bottom: 24px;
+    }
+    .prog-name {
+      font-family: var(--font-display);
+      font-weight: 300;
+      letter-spacing: -0.01em;
+      margin-bottom: 16px;
+      line-height: 1.0;
+    }
+    .prog-tagline {
+      font-family: var(--font-display);
+      font-size: 15px;
+      font-style: italic;
+      color: rgba(245,244,240,0.4);
+      margin-bottom: 28px;
+      line-height: 1.6;
+    }
+    .prog-features { list-style: none; display: flex; flex-direction: column; gap: 11px; }
+    .prog-features li {
+      font-size: 13px;
+      color: var(--muted);
+      padding-left: 20px;
+      position: relative;
+      line-height: 1.6;
+    }
+    .prog-features li::before {
+      content: '—';
+      position: absolute; left: 0;
+      color: var(--accent);
+      font-size: 11px;
+    }
+    .pro-destination {
+      display: inline-block;
+      margin-bottom: 20px;
+      font-family: var(--font-ui);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      background: var(--accent);
+      color: var(--black);
+    }
+    .prog-gate {
+      margin-top: 28px;
+      font-family: var(--font-ui);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(200,169,110,0.5);
+      border-top: 1px solid var(--border);
+      padding-top: 16px;
+    }
+    .stage-track {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+    .stage-node {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .stage-arrow {
+      font-family: var(--font-ui);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .stage-dur {
+      font-family: var(--font-ui);
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      opacity: 0.7;
+    }
+    .stage-arrow-icon {
+      color: var(--accent);
+      font-size: 18px;
+      line-height: 1;
+      margin-bottom: 14px;
+    }
+    .stage-total {
+      font-family: var(--font-ui);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(245,244,240,0.25);
+      margin-left: 8px;
+    }
+    /* Frequency block */
+    .freq-block {
+      margin-top: 28px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+    }
+    .freq-label {
+      font-family: var(--font-ui);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+    .freq-options {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .freq-tag {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 9px 14px;
+      border: 1px solid rgba(245,244,240,0.08);
+      font-family: var(--font-ui);
+      font-size: 13px;
+      font-weight: 600;
+      color: rgba(245,244,240,0.35);
+      cursor: default;
+    }
+    .freq-tag em {
+      font-style: normal;
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(245,244,240,0.2);
+    }
+    .freq-tag.rec {
+      border-color: rgba(200,169,110,0.4);
+      color: var(--accent);
+      background: rgba(200,169,110,0.04);
+    }
+    .freq-tag.rec em { color: rgba(200,169,110,0.55); }
+
+    /* ── DIFFERENTIATION ── */
+    #diff { background: rgba(245,244,240,0.02); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .diff-header { text-align: center; max-width: 600px; margin: 0 auto 80px; }
+    .diff-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .diff-table thead tr {
+      border-bottom: 1px solid var(--border);
+    }
+    .diff-table th {
+      padding: 20px 40px;
+      font-family: var(--font-ui);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      text-align: left;
+    }
+    .diff-table th:first-child { color: var(--muted); }
+    .diff-table th:last-child { color: var(--accent); }
+    .diff-table tbody tr {
+      border-bottom: 1px solid rgba(245,244,240,0.05);
+      transition: background 0.2s;
+    }
+    .diff-table tbody tr:hover { background: rgba(245,244,240,0.02); }
+    .diff-table td {
+      padding: 22px 40px;
+      font-size: 14px;
+      vertical-align: middle;
+    }
+    .diff-table td:first-child { color: var(--muted); font-size: 12px; font-family: var(--font-ui); letter-spacing: 0.08em; text-transform: uppercase; }
+    .diff-table td:nth-child(2) { color: rgba(245,244,240,0.35); font-style: italic; }
+    .diff-table td:last-child { color: var(--white); font-weight: 400; }
+    .check { color: var(--accent); margin-right: 8px; }
+    .diff-note {
+      text-align: center;
+      margin-top: 72px;
+      font-family: var(--font-display);
+      font-size: clamp(24px, 3.5vw, 40px);
+      font-weight: 300;
+      font-style: italic;
+    }
+    .diff-note strong { font-style: normal; color: var(--accent); }
+
+    /* ── MEDBRIDGE (LOW EMPHASIS) ── */
+    #medbridge {
+      border-top: 1px solid var(--border);
+      padding: 80px 0;
+    }
+    .medbridge-inner {
+      max-width: 600px;
+      opacity: 0.65;
+    }
+    .medbridge-title {
+      font-family: var(--font-display);
+      font-size: clamp(22px, 3vw, 32px);
+      font-weight: 300;
+      margin-bottom: 12px;
+      color: rgba(245,244,240,0.7);
+    }
+    .medbridge-desc { font-size: 14px; color: var(--muted); margin-bottom: 28px; line-height: 1.8; }
+    .medbridge-features { display: flex; gap: 24px; margin-bottom: 36px; flex-wrap: wrap; }
+    .medbridge-feature {
+      font-family: var(--font-ui);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border: 1px solid rgba(245,244,240,0.1);
+      padding: 8px 16px;
+    }
+
+    /* ── FINAL CTA ── */
+    #finalcta {
+      text-align: center;
+      padding: 180px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    #finalcta::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(200,169,110,0.07) 0%, transparent 70%);
+    }
+    .cta-overline {
+      font-family: var(--font-ui);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 32px;
+    }
+    .cta-title {
+      font-family: var(--font-display);
+      font-size: clamp(42px, 7vw, 90px);
+      font-weight: 300;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+    }
+    .cta-title em { font-style: italic; color: var(--accent); }
+    .cta-sub {
+      font-size: 15px;
+      color: var(--muted);
+      margin-bottom: 56px;
+      max-width: 420px;
+      margin-left: auto; margin-right: auto;
+    }
+    .cta-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 28px; }
+    .cta-fallback { font-size: 12px; color: rgba(245,244,240,0.3); }
+    .cta-fallback a { color: rgba(245,244,240,0.4); text-decoration: underline; text-underline-offset: 3px; transition: color 0.3s; }
+    .cta-fallback a:hover { color: var(--white); }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 40px 0;
+    }
+    .footer-inner {
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 20px;
+    }
+    .footer-logo {
+      font-family: var(--font-ui);
+      font-size: 16px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      color: rgba(245,244,240,0.4);
+    }
+    .footer-logo span { color: var(--accent); opacity: 0.7; }
+    .footer-copy { font-size: 12px; color: rgba(245,244,240,0.2); }
+
+    /* ── HOW WE MANAGE ── */
+    #manage {
+      border-top: 1px solid var(--border);
+      background: rgba(245,244,240,0.015);
+    }
+    .manage-header { margin-bottom: 72px; }
+    .manage-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+    }
+    .manage-step {
+      display: flex;
+      gap: 28px;
+      padding: 44px 40px;
+      border: 1px solid var(--border);
+      position: relative;
+      transition: border-color 0.3s, background 0.3s;
+    }
+    .manage-step:hover { border-color: rgba(200,169,110,0.2); background: rgba(200,169,110,0.02); }
+    .manage-step.llr {
+      border-color: rgba(200,169,110,0.3);
+      background: rgba(200,169,110,0.04);
+    }
+    .manage-step.llr:hover { border-color: rgba(200,169,110,0.5); background: rgba(200,169,110,0.07); }
+    .manage-num {
+      font-family: var(--font-display);
+      font-size: 52px;
+      font-weight: 300;
+      color: rgba(200,169,110,0.18);
+      line-height: 1;
+      flex-shrink: 0;
+      width: 52px;
+    }
+    .manage-step.llr .manage-num { color: rgba(200,169,110,0.45); }
+    .manage-body { flex: 1; }
+    .manage-phase {
+      font-family: var(--font-ui);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .manage-timing {
+      font-family: var(--font-ui);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      opacity: 0.6;
+      margin-bottom: 14px;
+    }
+    .manage-step.llr .manage-timing { opacity: 1; }
+    .manage-desc {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 18px;
+    }
+    .manage-impact {
+      font-family: var(--font-display);
+      font-size: clamp(16px, 1.6vw, 20px);
+      font-weight: 300;
+      line-height: 1.4;
+      color: var(--white);
+      margin-bottom: 20px;
+    }
+    .manage-step.llr .manage-impact { color: var(--white); }
+    .manage-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+    .manage-list li {
+      font-size: 13px;
+      color: rgba(245,244,240,0.5);
+      padding-left: 16px;
+      position: relative;
+      line-height: 1.5;
+    }
+    .manage-list li::before {
+      content: '–';
+      position: absolute; left: 0;
+      color: var(--accent);
+      opacity: 0.5;
+    }
+    .manage-step.llr .manage-list li { color: rgba(245,244,240,0.7); }
+    .manage-step.llr .manage-list li::before { opacity: 1; }
+    .llr-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      background: var(--accent);
+      color: var(--black);
+      vertical-align: middle;
+      text-decoration: none;
+      transition: background 0.25s;
+    }
+    .llr-badge:hover { background: #d4b77a; }
+    .llr-full {
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      opacity: 0.75;
+      font-size: 8.5px;
+    }
+    .llr-explain {
+      font-size: 12px;
+      color: rgba(245,244,240,0.45);
+      line-height: 1.7;
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+    .llr-outputs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 16px;
+    }
+    .llr-outputs span {
+      font-family: var(--font-ui);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 5px 10px;
+      border: 1px solid rgba(200,169,110,0.3);
+      color: rgba(200,169,110,0.7);
+    }
+    .manage-footer {
+      margin-top: 72px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 40px;
+      padding-top: 48px;
+      border-top: 1px solid var(--border);
+      flex-wrap: wrap;
+    }
+    .manage-claim {
+      font-family: var(--font-display);
+      font-size: clamp(26px, 3.5vw, 42px);
+      font-weight: 300;
+      line-height: 1.2;
+      color: var(--white);
+    }
+    .manage-claim em { font-style: italic; color: var(--accent); }
+    .manage-sub {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.8;
+      max-width: 380px;
+      text-align: right;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav .nav-links, nav .nav-cta { display: none; }
+      .problem-grid { grid-template-columns: 1fr; gap: 48px; }
+      .programs-grid { grid-template-columns: 1fr; gap: 2px; }
+      .manage-grid { grid-template-columns: 1fr; }
+      .manage-step { padding: 32px 24px; gap: 16px; }
+      .manage-num { font-size: 36px; width: 36px; }
+      .process { grid-template-columns: 1fr 1fr; gap: 40px; }
+      .process::before { display: none; }
+      .diff-table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+      .diff-table td, .diff-table th { padding: 14px 16px; white-space: nowrap; }
+      .manage-footer { flex-direction: column; align-items: flex-start; }
+      .manage-sub { text-align: left; }
+      .stage-track { flex-wrap: wrap; gap: 8px; }
+      section { padding: 80px 0; }
+      .container { padding: 0 20px; }
+    }
+    @media (max-width: 480px) {
+      .process { grid-template-columns: 1fr; }
+      .hero-title { font-size: 52px; }
+      .freq-options { gap: 3px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ── NAV ── -->
+  <nav id="nav">
+    <div class="inner">
+      <a href="#" class="nav-logo">LY<span>V</span>ON</a>
+      <ul class="nav-links">
+        <li><a href="#solution">System</a></li>
+        <li><a href="#programs">Programs</a></li>
+        <li><a href="#diff">Why MedPath</a></li>
+      </ul>
+      <a href="#finalcta" class="nav-cta">Apply for MedPath</a>
+    </div>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="container">
+      <p class="hero-eyebrow">LYVON — Premium Medical Admission System</p>
+      <h1 class="hero-title">Med<em>Path</em></h1>
+      <p class="hero-sub">We don't teach English.<br>We manage your path to medical school.</p>
+      <p class="hero-support">A closed-loop system combining personalised training,<br>structured feedback, and performance tracking.</p>
+      <div class="hero-actions">
+        <a href="#finalcta" class="btn-primary">Apply for MedPath</a>
+        <a href="#solution" class="btn-ghost">View How It Works</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PROBLEM ── -->
+  <section id="problem">
+    <div class="container">
+      <span class="label">The Problem</span>
+      <div class="problem-grid">
+        <div class="reveal">
+          <h2 class="problem-headline">Most students take English classes.<br>Very few are actually <em>managed.</em></h2>
+          <p style="font-size:14px;color:var(--muted);margin-top:28px;line-height:1.9;">Without a system, improvement is random. You study, you practice — but nobody is watching your performance, nobody is adjusting your trajectory. That's not preparation. That's hope.</p>
+        </div>
+        <div class="problem-cards reveal">
+          <div class="problem-card">
+            <p class="problem-card-title">No Tracking</p>
+            <p>Progress is invisible. No data means no direction. Students repeat the same mistakes without knowing it.</p>
+          </div>
+          <div class="problem-card">
+            <p class="problem-card-title">No Structured Feedback</p>
+            <p>Generic corrections don't build competency. Without targeted feedback, learning plateaus fast.</p>
+          </div>
+          <div class="problem-card">
+            <p class="problem-card-title">No Performance Control</p>
+            <p>Admission requires performing under pressure. Classroom practice never trains that muscle.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SOLUTION ── -->
+  <section id="solution">
+    <div class="container">
+      <div class="solution-header reveal">
+        <span class="label">The MedPath System</span>
+        <h2 class="section-title" style="margin-top:20px;">A Closed-Loop System<br>for <em>Real Results</em></h2>
+        <p class="section-body">Every step is designed, measured, and adjusted. Nothing is left to chance.</p>
+      </div>
+
+      <div class="process reveal">
+        <div class="process-step">
+          <div class="process-num">01</div>
+          <p class="process-label">Diagnose</p>
+          <p class="process-desc">Pinpoint exactly where you are and what's blocking your progress.</p>
+        </div>
+        <div class="process-step">
+          <div class="process-num">02</div>
+          <p class="process-label">Train</p>
+          <p class="process-desc">Targeted academic and medical thinking training — not generic English.</p>
+        </div>
+        <div class="process-step">
+          <div class="process-num">03</div>
+          <p class="process-label">Track</p>
+          <p class="process-desc">Weekly performance tracking makes progress visible and accountable.</p>
+        </div>
+        <div class="process-step">
+          <div class="process-num">04</div>
+          <p class="process-label">Feedback</p>
+          <p class="process-desc">Data-driven, precise feedback — not "good job," but exactly what to fix.</p>
+        </div>
+        <div class="process-step">
+          <div class="process-num">05</div>
+          <p class="process-label">Improve</p>
+          <p class="process-desc">Controlled, measurable improvement. Every cycle builds on the last.</p>
+        </div>
+      </div>
+
+      <p class="solution-note reveal">We don't leave improvement to chance.<br><strong>We manage it.</strong></p>
+    </div>
+  </section>
+
+  <!-- ── HOW WE MANAGE ── -->
+  <section id="manage">
+    <div class="container">
+      <div class="manage-header reveal">
+        <span class="label">Session Architecture</span>
+        <h2 class="section-title" style="margin-top:20px;">How We Manage<br>Your <em>Learning</em></h2>
+        <p class="section-body" style="margin-top:4px;">Every session follows a four-phase cycle — before, during, after, and beyond.</p>
+      </div>
+
+      <div class="manage-grid">
+
+        <div class="manage-step reveal">
+          <div class="manage-num">01</div>
+          <div class="manage-body">
+            <p class="manage-phase">Prepare</p>
+            <p class="manage-timing">Before each session</p>
+            <p class="manage-impact">You don't come unprepared.<br>You come ready to perform.</p>
+            <ul class="manage-list">
+              <li>1:1 learning management — tailored to your level</li>
+              <li>Session plan prepared in advance by your coach</li>
+              <li>Structured academic materials before every session</li>
+              <li>Audio + script + bilingual support</li>
+              <li>Designed for preview, not passive reading</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="manage-step reveal">
+          <div class="manage-num">02</div>
+          <div class="manage-body">
+            <p class="manage-phase">Train</p>
+            <p class="manage-timing">During each session</p>
+            <p class="manage-impact">This is not conversation.<br>This is performance training.</p>
+            <ul class="manage-list">
+              <li>1:1 live online session</li>
+              <li>Precision-based speaking drills</li>
+              <li>Real-time correction</li>
+              <li>Medical context articulation — using the right terms in the right way</li>
+              <li>Structured articulation training</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="manage-step llr reveal">
+          <div class="manage-num">03</div>
+          <div class="manage-body">
+            <p class="manage-phase">Analyze <span class="llr-badge">LLR <span class="llr-full">Lesson Learned Report</span></span></p>
+            <p class="manage-timing">After every session</p>
+            <p class="manage-impact">Every session becomes data.<br>And data drives your improvement.</p>
+            <p class="llr-explain">A structured report issued after every session — documenting your performance, corrections, and next steps in measurable form.</p>
+            <ul class="manage-list">
+              <li>Structured LLR performance breakdown</li>
+              <li>Speaking / Listening / Vocabulary / Corrections</li>
+              <li>Clear improvement direction after every class</li>
+            </ul>
+            <div class="llr-outputs">
+              <span>Corrections</span>
+              <span>Natural Expressions</span>
+              <span>Improvement Direction</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="manage-step reveal">
+          <div class="manage-num">04</div>
+          <div class="manage-body">
+            <p class="manage-phase">Improve</p>
+            <p class="manage-timing">Continuously optimized</p>
+            <p class="manage-impact">We don't reset after every session.<br>We build on it.</p>
+            <ul class="manage-list">
+              <li>Weekly / Biweekly / Monthly optimization</li>
+              <li>Post-class check-ins</li>
+              <li>Personalized progression strategy</li>
+              <li>Personal error pattern analysis — your most frequent mistakes, tracked and resolved</li>
+              <li>Monthly curated expression report based on your actual output</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="manage-footer reveal">
+        <p class="manage-claim">This is not a class.<br><em>This is a managed system.</em></p>
+        <p class="manage-sub">Every session generates a structured LLR report,<br>turning your performance into measurable data.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PROGRAMS ── -->
+  <section id="programs">
+    <div class="container">
+      <div class="programs-header reveal">
+        <span class="label">Program Structure</span>
+        <h2 class="section-title" style="margin-top:20px;max-width:600px;">Three Stages.<br>Each One <em>Required.</em></h2>
+        <p class="section-body" style="margin-top:16px;text-align:left;">MedPath is not a menu. Every student moves through all three stages in sequence — each stage builds directly on the last.</p>
+      </div>
+
+      <!-- Stage connector line (desktop) -->
+      <div class="stage-track reveal">
+        <div class="stage-node">
+          <span class="stage-arrow">Stage 01</span>
+          <span class="stage-dur">3 months</span>
+        </div>
+        <div class="stage-arrow-icon">→</div>
+        <div class="stage-node">
+          <span class="stage-arrow">Stage 02</span>
+          <span class="stage-dur">3 months</span>
+        </div>
+        <div class="stage-arrow-icon">→</div>
+        <div class="stage-node">
+          <span class="stage-arrow">Stage 03</span>
+          <span class="stage-dur">3 months</span>
+        </div>
+        <div class="stage-total">= 9 months total</div>
+      </div>
+
+      <div class="programs-grid">
+        <div class="prog-card stage-1 reveal">
+          <p class="prog-tier">Stage 01 — Starter</p>
+          <h3 class="prog-name">Starter</h3>
+          <p class="prog-tagline">"Learn to study academic subjects in English"</p>
+          <ul class="prog-features">
+            <li>Academic English foundations</li>
+            <li>Medical subject vocabulary</li>
+            <li>Reading and comprehension drills</li>
+            <li>Structured study methodology</li>
+          </ul>
+          <div class="freq-block">
+            <p class="freq-label">3 months</p>
+            <div class="freq-options">
+              <span class="freq-tag">2×<em>Standard</em></span>
+              <span class="freq-tag rec">3×<em>Recommended</em></span>
+              <span class="freq-tag">4×<em>Intensive</em></span>
+            </div>
+          </div>
+          <p class="prog-gate">Entry point for all students</p>
+        </div>
+
+        <div class="prog-card stage-2 reveal">
+          <p class="prog-tier">Stage 02 — Core</p>
+          <h3 class="prog-name">Core</h3>
+          <p class="prog-tagline">"Think and explain like a medical student"</p>
+          <ul class="prog-features">
+            <li>Medical reasoning training</li>
+            <li>Explanation and articulation practice</li>
+            <li>Weekly performance feedback</li>
+            <li>1:1 personalised coaching</li>
+          </ul>
+          <div class="freq-block">
+            <p class="freq-label">3 months</p>
+            <div class="freq-options">
+              <span class="freq-tag">2×<em>Standard</em></span>
+              <span class="freq-tag rec">3×<em>Recommended</em></span>
+              <span class="freq-tag">4×<em>Intensive</em></span>
+            </div>
+          </div>
+          <p class="prog-gate">Unlocked after Starter</p>
+        </div>
+
+        <div class="prog-card stage-3 reveal">
+          <span class="pro-destination">Final Stage</span>
+          <p class="prog-tier">Stage 03 — Pro</p>
+          <h3 class="prog-name">Pro</h3>
+          <p class="prog-tagline">"Perform under real admission conditions"</p>
+          <ul class="prog-features">
+            <li>Full oral exam simulation</li>
+            <li>Real-time performance assessment</li>
+            <li>Interview strategy coaching</li>
+            <li>Admission-ready output tracking</li>
+          </ul>
+          <div class="freq-block">
+            <p class="freq-label">3 months</p>
+            <div class="freq-options">
+              <span class="freq-tag">2×<em>Standard</em></span>
+              <span class="freq-tag rec">3×<em>Recommended</em></span>
+              <span class="freq-tag">4×<em>Intensive</em></span>
+            </div>
+          </div>
+          <p class="prog-gate" style="color:var(--accent);opacity:1;">Unlocked after Core — Admission Ready</p>
+        </div>
+      </div>
+
+      <p class="solution-note reveal" style="margin-top:56px;">You don't choose a stage.<br><strong>You earn your way through.</strong></p>
+    </div>
+  </section>
+
+  <!-- ── DIFFERENTIATION ── -->
+  <section id="diff">
+    <div class="container">
+      <div class="diff-header reveal">
+        <span class="label">Why MedPath</span>
+        <h2 class="section-title" style="margin-top:20px;">Others Offer Classes.<br>We Offer a <em>System.</em></h2>
+      </div>
+
+      <table class="diff-table reveal">
+        <thead>
+          <tr>
+            <th>Dimension</th>
+            <th>Others</th>
+            <th><span class="check">◆</span> MedPath</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Approach</td>
+            <td>English classes</td>
+            <td><span class="check">◆</span> Managed system</td>
+          </tr>
+          <tr>
+            <td>Focus</td>
+            <td>Practice hours</td>
+            <td><span class="check">◆</span> Verified performance</td>
+          </tr>
+          <tr>
+            <td>Personalisation</td>
+            <td>Generic curriculum</td>
+            <td><span class="check">◆</span> 1:1 coaching & feedback</td>
+          </tr>
+          <tr>
+            <td>Progress</td>
+            <td>Random improvement</td>
+            <td><span class="check">◆</span> Controlled, tracked growth</td>
+          </tr>
+          <tr>
+            <td>Accountability</td>
+            <td>Up to the student</td>
+            <td><span class="check">◆</span> We take responsibility</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="diff-note reveal">"We take <strong>responsibility</strong><br>for your results."</p>
+    </div>
+  </section>
+
+  <!-- ── MEDBRIDGE (LOW EMPHASIS) ── -->
+  <section id="medbridge">
+    <div class="container">
+      <div class="medbridge-inner reveal">
+        <span class="label" style="opacity:0.5;">Also Available</span>
+        <h3 class="medbridge-title" style="margin-top:16px;">Not ready for MedPath yet?</h3>
+        <p style="font-family:var(--font-display);font-size:18px;font-style:italic;color:rgba(245,244,240,0.4);margin-bottom:16px;">MedBridge — Standard Program</p>
+        <p class="medbridge-desc">A foundational speaking program for students who need more time before entering the full MedPath system. Flexible scheduling, structured classes, speaking-focused curriculum.</p>
+        <div class="medbridge-features">
+          <span class="medbridge-feature">Speaking Classes</span>
+          <span class="medbridge-feature">Flexible Schedule</span>
+          <span class="medbridge-feature">Structured Curriculum</span>
+        </div>
+        <a href="#" class="btn-sm-gold">Start with MedBridge</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FINAL CTA ── -->
+  <section id="finalcta">
+    <div class="container">
+      <p class="cta-overline reveal">Begin Your Path</p>
+      <h2 class="cta-title reveal">Ready to move<br>beyond <em>practice?</em></h2>
+      <p class="cta-sub reveal">MedPath accepts a limited number of students each cycle. Apply now to secure your place.</p>
+      <div class="cta-actions reveal">
+        <a href="#" class="btn-primary">Apply for MedPath</a>
+        <a href="#solution" class="btn-ghost">Learn More</a>
+      </div>
+      <p class="cta-fallback reveal">Not ready yet? <a href="#medbridge">Explore MedBridge instead.</a></p>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <span class="footer-logo">LY<span>V</span>ON</span>
+        <p class="footer-copy">© 2026 LYVON. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Nav scroll effect
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    // Reveal on scroll
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 80);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+
+    reveals.forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
