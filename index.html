@@ -1,13 +1,55 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+  <!-- 🔥 Redirect: http → https & www → non-www -->
+  <script>
+    if (location.protocol !== "https:" || location.hostname === "www.lyvon.io") {
+      location.href = "https://lyvon.io" + location.pathname;
+    }
+  </script>
+
+  <!-- 기본 설정 -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LYVON — MedPath Premium Medical Admission System</title>
+
+  <!-- 타이틀 -->
+  <title>LYVON — Premium Medical Admission System</title>
+
+  <!-- SEO -->
+  <meta name="description" content="LYVON is a premium medical admission system where language becomes outcome." />
+
+  <!-- 🔥 Open Graph (카톡 / 슬랙 / 디스코드) -->
+  <meta property="og:title" content="LYVON" />
+  <meta property="og:description" content="Premium Medical Admission System" />
+  <meta property="og:image" content="https://lyvon.io/lyvon-og.png" />
+  <meta property="og:url" content="https://lyvon.io" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <!-- 🔥 Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="LYVON" />
+  <meta name="twitter:description" content="Premium Medical Admission System" />
+  <meta name="twitter:image" content="https://lyvon.io/lyvon-og.png" />
+
+  <!-- 🔥 favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="icon" href="/favicon.ico" />
+
+  <!-- 🍎 Apple -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+  <!-- 📱 PWA -->
+  <link rel="manifest" href="/site.webmanifest" />
+
+  <!-- 🎨 Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Syne:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600&family=Syne:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
 
+  <!-- 🎨 Style -->
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
