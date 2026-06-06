@@ -49,7 +49,12 @@
   .b .hair{width:17mm;height:.35mm;background:var(--gold);margin:3.4mm 0 3mm;}
   .b .p{font-size:6pt;letter-spacing:2px;color:var(--navy);font-weight:600;}
   .b .p .pipe{color:var(--gold);margin:0 4px;}
-  .b .t{font-size:5.2pt;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-top:2.4mm;}
+  .b .t{font-size:4.7pt;letter-spacing:1.3px;color:var(--muted);text-transform:uppercase;margin-top:2.2mm;}
+.b .sys{font-family:'Inter',sans-serif;font-size:7pt;letter-spacing:2.5px;color:var(--navy);font-weight:700;}
+.b .sys .ar{color:var(--gold);margin:0 5px;font-weight:600;}
+.b .vert{font-size:5.4pt;letter-spacing:.8px;color:var(--navy);font-weight:600;margin-top:3.2mm;}
+.b .vert .vk{color:var(--gold);font-weight:700;letter-spacing:1.5px;}
+.b .vert .vd{color:var(--gold);margin:0 3px;}
   .b .since{position:absolute;bottom:5mm;right:8mm;font-size:6pt;letter-spacing:3px;color:var(--gold);text-transform:uppercase;font-weight:700;}
 
   .save{margin-top:30px;display:flex;align-items:center;justify-content:center;gap:8px;
@@ -61,9 +66,10 @@
   .links a:hover{color:#fff;border-color:var(--gold);}
   .qrwrap{margin-top:24px;display:flex;flex-direction:column;align-items:center;gap:9px;}.qrtile{background:#fff;border-radius:14px;padding:11px;width:132px;height:132px;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 22px -10px rgba(0,0,0,.5);}.qrtile img{width:100%;height:100%;display:block;}.qrcap{font-size:10.5px;letter-spacing:1.6px;color:#8c97a8;text-transform:uppercase;font-weight:600;}
   .copy{margin-top:20px;background:none;border:none;color:#7d8799;font-size:12px;letter-spacing:1px;cursor:pointer;font-family:inherit;text-decoration:underline;text-underline-offset:3px;}
-  .foot{margin-top:18px;font-size:9px;letter-spacing:2px;color:#5e6a7d;text-transform:uppercase;}
+  .foot{margin-top:18px;font-size:9px;letter-spacing:2px;color:var(--gold-l);text-transform:uppercase;}
   .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:#0B2545;color:#fff;border:1px solid var(--gold);padding:10px 18px;border-radius:999px;font-size:12px;opacity:0;transition:.25s;pointer-events:none;}
   .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+.b .since{display:none;}
 </style>
 </head>
 <body>
@@ -84,8 +90,9 @@
         <div class="face back cover b">
           <div class="wm foilgold">LYVON</div>
           <div class="hair"></div>
-          <div class="p">MEDBRIDGE <span class="pipe">|</span> MEDPATH <span class="pipe">|</span> MEDCONNECT</div>
-          <div class="t">Medical Academic Communication Programs</div>
+          <div class="sys">BRIDGE <span class="ar">&rarr;</span> PATH <span class="ar">&rarr;</span> CONNECT</div>
+          <div class="t">Academic &amp; Professional Communication System</div>
+    <div class="vert"><span class="vk">MEDICAL</span> <span class="vd">&middot;</span> MedBridge <span class="vd">&middot;</span> MedPath <span class="vd">&middot;</span> MedConnect</div>
           <div class="since">Live On</div>
         </div>
       </div>
