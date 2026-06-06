@@ -1,1321 +1,819 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <!-- 🔥 Redirect: http → https & www → non-www -->
-  <script>
-    if (location.protocol !== "https:" || location.hostname === "www.lyvon.io") {
-      location.href = "https://lyvon.io" + location.pathname;
-    }
-  </script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LYVON · Medical Academic Communication System</title>
+<meta name="description" content="LYVON — 헝가리 의대 입시 핵심인 영어 말하기·구술시험 기초와 심화를 전문 원어민과 1:1로 훈련하는 메디컬 학술 영어 커뮤니케이션 시스템. MedBridge + MedPath + MedConnect.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Sans+KR:wght@400;500;700;900&family=Inter:wght@400;500;600;700&family=Lora:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#F5EFE4; --cream2:#EDE4D3; --cream-l:#FCFBF7;
+  --navy:#0B2545; --navy2:#15325A; --darker:#081B33;
+  --navy-82:rgba(11,37,69,.82); --navy-55:rgba(11,37,69,.55); --navy-40:rgba(11,37,69,.4);
+  --teal:#1A7A6A; --teal-m:#2D9E85; --teal-l:#E3F5F0;
+  --gold:#B8902F; --gold-d:#A8842E; --gold-l:#FBF3E0; --gold-dark:#D4B25A;
+  --indigo:#3E4F8A; --indigo-l:#EAEDF7;
+  --charcoal:#2A3140; --charcoal-l:#ECEEF1;
+  --ink:#1A1A1A; --muted:#5A6472; --border:rgba(11,37,69,.1);
+  --serif:'Lora',serif; --sans:'Noto Sans KR','Noto Sans JP','Inter',sans-serif; --en:'Inter',sans-serif;
+  --maxw:1180px;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+html[lang="ja"] body{font-family:'Noto Sans JP','Noto Sans KR','Inter',sans-serif;}
+section,header{scroll-margin-top:84px;}
+body{font-family:var(--sans);color:var(--navy);background:var(--cream);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+.en{font-family:var(--en);}
+.serif{font-family:var(--serif);}
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 40px;}
 
-  <!-- 기본 설정 -->
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+/* ===== NAV ===== */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(245,239,228,.96);backdrop-filter:saturate(140%) blur(6px);transition:background .35s, box-shadow .35s, padding .35s, border-color .35s;padding:22px 0;border-bottom:1px solid rgba(184,144,47,.25);}
+nav.scrolled{background:rgba(245,239,228,.96);box-shadow:0 4px 22px rgba(11,37,69,.08);padding:14px 0;backdrop-filter:saturate(140%) blur(6px);border-bottom:1px solid rgba(184,144,47,.25);}
+.nav-in{display:flex;align-items:center;justify-content:space-between;}
+.brand{display:flex;flex-direction:column;align-items:flex-start;gap:3px;}
+.brand-row{display:flex;align-items:center;gap:10px;}
+.brand .mark{font-family:var(--en);font-weight:700;font-size:21px;letter-spacing:.14em;color:var(--navy);}
+.brand .mark .v{color:inherit;}
+.brand-tag{font-size:10.5px;color:var(--navy-55);letter-spacing:.01em;font-weight:500;line-height:1;}
+.brand-tag b{color:var(--gold-d);font-weight:700;}
+.brand .badge{font-family:var(--en);font-size:9px;font-weight:700;letter-spacing:.14em;color:var(--cream-l);background:var(--gold);padding:3px 8px;border-radius:3px;}
+.nav-links{display:flex;align-items:center;gap:28px;}
+.nav-links a{font-size:13.5px;font-weight:500;color:var(--navy-82);letter-spacing:.01em;transition:color .2s;}
+.nav-links a:hover{color:var(--gold);}
+.nav-cta{font-family:var(--sans);font-weight:700;font-size:13px;color:var(--cream-l)!important;background:var(--gold);padding:9px 18px;border-radius:6px;transition:transform .2s, background .2s;}
+.nav-cta:hover{background:#cda23a;transform:translateY(-1px);}
+.lang-switch{display:inline-flex;border:1px solid rgba(11,37,69,.22);border-radius:7px;overflow:hidden;}
+.lang-switch button{font-family:var(--en);font-size:11px;font-weight:700;letter-spacing:.03em;padding:7px 10px;background:transparent;border:none;color:var(--navy-55);cursor:pointer;transition:background .2s,color .2s;}
+.lang-switch button + button{border-left:1px solid rgba(11,37,69,.18);}
+.lang-switch button.active{background:var(--gold);color:#fff;}
+.lang-switch button:hover:not(.active){color:var(--navy);}
+.nav-toggle{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;}
+.nav-toggle span{width:24px;height:2px;background:var(--navy);display:block;border-radius:2px;transition:.3s;}
+.nav-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.nav-toggle.open span:nth-child(2){opacity:0;}
+.nav-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
 
-  <!-- 타이틀 -->
-  <title>LYVON — Premium Medical School Admissions System</title>
+/* ===== HERO ===== */
+.hero{position:relative;background:linear-gradient(135deg,#F5EFE4 0%,#EDE4D3 100%);color:var(--navy);padding:178px 0 116px;overflow:hidden;}
+.hero::before{content:"";position:absolute;left:0;top:24%;height:52%;width:5px;background:linear-gradient(180deg,rgba(184,144,47,0),#B8902F,rgba(184,144,47,0));}
+.hero::after{content:"";position:absolute;top:-160px;right:-130px;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(184,144,47,.16),transparent 68%);pointer-events:none;}
+.hero-grid{position:relative;display:grid;grid-template-columns:1.18fr .82fr;gap:56px;align-items:center;}
+.pill-row{display:flex;align-items:center;gap:11px;margin-bottom:22px;}
+.pill{font-family:var(--en);font-size:10.5px;font-weight:600;letter-spacing:.2em;padding:8px 18px;border-radius:4px;}
+.pill.outline{border:1px solid rgba(184,144,47,.55);color:var(--gold);}
+.pill.fill{border:1px solid var(--gold);background:var(--gold);color:var(--cream-l);font-weight:700;}
+.pill-arrow{font-family:var(--en);font-size:14px;color:rgba(184,144,47,.85);font-weight:600;}
+.hero .eyebrow{font-family:var(--en);font-size:11px;font-weight:600;letter-spacing:.3em;color:var(--navy-55);margin-bottom:18px;}
+.hero h1{font-family:var(--serif);font-size:42px;font-weight:600;line-height:1.32;margin-bottom:18px;letter-spacing:-.005em;color:var(--navy);}
+.hero h1 .hl{color:var(--gold);}
+.hero .sub{font-family:var(--serif);font-style:italic;font-size:18px;color:var(--navy-82);margin-bottom:22px;letter-spacing:.01em;}
+.hero .lead{font-size:14.5px;line-height:1.95;color:var(--navy-82);max-width:560px;}
+.hero .lead b{color:var(--navy);font-weight:700;}
+.hero-actions{display:flex;gap:14px;margin-top:34px;flex-wrap:wrap;}
+.btn{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:14.5px;padding:14px 28px;border-radius:8px;transition:transform .2s, box-shadow .2s, background .2s, color .2s;cursor:pointer;}
+.btn-gold{background:var(--gold);color:var(--cream-l);box-shadow:0 8px 22px rgba(184,144,47,.28);}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(184,144,47,.4);background:#c79a32;}
+.btn-ghost{background:rgba(255,255,255,.5);color:var(--navy);border:1px solid rgba(11,37,69,.25);}
+.btn-ghost:hover{background:var(--navy);color:var(--cream);border-color:var(--navy);transform:translateY(-2px);}
+.hero-meta{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.hm{background:var(--cream-l);border:1px solid rgba(184,144,47,.28);border-radius:12px;padding:22px 20px;box-shadow:0 8px 26px rgba(11,37,69,.06);}
+.hm .v{font-family:var(--serif);font-size:30px;font-weight:700;color:var(--gold);line-height:1;}
+.hm .v span{font-size:15px;}
+.hm .l{font-size:11.5px;color:var(--navy-55);margin-top:8px;letter-spacing:.02em;}
+.hero-tagline{position:relative;text-align:center;margin-top:64px;font-size:13px;color:var(--navy-82);letter-spacing:.05em;font-weight:500;}
+.hero-tagline b{color:var(--gold);font-weight:600;}
 
-  <!-- SEO -->
-  <meta name="description" content="LYVON is a premium medical admission system where language becomes outcome." />
+/* ===== SECTION SHELL ===== */
+section{padding:96px 0;background:var(--cream);}
+section.cream2{background:var(--cream2);}
+section.creaml{background:var(--cream-l);}
+.sec-tag{font-family:var(--en);font-size:11px;font-weight:700;letter-spacing:.18em;color:var(--gold-d);margin-bottom:12px;}
+.sec-title{font-family:var(--serif);font-size:32px;font-weight:600;color:var(--navy);line-height:1.34;letter-spacing:-.01em;}
+.sec-lead{font-size:15px;color:var(--navy-82);line-height:1.95;max-width:760px;margin-top:16px;}
+.sec-lead b,.sec-lead strong{color:var(--navy);font-weight:700;}
+.center{text-align:center;}
+.center .sec-lead{margin-left:auto;margin-right:auto;}
+.divider{width:54px;height:3px;background:var(--gold);margin:20px auto 0;border-radius:3px;}
 
-  <!-- 🔥 Open Graph -->
-  <meta property="og:title" content="LYVON" />
-  <meta property="og:description" content="Premium Medical School Admissions System" />
-  <meta property="og:image" content="https://lyvon.io/lyvon-og.png?v=2" />
-  <meta property="og:url" content="https://lyvon.io" />
-  <meta property="og:type" content="website" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
+/* ===== PROBLEM ===== */
+.pain-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:46px;}
+.pain{background:var(--cream-l);border:1px solid var(--border);border-radius:14px;padding:28px 30px;box-shadow:0 6px 20px rgba(11,37,69,.05);transition:transform .25s, box-shadow .25s, border-color .25s;}
+.pain:hover{transform:translateY(-4px);box-shadow:0 18px 42px rgba(11,37,69,.12);border-color:rgba(184,144,47,.5);}
+.pain .picon{font-size:26px;display:block;margin-bottom:14px;}
+.pain h4{font-size:16px;font-weight:700;color:var(--navy);margin-bottom:9px;}
+.pain p{font-size:13.5px;color:var(--muted);line-height:1.85;}
+.pain-answer{margin-top:24px;background:linear-gradient(135deg,#0B2545,#15325A);color:#fff;border-radius:14px;padding:30px 34px;display:flex;gap:22px;align-items:center;box-shadow:0 14px 34px rgba(11,37,69,.2);}
+.pain-answer .mark{font-family:var(--serif);font-size:42px;color:var(--gold-dark);font-weight:700;line-height:1;flex-shrink:0;}
+.pain-answer p{font-size:15px;line-height:1.95;color:rgba(255,255,255,.92);}
+.pain-answer b{color:var(--gold-dark);font-weight:700;}
+.brand-quote{margin-top:28px;border-left:3px solid var(--gold);background:rgba(184,144,47,.06);border-radius:0 12px 12px 0;padding:22px 28px;}
+.brand-quote p{font-size:16px;line-height:1.85;color:var(--navy);font-weight:500;}
+.brand-quote p b{color:var(--gold-d);font-weight:700;}
+.about-row{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:24px;}
+.about-card{background:var(--cream-l);border:1px solid var(--border);border-radius:14px;padding:28px 30px;box-shadow:0 6px 20px rgba(11,37,69,.05);}
+.about-card .ac-tag{font-family:var(--en);font-size:10px;font-weight:700;letter-spacing:.22em;color:var(--gold-d);margin-bottom:10px;}
+.about-card .ac-head{font-family:var(--serif);font-size:20px;font-weight:600;color:var(--gold-d);margin-bottom:8px;letter-spacing:.01em;}
+.about-card .ac-mission{font-size:14.5px;font-weight:700;color:var(--navy);line-height:1.6;margin-bottom:6px;}
+.about-card p{font-size:13.5px;color:var(--muted);line-height:1.8;}
+.about-card p b{color:var(--navy);font-weight:700;}
+.about-card .ac-div{height:1px;background:var(--border);margin:16px 0;}
+.subhead{margin-top:48px;margin-bottom:4px;display:flex;align-items:center;gap:14px;}
+.subhead span{font-family:var(--serif);font-size:19px;color:var(--navy);font-weight:600;white-space:nowrap;}
+.subhead .line{flex:1;height:1px;background:var(--border);}
 
-  <!-- 🔥 Twitter / X -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="LYVON" />
-  <meta name="twitter:description" content="Premium Medical School Admissions System" />
-  <meta name="twitter:image" content="https://lyvon.io/lyvon-og.png?v=2" />
+/* ===== PATHWAY ===== */
+.journey{display:flex;flex-direction:column;gap:0;margin-top:50px;}
+.jstage{display:grid;grid-template-columns:230px 1fr;background:var(--cream-l);border:1px solid var(--border);border-radius:18px;overflow:hidden;box-shadow:0 8px 24px rgba(11,37,69,.06);transition:transform .25s, box-shadow .25s;}
+.jstage:hover{transform:translateX(4px);box-shadow:0 18px 44px rgba(11,37,69,.14);}
+.js-side{padding:34px 30px;color:#fff;position:relative;display:flex;flex-direction:column;justify-content:center;}
+.j0 .js-side{background:linear-gradient(150deg,#B8902F,#A8842E);}
+.j1 .js-side{background:linear-gradient(150deg,#2D9E85,#1A7A6A);}
+.j2 .js-side{background:linear-gradient(150deg,#3E4F8A,#2C3A6B);}
+.j3 .js-side{background:linear-gradient(150deg,#2A3140,#15192A);}
+.js-num{position:absolute;top:16px;right:22px;font-family:var(--serif);font-size:54px;font-weight:700;color:rgba(255,255,255,.18);line-height:1;}
+.js-phase{font-family:var(--en);font-size:10px;font-weight:700;letter-spacing:.14em;opacity:.86;}
+.js-name{font-family:var(--serif);font-size:27px;font-weight:600;margin:8px 0 12px;line-height:1.15;}
+.js-meta{font-size:12.5px;opacity:.94;line-height:1.6;}
+.js-sub{font-size:11px;opacity:.8;margin-top:6px;line-height:1.5;}
+.js-body{padding:32px 38px;background:var(--cream-l);display:flex;flex-direction:column;justify-content:center;}
+.js-q{font-family:var(--serif);font-size:21px;font-weight:600;color:var(--navy);margin-bottom:10px;}
+.js-verb{align-self:flex-start;font-family:var(--en);font-size:12px;font-weight:700;padding:5px 15px;border-radius:30px;margin-bottom:14px;letter-spacing:.02em;}
+.j0 .js-verb{background:var(--gold-l);color:var(--gold-d);}
+.j1 .js-verb{background:var(--teal-l);color:var(--teal);}
+.j2 .js-verb{background:var(--indigo-l);color:var(--indigo);}
+.j3 .js-verb{background:var(--charcoal-l);color:var(--charcoal);}
+.js-desc{font-size:14px;color:var(--muted);line-height:1.85;}
+.js-desc b{color:var(--navy);font-weight:700;}
+.js-exam{margin-top:16px;padding-top:14px;border-top:1px dashed rgba(184,144,47,.5);font-size:12.5px;color:var(--muted);line-height:1.7;}
+.js-exam .je-tag{display:inline-block;font-family:var(--en);font-size:9px;font-weight:700;letter-spacing:.07em;color:var(--gold-d);background:rgba(184,144,47,.13);border-radius:4px;padding:2px 8px;margin-right:9px;vertical-align:middle;}
+.js-exam b{color:var(--navy);font-weight:700;}
+.jconnect{text-align:center;color:rgba(11,37,69,.3);font-size:22px;line-height:1;margin:10px 0;}
+.arc{margin-top:36px;background:var(--cream-l);border:1px solid var(--border);border-radius:14px;padding:26px 34px;font-size:14.5px;color:var(--navy-82);line-height:1.95;text-align:center;box-shadow:0 6px 20px rgba(11,37,69,.05);}
+.arc b{color:var(--gold-d);font-weight:700;}
 
-  <!-- 🔥 Favicon -->
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-  <link rel="icon" href="/favicon.ico" />
+/* ===== SESSION ===== */
+.step-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:48px;}
+.step{background:var(--cream-l);border:1px solid var(--border);border-radius:14px;padding:30px 32px;box-shadow:0 6px 20px rgba(11,37,69,.05);transition:box-shadow .25s, transform .25s, border-color .25s;}
+.step:hover{box-shadow:0 16px 38px rgba(11,37,69,.12);transform:translateY(-3px);border-color:rgba(184,144,47,.45);}
+.step-head{display:flex;align-items:flex-start;gap:18px;margin-bottom:18px;}
+.step-no{font-family:var(--serif);font-size:40px;font-weight:600;color:var(--gold);line-height:.9;}
+.step-en{font-family:var(--serif);font-size:18px;font-weight:600;letter-spacing:.04em;color:var(--navy);}
+.step-ko{font-size:12.5px;color:var(--navy-55);margin-top:4px;}
+.step-ko b{color:var(--navy);}
+.step ul{list-style:none;}
+.step li{font-size:13.5px;color:var(--muted);line-height:1.7;padding-left:16px;position:relative;margin-bottom:9px;}
+.step li:last-child{margin-bottom:0;}
+.step li::before{content:"·";position:absolute;left:0;color:var(--gold);font-weight:700;}
+.step li b{color:var(--navy);font-weight:700;}
 
-  <!-- 🍎 Apple -->
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+/* ===== PROGRAMS ===== */
+.prog-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:48px;}
+.prog{background:var(--cream-l);border:1px solid var(--border);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 8px 24px rgba(11,37,69,.06);transition:transform .25s, box-shadow .25s;}
+.prog:hover{transform:translateY(-5px);box-shadow:0 20px 48px rgba(11,37,69,.14);}
+.prog-top{padding:30px 34px 26px;color:#fff;position:relative;}
+.prog.mb .prog-top{background:linear-gradient(135deg,#B8902F,#A8842E);}
+.prog.mp .prog-top{background:linear-gradient(135deg,#0B2545,#15325A);}
+.prog-label{font-family:var(--en);font-size:10px;font-weight:700;letter-spacing:.16em;opacity:.85;}
+.prog-name{font-family:var(--serif);font-size:27px;font-weight:600;margin:8px 0 6px;}
+.prog-tag{font-size:13px;opacity:.92;}
+.prog-body{padding:28px 34px 34px;background:var(--cream-l);flex:1;display:flex;flex-direction:column;}
+.prog-body p{font-size:14px;color:var(--muted);line-height:1.85;margin-bottom:18px;}
+.prog-feat{list-style:none;margin-top:auto;}
+.prog-feat li{font-size:13.5px;color:var(--ink);padding-left:22px;position:relative;margin-bottom:11px;line-height:1.55;}
+.prog-feat li::before{content:"✓";position:absolute;left:0;font-weight:700;color:var(--gold-d);}
+.prog-feat li b{color:var(--navy);font-weight:700;}
+.tier-row{display:flex;gap:8px;margin-top:20px;}
+.tier{flex:1;text-align:center;font-family:var(--en);font-size:11px;font-weight:700;padding:8px 4px;border-radius:7px;color:#fff;letter-spacing:.02em;}
+.tier.t1{background:var(--teal);}
+.tier.t2{background:var(--indigo);}
+.tier.t3{background:var(--charcoal);}
+.tier.t0{background:var(--gold);}
 
-  <!-- 📱 PWA -->
-  <link rel="manifest" href="/site.webmanifest" />
+/* ===== WHY ===== */
+.pillar-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:48px;}
+.pillar{background:var(--cream-l);border:1px solid var(--border);border-left:4px solid var(--gold);border-radius:0 14px 14px 0;padding:30px 34px;box-shadow:0 6px 20px rgba(11,37,69,.05);transition:transform .25s, box-shadow .25s;}
+.pillar:hover{transform:translateY(-3px);box-shadow:0 16px 38px rgba(11,37,69,.12);}
+.pillar .pl-no{font-family:var(--serif);font-size:22px;font-weight:700;color:var(--gold-d);}
+.pillar h4{font-size:17px;font-weight:700;color:var(--navy);margin:6px 0 4px;}
+.pillar h4 .en-sub{display:block;font-family:var(--en);font-size:11px;color:var(--navy-55);font-weight:500;letter-spacing:.03em;margin-top:3px;}
+.pillar p{font-size:13.5px;color:var(--muted);line-height:1.85;margin-top:8px;}
+.pillar p b{color:var(--navy);font-weight:700;}
 
-  <!-- 🎨 Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Syne:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+/* ===== ECOSYSTEM ===== */
+.eco-tri{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:46px;}
+.eco-card{background:var(--cream-l);border:1px solid var(--border);border-top:3px solid var(--gold);border-radius:12px;padding:24px 24px;box-shadow:0 6px 20px rgba(11,37,69,.05);transition:transform .25s, box-shadow .25s;}
+.eco-card:hover{transform:translateY(-4px);box-shadow:0 16px 38px rgba(11,37,69,.12);}
+.eco-card.c-path{border-top-color:var(--indigo);}
+.eco-card.c-connect{border-top-color:var(--teal);}
+.eco-card .eco-stage{font-family:var(--en);font-size:10px;font-weight:700;letter-spacing:.16em;color:var(--gold-d);}
+.c-path .eco-stage{color:var(--indigo);}
+.c-connect .eco-stage{color:var(--teal);}
+.eco-card .eco-name{font-family:var(--serif);font-size:20px;font-weight:600;color:var(--navy);margin-top:4px;}
+.eco-card .eco-role{font-size:11px;font-weight:700;letter-spacing:.02em;margin-top:3px;color:var(--gold-d);}
+.c-path .eco-role{color:var(--indigo);}
+.c-connect .eco-role{color:var(--teal);}
+.eco-card .eco-desc{font-size:13px;color:var(--muted);line-height:1.7;margin-top:12px;}
+.eco-card .eco-desc b{color:var(--navy);font-weight:700;}
+.roadmap{margin-top:18px;background:linear-gradient(105deg,#0B2545,#15325A);border-radius:14px;padding:30px 28px;box-shadow:0 12px 30px rgba(11,37,69,.18);}
+.roadmap .rm-tag{font-family:var(--en);font-size:10px;letter-spacing:.16em;color:var(--gold-dark);font-weight:700;margin-bottom:20px;}
+.roadmap .rm-flow{display:flex;align-items:center;justify-content:space-between;gap:6px;color:#fff;font-size:12px;text-align:center;line-height:1.45;flex-wrap:wrap;}
+.roadmap .rm-flow .arr{color:var(--gold-dark);font-weight:700;}
+.roadmap .rm-flow b{font-size:13.5px;}
+.roadmap .rm-flow .b-mb{color:#C9A86C;}
+.roadmap .rm-flow .b-mp{color:#9AAAE6;}
+.roadmap .rm-flow .b-mc{color:#7FC9BD;}
+.roadmap .rm-flow .sm{display:block;font-size:9px;color:rgba(255,255,255,.55);margin-top:2px;}
+.medconnect{margin-top:18px;background:var(--cream-l);border:1px solid var(--border);border-left:4px solid var(--teal);border-radius:0 14px 14px 0;padding:28px 32px;box-shadow:0 6px 20px rgba(11,37,69,.05);}
+.mc-head{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px;}
+.mc-head .mc-title{font-family:var(--serif);font-size:20px;font-weight:600;color:var(--navy);}
+.mc-head .mc-badge{font-family:var(--en);font-size:10px;font-weight:700;letter-spacing:.02em;color:#fff;background:var(--teal);border-radius:20px;padding:4px 12px;}
+.medconnect > p{font-size:13.5px;color:var(--muted);line-height:1.8;}
+.mc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px 20px;margin-top:18px;}
+.mc-item .mc-t{font-size:13.5px;color:var(--navy);font-weight:700;}
+.mc-item .mc-d{font-size:11.5px;color:var(--teal);margin-top:3px;line-height:1.45;}
+.mc-target{margin-top:18px;border-top:1px solid var(--border);padding-top:12px;font-size:12px;color:var(--navy-55);}
+.mc-target b{color:var(--teal);font-weight:700;}
+.eco-closing{margin-top:36px;text-align:center;}
+.eco-closing .line{width:54px;height:1px;background:rgba(184,144,47,.55);margin:0 auto 18px;}
+.eco-closing p{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--navy-82);line-height:1.6;}
 
-  <!-- 🎨 Style -->
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+/* ===== CTA ===== */
+.cta-sec{background:linear-gradient(150deg,#C09838 0%,#A8842E 62%,#967428 100%);color:var(--navy);text-align:center;position:relative;overflow:hidden;}
+.cta-sec::before{content:"";position:absolute;top:-120px;left:50%;transform:translateX(-50%);width:600px;height:340px;background:radial-gradient(ellipse,rgba(255,255,255,.3),transparent 70%);pointer-events:none;}
+.cta-sec h2{font-family:var(--serif);font-size:34px;font-weight:600;line-height:1.4;position:relative;color:var(--navy);}
+.cta-sec h2 .hl{color:var(--cream-l);}
+.cta-sec p{font-size:15px;color:rgba(11,37,69,.86);line-height:1.95;max-width:620px;margin:18px auto 34px;position:relative;}
+.cta-sec p b{color:var(--navy);font-weight:700;}
+.cta-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;position:relative;}
+.cta-sec .btn-gold{background:var(--navy);color:var(--cream-l);box-shadow:0 8px 22px rgba(11,37,69,.25);}
+.cta-sec .btn-gold:hover{background:#0e2c54;box-shadow:0 12px 30px rgba(11,37,69,.35);}
+.cta-sec .btn-ghost{background:rgba(255,255,255,.2);color:var(--navy);border:1px solid rgba(11,37,69,.3);}
+.cta-sec .btn-ghost:hover{background:var(--navy);color:var(--cream-l);border-color:var(--navy);}
+.cta-note{margin-top:30px;font-size:12.5px;color:rgba(11,37,69,.7);position:relative;letter-spacing:.02em;}
 
-    :root {
-      --black:   #0a0a0a;
-      --white:   #f5f4f0;
-      --warm:    #ede9e0;
-      --accent:  #c8a96e;
-      --accent2: #8b6f47;
-      --muted:   #6b6b6b;
-      --border:  rgba(245,244,240,0.1);
-      --card-bg: rgba(245,244,240,0.04);
+.cta-qr{display:inline-flex;align-items:center;gap:18px;margin-top:30px;background:var(--cream-l);border-radius:16px;padding:16px 24px 16px 16px;box-shadow:0 14px 34px rgba(11,37,69,.22);position:relative;border:1px solid rgba(184,144,47,.3);}
+.qr-box{width:118px;height:118px;flex-shrink:0;border-radius:10px;overflow:hidden;background:#fff;padding:7px;line-height:0;box-shadow:0 4px 14px rgba(11,37,69,.12);}
+.qr-box svg{width:100%;height:100%;display:block;}
+.qr-cap{text-align:left;}
+.qr-cap-t{font-size:15.5px;font-weight:700;color:var(--navy);line-height:1.4;}
+.qr-cap-s{font-size:12.5px;color:var(--gold-d);margin-top:4px;}
+@media(max-width:560px){.cta-qr{flex-direction:column;text-align:center;padding:18px 18px 20px;gap:12px;}.qr-cap{text-align:center;}}
 
-      --font-display: 'Cormorant Garamond', serif;
-      --font-ui:      'Syne', sans-serif;
-      --font-body:    'DM Sans', sans-serif;
-    }
+/* ===== FOOTER ===== */
+footer{background:#081B33;color:rgba(255,255,255,.62);padding:54px 0 40px;}
+.foot-grid{display:flex;justify-content:space-between;align-items:flex-start;gap:40px;flex-wrap:wrap;}
+.foot-brand .mark{font-family:var(--en);font-weight:700;font-size:22px;letter-spacing:.14em;color:#fff;}
+.foot-brand .mark .v{color:inherit;}
+.foot-brand p{font-size:12.5px;margin-top:12px;max-width:340px;line-height:1.8;}
+.foot-links{display:flex;gap:48px;flex-wrap:wrap;}
+.foot-col h5{font-family:var(--en);font-size:11px;font-weight:700;letter-spacing:.12em;color:var(--gold-dark);margin-bottom:14px;}
+.foot-col a{display:block;font-size:13px;color:rgba(255,255,255,.7);margin-bottom:9px;transition:color .2s;}
+.foot-col a:hover{color:#fff;}
+.foot-bottom{margin-top:42px;padding-top:24px;border-top:1px solid rgba(255,255,255,.1);font-family:var(--en);font-size:11.5px;letter-spacing:.04em;color:rgba(255,255,255,.42);}
 
-    html { scroll-behavior: smooth; }
+/* ===== REVEAL ===== */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease, transform .7s ease;}
+.reveal.in{opacity:1;transform:none;}
 
-    body {
-      background: var(--black);
-      color: var(--white);
-      font-family: var(--font-body);
-      font-weight: 300;
-      line-height: 1.7;
-      overflow-x: hidden;
-    }
-
-    /* ── UTILITY ── */
-    .container { max-width: 1140px; margin: 0 auto; padding: 0 32px; }
-    .label {
-      font-family: var(--font-ui);
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--accent);
-    }
-    .line { display: block; width: 40px; height: 1px; background: var(--accent); margin-bottom: 28px; }
-
-    /* ── ANIMATIONS ── */
-    .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.8s ease, transform 0.8s ease; }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-
-    /* ── NAV ── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      padding: 20px 0;
-      border-bottom: 1px solid transparent;
-      transition: background 0.4s, border-color 0.4s, padding 0.4s;
-    }
-    nav.scrolled {
-      background: rgba(10,10,10,0.92);
-      backdrop-filter: blur(20px);
-      border-color: var(--border);
-      padding: 14px 0;
-    }
-    nav .inner {
-      display: flex; align-items: center; justify-content: space-between;
-      max-width: 1140px; margin: 0 auto; padding: 0 32px;
-    }
-    .nav-logo {
-      text-decoration: none;
-      font-family: var(--font-ui);
-      font-size: 18px;
-      font-weight: 800;
-      letter-spacing: 0.12em;
-      color: var(--white);
-    }
-    .nav-logo span { color: var(--accent); }
-    .nav-links { display: flex; gap: 40px; list-style: none; }
-    .nav-links a {
-      font-family: var(--font-ui);
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      color: var(--muted);
-      text-decoration: none;
-      text-transform: uppercase;
-      transition: color 0.3s;
-    }
-    .nav-links a:hover { color: var(--white); }
-    .nav-cta {
-      font-family: var(--font-ui);
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      padding: 10px 22px;
-      border: 1px solid var(--accent);
-      color: var(--accent);
-      text-decoration: none;
-      transition: background 0.3s, color 0.3s;
-    }
-    .nav-cta:hover { background: var(--accent); color: var(--black); }
-
-    /* ── HERO ── */
-    #hero {
-      min-height: 100vh;
-      display: flex; flex-direction: column; justify-content: flex-end;
-      padding: 0 0 100px;
-      position: relative;
-      overflow: hidden;
-    }
-    .hero-bg {
-      position: absolute; inset: 0;
-      background: radial-gradient(ellipse 80% 60% at 60% 40%, rgba(200,169,110,0.08) 0%, transparent 70%),
-                  radial-gradient(ellipse 50% 80% at 20% 60%, rgba(139,111,71,0.05) 0%, transparent 60%);
-    }
-    .hero-bg::after {
-      content: '';
-      position: absolute; inset: 0;
-      background: repeating-linear-gradient(
-        0deg,
-        transparent,
-        transparent 79px,
-        rgba(245,244,240,0.02) 79px,
-        rgba(245,244,240,0.02) 80px
-      );
-    }
-    .hero-eyebrow {
-      font-family: var(--font-ui);
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 28px;
-      opacity: 0;
-      animation: fadeUp 0.8s 0.3s ease forwards;
-    }
-    .hero-title {
-      font-family: var(--font-display);
-      font-size: clamp(52px, 8vw, 110px);
-      font-weight: 300;
-      line-height: 1.0;
-      letter-spacing: -0.02em;
-      margin-bottom: 32px;
-      opacity: 0;
-      animation: fadeUp 0.9s 0.5s ease forwards;
-    }
-    .hero-title em { font-style: italic; color: var(--accent); }
-    .hero-sub {
-      font-family: var(--font-display);
-      font-size: clamp(18px, 2.5vw, 26px);
-      font-weight: 300;
-      font-style: italic;
-      color: rgba(245,244,240,0.65);
-      max-width: 600px;
-      margin-bottom: 16px;
-      opacity: 0;
-      animation: fadeUp 0.9s 0.7s ease forwards;
-    }
-    .hero-support {
-      font-size: 14px;
-      color: var(--muted);
-      max-width: 480px;
-      margin-bottom: 52px;
-      line-height: 1.8;
-      opacity: 0;
-      animation: fadeUp 0.9s 0.85s ease forwards;
-    }
-    .hero-actions {
-      display: flex; gap: 16px; flex-wrap: wrap;
-      opacity: 0;
-      animation: fadeUp 0.9s 1s ease forwards;
-    }
-
-    /* ── BUTTONS ── */
-    .btn-primary {
-      display: inline-block;
-      font-family: var(--font-ui);
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      padding: 16px 36px;
-      background: var(--accent);
-      color: var(--black);
-      text-decoration: none;
-      transition: background 0.3s, transform 0.2s;
-    }
-    .btn-primary:hover { background: #d4b77a; transform: translateY(-1px); }
-    .btn-ghost {
-      display: inline-block;
-      font-family: var(--font-ui);
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      padding: 16px 36px;
-      border: 1px solid rgba(245,244,240,0.25);
-      color: var(--white);
-      text-decoration: none;
-      transition: border-color 0.3s, background 0.3s;
-    }
-    .btn-ghost:hover { border-color: var(--white); background: rgba(245,244,240,0.05); }
-    .btn-sm-gold {
-      display: inline-block;
-      font-family: var(--font-ui);
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      padding: 12px 28px;
-      border: 1px solid rgba(200,169,110,0.5);
-      color: var(--accent);
-      text-decoration: none;
-      transition: all 0.3s;
-    }
-    .btn-sm-gold:hover { background: var(--accent); color: var(--black); border-color: var(--accent); }
-
-    @keyframes fadeUp {
-      to { opacity: 1; transform: translateY(0); }
-      from { opacity: 0; transform: translateY(24px); }
-    }
-
-    /* ── SECTION BASE ── */
-    section { padding: 140px 0; }
-
-    /* ── PROBLEM ── */
-    #problem { border-top: 1px solid var(--border); }
-    .problem-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: start;
-      margin-top: 72px;
-    }
-    .problem-headline {
-      font-family: var(--font-display);
-      font-size: clamp(32px, 4vw, 52px);
-      font-weight: 300;
-      line-height: 1.2;
-      letter-spacing: -0.01em;
-    }
-    .problem-headline em { font-style: italic; color: var(--accent); }
-    .problem-cards { display: flex; flex-direction: column; gap: 2px; }
-    .problem-card {
-      padding: 28px 32px;
-      border: 1px solid var(--border);
-      background: var(--card-bg);
-      position: relative;
-      overflow: hidden;
-      transition: border-color 0.3s, background 0.3s;
-    }
-    .problem-card::before {
-      content: '';
-      position: absolute; left: 0; top: 0; bottom: 0;
-      width: 2px;
-      background: var(--accent);
-      transform: scaleY(0);
-      transform-origin: bottom;
-      transition: transform 0.4s ease;
-    }
-    .problem-card:hover { border-color: rgba(200,169,110,0.3); background: rgba(200,169,110,0.03); }
-    .problem-card:hover::before { transform: scaleY(1); }
-    .problem-card-title {
-      font-family: var(--font-ui);
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 10px;
-    }
-    .problem-card p { font-size: 14px; color: var(--muted); line-height: 1.7; }
-
-    /* ── SOLUTION ── */
-    #solution { background: rgba(245,244,240,0.02); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-    .solution-header { text-align: center; max-width: 700px; margin: 0 auto 96px; }
-    .section-title {
-      font-family: var(--font-display);
-      font-size: clamp(36px, 5vw, 64px);
-      font-weight: 300;
-      line-height: 1.15;
-      letter-spacing: -0.02em;
-      margin-bottom: 20px;
-    }
-    .section-title em { font-style: italic; color: var(--accent); }
-    .section-body { font-size: 15px; color: var(--muted); max-width: 540px; margin: 0 auto; }
-
-    /* Process flow */
-    .process {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 0;
-      margin-top: 32px;
-      position: relative;
-    }
-    .process::before {
-      content: '';
-      position: absolute;
-      top: 32px; left: 10%; right: 10%;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--accent), transparent);
-    }
-    .process-step { text-align: center; padding: 0 16px; }
-    .process-num {
-      width: 64px; height: 64px;
-      border: 1px solid var(--accent);
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      margin: 0 auto 24px;
-      font-family: var(--font-display);
-      font-size: 22px;
-      font-weight: 300;
-      color: var(--accent);
-      background: var(--black);
-      position: relative; z-index: 1;
-      transition: background 0.3s, color 0.3s;
-    }
-    .process-step:hover .process-num { background: var(--accent); color: var(--black); }
-    .process-label {
-      font-family: var(--font-ui);
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      margin-bottom: 10px;
-    }
-    .process-desc { font-size: 12px; color: var(--muted); line-height: 1.7; }
-    .solution-note {
-      text-align: center;
-      margin-top: 72px;
-      font-family: var(--font-display);
-      font-size: clamp(22px, 3vw, 32px);
-      font-style: italic;
-      color: rgba(245,244,240,0.5);
-    }
-    .solution-note strong { color: var(--white); font-style: normal; font-weight: 300; }
-
-    /* ── PROGRAMS ── */
-    #programs { border-top: 1px solid var(--border); }
-    .programs-header { margin-bottom: 72px; }
-    .programs-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2px;
-      align-items: end;
-    }
-    .prog-card {
-      border: 1px solid var(--border);
-      position: relative;
-      overflow: hidden;
-      transition: opacity 0.4s, border-color 0.4s;
-    }
-    /* Starter — shortest, most muted */
-    .prog-card.stage-1 {
-      padding: 40px 36px;
-      opacity: 0.55;
-    }
-    .prog-card.stage-1 .prog-name { font-size: 32px; }
-
-    /* Core — medium gold */
-    .prog-card.stage-2 {
-      padding: 56px 40px;
-      opacity: 0.88;
-      background: rgba(200,169,110,0.045);
-      border-color: rgba(200,169,110,0.28);
-      box-shadow: inset 0 1px 0 rgba(200,169,110,0.18),
-                  0 0 40px -10px rgba(200,169,110,0.08);
-    }
-    .prog-card.stage-2 .prog-name { font-size: 42px; }
-
-    /* Pro — tallest, full gold treatment */
-    .prog-card.stage-3 {
-      padding: 72px 44px 64px;
-      opacity: 1;
-      border-color: rgba(200,169,110,0.6);
-      background: rgba(200,169,110,0.09);
-      box-shadow: inset 0 1px 0 rgba(200,169,110,0.35),
-                  0 0 60px -10px rgba(200,169,110,0.14);
-    }
-    .prog-card.stage-3 .prog-name { font-size: 54px; }
-    .prog-card.stage-3 .prog-tagline { color: rgba(245,244,240,0.75); }
-    .prog-card.stage-3 .prog-features li { color: rgba(245,244,240,0.7); }
-
-    /* gold top bar on Pro */
-    .prog-card.stage-3::before {
-      content: '';
-      position: absolute; top: 0; left: 0; right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, var(--accent) 40%, transparent);
-    }
-    .prog-card::after {
-      content: '';
-      position: absolute; inset: 0;
-      background: radial-gradient(ellipse 80% 80% at 50% 110%, rgba(200,169,110,0.07) 0%, transparent 70%);
-      opacity: 0; transition: opacity 0.4s;
-    }
-    .prog-card:hover { opacity: 1 !important; border-color: rgba(200,169,110,0.4); }
-    .prog-card:hover::after { opacity: 1; }
-
-    .prog-tier {
-      font-family: var(--font-ui);
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: rgba(200,169,110,0.7);
-      margin-bottom: 24px;
-    }
-    .prog-name {
-      font-family: var(--font-display);
-      font-weight: 300;
-      letter-spacing: -0.01em;
-      margin-bottom: 16px;
-      line-height: 1.0;
-    }
-    .prog-tagline {
-      font-family: var(--font-display);
-      font-size: 15px;
-      font-style: italic;
-      color: rgba(245,244,240,0.4);
-      margin-bottom: 28px;
-      line-height: 1.6;
-    }
-    .prog-features { list-style: none; display: flex; flex-direction: column; gap: 11px; }
-    .prog-features li {
-      font-size: 13px;
-      color: var(--muted);
-      padding-left: 20px;
-      position: relative;
-      line-height: 1.6;
-    }
-    .prog-features li::before {
-      content: '—';
-      position: absolute; left: 0;
-      color: var(--accent);
-      font-size: 11px;
-    }
-    .pro-destination {
-      display: inline-block;
-      margin-bottom: 20px;
-      font-family: var(--font-ui);
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      padding: 6px 14px;
-      background: var(--accent);
-      color: var(--black);
-    }
-    .prog-gate {
-      margin-top: 28px;
-      font-family: var(--font-ui);
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: rgba(200,169,110,0.5);
-      border-top: 1px solid var(--border);
-      padding-top: 16px;
-    }
-    .stage-track {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      margin-bottom: 32px;
-    }
-    .stage-node {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-    .stage-arrow {
-      font-family: var(--font-ui);
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-    .stage-dur {
-      font-family: var(--font-ui);
-      font-size: 10px;
-      letter-spacing: 0.1em;
-      color: var(--accent);
-      opacity: 0.7;
-    }
-    .stage-arrow-icon {
-      color: var(--accent);
-      font-size: 18px;
-      line-height: 1;
-      margin-bottom: 14px;
-    }
-    .stage-total {
-      font-family: var(--font-ui);
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: rgba(245,244,240,0.25);
-      margin-left: 8px;
-    }
-    /* Frequency block */
-    .freq-block {
-      margin-top: 28px;
-      padding-top: 20px;
-      border-top: 1px solid var(--border);
-    }
-    .freq-label {
-      font-family: var(--font-ui);
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 12px;
-    }
-    .freq-options {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-    .freq-tag {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 9px 14px;
-      border: 1px solid rgba(245,244,240,0.08);
-      font-family: var(--font-ui);
-      font-size: 13px;
-      font-weight: 600;
-      color: rgba(245,244,240,0.35);
-      cursor: default;
-    }
-    .freq-tag em {
-      font-style: normal;
-      font-size: 9px;
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: rgba(245,244,240,0.2);
-    }
-    .freq-tag.rec {
-      border-color: rgba(200,169,110,0.4);
-      color: var(--accent);
-      background: rgba(200,169,110,0.04);
-    }
-    .freq-tag.rec em { color: rgba(200,169,110,0.55); }
-
-    /* ── DIFFERENTIATION ── */
-    #diff { background: rgba(245,244,240,0.02); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-    .diff-header { text-align: center; max-width: 600px; margin: 0 auto 80px; }
-    .diff-table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-    .diff-table thead tr {
-      border-bottom: 1px solid var(--border);
-    }
-    .diff-table th {
-      padding: 20px 40px;
-      font-family: var(--font-ui);
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      text-align: left;
-    }
-    .diff-table th:first-child { color: var(--muted); }
-    .diff-table th:last-child { color: var(--accent); }
-    .diff-table tbody tr {
-      border-bottom: 1px solid rgba(245,244,240,0.05);
-      transition: background 0.2s;
-    }
-    .diff-table tbody tr:hover { background: rgba(245,244,240,0.02); }
-    .diff-table td {
-      padding: 22px 40px;
-      font-size: 14px;
-      vertical-align: middle;
-    }
-    .diff-table td:first-child { color: var(--muted); font-size: 12px; font-family: var(--font-ui); letter-spacing: 0.08em; text-transform: uppercase; }
-    .diff-table td:nth-child(2) { color: rgba(245,244,240,0.35); font-style: italic; }
-    .diff-table td:last-child { color: var(--white); font-weight: 400; }
-    .check { color: var(--accent); margin-right: 8px; }
-    .diff-note {
-      text-align: center;
-      margin-top: 72px;
-      font-family: var(--font-display);
-      font-size: clamp(24px, 3.5vw, 40px);
-      font-weight: 300;
-      font-style: italic;
-    }
-    .diff-note strong { font-style: normal; color: var(--accent); }
-
-    /* ── MEDBRIDGE (LOW EMPHASIS) ── */
-    #medbridge {
-      border-top: 1px solid var(--border);
-      padding: 80px 0;
-    }
-    .medbridge-inner {
-      max-width: 600px;
-      opacity: 0.65;
-    }
-    .medbridge-title {
-      font-family: var(--font-display);
-      font-size: clamp(22px, 3vw, 32px);
-      font-weight: 300;
-      margin-bottom: 12px;
-      color: rgba(245,244,240,0.7);
-    }
-    .medbridge-desc { font-size: 14px; color: var(--muted); margin-bottom: 28px; line-height: 1.8; }
-    .medbridge-features { display: flex; gap: 24px; margin-bottom: 36px; flex-wrap: wrap; }
-    .medbridge-feature {
-      font-family: var(--font-ui);
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--muted);
-      border: 1px solid rgba(245,244,240,0.1);
-      padding: 8px 16px;
-    }
-
-    /* ── FINAL CTA ── */
-    #finalcta {
-      text-align: center;
-      padding: 180px 0;
-      position: relative;
-      overflow: hidden;
-    }
-    #finalcta::before {
-      content: '';
-      position: absolute; inset: 0;
-      background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(200,169,110,0.07) 0%, transparent 70%);
-    }
-    .cta-overline {
-      font-family: var(--font-ui);
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 32px;
-    }
-    .cta-title {
-      font-family: var(--font-display);
-      font-size: clamp(42px, 7vw, 90px);
-      font-weight: 300;
-      line-height: 1.05;
-      letter-spacing: -0.02em;
-      margin-bottom: 20px;
-    }
-    .cta-title em { font-style: italic; color: var(--accent); }
-    .cta-sub {
-      font-size: 15px;
-      color: var(--muted);
-      margin-bottom: 56px;
-      max-width: 420px;
-      margin-left: auto; margin-right: auto;
-    }
-    .cta-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 28px; }
-    .cta-fallback { font-size: 12px; color: rgba(245,244,240,0.3); }
-    .cta-fallback a { color: rgba(245,244,240,0.4); text-decoration: underline; text-underline-offset: 3px; transition: color 0.3s; }
-    .cta-fallback a:hover { color: var(--white); }
-
-    /* ── FOOTER ── */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 40px 0;
-    }
-    .footer-inner {
-      display: flex; justify-content: space-between; align-items: center;
-      flex-wrap: wrap; gap: 20px;
-    }
-    .footer-logo {
-      font-family: var(--font-ui);
-      font-size: 16px;
-      font-weight: 800;
-      letter-spacing: 0.12em;
-      color: rgba(245,244,240,0.4);
-    }
-    .footer-logo span { color: var(--accent); opacity: 0.7; }
-    .footer-copy { font-size: 12px; color: rgba(245,244,240,0.2); }
-
-    /* ── HOW WE MANAGE ── */
-    #manage {
-      border-top: 1px solid var(--border);
-      background: rgba(245,244,240,0.015);
-    }
-    .manage-header { margin-bottom: 72px; }
-    .manage-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2px;
-    }
-    .manage-step {
-      display: flex;
-      gap: 28px;
-      padding: 44px 40px;
-      border: 1px solid var(--border);
-      position: relative;
-      transition: border-color 0.3s, background 0.3s;
-    }
-    .manage-step:hover { border-color: rgba(200,169,110,0.2); background: rgba(200,169,110,0.02); }
-    .manage-step.llr {
-      border-color: rgba(200,169,110,0.3);
-      background: rgba(200,169,110,0.04);
-    }
-    .manage-step.llr:hover { border-color: rgba(200,169,110,0.5); background: rgba(200,169,110,0.07); }
-    .manage-num {
-      font-family: var(--font-display);
-      font-size: 52px;
-      font-weight: 300;
-      color: rgba(200,169,110,0.18);
-      line-height: 1;
-      flex-shrink: 0;
-      width: 52px;
-    }
-    .manage-step.llr .manage-num { color: rgba(200,169,110,0.45); }
-    .manage-body { flex: 1; }
-    .manage-phase {
-      font-family: var(--font-ui);
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--white);
-      margin-bottom: 4px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .manage-timing {
-      font-family: var(--font-ui);
-      font-size: 10px;
-      font-weight: 500;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--accent);
-      opacity: 0.6;
-      margin-bottom: 14px;
-    }
-    .manage-step.llr .manage-timing { opacity: 1; }
-    .manage-desc {
-      font-size: 13px;
-      color: var(--muted);
-      line-height: 1.7;
-      margin-bottom: 18px;
-    }
-    .manage-impact {
-      font-family: var(--font-display);
-      font-size: clamp(16px, 1.6vw, 20px);
-      font-weight: 300;
-      line-height: 1.4;
-      color: var(--white);
-      margin-bottom: 20px;
-    }
-    .manage-step.llr .manage-impact { color: var(--white); }
-    .manage-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 7px;
-    }
-    .manage-list li {
-      font-size: 13px;
-      color: rgba(245,244,240,0.5);
-      padding-left: 16px;
-      position: relative;
-      line-height: 1.5;
-    }
-    .manage-list li::before {
-      content: '–';
-      position: absolute; left: 0;
-      color: var(--accent);
-      opacity: 0.5;
-    }
-    .manage-step.llr .manage-list li { color: rgba(245,244,240,0.7); }
-    .manage-step.llr .manage-list li::before { opacity: 1; }
-    .llr-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 9px;
-      font-weight: 700;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      padding: 4px 10px;
-      background: var(--accent);
-      color: var(--black);
-      vertical-align: middle;
-      text-decoration: none;
-      transition: background 0.25s;
-    }
-    .llr-badge:hover { background: #d4b77a; }
-    .llr-full {
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      opacity: 0.75;
-      font-size: 8.5px;
-    }
-    .llr-explain {
-      font-size: 12px;
-      color: rgba(245,244,240,0.45);
-      line-height: 1.7;
-      margin-bottom: 20px;
-      font-style: italic;
-    }
-    .llr-outputs {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-top: 16px;
-    }
-    .llr-outputs span {
-      font-family: var(--font-ui);
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      padding: 5px 10px;
-      border: 1px solid rgba(200,169,110,0.3);
-      color: rgba(200,169,110,0.7);
-    }
-    .manage-footer {
-      margin-top: 72px;
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      gap: 40px;
-      padding-top: 48px;
-      border-top: 1px solid var(--border);
-      flex-wrap: wrap;
-    }
-    .manage-claim {
-      font-family: var(--font-display);
-      font-size: clamp(26px, 3.5vw, 42px);
-      font-weight: 300;
-      line-height: 1.2;
-      color: var(--white);
-    }
-    .manage-claim em { font-style: italic; color: var(--accent); }
-    .manage-sub {
-      font-size: 13px;
-      color: var(--muted);
-      line-height: 1.8;
-      max-width: 380px;
-      text-align: right;
-    }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 768px) {
-      nav .nav-links, nav .nav-cta { display: none; }
-      .problem-grid { grid-template-columns: 1fr; gap: 48px; }
-      .programs-grid { grid-template-columns: 1fr; gap: 2px; }
-      .manage-grid { grid-template-columns: 1fr; }
-      .manage-step { padding: 32px 24px; gap: 16px; }
-      .manage-num { font-size: 36px; width: 36px; }
-      .process { grid-template-columns: 1fr 1fr; gap: 40px; }
-      .process::before { display: none; }
-      .diff-table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
-      .diff-table td, .diff-table th { padding: 14px 16px; white-space: nowrap; }
-      .manage-footer { flex-direction: column; align-items: flex-start; }
-      .manage-sub { text-align: left; }
-      .stage-track { flex-wrap: wrap; gap: 8px; }
-      section { padding: 80px 0; }
-      .container { padding: 0 20px; }
-    }
-    @media (max-width: 480px) {
-      .process { grid-template-columns: 1fr; }
-      .hero-title { font-size: 52px; }
-      .freq-options { gap: 3px; }
-    }
-  </style>
+/* ===== RESPONSIVE ===== */
+@media(max-width:900px){
+  .hero-grid{grid-template-columns:1fr;gap:40px;}
+  .hero h1{font-size:34px;}
+  .prog-grid,.step-grid,.pillar-grid,.pain-grid,.about-row,.eco-tri,.mc-grid{grid-template-columns:1fr;}
+  .jstage{grid-template-columns:1fr;}
+  .js-num{font-size:44px;}
+  .nav-links{position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;gap:16px;background:rgba(245,239,228,.99);padding:22px 26px 26px;border-top:1px solid rgba(184,144,47,.25);box-shadow:0 16px 32px rgba(11,37,69,.14);transform:translateY(-10px);opacity:0;pointer-events:none;transition:transform .28s ease,opacity .28s ease;}
+  .nav-links.open{transform:none;opacity:1;pointer-events:auto;}
+  .nav-links a{font-size:16px;}
+  .nav-links .lang-switch{align-self:flex-start;}
+  .nav-links .nav-cta{text-align:center;}
+  .nav-toggle{display:flex;z-index:101;}
+}
+@media(max-width:560px){
+  .wrap{padding:0 22px;}
+  .hero{padding:140px 0 84px;}
+  .hero h1{font-size:27px;}
+  .sec-title{font-size:25px;}
+  .cta-sec h2{font-size:25px;}
+  .hero-meta{grid-template-columns:1fr 1fr;}
+  section{padding:70px 0;}
+  .pain-answer{flex-direction:column;align-items:flex-start;gap:14px;}
+}
+.cycle-dia{max-width:440px;margin:44px auto 18px;}
+.cycle-dia svg{width:100%;height:auto;display:block;overflow:visible;}
+.cycle-cap{max-width:660px;margin:0 auto;text-align:center;font-size:14px;line-height:1.85;color:rgba(11,37,69,.82);}
+</style>
 </head>
-
 <body>
 
-  <!-- ── NAV ── -->
-  <nav id="nav">
-    <div class="inner">
-      <a href="#" class="nav-logo">LY<span>V</span>ON</a>
-      <ul class="nav-links">
-        <li><a href="#solution">System</a></li>
-        <li><a href="#programs">Programs</a></li>
-        <li><a href="#diff">Why MedPath</a></li>
-      </ul>
-      <a href="https://medpathglobal.io/" target="_blank" class="nav-cta">Apply for MedPath</a>
+<!-- NAV -->
+<nav id="nav">
+  <div class="wrap nav-in">
+    <a href="#top" class="brand">
+      <span class="brand-row">
+        <span class="mark">LY<span class="v">V</span>ON</span>
+        <span class="badge">SYSTEM</span>
+      </span>
+      <span class="brand-tag" data-i18n="brandTag">학술·전문 영어 커뮤니케이션 시스템</span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="#problem" data-i18n="navWhy">왜 LYVON</a>
+      <a href="#pathway" data-i18n="navPathway">4단계 경로</a>
+      <a href="#programs" data-i18n="navPrograms">프로그램</a>
+      <a href="#session" data-i18n="navSession">세션 구조</a>
+      <a href="#ecosystem" data-i18n="navEcosystem">생태계</a>
+      <a href="#contact" class="nav-cta" data-i18n="navCta">상담 신청</a>
+      <div class="lang-switch" id="langSwitch">
+        <button data-lang="ko" class="active">KO</button>
+        <button data-lang="en">EN</button>
+        <button data-lang="ja">日本語</button>
+      </div>
     </div>
-  </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
 
-  <!-- ── HERO ── -->
-  <section id="hero">
-    <div class="hero-bg"></div>
-    <div class="container">
-      <p class="hero-eyebrow">LYVON — Premium Medical School Admission System</p>
-      <h1 class="hero-title">Med<em>Path</em></h1>
-      <p class="hero-sub">We don't just teach English.<br>We build your path to medical school.</p>
-      <p class="hero-support">A closed-loop system combining personalised training,<br>structured feedback, and performance tracking.</p>
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div class="reveal in">
+      <div class="eyebrow">MEDICAL ACADEMIC COMMUNICATION SYSTEM</div>
+      <h1 data-i18n="heroH1"><span class="hl">헝가리 의대 입시</span> 핵심인<br>영어 말하기·구술시험을<br><span class="hl">전문 원어민과 1:1</span>로 집중 훈련합니다.</h1>
+      <div class="sub" data-i18n="heroSub">기초부터 면접장까지, 하나의 길로 준비합니다.</div>
+      <p class="lead" data-i18n="heroLead">LYVON은 의예과 준비생을 위한 <b>메디컬 학술 영어 커뮤니케이션 시스템</b>입니다. <b>MedBridge 101</b>에서 기초를 다지고, <b>MedPath Starter · Core · Pro</b>로 올라가며 — 과학을 외우는 것이 아니라, 영어로 <b>정의하고 · 설명하고 · 논증하는</b> 힘을 단계적으로 길러냅니다.</p>
       <div class="hero-actions">
-        <a href="https://medpathglobal.io/" target="_blank" class="btn-primary">Apply for MedPath</a>
-        <a href="#solution" class="btn-ghost">View How It Works</a>
+        <a href="#contact" class="btn btn-gold" data-i18n="heroBtn1">상담 신청하기 →</a>
+        <a href="#pathway" class="btn btn-ghost" data-i18n="heroBtn2">4단계 경로 보기</a>
       </div>
     </div>
-  </section>
+    <div class="hero-meta reveal in">
+      <div class="hm"><div class="v">4</div><div class="l" data-i18n="hmL1">단계 경로</div></div>
+      <div class="hm"><div class="v" data-i18n="hmV2">주 4회</div><div class="l" data-i18n="hmL2">표준 일정</div></div>
+      <div class="hm"><div class="v" data-i18n="hmV3">50<span>분</span></div><div class="l" data-i18n="hmL3">집중 세션</div></div>
+      <div class="hm"><div class="v">1:1</div><div class="l" data-i18n="hmL4">원어민 훈련</div></div>
+    </div>
+  </div>
+  <div class="wrap hero-tagline reveal in" data-i18n="heroTagline">프리메드 영어 학습의 <b>새로운 표준</b></div>
+</header>
 
-  <!-- ── PROBLEM ── -->
-  <section id="problem">
-    <div class="container">
-      <span class="label">The Problem</span>
-      <div class="problem-grid">
-        <div class="reveal">
-          <h2 class="problem-headline">Most students take English classes.<br>Very few are actually <em>managed.</em></h2>
-          <p style="font-size:14px;color:var(--muted);margin-top:28px;line-height:1.9;">Without a system, improvement is random. You study, you practice — but nobody is watching your performance, nobody is adjusting your trajectory. That's not preparation. That's hope.</p>
-        </div>
-        <div class="problem-cards reveal">
-          <div class="problem-card">
-            <p class="problem-card-title">No Tracking</p>
-            <p>Progress is invisible. No data means no direction. Students repeat the same mistakes without knowing it.</p>
-          </div>
-          <div class="problem-card">
-            <p class="problem-card-title">No Structured Feedback</p>
-            <p>Generic corrections don't build competency. Without targeted feedback, learning plateaus fast.</p>
-          </div>
-          <div class="problem-card">
-            <p class="problem-card-title">No Performance Control</p>
-            <p>Admission requires performing under pressure. Classroom practice never trains that muscle.</p>
-          </div>
-        </div>
+<!-- PROBLEM -->
+<section id="problem">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="sec-tag" data-i18n="pbTag">ABOUT LYVON · 왜 LYVON인가</div>
+      <h2 class="sec-title" data-i18n="pbTitle">지식만으로는, 충분하지 않습니다.</h2>
+      <p class="sec-lead" data-i18n="pbLead">많은 학생이 Biology·Chemistry를 오래 공부합니다. 그러나 면접·토론에서 아는 내용을 영어로 설명하라고 하면 멈춥니다. 기존 교육은 암기·독해·문제풀이 같은 <strong>Input(입력)</strong>에 집중하지만, 의대 면접·학술 토론·연구 발표에서 진짜 필요한 것은 <strong>Output(출력)</strong> — 생각을 실시간으로 구조화하고 영어로 표현하는 능력입니다. LYVON은 프리메드 교육에서 가장 부족한 이 <strong>Communication Output Layer</strong>를 채우기 위해 설계되었습니다.</p>
+      <div class="brand-quote">
+        <p data-i18n="pbQuote">많은 학생들은 과학을 공부합니다.<br>하지만 <b>영어로 과학을 자신 있게 설명할 수 있는 학생</b>은 드뭅니다.</p>
       </div>
     </div>
-  </section>
-
-  <!-- ── SOLUTION ── -->
-  <section id="solution">
-    <div class="container">
-      <div class="solution-header reveal">
-        <span class="label">The MedPath System</span>
-        <h2 class="section-title" style="margin-top:20px;">A Closed-Loop System<br>for <em>Real Results</em></h2>
-        <p class="section-body">Every step is designed, measured, and adjusted. Nothing is left to chance.</p>
+    <div class="about-row">
+      <div class="about-card reveal">
+        <div class="ac-tag" data-i18n="acTag1">NAMING · 이름의 의미</div>
+        <div class="ac-head">LYVON = Live On</div>
+        <p data-i18n="acDesc1">시험을 위해 외운 영어는 잊히지만, <b>사고하고 표현하는 능력</b>은 평생 자산이 됩니다. 의대 진학 이후에도, 연구자·의료 전문가가 되어서도 — 커뮤니케이션 능력은 계속 살아남아(Live On) 학생과 함께합니다.</p>
       </div>
-
-      <div class="process reveal">
-        <div class="process-step">
-          <div class="process-num">01</div>
-          <p class="process-label">Diagnose</p>
-          <p class="process-desc">Pinpoint exactly where you are and what's blocking your progress.</p>
-        </div>
-        <div class="process-step">
-          <div class="process-num">02</div>
-          <p class="process-label">Train</p>
-          <p class="process-desc">Targeted academic and medical thinking training — not generic English.</p>
-        </div>
-        <div class="process-step">
-          <div class="process-num">03</div>
-          <p class="process-label">Track</p>
-          <p class="process-desc">Weekly performance tracking makes progress visible and accountable.</p>
-        </div>
-        <div class="process-step">
-          <div class="process-num">04</div>
-          <p class="process-label">Feedback</p>
-          <p class="process-desc">Data-driven, precise feedback — not "good job," but exactly what to fix.</p>
-        </div>
-        <div class="process-step">
-          <div class="process-num">05</div>
-          <p class="process-label">Improve</p>
-          <p class="process-desc">Controlled, measurable improvement. Every cycle builds on the last.</p>
-        </div>
-      </div>
-
-      <p class="solution-note reveal">We don't leave improvement to chance.<br><strong>We manage it.</strong></p>
-    </div>
-  </section>
-
-  <!-- ── HOW WE MANAGE ── -->
-  <section id="manage">
-    <div class="container">
-      <div class="manage-header reveal">
-        <span class="label">Session Architecture</span>
-        <h2 class="section-title" style="margin-top:20px;">How We Manage<br>Your <em>Learning</em></h2>
-        <p class="section-body" style="margin-top:4px;">Every session follows a four-phase cycle — before, during, after, and beyond.</p>
-      </div>
-
-      <div class="manage-grid">
-
-        <div class="manage-step reveal">
-          <div class="manage-num">01</div>
-          <div class="manage-body">
-            <p class="manage-phase">Prepare</p>
-            <p class="manage-timing">Before each session</p>
-            <p class="manage-impact">You don't come unprepared.<br>You come ready to perform.</p>
-            <ul class="manage-list">
-              <li>1:1 learning management — tailored to your level</li>
-              <li>Session plan prepared in advance by your coach</li>
-              <li>Structured academic materials before every session</li>
-              <li>Audio + script + bilingual support</li>
-              <li>Designed for preview, not passive reading</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="manage-step reveal">
-          <div class="manage-num">02</div>
-          <div class="manage-body">
-            <p class="manage-phase">Train</p>
-            <p class="manage-timing">During each session</p>
-            <p class="manage-impact">This is not conversation.<br>This is performance training.</p>
-            <ul class="manage-list">
-              <li>1:1 live online session</li>
-              <li>Precision-based speaking drills</li>
-              <li>Real-time correction</li>
-              <li>Medical context articulation — using the right terms in the right way</li>
-              <li>Structured articulation training</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="manage-step llr reveal">
-          <div class="manage-num">03</div>
-          <div class="manage-body">
-            <p class="manage-phase">Analyze <span class="llr-badge">LLR <span class="llr-full">Lesson Learned Report</span></span></p>
-            <p class="manage-timing">After every session</p>
-            <p class="manage-impact">Every session becomes data.<br>And data drives your improvement.</p>
-            <p class="llr-explain">A structured report issued after every session — documenting your performance, corrections, and next steps in measurable form.</p>
-            <ul class="manage-list">
-              <li>Structured LLR performance breakdown</li>
-              <li>Speaking / Listening / Vocabulary / Corrections</li>
-              <li>Clear improvement direction after every class</li>
-            </ul>
-            <div class="llr-outputs">
-              <span>Corrections</span>
-              <span>Natural Expressions</span>
-              <span>Improvement Direction</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="manage-step reveal">
-          <div class="manage-num">04</div>
-          <div class="manage-body">
-            <p class="manage-phase">Improve</p>
-            <p class="manage-timing">Continuously optimized</p>
-            <p class="manage-impact">We don't reset after every session.<br>We build on it.</p>
-            <ul class="manage-list">
-              <li>Weekly / Biweekly / Monthly optimization</li>
-              <li>Post-class check-ins</li>
-              <li>Personalized progression strategy</li>
-              <li>Personal error pattern analysis — your most frequent mistakes, tracked and resolved</li>
-              <li>Monthly curated expression report based on your actual output</li>
-            </ul>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="manage-footer reveal">
-        <p class="manage-claim">This is not a class.<br><em>This is a managed system.</em></p>
-        <p class="manage-sub">Every session generates a structured LLR report,<br>turning your performance into measurable data.</p>
+      <div class="about-card reveal">
+        <div class="ac-tag">MISSION · VISION</div>
+        <div class="ac-mission" data-i18n="acMission">미래 의료인이 영어로 사고하고, 토론하고, 소통할 수 있도록 돕는다.</div>
+        <div class="ac-div"></div>
+        <p data-i18n="acDesc2"><b>One LYVON Global Educational Ecosystem</b> — 의대 입시 준비부터 의료 전문가로 성장하는 여정까지, 언어의 한계가 학생의 가능성을 제한하지 않도록 함께합니다.</p>
       </div>
     </div>
-  </section>
 
-  <!-- ── PROGRAMS ── -->
-  <section id="programs">
-    <div class="container">
-      <div class="programs-header reveal">
-        <span class="label">Program Structure</span>
-        <h2 class="section-title" style="margin-top:20px;max-width:600px;">Three Stages.<br>Each One <em>Required.</em></h2>
-        <p class="section-body" style="margin-top:16px;text-align:left;">MedPath is not a menu. Every student moves through all three stages in sequence — each stage builds directly on the last.</p>
+    <div class="subhead reveal"><span data-i18n="subhead">그래서, 학생들은 이런 벽에 부딪힙니다</span><div class="line"></div></div>
+
+    <div class="pain-grid">
+      <div class="pain reveal"><span class="picon">📚</span><h4 data-i18n="pain1h">단어는 외웠지만 문장이 안 나온다</h4><p data-i18n="pain1p">용어는 알지만 "그래서 그게 무엇인지" 한 문장으로 설명하지 못합니다. 면접에서는 단어가 아니라 설명이 필요합니다.</p></div>
+      <div class="pain reveal"><span class="picon">🤐</span><h4 data-i18n="pain2h">아는 내용 앞에서도 입이 멈춘다</h4><p data-i18n="pain2p">한국어로는 술술 말할 내용을, 영어로 바꾸는 순간 침묵합니다. 구조가 없으면 유창함은 오지 않습니다.</p></div>
+      <div class="pain reveal"><span class="picon">🧩</span><h4 data-i18n="pain3h">생물·화학이 따로 논다</h4><p data-i18n="pain3p">단편적으로 외운 지식은 면접의 꼬리 질문에 무너집니다. 분자 하나를 생물과 화학 양쪽으로 설명할 수 있어야 합니다.</p></div>
+      <div class="pain reveal"><span class="picon">🎤</span><h4 data-i18n="pain4h">실전 발표·논증 경험이 없다</h4><p data-i18n="pain4p">혼자 공부한 학생은 "소리 내어 끝까지 설명하고, 왜 중요한지 논증한" 경험이 없습니다. 면접은 말하기 훈련의 결과입니다.</p></div>
+    </div>
+    <div class="pain-answer reveal">
+      <div class="mark">→</div>
+      <p data-i18n="painAnswer">LYVON 시스템은 이 네 가지를 단계별로 해결합니다. <b>MedBridge 101로 영어 기초를</b>, <b>MedPath로 "무엇 → 어떻게 → 왜"의 말하기 능력</b>을 쌓아 — 지식이 하나로 연결되고, 면접장에서 막힘없는 스피킹으로 이어집니다.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PATHWAY -->
+<section class="cream2" id="pathway">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="sec-tag" data-i18n="pwTag">기초에서 실전까지 · 4단계 경로</div>
+      <h2 class="sec-title" data-i18n="pwTitle">단계마다, 말하기가 한 차원씩 자랍니다.</h2>
+      <p class="sec-lead" data-i18n="pwLead">LYVON의 경로는 네 단계로 설계되어 있습니다. <strong>MedBridge</strong>로 영어 기초를 세운 뒤, <strong>MedPath</strong>의 3단계가 같은 분자와 같은 말하기 기술을 "무엇인가 → 어떻게 작동하나 → 왜 필수적인가"로 끌어올립니다. 전체 경로는 <strong>4단계 × 3개월 · 주 4회 — 총 약 12개월</strong>입니다.</p>
+    </div>
+    <div class="journey">
+      <div class="jstage j0 reveal">
+        <div class="js-side"><div class="js-num">0</div><div class="js-phase">FOUNDATION</div><div class="js-name">MedBridge</div><div class="js-meta" data-i18n="j0meta">3개월 · 주 2·3·4회</div><div class="js-sub" data-i18n="j0sub">Medical English · 3 세트 · 30개 토픽</div></div>
+        <div class="js-body"><div class="js-q" data-i18n="j0q">의학 영어, 입을 여는 준비</div><span class="js-verb" data-i18n="j0verb">기초 다지기</span><div class="js-desc" data-i18n="j0desc">의학 영어의 <b>핵심 어휘·발음·기본 문장 구조</b>를 익히고, 짧은 문장으로 소리 내어 말하는 습관을 만듭니다. MedPath에 안정적으로 올라타기 위한 토대 단계입니다.</div><div class="js-exam" data-i18n="j0exam"><span class="je-tag">시험에서</span>구술의 <b>비과학 영역</b>(동기·인성·적성·영어 의사소통)을 담당 — 합격을 떠받치는 <b>또 하나의 축</b>.</div></div>
       </div>
-
-      <!-- Stage connector line (desktop) -->
-      <div class="stage-track reveal">
-        <div class="stage-node">
-          <span class="stage-arrow">Stage 01</span>
-          <span class="stage-dur">3 months</span>
-        </div>
-        <div class="stage-arrow-icon">→</div>
-        <div class="stage-node">
-          <span class="stage-arrow">Stage 02</span>
-          <span class="stage-dur">3 months</span>
-        </div>
-        <div class="stage-arrow-icon">→</div>
-        <div class="stage-node">
-          <span class="stage-arrow">Stage 03</span>
-          <span class="stage-dur">3 months</span>
-        </div>
-        <div class="stage-total">= 9 months total</div>
+      <div class="jconnect">▼</div>
+      <div class="jstage j1 reveal">
+        <div class="js-side"><div class="js-num">1</div><div class="js-phase">MEDPATH · STARTER</div><div class="js-name">Starter</div><div class="js-meta" data-i18n="j1meta">3개월 · 주 4회</div><div class="js-sub" data-i18n="j1sub">Biology · Chemistry · 50개 레슨</div></div>
+        <div class="js-body"><div class="js-q" data-i18n="j1q">"이것은 무엇인가?"</div><span class="js-verb" data-i18n="j1verb">정의하기 · Define</span><div class="js-desc" data-i18n="j1desc">단백질·DNA·세포 등 생명의 핵심 분자와 구조를 <b>영어 한 문장으로 정확히 정의</b>합니다. 생물학과 의학 화학 전반을 다루며, 모든 말하기의 토대를 세웁니다.</div><div class="js-exam" data-i18n="j1exam"><span class="je-tag">시험에서</span>구술 워밍업·정의 진술에 적합. 단독으로는 합격 기여가 낮은 출발점.</div></div>
       </div>
+      <div class="jconnect">▼</div>
+      <div class="jstage j2 reveal">
+        <div class="js-side"><div class="js-num">2</div><div class="js-phase">MEDPATH · CORE</div><div class="js-name">Core</div><div class="js-meta" data-i18n="j2meta">3개월 · 주 4회</div><div class="js-sub" data-i18n="j2sub">Biology · Chemistry · 50개 레슨</div></div>
+        <div class="js-body"><div class="js-q" data-i18n="j2q">"이것은 어떻게 작동하는가?"</div><span class="js-verb" data-i18n="j2verb">설명하기 · Explain</span><div class="js-desc" data-i18n="j2desc">심장·호흡·면역·화학 반응의 <b>원인과 결과를 갖춘 논리</b>로 과정을 설명합니다. 정의를 넘어 메커니즘을 말로 풀어내며, 실제 면접 수준에 가까워집니다.</div><div class="js-exam" data-i18n="j2exam"><span class="je-tag">시험에서</span>구술 지식 설명·"응용형" 문항 — <b>시험의 핵심대와 정확히 일치</b>.</div></div>
+      </div>
+      <div class="jconnect">▼</div>
+      <div class="jstage j3 reveal">
+        <div class="js-side"><div class="js-num">3</div><div class="js-phase">MEDPATH · PRO</div><div class="js-name">Pro</div><div class="js-meta" data-i18n="j3meta">3개월 · 주 4회</div><div class="js-sub" data-i18n="j3sub">Biology · Chemistry · 50개 레슨</div></div>
+        <div class="js-body"><div class="js-q" data-i18n="j3q">"이것은 왜 필수적인가?"</div><span class="js-verb" data-i18n="j3verb">논증하기 · Justify</span><div class="js-desc" data-i18n="j3desc">지식을 통합해 <b>관점을 갖고 논증</b>하고, 예상치 못한 꼬리 질문에 <b>즉흥적으로 대응</b>합니다. 실전 모의 면접으로 면접장의 그날을 준비하는 최종 단계입니다.</div><div class="js-exam" data-i18n="j3exam"><span class="je-tag">시험에서</span>교수의 꼬리 질문·과학적 추론 — <b>구술시험의 최상위 요구와 일치</b>.</div></div>
+      </div>
+    </div>
+    <div class="arc reveal" data-i18n="arc">MedBridge 101로 영어 기초를 세운 뒤 생물학에서 만난 분자를 화학에서 다시 만나고, MedPath Starter에서 정의한 개념을 Core에서 설명하고 Pro에서 논증합니다. <b>나선형으로 같은 주제를 반복하며 매번 더 깊이</b> — 학생이 완성감을 직접 느끼는 하나의 길입니다.</div>
+  </div>
+</section>
 
-      <div class="programs-grid">
-        <div class="prog-card stage-1 reveal">
-          <p class="prog-tier">Stage 01 — Starter</p>
-          <h3 class="prog-name">Starter</h3>
-          <p class="prog-tagline">"Learn to study academic subjects in English"</p>
-          <ul class="prog-features">
-            <li>Academic English foundations</li>
-            <li>Medical subject vocabulary</li>
-            <li>Reading and comprehension drills</li>
-            <li>Structured study methodology</li>
+<!-- PROGRAMS -->
+<section class="creaml" id="programs">
+  <div class="wrap">
+    <div class="reveal center">
+      <div class="sec-tag" data-i18n="pgTag">두 개의 브랜드, 하나의 시스템</div>
+      <h2 class="sec-title" data-i18n="pgTitle">기초를 다지는 MedBridge,<br>면접장까지 끌어올리는 MedPath.</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="prog-grid">
+      <div class="prog mb reveal">
+        <div class="prog-top"><div class="prog-label">FOUNDATION PROGRAM</div><div class="prog-name">MedBridge</div><div class="prog-tag" data-i18n="progMbTag">소통의 기술 · The Art of Communication</div></div>
+        <div class="prog-body">
+          <p data-i18n="progMbP">의학 영어의 기초 어휘·발음·문장 구조를 다지는 입문 과정. 짧은 문장으로 소리 내어 말하는 습관을 만들어, MedPath에 안정적으로 올라타는 토대를 세웁니다.</p>
+          <ul class="prog-feat">
+            <li data-i18n="progMbF1"><b>3 세트 · 30개 토픽</b>으로 구성된 의학 영어 기초</li>
+            <li data-i18n="progMbF2">이중언어(영/한) 학습 자료와 <b>1:1 원어민 세션</b></li>
+            <li data-i18n="progMbF3">구술 면접의 <b>비과학 영역</b>(동기·인성·적성) 대응</li>
           </ul>
-          <div class="freq-block">
-            <p class="freq-label">3 months</p>
-            <div class="freq-options">
-              <span class="freq-tag">2×<em>Standard</em></span>
-              <span class="freq-tag rec">3×<em>Recommended</em></span>
-              <span class="freq-tag">4×<em>Intensive</em></span>
-            </div>
+          <div class="tier-row">
+            <span class="tier t0">MEDBRIDGE 101</span>
           </div>
-          <p class="prog-gate">Entry point for all students</p>
         </div>
-
-        <div class="prog-card stage-2 reveal">
-          <p class="prog-tier">Stage 02 — Core</p>
-          <h3 class="prog-name">Core</h3>
-          <p class="prog-tagline">"Think and explain like a medical student"</p>
-          <ul class="prog-features">
-            <li>Medical reasoning training</li>
-            <li>Explanation and articulation practice</li>
-            <li>Weekly performance feedback</li>
-            <li>1:1 personalised coaching</li>
+      </div>
+      <div class="prog mp reveal">
+        <div class="prog-top"><div class="prog-label">ADVANCED SYSTEM</div><div class="prog-name">MedPath</div><div class="prog-tag">Medical Academic Communication System</div></div>
+        <div class="prog-body">
+          <p data-i18n="progMpP">같은 분자와 같은 말하기 기술을 세 티어에 걸쳐 "무엇 → 어떻게 → 왜"로 끌어올리는 심화 시스템. 정의에서 출발해 실전 면접 논증까지 완주합니다.</p>
+          <ul class="prog-feat">
+            <li data-i18n="progMpF1"><b>생물·화학 50개 레슨</b>을 3티어 나선형으로 심화</li>
+            <li data-i18n="progMpF2">메커니즘 설명에서 <b>즉흥 논증·꼬리 질문</b> 대응까지</li>
+            <li data-i18n="progMpF3">실전 모의 면접으로 <b>구술시험 최상위 요구</b> 대비</li>
           </ul>
-          <div class="freq-block">
-            <p class="freq-label">3 months</p>
-            <div class="freq-options">
-              <span class="freq-tag">2×<em>Standard</em></span>
-              <span class="freq-tag rec">3×<em>Recommended</em></span>
-              <span class="freq-tag">4×<em>Intensive</em></span>
-            </div>
+          <div class="tier-row">
+            <span class="tier t1">STARTER</span>
+            <span class="tier t2">CORE</span>
+            <span class="tier t3">PRO</span>
           </div>
-          <p class="prog-gate">Unlocked after Starter</p>
-        </div>
-
-        <div class="prog-card stage-3 reveal">
-          <span class="pro-destination">Final Stage</span>
-          <p class="prog-tier">Stage 03 — Pro</p>
-          <h3 class="prog-name">Pro</h3>
-          <p class="prog-tagline">"Perform under real admission conditions"</p>
-          <ul class="prog-features">
-            <li>Full oral exam simulation</li>
-            <li>Real-time performance assessment</li>
-            <li>Interview strategy coaching</li>
-            <li>Admission-ready output tracking</li>
-          </ul>
-          <div class="freq-block">
-            <p class="freq-label">3 months</p>
-            <div class="freq-options">
-              <span class="freq-tag">2×<em>Standard</em></span>
-              <span class="freq-tag rec">3×<em>Recommended</em></span>
-              <span class="freq-tag">4×<em>Intensive</em></span>
-            </div>
-          </div>
-          <p class="prog-gate" style="color:var(--accent);opacity:1;">Unlocked after Core — Admission Ready</p>
         </div>
       </div>
-
-      <p class="solution-note reveal" style="margin-top:56px;">You don't choose a stage.<br><strong>You earn your way through.</strong></p>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ── DIFFERENTIATION ── -->
-  <section id="diff">
-    <div class="container">
-      <div class="diff-header reveal">
-        <span class="label">Why MedPath</span>
-        <h2 class="section-title" style="margin-top:20px;">Others Offer Classes.<br>We Offer a <em>System.</em></h2>
+<!-- SESSION -->
+<section id="session">
+<div class="wrap">
+<div class="reveal">
+<div class="sec-tag" data-i18n="ssTag">SESSION ARCHITECTURE · 세션 구조</div>
+<h2 class="sec-title" data-i18n="ssTitle">4단계 세션 사이클</h2>
+<p class="sec-lead" data-i18n="ssLead">메디컬 영어 학습을 체계적으로 관리합니다. 매 세션은 준비 → 훈련 → 분석 → 최적화의 네 단계로 순환하며, 학생은 같은 자리에 머무르지 않고 매번 한 걸음 더 깊이 들어갑니다.</p>
+</div>
+<div class="cycle-dia reveal"><svg viewBox="0 0 520 520" xmlns="http://www.w3.org/2000/svg" font-family="Inter,'Noto Sans KR',sans-serif">
+    <circle cx="260" cy="260" r="164" fill="none" stroke="#B8902F" stroke-width="2" stroke-dasharray="3 7" opacity="0.5"/>
+    <g fill="#B8902F">
+      <polygon points="-5,-7 7,0 -5,7" transform="translate(376 144) rotate(45)"/>
+      <polygon points="-5,-7 7,0 -5,7" transform="translate(376 376) rotate(135)"/>
+      <polygon points="-5,-7 7,0 -5,7" transform="translate(144 376) rotate(225)"/>
+      <polygon points="-5,-7 7,0 -5,7" transform="translate(144 144) rotate(315)"/>
+    </g>
+    <g><circle cx="260" cy="96" r="58" fill="#0B2545" stroke="#D4B25A" stroke-width="1.5"/>
+      <text x="260" y="78" text-anchor="middle" fill="#D4B25A" font-size="12" font-weight="700">01</text>
+      <text x="260" y="98" text-anchor="middle" fill="#ffffff" font-size="15" font-weight="700" letter-spacing="1">PREPARE</text>
+      <text x="260" y="117" text-anchor="middle" fill="#E8DCC0" font-size="11.5" data-i18n="dg1">사전 준비</text></g>
+    <g><circle cx="424" cy="260" r="58" fill="#0B2545" stroke="#D4B25A" stroke-width="1.5"/>
+      <text x="424" y="242" text-anchor="middle" fill="#D4B25A" font-size="12" font-weight="700">02</text>
+      <text x="424" y="262" text-anchor="middle" fill="#ffffff" font-size="15" font-weight="700" letter-spacing="1">TRAIN</text>
+      <text x="424" y="281" text-anchor="middle" fill="#E8DCC0" font-size="11.5" data-i18n="dg2">세션 훈련</text></g>
+    <g><circle cx="260" cy="424" r="58" fill="#0B2545" stroke="#D4B25A" stroke-width="1.5"/>
+      <text x="260" y="406" text-anchor="middle" fill="#D4B25A" font-size="12" font-weight="700">03</text>
+      <text x="260" y="426" text-anchor="middle" fill="#ffffff" font-size="15" font-weight="700" letter-spacing="1">ANALYZE</text>
+      <text x="260" y="445" text-anchor="middle" fill="#E8DCC0" font-size="11.5" data-i18n="dg3">LLR 분석</text></g>
+    <g><circle cx="96" cy="260" r="58" fill="#0B2545" stroke="#D4B25A" stroke-width="1.5"/>
+      <text x="96" y="242" text-anchor="middle" fill="#D4B25A" font-size="12" font-weight="700">04</text>
+      <text x="96" y="262" text-anchor="middle" fill="#ffffff" font-size="15" font-weight="700" letter-spacing="1">IMPROVE</text>
+      <text x="96" y="281" text-anchor="middle" fill="#E8DCC0" font-size="11.5" data-i18n="dg4">지속 최적화</text></g>
+    <circle cx="260" cy="260" r="76" fill="#0B2545" stroke="#D4B25A" stroke-width="2"/>
+    <text x="260" y="250" text-anchor="middle" fill="#D4B25A" font-size="11.5" font-weight="700" letter-spacing="1.5">SESSION CYCLE</text>
+    <text x="260" y="274" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="700" data-i18n="dgC">매 세션 반복</text>
+  </svg></div>
+<p class="cycle-cap reveal" data-i18n="stepCaption">매 세션마다 반복되는 4단계 — 학생은 같은 자리에서 머무르지 않고, 매번 한 걸음 더 깊이 들어갑니다.</p>
+<div class="step-grid">
+<div class="step reveal"><div class="step-head"><div class="step-no">01</div><div><div class="step-en">PREPARE</div><div class="step-ko" data-i18n="step1ko"><b>사전 준비</b> · 세션 시작 전</div></div></div><ul><li data-i18n="step1l1">레벨에 맞춘 <b>1:1 학습 계획</b> 사전 수립</li><li data-i18n="step1l2">오디오·스크립트·이중언어(영/한) 자료 제공</li><li data-i18n="step1l3">사전 예습 확인으로 수업 준비도 관리</li></ul></div>
+<div class="step reveal"><div class="step-head"><div class="step-no">02</div><div><div class="step-en">TRAIN</div><div class="step-ko" data-i18n="step2ko"><b>세션 훈련</b> · 세션 진행 중</div></div></div><ul><li data-i18n="step2l1">1:1 실시간 — <b>구술시험 대비 퍼포먼스 훈련</b></li><li data-i18n="step2l2">정밀 스피킹 드릴 + <b>실시간 발음 교정</b></li><li data-i18n="step2l3">의학 용어를 정확한 맥락에서 구사하는 훈련</li></ul></div>
+<div class="step reveal"><div class="step-head"><div class="step-no">03</div><div><div class="step-en">ANALYZE</div><div class="step-ko" data-i18n="step3ko"><b>LLR 분석</b> · 매 세션 종료 후</div></div></div><ul><li data-i18n="step3l1">구조화된 <b>LLR 분석 보고서</b> 발행</li><li data-i18n="step3l2">Progress·Speaking·Listening·Vocabulary·Corrections 분석</li><li data-i18n="step3l3">다음 세션을 위한 <b>명확한 개선 방향</b> 제시</li></ul></div>
+<div class="step reveal"><div class="step-head"><div class="step-no">04</div><div><div class="step-en">IMPROVE</div><div class="step-ko" data-i18n="step4ko"><b>지속 최적화</b> · 주간·격주·월간</div></div></div><ul><li data-i18n="step4l1">개인 <b>오류 패턴 분석</b>·반복 실수 추적</li><li data-i18n="step4l2"><b>월간 맞춤 표현 보고서</b> (수업 데이터 기반)</li><li data-i18n="step4l3">Post-class check-in으로 <b>학습 지속성</b> 관리</li></ul></div>
+</div>
+</div>
+</section>
+
+<!-- WHY -->
+<section class="cream2" id="why">
+  <div class="wrap">
+    <div class="reveal center">
+      <div class="sec-tag" data-i18n="whyTag">DESIGN PRINCIPLES · 설계 원칙</div>
+      <h2 class="sec-title" data-i18n="whyTitle">왜 단발성 수업이 아니라 시스템인가</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="pillar-grid">
+      <div class="pillar reveal"><div class="pl-no">01</div><h4 data-i18n="pillar1h">나선형 반복 설계<span class="en-sub">Spiral Curriculum</span></h4><p data-i18n="pillar1p">같은 분자·같은 주제를 생물과 화학, 그리고 세 티어에서 <b>반복하며 매번 더 깊이</b> 다룹니다. 단편 암기가 아니라 연결된 지식으로 쌓입니다.</p></div>
+      <div class="pillar reveal"><div class="pl-no">02</div><h4 data-i18n="pillar2h">1:1 원어민 집중<span class="en-sub">Native 1:1 Training</span></h4><p data-i18n="pillar2p">전문 원어민과의 <b>1:1 50분 세션</b>으로 스피킹 양을 극대화합니다. 말하기는 듣는 수업이 아니라 직접 말하는 시간에서 자랍니다.</p></div>
+      <div class="pillar reveal"><div class="pl-no">03</div><h4 data-i18n="pillar3h">시험과 정렬된 단계<span class="en-sub">Exam-Aligned Tiers</span></h4><p data-i18n="pillar3p">각 티어가 실제 의대 구술시험의 어느 요구에 대응하는지 <b>명확히 정렬</b>되어 있습니다. 학습이 곧 시험 대비입니다.</p></div>
+      <div class="pillar reveal"><div class="pl-no">04</div><h4 data-i18n="pillar4h">측정 가능한 성장<span class="en-sub">Tracked Progress</span></h4><p data-i18n="pillar4p">이중언어 주간·월간 리포트로 <b>오류 패턴과 스킬 성장</b>을 추적합니다. 막연한 향상이 아니라 보이는 데이터로 관리합니다.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ECOSYSTEM -->
+<section class="creaml" id="ecosystem">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="sec-tag" data-i18n="ecoTag">브랜드 생태계 · THE LYVON ECOSYSTEM</div>
+      <h2 class="sec-title" data-i18n="ecoTitle">이야기는 면접장에서 끝나지 않습니다</h2>
+      <p class="sec-lead" data-i18n="ecoLead">LYVON은 합격을 돕는 데서 멈추지 않습니다. <strong>고등학생에서 의료 전문가로 성장하는 전 과정</strong>을 하나의 영어 커뮤니케이션 생태계 안에서 함께합니다 — <strong>Bridge → Path → Connect.</strong></p>
+    </div>
+    <div class="eco-tri">
+      <div class="eco-card c-bridge reveal"><div class="eco-stage">BRIDGE</div><div class="eco-name">MedBridge</div><div class="eco-role">Foundation</div><div class="eco-desc" data-i18n="ecoBridgeDesc">의대로 향하는 <b>다리를 놓는다.</b> 영어 커뮤니케이션 기초.</div></div>
+      <div class="eco-card c-path reveal"><div class="eco-stage">PATH</div><div class="eco-name">MedPath</div><div class="eco-role">Admissions Communication</div><div class="eco-desc" data-i18n="ecoPathDesc">의대 합격을 위한 <b>길을 찾는다.</b> 정의 → 설명 → 논증.</div></div>
+      <div class="eco-card c-connect reveal"><div class="eco-stage">CONNECT</div><div class="eco-name">MedConnect</div><div class="eco-role">Membership</div><div class="eco-desc" data-i18n="ecoConnectDesc">글로벌 의료 커뮤니티와 <b>연결된다.</b> 합격, 그 이후의 성장.</div></div>
+    </div>
+    <div class="roadmap reveal">
+      <div class="rm-tag" data-i18n="rmTag">성장 로드맵 · GROWTH ROADMAP</div>
+      <div class="rm-flow">
+        <div data-i18n="rmHs">고등학생</div><span class="arr">→</span>
+        <div><b class="b-mb">MedBridge</b><span class="sm" data-i18n="rmMbSm">기초</span></div><span class="arr">→</span>
+        <div><b class="b-mp">MedPath</b><span class="sm">Starter·Core·Pro</span></div><span class="arr">→</span>
+        <div data-i18n="rmAdmit">의대 합격</div><span class="arr">→</span>
+        <div><b class="b-mc">MedConnect</b><span class="sm" data-i18n="rmMcSm">멤버십</span></div><span class="arr">→</span>
+        <div data-i18n="rmPro">의료 전문가</div>
       </div>
-
-      <table class="diff-table reveal">
-        <thead>
-          <tr>
-            <th>Dimension</th>
-            <th>Others</th>
-            <th><span class="check">◆</span> MedPath</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Approach</td>
-            <td>English classes</td>
-            <td><span class="check">◆</span> Managed system</td>
-          </tr>
-          <tr>
-            <td>Focus</td>
-            <td>Practice hours</td>
-            <td><span class="check">◆</span> Verified performance</td>
-          </tr>
-          <tr>
-            <td>Personalisation</td>
-            <td>Generic curriculum</td>
-            <td><span class="check">◆</span> 1:1 coaching & feedback</td>
-          </tr>
-          <tr>
-            <td>Progress</td>
-            <td>Random improvement</td>
-            <td><span class="check">◆</span> Controlled, tracked growth</td>
-          </tr>
-          <tr>
-            <td>Accountability</td>
-            <td>Up to the student</td>
-            <td><span class="check">◆</span> We take responsibility</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <p class="diff-note reveal">"We take <strong>responsibility</strong><br>for your results."</p>
     </div>
-  </section>
+    <div class="medconnect reveal">
+      <div class="mc-head"><div class="mc-title">MedConnect</div><div class="mc-badge" data-i18n="mcBadge">2026년 7월 파일럿 시작</div></div>
+      <p data-i18n="mcP">의대 합격 이후에도 영어 커뮤니케이션 역량을 이어가는 멤버십입니다. 의대·치대·약대·수의대생 및 예비 의료 전문가를 위해 실전 의료 영어를 함께 훈련합니다.</p>
+      <div class="mc-grid">
+        <div class="mc-item"><div class="mc-t">Medical Discussion Club</div><div class="mc-d" data-i18n="mcd1">의학 주제 영어 토론</div></div>
+        <div class="mc-item"><div class="mc-t">Journal Club</div><div class="mc-d" data-i18n="mcd2">최신 의학 논문 읽기·발표</div></div>
+        <div class="mc-item"><div class="mc-t">Research Communication</div><div class="mc-d" data-i18n="mcd3">연구 결과 학술 소통</div></div>
+        <div class="mc-item"><div class="mc-t">Case Presentation</div><div class="mc-d" data-i18n="mcd4">임상 증례 영어 발표</div></div>
+        <div class="mc-item"><div class="mc-t">Conference English</div><div class="mc-d" data-i18n="mcd5">국제 학회 발표·질의응답</div></div>
+        <div class="mc-item"><div class="mc-t">Professional Communication</div><div class="mc-d" data-i18n="mcd6">의료 현장 영어 소통</div></div>
+      </div>
+      <div class="mc-target" data-i18n="mcTarget">대상 · <b>의대 · 치대 · 약대 · 수의대생 및 예비 의료 전문가</b></div>
+    </div>
+    <div class="eco-closing reveal">
+      <div class="line"></div>
+      <p data-i18n="ecoClosing">기초를 놓고, 길을 찾고, 세계와 연결됩니다.<br>그 모든 길을, LYVON이 함께합니다.</p>
+    </div>
+  </div>
+</section>
 
-  <!-- ── MEDBRIDGE (LOW EMPHASIS) ── -->
-  <section id="medbridge">
-    <div class="container">
-      <div class="medbridge-inner reveal">
-        <span class="label" style="opacity:0.5;">Also Available</span>
-        <h3 class="medbridge-title" style="margin-top:16px;">Not ready for MedPath yet?</h3>
-        <p style="font-family:var(--font-display);font-size:18px;font-style:italic;color:rgba(245,244,240,0.4);margin-bottom:16px;">MedBridge — Standard Program</p>
-        <p class="medbridge-desc">A foundational speaking program for students who need more time before entering the full MedPath system. Flexible scheduling, structured classes, speaking-focused curriculum.</p>
-        <div class="medbridge-features">
-          <span class="medbridge-feature">Speaking Classes</span>
-          <span class="medbridge-feature">Flexible Schedule</span>
-          <span class="medbridge-feature">Structured Curriculum</span>
+<!-- CTA -->
+<section class="cta-sec" id="contact">
+  <div class="wrap">
+    <div class="reveal">
+      <h2 data-i18n="ctaH2">지식은 이미 가지고 있습니다.<br><span class="hl">이제 말할 차례</span>입니다.</h2>
+      <p data-i18n="ctaP">LYVON은 <b>기초부터 면접장까지 하나의 길</b>로 준비합니다. 학생의 현재 수준과 목표 학교를 바탕으로, 맞춤 경로를 함께 설계해 드립니다.</p>
+      <div class="cta-actions">
+        <a href="https://open.kakao.com/o/sh3TzOsi" target="_blank" rel="noopener" class="btn btn-gold" id="kakaoBtn" data-i18n="ctaBtn1">KakaoTalk 상담 신청 →</a>
+        <a href="#programs" class="btn btn-ghost" data-i18n="ctaBtn2">프로그램 다시 보기</a>
+      </div>
+      <div class="cta-qr reveal">
+        <div class="qr-box"><img src="data:image/webp;base64,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" alt="KakaoTalk QR" style="width:100%;height:100%;display:block;object-fit:contain;"></div>
+        <div class="qr-cap">
+          <div class="qr-cap-t" data-i18n="qrCapT">KakaoTalk 상담</div>
+          <div class="qr-cap-s" data-i18n="qrCapS">QR 스캔으로 바로 연결됩니다.</div>
         </div>
-        <a href="https://medbridgeedu.io/" target="_blank" class="btn-sm-gold">Start with MedBridge</a>
+      </div>
+      <div class="cta-note" data-i18n="ctaNote">QR 스캔 또는 버튼으로 카카오톡 상담에 바로 연결됩니다 · 평일 상담 가능</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="mark">LY<span class="v">V</span>ON</div>
+        <p data-i18n="footBrandP">의예과 준비생을 위한 메디컬 학술 영어 커뮤니케이션 시스템. MedBridge에서 기초를, MedPath에서 정의·설명·논증을 단계적으로 길러냅니다.</p>
+      </div>
+      <div class="foot-links">
+        <div class="foot-col">
+          <h5>PROGRAMS</h5>
+          <a href="#programs">MedBridge 101</a>
+          <a href="#programs">MedPath Starter</a>
+          <a href="#programs">MedPath Core</a>
+          <a href="#programs">MedPath Pro</a>
+          <a href="#ecosystem">MedConnect</a>
+        </div>
+        <div class="foot-col">
+          <h5>SYSTEM</h5>
+          <a href="#pathway" data-i18n="footS1">4단계 경로</a>
+          <a href="#session" data-i18n="footS2">세션 구조</a>
+          <a href="#ecosystem" data-i18n="footS3">브랜드 생태계</a>
+          <a href="#why" data-i18n="footS4">설계 원칙</a>
+          <a href="#contact" data-i18n="footS5">상담 신청</a>
+        </div>
       </div>
     </div>
-  </section>
-
-  <!-- ── FINAL CTA ── -->
-  <section id="finalcta">
-    <div class="container">
-      <p class="cta-overline reveal">Begin Your Path</p>
-      <h2 class="cta-title reveal">Ready to move<br>beyond <em>practice?</em></h2>
-      <p class="cta-sub reveal">MedPath accepts a limited number of students each cycle. Apply now to secure your place.</p>
-      <div class="cta-actions reveal">
-        <a href="https://medpathglobal.io/" target="_blank" class="btn-primary">Apply for MedPath</a>
-        <a href="#solution" class="btn-ghost">Learn More</a>
-      </div>
-      <p class="cta-fallback reveal">Not ready yet? <a href="#medbridge">Explore MedBridge instead.</a></p>
+    <div class="foot-bottom">
+      <span style="display:block;margin-bottom:10px;font-family:var(--sans);">
+        <a href="legal.html#privacy" style="color:rgba(255,255,255,.72);" data-i18n="footPrivacy">개인정보처리방침</a>
+        <span style="color:rgba(255,255,255,.3);margin:0 8px;">·</span>
+        <a href="legal.html#terms" style="color:rgba(255,255,255,.72);" data-i18n="footTerms">이용약관</a>
+      </span>
+      © 2024–2026 LYVON · MedBridge + MedPath + MedConnect · All rights reserved
     </div>
-  </section>
+  </div>
+</footer>
 
-  <!-- ── FOOTER ── -->
-  <footer>
-    <div class="container">
-      <div class="footer-inner">
-        <span class="footer-logo">LY<span>V</span>ON</span>
-        <p class="footer-copy">© 2026 LYVON. All rights reserved.</p>
-      </div>
-    </div>
-  </footer>
+<script>
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 40); });
+const toggle = document.getElementById('navToggle');
+const links = document.getElementById('navLinks');
+toggle.addEventListener('click', () => { links.classList.toggle('open'); toggle.classList.toggle('open'); });
+links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { links.classList.remove('open'); toggle.classList.remove('open'); }));
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal:not(.in)').forEach(el => io.observe(el));
 
-  <script>
-    // Nav scroll effect
-    const nav = document.getElementById('nav');
-    window.addEventListener('scroll', () => {
-      nav.classList.toggle('scrolled', window.scrollY > 60);
-    });
-
-    // Reveal on scroll
-    const reveals = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry, i) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => entry.target.classList.add('visible'), i * 80);
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
-
-    reveals.forEach(el => observer.observe(el));
-  </script>
-
+/* ===== i18n ===== */
+const I18N = {
+  en:{dg1:`Before the session`,dg2:`During the session`,dg3:`After each session`,dg4:`Ongoing`,dgC:`Every session`,stepCaption:`Four phases repeated every session — students never stay in place; each round goes one step deeper.`,
+    navWhy:`Why LYVON`, navPathway:`Pathway`, navPrograms:`Programs`, navSession:`Session`, navEcosystem:`Ecosystem`, navCta:`Consultation`, brandTag:`Academic & Professional Communication System`, footPrivacy:`Privacy Policy`, footTerms:`Terms of Service`,
+    heroH1:`<span class="hl">Hungarian med-school admissions</span> hinge on speaking.<br>We give intensive 1:1 training in English speaking & oral-exam skills<br><span class="hl">with native experts</span>.`,
+    heroSub:`From foundations to the interview room — prepared on one path.`,
+    heroLead:`LYVON is a <b>medical academic English communication system</b> for pre-med students. Build your foundation in <b>MedBridge 101</b>, then rise through <b>MedPath Starter · Core · Pro</b> — not memorizing science, but learning to <b>define, explain, and justify</b> it in English, step by step.`,
+    heroBtn1:`Book a consultation →`, heroBtn2:`See the pathway`,
+    hmV2:`4×/wk`, hmV3:`50<span>min</span>`, hmL1:`Stages`, hmL2:`Std. schedule`, hmL3:`Focused session`, hmL4:`Native 1:1`,
+    heroTagline:`A <b>new standard</b> for pre-med English.`,
+    pbTag:`ABOUT LYVON · WHY LYVON`, pbTitle:`Knowledge alone is not enough.`,
+    pbLead:`Many students study Biology and Chemistry for years. Yet in interviews and discussions, asked to explain what they know in English, they freeze. Traditional education focuses on <strong>Input</strong> — memorization, reading, problem-solving. But medical interviews, academic discussion, and research presentations demand <strong>Output</strong>: the ability to structure thought in real time and express it in English. LYVON is built to fill this missing <strong>Communication Output Layer</strong> in pre-med education.`,
+    pbQuote:`Many students study science.<br>But few can <b>explain that science confidently in English</b>.`,
+    acTag1:`NAMING · THE MEANING`,
+    acDesc1:`English memorized for a test fades, but the <b>ability to think and express</b> becomes a lifelong asset. Beyond admission, as a researcher or medical professional — communication skills live on with the student.`,
+    acMission:`Helping future medical professionals think, discuss, and communicate in English.`,
+    acDesc2:`<b>One LYVON Global Educational Ecosystem</b> — from admissions prep to becoming a medical professional, so that language never limits a student's potential.`,
+    subhead:`And so, students hit these walls`,
+    pain1h:`Words memorized, but no sentences`, pain1p:`They know the terms but can't say "what it actually is" in one sentence. Interviews need explanation, not vocabulary.`,
+    pain2h:`Frozen even on familiar topics`, pain2p:`What flows easily in their native language falls silent the moment it must be English. Without structure, fluency never comes.`,
+    pain3h:`Biology and chemistry stay disconnected`, pain3p:`Fragmented memorization collapses under follow-up questions. One molecule must be explainable from both biology and chemistry.`,
+    pain4h:`No real speaking or argument practice`, pain4p:`Self-study leaves no experience of "explaining aloud to the end and arguing why it matters." Interview success is the product of speaking practice.`,
+    painAnswer:`The LYVON system resolves all four, step by step. Build <b>English foundations with MedBridge 101</b>, then the <b>"What → How → Why" speaking ability with MedPath</b> — knowledge connects, and speech flows freely in the interview room.`,
+    pwTag:`FROM FOUNDATION TO MASTERY · 4-STEP PATHWAY`, pwTitle:`At every step, speaking grows a level deeper.`,
+    pwLead:`The LYVON pathway is built in four stages. After laying the English foundation with <strong>MedBridge</strong>, the three <strong>MedPath</strong> tiers raise the same molecules and the same speaking skills through "What is it → How does it work → Why is it essential." The full pathway is <strong>4 stages × 3 months · 4×/week — about 12 months total</strong>.`,
+    j0meta:`3 mo · 2–4×/wk`, j0sub:`Medical English · 3 sets · 30 topics`, j0q:`Medical English — ready to speak up`, j0verb:`Build the base`,
+    j0desc:`Master the <b>core vocabulary, pronunciation, and basic sentence structures</b> of medical English, and build the habit of speaking aloud in short sentences — the foundation for stepping confidently into MedPath.`,
+    j0exam:`<span class="je-tag">IN THE EXAM</span>Covers the <b>non-science</b> side of the oral (motivation, character, aptitude, English communication) — <b>the other pillar</b> of admission.`,
+    j1meta:`3 mo · 4×/wk`, j1sub:`Biology · Chemistry · 50 lessons`, j1q:`"What is this?"`, j1verb:`Define`,
+    j1desc:`Precisely <b>define key molecules and structures of life</b> — proteins, DNA, cells — in a single English sentence. Covers biology and medical chemistry, laying the base for all speaking.`,
+    j1exam:`<span class="je-tag">IN THE EXAM</span>Good for oral warm-up and definitions. On its own, a starting point with low impact on admission.`,
+    j2meta:`3 mo · 4×/wk`, j2sub:`Biology · Chemistry · 50 lessons`, j2q:`"How does this work?"`, j2verb:`Explain`,
+    j2desc:`Explain processes — the heart, respiration, immunity, chemical reactions — with <b>cause-and-effect logic</b>. Beyond definitions, you articulate mechanisms aloud, approaching real interview level.`,
+    j2exam:`<span class="je-tag">IN THE EXAM</span>Knowledge explanation and "applied" questions — <b>exactly the core band of the exam</b>.`,
+    j3meta:`3 mo · 4×/wk`, j3sub:`Biology · Chemistry · 50 lessons`, j3q:`"Why is this essential?"`, j3verb:`Justify`,
+    j3desc:`Integrate knowledge to <b>argue with a point of view</b> and <b>respond spontaneously</b> to unexpected follow-ups. The final stage — mock interviews that prepare you for the day itself.`,
+    j3exam:`<span class="je-tag">IN THE EXAM</span>Professors' follow-ups and scientific reasoning — <b>matching the highest demands of the oral exam</b>.`,
+    arc:`After building English foundations in MedBridge 101, a molecule met in biology returns in chemistry; a concept defined in MedPath Starter is explained in Core and argued in Pro. <b>The same topics spiral back, deeper each time</b> — one path where students feel real mastery.`,
+    pgTag:`TWO BRANDS, ONE SYSTEM`, pgTitle:`MedBridge builds the base,<br>MedPath carries you to the interview.`,
+    progMbTag:`The Art of Communication`,
+    progMbP:`An entry course building the core vocabulary, pronunciation, and sentence structure of medical English. It forms the habit of speaking aloud in short sentences — the foundation for moving up to MedPath.`,
+    progMbF1:`<b>3 sets · 30 topics</b> of medical English fundamentals`, progMbF2:`Bilingual (EN/KR) materials and <b>1:1 native sessions</b>`, progMbF3:`Prepares the <b>non-science</b> side of the oral (motivation, character, aptitude)`,
+    progMpP:`An advanced system that raises the same molecules and speaking skills across three tiers — "What → How → Why." From definition to real interview argument, end to end.`,
+    progMpF1:`<b>50 biology & chemistry lessons</b> deepened in a 3-tier spiral`, progMpF2:`From mechanism explanation to <b>spontaneous argument & follow-ups</b>`, progMpF3:`Mock interviews for the <b>highest demands of the oral exam</b>`,
+    ssTag:`SESSION ARCHITECTURE`, ssTitle:`The 4-Phase Session Cycle`,
+    ssLead:`<b>Medical English learning, managed systematically.</b> Every session cycles through four phases — prepare → train → analyze → improve — and students never stay in place; each round goes one step deeper.`,
+    step1ko:`<b>Prepare</b> · before the session`, step1l1:`A tailored <b>1:1 study plan</b> set in advance`, step1l2:`Audio, scripts, and bilingual (EN/KR) materials`, step1l3:`Pre-study checks manage readiness`,
+    step2ko:`<b>Train</b> · during the session`, step2l1:`1:1 live — <b>oral-exam performance training</b>`, step2l2:`Precise speaking drills + <b>real-time pronunciation correction</b>`, step2l3:`Using medical terms in the right context`,
+    step3ko:`<b>Analyze · LLR</b> · after each session`, step3l1:`A structured <b>LLR analysis report</b> is issued`, step3l2:`Progress · Speaking · Listening · Vocabulary · Corrections`, step3l3:`<b>Clear improvement direction</b> for the next session`,
+    step4ko:`<b>Improve</b> · weekly · biweekly · monthly`, step4l1:`Personal <b>error-pattern analysis</b> · tracking recurring mistakes`, step4l2:`<b>Monthly tailored expression report</b> (from class data)`, step4l3:`Post-class check-in manages <b>continuity</b>`,
+    whyTag:`DESIGN PRINCIPLES`, whyTitle:`Why a system, not one-off lessons`,
+    pillar1h:`Spiral repetition by design<span class="en-sub">Spiral Curriculum</span>`, pillar1p:`The same molecules and topics recur across biology, chemistry, and three tiers — <b>deeper each time</b>. Knowledge accumulates connected, not as fragments.`,
+    pillar2h:`1:1 native focus<span class="en-sub">Native 1:1 Training</span>`, pillar2p:`Maximize speaking volume in <b>1:1 50-minute sessions</b> with expert native speakers. Speaking grows in time spent speaking — not in lessons spent listening.`,
+    pillar3h:`Exam-aligned tiers<span class="en-sub">Exam-Aligned Tiers</span>`, pillar3p:`Each tier is <b>clearly aligned</b> with a specific demand of the real medical oral exam. Learning is exam preparation itself.`,
+    pillar4h:`Measurable growth<span class="en-sub">Tracked Progress</span>`, pillar4p:`Bilingual weekly and monthly reports track <b>error patterns and skill growth</b>. Managed with visible data, not vague improvement.`,
+    ecoTag:`THE LYVON ECOSYSTEM`, ecoTitle:`The story doesn't end in the interview room`,
+    ecoLead:`LYVON doesn't stop at helping you get in. It accompanies <strong>the whole journey from high schooler to medical professional</strong> within one English communication ecosystem — <strong>Bridge → Path → Connect.</strong>`,
+    ecoBridgeDesc:`Build the <b>bridge</b> toward medical school. English communication foundations.`, ecoPathDesc:`Find the <b>path</b> to admission. Define → Explain → Justify.`, ecoConnectDesc:`<b>Connect</b> with the global medical community. Growth beyond admission.`,
+    rmTag:`GROWTH ROADMAP`, rmHs:`High schooler`, rmMbSm:`Foundation`, rmAdmit:`Med-school admission`, rmMcSm:`Membership`, rmPro:`Medical professional`,
+    mcBadge:`Pilot launches July 2026`,
+    mcP:`A membership that carries your English communication forward after admission. Practical medical English for students of medicine, dentistry, pharmacy, and veterinary science — and future professionals.`,
+    mcd1:`English discussion on medical topics`, mcd2:`Reading & presenting recent papers`, mcd3:`Academic communication of research`, mcd4:`Clinical case presentation in English`, mcd5:`Conference talks & Q&A`, mcd6:`English in clinical settings`,
+    mcTarget:`For · <b>students of medicine, dentistry, pharmacy & veterinary science, and future medical professionals</b>`,
+    ecoClosing:`Lay the foundation, find the path, connect with the world.<br>Every step of the way, LYVON is with you.`,
+    ctaH2:`You already have the knowledge.<br><span class="hl">Now it's time to speak.</span>`,
+    ctaP:`LYVON prepares you on <b>one path, from foundations to the interview room</b>. We design a tailored route together, based on your current level and target schools.`,
+    ctaBtn1:`Consult via KakaoTalk →`, ctaBtn2:`Review programs`, ctaNote:`Reach our KakaoTalk consultation instantly by QR or button · Weekday consultations`, qrCapT:`KakaoTalk consultation`, qrCapS:`Scan the QR to connect instantly`,
+    footBrandP:`A medical academic English communication system for pre-med students. Build foundations in MedBridge and grow define-explain-justify skills in MedPath, step by step.`,
+    footS1:`Pathway`, footS2:`Session`, footS3:`Ecosystem`, footS4:`Design Principles`, footS5:`Consultation`
+  },
+  ja:{dg1:`事前準備`,dg2:`セッション訓練`,dg3:`LLR分析`,dg4:`継続最適化`,dgC:`毎セッション反復`,stepCaption:`毎セッション繰り返される4段階——学生は同じ場所にとどまらず、毎回一歩深く進みます。`,
+    navWhy:`なぜLYVON`, navPathway:`道のり`, navPrograms:`プログラム`, navSession:`セッション`, navEcosystem:`エコシステム`, navCta:`相談する`, brandTag:`学術・専門英語コミュニケーション・システム`, footPrivacy:`プライバシーポリシー`, footTerms:`利用規約`,
+    heroH1:`<span class="hl">ハンガリー医学部入試</span>の核心は「話す力」。<br>英語スピーキングと口述試験を<br><span class="hl">ネイティブ講師と1:1</span>で集中的に鍛えます。`,
+    heroSub:`基礎から面接まで、ひとつの道で準備します。`,
+    heroLead:`LYVONは医学部進学を目指す学生のための<b>メディカル学術英語コミュニケーション・システム</b>です。<b>MedBridge 101</b>で基礎を固め、<b>MedPath Starter・Core・Pro</b>へと進みながら — 科学を暗記するのではなく、英語で<b>定義し・説明し・論証する</b>力を段階的に育てます。`,
+    heroBtn1:`相談を予約する →`, heroBtn2:`道のりを見る`,
+    hmV2:`週4回`, hmV3:`50<span>分</span>`, hmL1:`ステップ`, hmL2:`標準スケジュール`, hmL3:`集中セッション`, hmL4:`ネイティブ指導`,
+    heroTagline:`プリメド英語学習の<b>新しい標準</b>。`,
+    pbTag:`ABOUT LYVON · なぜLYVON`, pbTitle:`知識だけでは、足りません。`,
+    pbLead:`多くの学生はBiology・Chemistryを長年学びます。しかし面接や議論で、知っている内容を英語で説明するよう求められると止まってしまいます。従来の教育は暗記・読解・問題演習といった<strong>インプット</strong>に偏っていますが、医学部面接・学術討論・研究発表で本当に必要なのは<strong>アウトプット</strong> — 考えをリアルタイムで構造化し英語で表現する力です。LYVONはプリメド教育で最も不足しているこの<strong>Communication Output Layer</strong>を埋めるために設計されました。`,
+    pbQuote:`多くの学生は科学を学びます。<br>しかし<b>英語で自信を持って科学を説明できる学生</b>はわずかです。`,
+    acTag1:`NAMING · 名前の意味`,
+    acDesc1:`試験のために覚えた英語は忘れても、<b>考え表現する力</b>は一生の財産になります。医学部進学後も、研究者・医療専門家になっても — コミュニケーション力は生き続け(Live On)、学生と共にあります。`,
+    acMission:`未来の医療人が英語で思考し、議論し、コミュニケーションできるよう支援する。`,
+    acDesc2:`<b>One LYVON Global Educational Ecosystem</b> — 医学部入試の準備から医療専門家への成長まで、言語の限界が学生の可能性を制限しないよう寄り添います。`,
+    subhead:`その結果、学生はこんな壁にぶつかります`,
+    pain1h:`単語は覚えても、文が出てこない`, pain1p:`用語は知っていても「それが何なのか」を一文で説明できません。面接で必要なのは単語ではなく説明です。`,
+    pain2h:`知っている内容でも口が止まる`, pain2p:`母国語ならすらすら話せる内容も、英語にした瞬間に沈黙します。構造がなければ流暢さは生まれません。`,
+    pain3h:`生物と化学がバラバラ`, pain3p:`断片的に覚えた知識は面接の追問で崩れます。一つの分子を生物と化学の両面から説明できる必要があります。`,
+    pain4h:`実践的な発表・論証の経験がない`, pain4p:`独学では「声に出して最後まで説明し、なぜ重要かを論証する」経験がありません。面接はスピーキング訓練の成果です。`,
+    painAnswer:`LYVONシステムはこの4つを段階的に解決します。<b>MedBridge 101で英語の基礎</b>を、<b>MedPathで「何→どのように→なぜ」の話す力</b>を積み上げ — 知識がひとつに繋がり、面接で淀みなく言葉が出ます。`,
+    pwTag:`基礎から実践まで · 4ステップの道のり`, pwTitle:`段階ごとに、話す力がひとつ上の次元へ。`,
+    pwLead:`LYVONの道のりは4つの段階で設計されています。<strong>MedBridge</strong>で英語の基礎を築いた後、<strong>MedPath</strong>の3段階が同じ分子・同じ話す技術を「何か → どう働くか → なぜ不可欠か」へと引き上げます。全行程は<strong>4段階 × 3か月 · 週4回 — 計約12か月</strong>です。`,
+    j0meta:`3か月 · 週2・3・4回`, j0sub:`Medical English · 3セット · 30トピック`, j0q:`医学英語、口を開く準備`, j0verb:`基礎固め`,
+    j0desc:`医学英語の<b>核となる語彙・発音・基本文構造</b>を身につけ、短い文を声に出して話す習慣をつくります。MedPathへ安定して進むための土台の段階です。`,
+    j0exam:`<span class="je-tag">試験では</span>口述の<b>非科学領域</b>(動機・人柄・適性・英語コミュニケーション)を担当 — 合格を支える<b>もう一つの柱</b>。`,
+    j1meta:`3か月 · 週4回`, j1sub:`Biology · Chemistry · 50レッスン`, j1q:`「これは何か?」`, j1verb:`定義する · Define`,
+    j1desc:`タンパク質・DNA・細胞など生命の核となる分子や構造を<b>英語の一文で正確に定義</b>します。生物学と医化学全般を扱い、すべての「話す力」の土台を築きます。`,
+    j1exam:`<span class="je-tag">試験では</span>口述のウォームアップ・定義の陳述に適する。単独では合格への寄与が低い出発点。`,
+    j2meta:`3か月 · 週4回`, j2sub:`Biology · Chemistry · 50レッスン`, j2q:`「これはどう働くのか?」`, j2verb:`説明する · Explain`,
+    j2desc:`心臓・呼吸・免疫・化学反応のプロセスを<b>原因と結果を備えた論理</b>で説明します。定義を超えてメカニズムを言葉で解き明かし、実際の面接レベルに近づきます。`,
+    j2exam:`<span class="je-tag">試験では</span>知識説明・「応用型」設問 — <b>試験の中核とぴたり一致</b>。`,
+    j3meta:`3か月 · 週4回`, j3sub:`Biology · Chemistry · 50レッスン`, j3q:`「なぜこれが不可欠か?」`, j3verb:`論証する · Justify`,
+    j3desc:`知識を統合して<b>視点を持って論証</b>し、予想外の追問に<b>即興で対応</b>します。実践的な模擬面接で本番の日に備える最終段階です。`,
+    j3exam:`<span class="je-tag">試験では</span>教授の追問・科学的推論 — <b>口述試験の最上位の要求に一致</b>。`,
+    arc:`MedBridge 101で英語の基礎を築いた後、生物学で出会った分子を化学で再び扱い、MedPath Starterで定義した概念をCoreで説明しProで論証します。<b>同じテーマを螺旋状に繰り返し、毎回より深く</b> — 学生が達成感を実感できるひとつの道です。`,
+    pgTag:`二つのブランド、一つのシステム`, pgTitle:`基礎を固めるMedBridge、<br>面接まで引き上げるMedPath。`,
+    progMbTag:`コミュニケーションの技術 · The Art of Communication`,
+    progMbP:`医学英語の基礎語彙・発音・文構造を固める入門コース。短い文を声に出して話す習慣をつくり、MedPathへ安定して進む土台を築きます。`,
+    progMbF1:`<b>3セット · 30トピック</b>で構成される医学英語の基礎`, progMbF2:`バイリンガル(英/韓)教材と<b>1:1ネイティブセッション</b>`, progMbF3:`口述面接の<b>非科学領域</b>(動機・人柄・適性)に対応`,
+    progMpP:`同じ分子と同じ話す技術を3つのティアにわたり「何→どのように→なぜ」へ引き上げる発展システム。定義から実践的な面接論証まで走り抜けます。`,
+    progMpF1:`<b>生物・化学50レッスン</b>を3ティアの螺旋で深化`, progMpF2:`メカニズム説明から<b>即興論証・追問</b>対応まで`, progMpF3:`実践模擬面接で<b>口述試験の最上位要求</b>に備える`,
+    ssTag:`SESSION ARCHITECTURE · セッション構成`, ssTitle:`4段階のセッションサイクル`,
+    ssLead:`<b>メディカル英語学習を体系的に管理します。</b>各セッションは準備→訓練→分析→最適化の4段階を循環し、学生は同じ場所にとどまらず、毎回一歩深く進みます。`,
+    step1ko:`<b>事前準備</b> · セッション開始前`, step1l1:`レベルに合わせた<b>1:1学習計画</b>を事前に作成`, step1l2:`音声・スクリプト・バイリンガル(英/韓)教材を提供`, step1l3:`事前予習の確認で授業準備度を管理`,
+    step2ko:`<b>セッション訓練</b> · セッション中`, step2l1:`1:1ライブ——<b>口述試験対策のパフォーマンス訓練</b>`, step2l2:`精密スピーキング・ドリル＋<b>リアルタイム発音矯正</b>`, step2l3:`医学用語を正確な文脈で運用する訓練`,
+    step3ko:`<b>LLR分析</b> · 各セッション終了後`, step3l1:`構造化された<b>LLR分析レポート</b>を発行`, step3l2:`Progress · Speaking · Listening · Vocabulary · Corrections を分析`, step3l3:`次回セッションへの<b>明確な改善方向</b>を提示`,
+    step4ko:`<b>継続最適化</b> · 週次・隔週・月次`, step4l1:`個人の<b>誤りパターン分析</b>・反復ミスの追跡`, step4l2:`<b>月次カスタム表現レポート</b>(授業データに基づく)`, step4l3:`Post-class check-inで<b>学習の継続性</b>を管理`,
+    whyTag:`DESIGN PRINCIPLES · 設計原則`, whyTitle:`なぜ単発の授業ではなく「システム」なのか`,
+    pillar1h:`螺旋型の反復設計<span class="en-sub">Spiral Curriculum</span>`, pillar1p:`同じ分子・同じテーマを生物と化学、そして3つのティアで<b>繰り返し、毎回より深く</b>扱います。断片的な暗記ではなく、つながった知識として積み上がります。`,
+    pillar2h:`1:1ネイティブ集中<span class="en-sub">Native 1:1 Training</span>`, pillar2p:`専門のネイティブとの<b>1:1・50分セッション</b>で発話量を最大化します。話す力は聞く授業ではなく、自分で話す時間で育ちます。`,
+    pillar3h:`試験に整合した段階<span class="en-sub">Exam-Aligned Tiers</span>`, pillar3p:`各ティアが実際の医学部口述試験のどの要求に対応するか<b>明確に整合</b>しています。学習がそのまま試験対策になります。`,
+    pillar4h:`測定可能な成長<span class="en-sub">Tracked Progress</span>`, pillar4p:`バイリンガルの週次・月次レポートで<b>誤りパターンとスキルの成長</b>を追跡します。漠然とした向上ではなく、見えるデータで管理します。`,
+    ecoTag:`ブランドエコシステム · THE LYVON ECOSYSTEM`, ecoTitle:`物語は面接室で終わりません`,
+    ecoLead:`LYVONは合格支援で終わりません。<strong>高校生から医療専門家へ成長する全過程</strong>を、ひとつの英語コミュニケーション・エコシステムの中で共に歩みます — <strong>Bridge → Path → Connect.</strong>`,
+    ecoBridgeDesc:`医学部への<b>橋を架ける。</b>英語コミュニケーションの基礎。`, ecoPathDesc:`合格への<b>道を見つける。</b>定義 → 説明 → 論証。`, ecoConnectDesc:`グローバル医療コミュニティと<b>つながる。</b>合格、その先の成長。`,
+    rmTag:`成長ロードマップ · GROWTH ROADMAP`, rmHs:`高校生`, rmMbSm:`基礎`, rmAdmit:`医学部合格`, rmMcSm:`メンバーシップ`, rmPro:`医療専門家`,
+    mcBadge:`2026年7月パイロット開始`,
+    mcP:`医学部合格後も英語コミュニケーション力を継続するメンバーシップです。医・歯・薬・獣医学部生および未来の医療専門家のために、実践的な医療英語を共に訓練します。`,
+    mcd1:`医学テーマの英語ディスカッション`, mcd2:`最新医学論文の読解・発表`, mcd3:`研究成果の学術的発信`, mcd4:`臨床症例の英語プレゼン`, mcd5:`国際学会の発表・質疑応答`, mcd6:`医療現場の英語コミュニケーション`,
+    mcTarget:`対象 · <b>医・歯・薬・獣医学部生および未来の医療専門家</b>`,
+    ecoClosing:`基礎を築き、道を見つけ、世界とつながる。<br>そのすべての道のりに、LYVONが寄り添います。`,
+    ctaH2:`知識はすでに持っています。<br><span class="hl">あとは、話す番です。</span>`,
+    ctaP:`LYVONは<b>基礎から面接まで、ひとつの道</b>で準備します。現在のレベルと志望校をもとに、最適な道のりを一緒に設計します。`,
+    ctaBtn1:`KakaoTalkで相談 →`, ctaBtn2:`プログラムを見る`, ctaNote:`QRスキャンまたはボタンからKakaoTalk相談に直接つながります · 平日相談可`, qrCapT:`KakaoTalk相談`, qrCapS:`QRスキャンで直接つながります`,
+    footBrandP:`医学部進学を目指す学生のためのメディカル学術英語コミュニケーション・システム。MedBridgeで基礎を、MedPathで定義・説明・論証を段階的に育てます。`,
+    footS1:`道のり`, footS2:`セッション`, footS3:`エコシステム`, footS4:`設計原則`, footS5:`相談`
+  }
+};
+const i18nEls = document.querySelectorAll('[data-i18n]');
+const koBase = new Map();
+i18nEls.forEach(el => koBase.set(el, el.innerHTML));
+function setLang(lang){
+  i18nEls.forEach(el => {
+    const k = el.getAttribute('data-i18n');
+    if (lang === 'ko' || !I18N[lang] || I18N[lang][k] === undefined){
+      el.innerHTML = koBase.get(el);
+    } else {
+      el.innerHTML = I18N[lang][k];
+    }
+  });
+  document.documentElement.lang = lang;
+  document.querySelectorAll('#langSwitch button').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+}
+document.querySelectorAll('#langSwitch button').forEach(b => {
+  b.addEventListener('click', () => setLang(b.dataset.lang));
+});
+</script>
 </body>
 </html>
