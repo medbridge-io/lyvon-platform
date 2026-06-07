@@ -28,7 +28,7 @@ a{color:inherit;text-decoration:none;}
 /* 읽기 영역은 가독성을 위해 좁게(좌측 정렬) */
 .ref-note{max-width:720px;}
 
-nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(245,239,228,.96);backdrop-filter:saturate(140%) blur(6px);border-bottom:1px solid rgba(184,144,47,.25);}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(245,239,228,.96);backdrop-filter:saturate(140%) blur(6px);border-bottom:1px solid rgba(184,144,47,.25);padding:14px 0;}
 .nav-in{display:flex;align-items:center;justify-content:space-between;padding:18px 0;gap:12px;}
 .brand{display:flex;flex-direction:column;align-items:flex-start;gap:3px;flex-shrink:0;}
 .brand-row{display:flex;align-items:center;gap:10px;}
@@ -43,13 +43,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(245,239,228,
 .nav-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
 .nav-back{font-size:13px;font-weight:600;color:var(--navy-82);white-space:nowrap;}
 .nav-back:hover{color:var(--gold);}
-.lang-switch{display:inline-flex;border:1px solid rgba(11,37,69,.22);border-radius:7px;overflow:hidden;}
-.lang-switch button{font-family:var(--en);font-size:11px;font-weight:700;letter-spacing:.03em;padding:6px 9px;background:transparent;border:none;color:var(--navy-55);cursor:pointer;transition:background .2s,color .2s;}
-.lang-switch button+button{border-left:1px solid rgba(11,37,69,.18);}
+.lang-switch{display:inline-flex;border:1px solid rgba(11,37,69,.16);border-radius:8px;overflow:hidden;}
+.lang-switch button{font-family:var(--en);font-size:12px;font-weight:600;letter-spacing:.02em;padding:7px 12px;background:transparent;border:none;color:var(--navy-55);cursor:pointer;transition:background .2s,color .2s;}
+.lang-switch button+button{border-left:1px solid rgba(11,37,69,.12);}
 .lang-switch button.active{background:var(--gold);color:#fff;}
 .lang-switch button:hover:not(.active){color:var(--navy);}
 
-header.legal-head{padding:120px 0 48px;position:relative;}
+header.legal-head{padding:150px 0 48px;position:relative;}
 header.legal-head::before{content:"";position:absolute;left:0;top:18%;height:64%;width:6px;background:linear-gradient(180deg,rgba(184,144,47,0),#B8902F,rgba(184,144,47,0));}
 .eyebrow{font-family:var(--en);font-size:11px;font-weight:700;letter-spacing:.22em;color:var(--gold-d);margin-bottom:12px;}
 header.legal-head h1{font-family:var(--serif);font-size:38px;font-weight:600;letter-spacing:-.01em;}
@@ -93,6 +93,7 @@ footer{background:#081B33;color:rgba(255,255,255,.62);padding:40px 0 34px;margin
 
 @media(max-width:560px){
   header.legal-head h1{font-size:29px;}
+  header.legal-head{padding-top:114px;}
   .tab{padding:12px 12px;font-size:14px;}
   td:first-child{width:52%;}
   .wrap{padding:0 22px;}
@@ -550,6 +551,7 @@ document.querySelectorAll('#langSwitch button').forEach(b=>b.addEventListener('c
 // open correct tab from hash
 const hh=(location.hash||'').replace('#','');
 if(hh==='terms'||hh==='privacy') show(hh);
+window.addEventListener('hashchange',()=>{const h=(location.hash||'').replace('#','');if(h==='terms'||h==='privacy'){show(h);window.scrollTo({top:0,behavior:'smooth'});}});
 
 const navToggle=document.getElementById('navToggle');
 const navLinks=document.getElementById('navLinks');
