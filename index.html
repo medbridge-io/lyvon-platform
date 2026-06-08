@@ -238,7 +238,15 @@ section.creaml{background:var(--cream-l);}
 .eco-card .eco-stage{font-family:var(--en);font-size:10px;font-weight:700;letter-spacing:.16em;color:var(--gold-d);}
 .c-path .eco-stage{color:var(--indigo);}
 .c-connect .eco-stage{color:var(--teal);}
-.eco-card .eco-name{font-family:var(--serif);font-size:20px;font-weight:600;color:var(--navy);margin-top:4px;}
+.eco-card .eco-name{font-family:var(--serif);font-size:20px;font-weight:600;color:var(--navy);margin-top:4px;text-decoration:none;display:inline-flex;align-items:center;gap:7px;transition:color .2s;}
+.eco-name:hover{color:var(--gold-d);}
+.c-path .eco-name:hover{color:var(--indigo);}
+.c-connect .eco-name:hover{color:var(--teal);}
+.eco-arrow{font-family:var(--en);font-weight:700;font-size:16px;color:var(--gold-d);transition:transform .2s;}
+.c-path .eco-arrow{color:var(--indigo);}
+.c-connect .eco-arrow{color:var(--teal);}
+.eco-name:hover .eco-arrow{transform:translateX(3px);}
+.eco-card:hover{transform:translateY(-4px);box-shadow:0 16px 36px rgba(11,37,69,.1);}
 .eco-card .eco-role{font-size:11px;font-weight:700;letter-spacing:.02em;margin-top:3px;color:var(--gold-d);}
 .c-path .eco-role{color:var(--indigo);}
 .c-connect .eco-role{color:var(--teal);}
@@ -351,6 +359,13 @@ footer{background:#081B33;color:rgba(255,255,255,.62);padding:54px 0 40px;}
 .nl-note{margin-top:20px;font-size:13px;color:var(--navy-55);}
 .nl-note a{color:var(--gold);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(184,144,47,.4);}
 @media(max-width:560px){.nl-card{padding:38px 24px;}.nl-form{flex-direction:column;}.nl-title{font-size:25px;}}
+@media(max-width:900px){
+  .switch{display:grid !important;grid-template-columns:1fr 1fr;width:100%;}
+  .switch a{flex:none !important;}
+  .switch a+a{border-left:none;}
+  .switch a:nth-child(2n){border-left:1px solid rgba(11,37,69,.12);}
+  .switch a:nth-child(n+3){border-top:1px solid rgba(11,37,69,.12);}
+}
 </style>
 </head>
 <body>
@@ -370,6 +385,7 @@ footer{background:#081B33;color:rgba(255,255,255,.62);padding:54px 0 40px;}
         <a href="#top" class="active">LYVON</a>
         <a href="https://medbridgeedu.io?utm_source=lyvon&utm_medium=nav">MedBridge</a>
         <a href="https://medpathglobal.io?utm_source=lyvon&utm_medium=nav">MedPath</a>
+        <a href="https://lyvon.io/medconnect/?utm_source=lyvon&utm_medium=nav">MedConnect</a>
       </div>
       <a href="#problem" data-i18n="navWhy">왜 LYVON</a>
       <a href="#pathway" data-i18n="navPathway">4단계 경로</a>
@@ -649,9 +665,9 @@ footer{background:#081B33;color:rgba(255,255,255,.62);padding:54px 0 40px;}
       <p class="sec-lead" data-i18n="ecoLead">LYVON은 합격을 돕는 데서 멈추지 않습니다. <strong>고등학생에서 의료 전문가로 성장하는 전 과정</strong>을 하나의 영어 커뮤니케이션 생태계 안에서 함께합니다 — <strong>Bridge → Path → Connect.</strong></p>
     </div>
     <div class="eco-tri">
-      <div class="eco-card c-bridge reveal"><div class="eco-stage">BRIDGE</div><div class="eco-name">MedBridge</div><div class="eco-role">Foundation</div><div class="eco-desc" data-i18n="ecoBridgeDesc">의대로 향하는 <b>다리를 놓는다.</b> 영어 커뮤니케이션 기초.</div></div>
-      <div class="eco-card c-path reveal"><div class="eco-stage">PATH</div><div class="eco-name">MedPath</div><div class="eco-role">Admissions Communication</div><div class="eco-desc" data-i18n="ecoPathDesc">의대 합격을 위한 <b>길을 찾는다.</b> 정의 → 설명 → 논증.</div></div>
-      <div class="eco-card c-connect reveal"><div class="eco-stage">CONNECT</div><div class="eco-name">MedConnect</div><div class="eco-role">Membership</div><div class="eco-desc" data-i18n="ecoConnectDesc">글로벌 의료 커뮤니티와 <b>연결된다.</b> 합격, 그 이후의 성장.</div></div>
+      <div class="eco-card c-bridge reveal"><div class="eco-stage">BRIDGE</div><a class="eco-name" href="https://medbridgeedu.io?utm_source=lyvon&utm_medium=ecosystem">MedBridge <span class="eco-arrow">→</span></a><div class="eco-role">Foundation</div><div class="eco-desc" data-i18n="ecoBridgeDesc">의대로 향하는 <b>다리를 놓는다.</b> 영어 커뮤니케이션 기초.</div></div>
+      <div class="eco-card c-path reveal"><div class="eco-stage">PATH</div><a class="eco-name" href="https://medpathglobal.io?utm_source=lyvon&utm_medium=ecosystem">MedPath <span class="eco-arrow">→</span></a><div class="eco-role">Admissions Communication</div><div class="eco-desc" data-i18n="ecoPathDesc">의대 합격을 위한 <b>길을 찾는다.</b> 정의 → 설명 → 논증.</div></div>
+      <div class="eco-card c-connect reveal"><div class="eco-stage">CONNECT</div><a class="eco-name" href="https://lyvon.io/medconnect/?utm_source=lyvon&utm_medium=ecosystem">MedConnect <span class="eco-arrow">→</span></a><div class="eco-role">Membership</div><div class="eco-desc" data-i18n="ecoConnectDesc">글로벌 의료 커뮤니티와 <b>연결된다.</b> 합격, 그 이후의 성장.</div></div>
     </div>
     <div class="roadmap reveal">
       <div class="rm-tag" data-i18n="rmTag">성장 로드맵 · GROWTH ROADMAP</div>
@@ -743,7 +759,7 @@ footer{background:#081B33;color:rgba(255,255,255,.62);padding:54px 0 40px;}
           <a href="#programs">MedPath Starter</a>
           <a href="#programs">MedPath Core</a>
           <a href="#programs">MedPath Pro</a>
-          <a href="#ecosystem">MedConnect</a>
+          <a href="https://lyvon.io/medconnect/?utm_source=lyvon&utm_medium=footer">MedConnect</a>
         </div>
         <div class="foot-col">
           <h5>SYSTEM</h5>
