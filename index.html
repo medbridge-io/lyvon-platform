@@ -336,6 +336,21 @@ footer{background:#081B33;color:rgba(255,255,255,.62);padding:54px 0 40px;}
 .cycle-dia{max-width:440px;margin:44px auto 18px;}
 .cycle-dia svg{width:100%;height:auto;display:block;overflow:visible;}
 .cycle-cap{max-width:660px;margin:0 auto;text-align:center;font-size:14px;line-height:1.85;color:rgba(11,37,69,.82);}
+.newsletter{background:var(--cream);}
+.nl-card{max-width:640px;margin:0 auto;text-align:center;background:var(--cream-l);border:1px solid rgba(11,37,69,.1);border-radius:18px;padding:50px 44px;box-shadow:0 22px 54px rgba(11,37,69,.07);}
+.nl-eyebrow{font-family:var(--en);font-size:11px;font-weight:700;letter-spacing:.2em;color:var(--gold);margin-bottom:14px;}
+.nl-title{font-family:var(--serif);font-size:30px;font-weight:600;color:var(--navy);margin-bottom:14px;letter-spacing:-.01em;line-height:1.2;}
+.nl-desc{font-size:14.5px;line-height:1.85;color:var(--navy-82);max-width:480px;margin:0 auto 28px;}
+.nl-form{display:flex;gap:10px;max-width:440px;margin:0 auto;}
+.nl-input{flex:1;min-width:0;padding:14px 18px;border:1px solid rgba(11,37,69,.2);border-radius:8px;font-size:14px;font-family:inherit;color:var(--navy);background:#fff;outline:none;transition:border-color .2s;}
+.nl-input::placeholder{color:rgba(11,37,69,.4);}
+.nl-input:focus{border-color:var(--gold);}
+.nl-btn{white-space:nowrap;background:var(--navy);color:var(--cream-l);border:none;font-weight:700;font-size:14px;padding:14px 26px;border-radius:8px;cursor:pointer;transition:transform .2s,box-shadow .2s;box-shadow:0 8px 22px rgba(11,37,69,.2);}
+.nl-btn:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(11,37,69,.28);}
+.nl-done{display:none;font-size:15px;color:var(--navy);font-weight:600;padding:6px 0;}
+.nl-note{margin-top:20px;font-size:13px;color:var(--navy-55);}
+.nl-note a{color:var(--gold);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(184,144,47,.4);}
+@media(max-width:560px){.nl-card{padding:38px 24px;}.nl-form{flex-direction:column;}.nl-title{font-size:25px;}}
 </style>
 </head>
 <body>
@@ -704,6 +719,21 @@ footer{background:#081B33;color:rgba(255,255,255,.62);padding:54px 0 40px;}
   </div>
 </section>
 
+<!-- NEWSLETTER -->
+<section class="newsletter"><div class="wrap">
+  <div class="nl-card">
+    <div class="nl-eyebrow">LYVON NEWSLETTER</div>
+    <h2 class="nl-title" data-i18n="nlTitle">LYVON 뉴스레터</h2>
+    <p class="nl-desc" data-i18n="nlDesc">프리메드 영어와 의대 입시 준비 팁·가이드·인사이트를 정기적으로 받아보세요.</p>
+    <div class="nl-form" id="nlForm">
+      <input type="email" id="nlEmail" class="nl-input" placeholder="you@email.com" aria-label="email">
+      <button type="button" class="nl-btn" onclick="lyvonSubscribe()" data-i18n="nlBtn">구독하기 →</button>
+    </div>
+    <div class="nl-done" id="nlDone" data-i18n="nlDone">메일 앱이 열렸습니다 — 전송하시면 구독이 완료됩니다.</div>
+    <div class="nl-note" data-i18n="nlNote">궁금한 점이 있으신가요? <a href="mailto:hello@lyvon.io">편하게 문의 주세요</a></div>
+  </div>
+</div></section>
+
 <!-- FOOTER -->
 <footer>
   <div class="wrap">
@@ -757,7 +787,7 @@ document.querySelectorAll('.reveal:not(.in)').forEach(el => io.observe(el));
 
 /* ===== i18n ===== */
 const I18N = {
-  en:{heroProof:`<span style="color:#B8902F;font-weight:700;">✓</span> <b style="color:#0B2545;font-weight:600;">Students accepted in 2025 &amp; 2026</b> <span style="color:rgba(11,37,69,.28);margin:0 5px;">·</span> 2027 cohort enrolled <span style="color:rgba(11,37,69,.28);margin:0 5px;">·</span> 32 students to date, small-group (since Dec 2024)`,templeCap:`From fundamentals to the interview room — one path.`,llrLabel:`LLR · 5 Analysis Areas`,philoQuote:`&ldquo;Never stop learning, connect people, and create lasting value.&rdquo;`,dg1:`Before the session`,dg2:`During the session`,dg3:`After each session`,dg4:`Ongoing`,dgC:`Every session`,stepCaption:`Four phases repeated every session — students never stay in place; each round goes one step deeper.`,
+  en:{nlTitle:`The LYVON Newsletter`,nlDesc:`Sign up to get regular pre-med English and admissions tips, guides, and insights delivered straight to your inbox.`,nlBtn:`Subscribe →`,nlNote:`Got a question about us? <a href="mailto:hello@lyvon.io">Send us a quick note</a>`,nlDone:`Your mail app just opened — send the email to complete your sign-up.`,heroProof:`<span style="color:#B8902F;font-weight:700;">✓</span> <b style="color:#0B2545;font-weight:600;">Students accepted in 2025 &amp; 2026</b> <span style="color:rgba(11,37,69,.28);margin:0 5px;">·</span> 2027 cohort enrolled <span style="color:rgba(11,37,69,.28);margin:0 5px;">·</span> 32 students to date, small-group (since Dec 2024)`,templeCap:`From fundamentals to the interview room — one path.`,llrLabel:`LLR · 5 Analysis Areas`,philoQuote:`&ldquo;Never stop learning, connect people, and create lasting value.&rdquo;`,dg1:`Before the session`,dg2:`During the session`,dg3:`After each session`,dg4:`Ongoing`,dgC:`Every session`,stepCaption:`Four phases repeated every session — students never stay in place; each round goes one step deeper.`,
     navWhy:`Why LYVON`, navPathway:`Pathway`, navPrograms:`Programs`, navSession:`Session`, navEcosystem:`Ecosystem`, navCta:`Consultation`, brandTag:`Academic & Professional Communication System`, footPrivacy:`Privacy Policy`, footTerms:`Terms of Service`,
     heroH1:`<span class="hl">Hungarian med-school admissions</span> hinge on speaking.<br>We give intensive 1:1 training in English speaking & oral-exam skills<br><span class="hl">with native experts</span>.`,
     heroSub:`From foundations to the interview room — prepared on one path.`,
@@ -825,7 +855,7 @@ const I18N = {
     footBrandP:`A medical academic English communication system for pre-med students. Build foundations in MedBridge and grow define-explain-justify skills in MedPath, step by step.`,
     footS1:`Pathway`, footS2:`Session`, footS3:`Ecosystem`, footS4:`Design Principles`, footS5:`Consultation`
   },
-  ja:{heroProof:`<span style="color:#B8902F;font-weight:700;">✓</span> <b style="color:#0B2545;font-weight:600;">2025・2026年 連続合格実績</b> <span style="color:rgba(11,37,69,.28);margin:0 5px;">·</span> 2027年度生 受講中 <span style="color:rgba(11,37,69,.28);margin:0 5px;">·</span> 少人数・累計32名（2024年12月〜）`,templeCap:`基礎から面接まで — ひとつの道で。`,llrLabel:`LLR · 5つの分析領域`,philoQuote:`「学びを止めず、人をつなぎ、持続可能な価値を生み出す。」`,dg1:`事前準備`,dg2:`セッション訓練`,dg3:`LLR分析`,dg4:`継続最適化`,dgC:`毎セッション反復`,stepCaption:`毎セッション繰り返される4段階——学生は同じ場所にとどまらず、毎回一歩深く進みます。`,
+  ja:{nlTitle:`LYVONニュースレター`,nlDesc:`プレメド英語と医学部受験のヒント・ガイド・インサイトを定期的にメールでお届けします。`,nlBtn:`登録する →`,nlNote:`ご質問がありますか? <a href="mailto:hello@lyvon.io">お気軽にお問い合わせください</a>`,nlDone:`メールアプリが開きました — 送信すると登録が完了します。`,heroProof:`<span style="color:#B8902F;font-weight:700;">✓</span> <b style="color:#0B2545;font-weight:600;">2025・2026年 連続合格実績</b> <span style="color:rgba(11,37,69,.28);margin:0 5px;">·</span> 2027年度生 受講中 <span style="color:rgba(11,37,69,.28);margin:0 5px;">·</span> 少人数・累計32名（2024年12月〜）`,templeCap:`基礎から面接まで — ひとつの道で。`,llrLabel:`LLR · 5つの分析領域`,philoQuote:`「学びを止めず、人をつなぎ、持続可能な価値を生み出す。」`,dg1:`事前準備`,dg2:`セッション訓練`,dg3:`LLR分析`,dg4:`継続最適化`,dgC:`毎セッション反復`,stepCaption:`毎セッション繰り返される4段階——学生は同じ場所にとどまらず、毎回一歩深く進みます。`,
     navWhy:`なぜLYVON`, navPathway:`道のり`, navPrograms:`プログラム`, navSession:`セッション`, navEcosystem:`エコシステム`, navCta:`相談する`, brandTag:`学術・専門英語コミュニケーション・システム`, footPrivacy:`プライバシーポリシー`, footTerms:`利用規約`,
     heroH1:`<span class="hl">ハンガリー医学部入試</span>の核心は「話す力」。<br>英語スピーキングと口述試験を<br><span class="hl">ネイティブ講師と1:1</span>で集中的に鍛えます。`,
     heroSub:`基礎から面接まで、ひとつの道で準備します。`,
@@ -912,6 +942,17 @@ function setLang(lang){
 document.querySelectorAll('#langSwitch button').forEach(b => {
   b.addEventListener('click', () => setLang(b.dataset.lang));
 });
+</script>
+<script>
+function lyvonSubscribe(){
+  var el=document.getElementById('nlEmail'); var v=(el.value||'').trim();
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)){ el.style.borderColor='#C0392B'; el.focus(); return; }
+  var subj=encodeURIComponent('LYVON 뉴스레터 구독 신청');
+  var body=encodeURIComponent('구독 신청 이메일: '+v);
+  window.location.href='mailto:hello@lyvon.io?subject='+subj+'&body='+body;
+  document.getElementById('nlForm').style.display='none';
+  document.getElementById('nlDone').style.display='block';
+}
 </script>
 </body>
 </html>
