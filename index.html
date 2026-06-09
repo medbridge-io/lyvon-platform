@@ -29,7 +29,7 @@
   --cream:#F5EFE4; --cream2:#EDE4D3; --cream-l:#FCFBF7;
   --navy:#0B2545; --navy2:#15325A; --darker:#081B33;
   --navy-82:rgba(11,37,69,.82); --navy-55:rgba(11,37,69,.55); --navy-40:rgba(11,37,69,.4);
-  --teal:#1A7A6A; --teal-m:#2D9E85; --teal-l:#E3F5F0;
+  --teal:#1A7A6A; --teal-m:#2D9E85; --teal-l:#E3F5F0; --sky:#2E8BC0; --sky-d:#246FA0; --sky-dark:#5BB3E0; --teal-dark:#5BC4AE;
   --gold:#B8902F; --gold-d:#A8842E; --gold-l:#FBF3E0; --gold-dark:#D4B25A;
   --indigo:#3E4F8A; --indigo-l:#EAEDF7;
   --charcoal:#2A3140; --charcoal-l:#ECEEF1;
@@ -234,22 +234,27 @@ section.creaml{background:var(--cream-l);}
 .eco-card{background:var(--cream-l);border:1px solid var(--border);border-top:3px solid var(--gold);border-radius:12px;padding:24px 24px;box-shadow:0 6px 20px rgba(11,37,69,.05);transition:transform .25s, box-shadow .25s;}
 .eco-card:hover{transform:translateY(-4px);box-shadow:0 16px 38px rgba(11,37,69,.12);}
 .eco-card.c-path{border-top-color:var(--indigo);}
-.eco-card.c-connect{border-top-color:var(--teal);}
+.eco-card.c-connect{border-top-color:var(--sky);}
+.eco-card.c-bridge{border-top-color:var(--teal);}
+.eco-card.c-bridge .eco-stage{color:var(--teal);}
+.c-bridge .eco-name:hover{color:var(--teal);}
+.c-bridge .eco-arrow{color:var(--teal);}
+.eco-card.c-bridge .eco-role{color:var(--teal);}
 .eco-card .eco-stage{font-family:var(--en);font-size:10px;font-weight:700;letter-spacing:.16em;color:var(--gold-d);}
 .c-path .eco-stage{color:var(--indigo);}
-.c-connect .eco-stage{color:var(--teal);}
+.c-connect .eco-stage{color:var(--sky-d);}
 .eco-card .eco-name{font-family:var(--serif);font-size:20px;font-weight:600;color:var(--navy);margin-top:4px;text-decoration:none;display:inline-flex;align-items:center;gap:7px;transition:color .2s;}
 .eco-name:hover{color:var(--gold-d);}
 .c-path .eco-name:hover{color:var(--indigo);}
-.c-connect .eco-name:hover{color:var(--teal);}
+.c-connect .eco-name:hover{color:var(--sky-d);}
 .eco-arrow{font-family:var(--en);font-weight:700;font-size:16px;color:var(--gold-d);transition:transform .2s;}
 .c-path .eco-arrow{color:var(--indigo);}
-.c-connect .eco-arrow{color:var(--teal);}
+.c-connect .eco-arrow{color:var(--sky-d);}
 .eco-name:hover .eco-arrow{transform:translateX(3px);}
 .eco-card:hover{transform:translateY(-4px);box-shadow:0 16px 36px rgba(11,37,69,.1);}
 .eco-card .eco-role{font-size:11px;font-weight:700;letter-spacing:.02em;margin-top:3px;color:var(--gold-d);}
 .c-path .eco-role{color:var(--indigo);}
-.c-connect .eco-role{color:var(--teal);}
+.c-connect .eco-role{color:var(--sky-d);}
 .eco-card .eco-desc{font-size:13px;color:var(--muted);line-height:1.7;margin-top:12px;}
 .eco-card .eco-desc b{color:var(--navy);font-weight:700;}
 .roadmap{margin-top:18px;background:linear-gradient(105deg,#0B2545,#15325A);border-radius:14px;padding:30px 28px;box-shadow:0 12px 30px rgba(11,37,69,.18);}
@@ -257,20 +262,20 @@ section.creaml{background:var(--cream-l);}
 .roadmap .rm-flow{display:flex;align-items:center;justify-content:space-between;gap:6px;color:#fff;font-size:12px;text-align:center;line-height:1.45;flex-wrap:wrap;}
 .roadmap .rm-flow .arr{color:var(--gold-dark);font-weight:700;}
 .roadmap .rm-flow b{font-size:13.5px;}
-.roadmap .rm-flow .b-mb{color:#C9A86C;}
+.roadmap .rm-flow .b-mb{color:var(--teal-dark);}
 .roadmap .rm-flow .b-mp{color:#9AAAE6;}
-.roadmap .rm-flow .b-mc{color:#7FC9BD;}
+.roadmap .rm-flow .b-mc{color:var(--sky-dark);}
 .roadmap .rm-flow .sm{display:block;font-size:9px;color:rgba(255,255,255,.55);margin-top:2px;}
-.medconnect{margin-top:18px;background:var(--cream-l);border:1px solid var(--border);border-left:4px solid var(--teal);border-radius:0 14px 14px 0;padding:28px 32px;box-shadow:0 6px 20px rgba(11,37,69,.05);}
+.medconnect{margin-top:18px;background:var(--cream-l);border:1px solid var(--border);border-left:4px solid var(--sky);border-radius:0 14px 14px 0;padding:28px 32px;box-shadow:0 6px 20px rgba(11,37,69,.05);}
 .mc-head{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px;}
 .mc-head .mc-title{font-family:var(--serif);font-size:20px;font-weight:600;color:var(--navy);}
-.mc-head .mc-badge{font-family:var(--en);font-size:10px;font-weight:700;letter-spacing:.02em;color:#fff;background:var(--teal);border-radius:20px;padding:4px 12px;}
+.mc-head .mc-badge{font-family:var(--en);font-size:10px;font-weight:700;letter-spacing:.02em;color:#fff;background:var(--sky);border-radius:20px;padding:4px 12px;}
 .medconnect > p{font-size:13.5px;color:var(--muted);line-height:1.8;}
 .mc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px 20px;margin-top:18px;}
 .mc-item .mc-t{font-size:13.5px;color:var(--navy);font-weight:700;}
-.mc-item .mc-d{font-size:11.5px;color:var(--teal);margin-top:3px;line-height:1.45;}
+.mc-item .mc-d{font-size:11.5px;color:var(--sky-d);margin-top:3px;line-height:1.45;}
 .mc-target{margin-top:18px;border-top:1px solid var(--border);padding-top:12px;font-size:12px;color:var(--navy-55);}
-.mc-target b{color:var(--teal);font-weight:700;}
+.mc-target b{color:var(--sky-d);font-weight:700;}
 .eco-closing{margin-top:36px;text-align:center;}
 .eco-closing .line{width:54px;height:1px;background:rgba(184,144,47,.55);margin:0 auto 18px;}
 .eco-closing p{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--navy-82);line-height:1.6;}
@@ -341,7 +346,7 @@ footer{background:#081B33;color:rgba(255,255,255,.62);padding:54px 0 40px;}
   section{padding:70px 0;}
   .pain-answer{flex-direction:column;align-items:flex-start;gap:14px;}
 }
-.cycle-dia{max-width:440px;margin:44px auto 18px;}
+.cycle-dia{max-width:500px;margin:44px auto 18px;}
 .cycle-dia svg{width:100%;height:auto;display:block;overflow:visible;}
 .cycle-cap{max-width:660px;margin:0 auto;text-align:center;font-size:14px;line-height:1.85;color:rgba(11,37,69,.82);}
 .newsletter{background:var(--cream);}
@@ -366,6 +371,11 @@ footer{background:#081B33;color:rgba(255,255,255,.62);padding:54px 0 40px;}
   .switch a:nth-child(2n){border-left:1px solid rgba(11,37,69,.12);}
   .switch a:nth-child(n+3){border-top:1px solid rgba(11,37,69,.12);}
 }
+
+/* LLR 칩 효과 */
+.llr-pills span{transition:transform .2s,background .3s,color .3s,box-shadow .3s;cursor:pointer;}
+.llr-pills span:hover{transform:translateY(-3px);background:#B8902F !important;color:#fff !important;box-shadow:0 8px 20px rgba(184,144,47,.4);}
+
 </style>
 </head>
 <body>
@@ -600,36 +610,96 @@ footer{background:#081B33;color:rgba(255,255,255,.62);padding:54px 0 40px;}
 <h2 class="sec-title" data-i18n="ssTitle">4단계 세션 사이클</h2>
 <p class="sec-lead" data-i18n="ssLead">메디컬 영어 학습을 체계적으로 관리합니다. 매 세션은 준비 → 훈련 → 분석 → 최적화의 네 단계로 순환하며, 학생은 같은 자리에 머무르지 않고 매번 한 걸음 더 깊이 들어갑니다.</p>
 </div>
-<div class="cycle-dia reveal"><svg viewBox="0 0 520 520" xmlns="http://www.w3.org/2000/svg" font-family="Inter,'Noto Sans KR',sans-serif">
-    <circle cx="260" cy="260" r="164" fill="none" stroke="#B8902F" stroke-width="2" stroke-dasharray="3 7" opacity="0.5"/>
-    <g fill="#B8902F">
-      <polygon points="-5,-7 7,0 -5,7" transform="translate(376 144) rotate(45)"/>
-      <polygon points="-5,-7 7,0 -5,7" transform="translate(376 376) rotate(135)"/>
-      <polygon points="-5,-7 7,0 -5,7" transform="translate(144 376) rotate(225)"/>
-      <polygon points="-5,-7 7,0 -5,7" transform="translate(144 144) rotate(315)"/>
-    </g>
-    <g><circle cx="260" cy="96" r="58" fill="#0B2545" stroke="#D4B25A" stroke-width="1.5"/>
-      <text x="260" y="78" text-anchor="middle" fill="#D4B25A" font-size="12" font-weight="700">01</text>
-      <text x="260" y="98" text-anchor="middle" fill="#ffffff" font-size="15" font-weight="700" letter-spacing="1">PREPARE</text>
-      <text x="260" y="117" text-anchor="middle" fill="#E8DCC0" font-size="11.5" data-i18n="dg1">사전 준비</text></g>
-    <g><circle cx="424" cy="260" r="58" fill="#0B2545" stroke="#D4B25A" stroke-width="1.5"/>
-      <text x="424" y="242" text-anchor="middle" fill="#D4B25A" font-size="12" font-weight="700">02</text>
-      <text x="424" y="262" text-anchor="middle" fill="#ffffff" font-size="15" font-weight="700" letter-spacing="1">TRAIN</text>
-      <text x="424" y="281" text-anchor="middle" fill="#E8DCC0" font-size="11.5" data-i18n="dg2">세션 훈련</text></g>
-    <g><circle cx="260" cy="424" r="58" fill="#0B2545" stroke="#D4B25A" stroke-width="1.5"/>
-      <text x="260" y="406" text-anchor="middle" fill="#D4B25A" font-size="12" font-weight="700">03</text>
-      <text x="260" y="426" text-anchor="middle" fill="#ffffff" font-size="15" font-weight="700" letter-spacing="1">ANALYZE</text>
-      <text x="260" y="445" text-anchor="middle" fill="#E8DCC0" font-size="11.5" data-i18n="dg3">LLR 분석</text></g>
-    <g><circle cx="96" cy="260" r="58" fill="#0B2545" stroke="#D4B25A" stroke-width="1.5"/>
-      <text x="96" y="242" text-anchor="middle" fill="#D4B25A" font-size="12" font-weight="700">04</text>
-      <text x="96" y="262" text-anchor="middle" fill="#ffffff" font-size="15" font-weight="700" letter-spacing="1">IMPROVE</text>
-      <text x="96" y="281" text-anchor="middle" fill="#E8DCC0" font-size="11.5" data-i18n="dg4">지속 최적화</text></g>
-    <circle cx="260" cy="260" r="76" fill="#0B2545" stroke="#D4B25A" stroke-width="2"/>
-    <text x="260" y="250" text-anchor="middle" fill="#D4B25A" font-size="11.5" font-weight="700" letter-spacing="1.5">SESSION CYCLE</text>
-    <text x="260" y="274" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="700" data-i18n="dgC">매 세션 반복</text>
-  </svg></div>
+<div class="cycle-dia reveal"><svg viewBox="0 0 540 360" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:480px;height:auto;display:block;margin:0 auto;">
+      <defs>
+        <marker id="cyArrL" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+          <path d="M 0,0 L 10,5 L 0,10 z" fill="#B8902F"/>
+        </marker>
+      </defs>
+
+      <!-- Connecting curved path through all 4 stages, dashed gold -->
+      <path d="M 130,90 Q 270,30 410,90" stroke="#B8902F" stroke-width="1.3" fill="none" stroke-dasharray="4,4" opacity="0.55" marker-end="url(#cyArrL)"/>
+      <path d="M 460,135 Q 510,180 460,225" stroke="#B8902F" stroke-width="1.3" fill="none" stroke-dasharray="4,4" opacity="0.55" marker-end="url(#cyArrL)"/>
+      <path d="M 410,270 Q 270,330 130,270" stroke="#B8902F" stroke-width="1.3" fill="none" stroke-dasharray="4,4" opacity="0.55" marker-end="url(#cyArrL)"/>
+      <path d="M 80,225 Q 30,180 80,135" stroke="#B8902F" stroke-width="1.3" fill="none" stroke-dasharray="4,4" opacity="0.55" marker-end="url(#cyArrL)"/>
+
+      <!-- 01 PREPARE — top-left hex -->
+      <g transform="translate(110, 110)">
+        <polygon points="0,-48 42,-24 42,24 0,48 -42,24 -42,-24" fill="white" stroke="#B8902F" stroke-width="1.6"/>
+        <polygon points="0,-44 38,-22 38,22 0,44 -38,22 -38,-22" fill="none" stroke="#B8902F" stroke-width="0.5" opacity="0.4"/>
+        <!-- Document with checkmark icon -->
+        <g stroke="#B8902F" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M -10,-14 L -10,12 L 10,12 L 10,-9 L 5,-14 Z"/>
+          <path d="M 5,-14 L 5,-9 L 10,-9"/>
+          <path d="M -5,0 L -1,4 L 6,-4" stroke-width="1.8"/>
+        </g>
+        <!-- Number badge -->
+        <circle cx="32" cy="-32" r="13" fill="#B8902F"/>
+        <text x="32" y="-28" text-anchor="middle" fill="white" font-family="Lora,serif" font-size="11" font-weight="600">01</text>
+      </g>
+      <text x="110" y="180" text-anchor="middle" fill="#0B2545" font-family="Inter,sans-serif" font-size="10" letter-spacing="2.4" font-weight="700">PREPARE</text>
+      <text data-i18n="dg1" x="110" y="196" text-anchor="middle" fill="rgba(11,37,69,.6)" font-family="Noto Sans KR,sans-serif" font-size="10">사전 준비</text>
+
+      <!-- 02 TRAIN — top-right hex -->
+      <g transform="translate(430, 110)">
+        <polygon points="0,-48 42,-24 42,24 0,48 -42,24 -42,-24" fill="white" stroke="#B8902F" stroke-width="1.6"/>
+        <polygon points="0,-44 38,-22 38,22 0,44 -38,22 -38,-22" fill="none" stroke="#B8902F" stroke-width="0.5" opacity="0.4"/>
+        <!-- Speech bubble / microphone icon -->
+        <g stroke="#B8902F" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="-5" y="-15" width="10" height="18" rx="5"/>
+          <path d="M -10,-2 Q -10,9 0,9 Q 10,9 10,-2"/>
+          <line x1="0" y1="9" x2="0" y2="14"/>
+          <line x1="-4" y1="14" x2="4" y2="14"/>
+        </g>
+        <circle cx="32" cy="-32" r="13" fill="#B8902F"/>
+        <text x="32" y="-28" text-anchor="middle" fill="white" font-family="Lora,serif" font-size="11" font-weight="600">02</text>
+      </g>
+      <text x="430" y="180" text-anchor="middle" fill="#0B2545" font-family="Inter,sans-serif" font-size="10" letter-spacing="2.4" font-weight="700">TRAIN</text>
+      <text data-i18n="dg2" x="430" y="196" text-anchor="middle" fill="rgba(11,37,69,.6)" font-family="Noto Sans KR,sans-serif" font-size="10">세션 훈련</text>
+
+      <!-- 03 ANALYZE — bottom-right hex -->
+      <g transform="translate(430, 250)">
+        <polygon points="0,-48 42,-24 42,24 0,48 -42,24 -42,-24" fill="white" stroke="#B8902F" stroke-width="1.6"/>
+        <polygon points="0,-44 38,-22 38,22 0,44 -38,22 -38,-22" fill="none" stroke="#B8902F" stroke-width="0.5" opacity="0.4"/>
+        <!-- Bar chart icon -->
+        <g stroke="#B8902F" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="-12" y1="12" x2="12" y2="12"/>
+          <rect x="-11" y="-2" width="5" height="14"/>
+          <rect x="-3" y="-9" width="5" height="21"/>
+          <rect x="5" y="-14" width="5" height="26"/>
+        </g>
+        <circle cx="32" cy="-32" r="13" fill="#B8902F"/>
+        <text x="32" y="-28" text-anchor="middle" fill="white" font-family="Lora,serif" font-size="11" font-weight="600">03</text>
+      </g>
+      <text x="430" y="320" text-anchor="middle" fill="#0B2545" font-family="Inter,sans-serif" font-size="10" letter-spacing="2.4" font-weight="700">ANALYZE</text>
+      <text data-i18n="dg3" x="430" y="336" text-anchor="middle" fill="rgba(11,37,69,.6)" font-family="Noto Sans KR,sans-serif" font-size="10">LLR 분석</text>
+
+      <!-- 04 IMPROVE — bottom-left hex -->
+      <g transform="translate(110, 250)">
+        <polygon points="0,-48 42,-24 42,24 0,48 -42,24 -42,-24" fill="white" stroke="#B8902F" stroke-width="1.6"/>
+        <polygon points="0,-44 38,-22 38,22 0,44 -38,22 -38,-22" fill="none" stroke="#B8902F" stroke-width="0.5" opacity="0.4"/>
+        <!-- Upward spiral arrow icon -->
+        <g stroke="#B8902F" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M -10,8 Q -10,-8 -2,-8 Q 6,-8 6,0 Q 6,6 0,6 Q -4,6 -4,2"/>
+          <path d="M 0,-12 L 6,-8 L 2,-2"/>
+        </g>
+        <circle cx="32" cy="-32" r="13" fill="#B8902F"/>
+        <text x="32" y="-28" text-anchor="middle" fill="white" font-family="Lora,serif" font-size="11" font-weight="600">04</text>
+      </g>
+      <text x="110" y="320" text-anchor="middle" fill="#0B2545" font-family="Inter,sans-serif" font-size="10" letter-spacing="2.4" font-weight="700">IMPROVE</text>
+      <text data-i18n="dg4" x="110" y="336" text-anchor="middle" fill="rgba(11,37,69,.6)" font-family="Noto Sans KR,sans-serif" font-size="10">지속 최적화</text>
+
+      <!-- Center label -->
+      <g transform="translate(270, 180)">
+        <circle r="48" fill="white" stroke="#B8902F" stroke-width="0.8" opacity="0.6"/>
+        <circle r="42" fill="none" stroke="#B8902F" stroke-width="0.4" stroke-dasharray="2,3" opacity="0.5"/>
+        <text y="-10" text-anchor="middle" fill="#B8902F" font-family="Inter,sans-serif" font-size="9" letter-spacing="3" font-weight="700">SESSION</text>
+        <text y="10" text-anchor="middle" fill="#0B2545" font-family="Lora,serif" font-size="20" font-weight="500">CYCLE</text>
+        <text data-i18n="dgC" y="28" text-anchor="middle" fill="rgba(11,37,69,.55)" font-family="Noto Sans KR,sans-serif" font-size="9" letter-spacing="1">매 세션 반복</text>
+      </g>
+    </svg></div>
 <p class="cycle-cap reveal" data-i18n="stepCaption">매 세션마다 반복되는 4단계 — 학생은 같은 자리에서 머무르지 않고, 매번 한 걸음 더 깊이 들어갑니다.</p>
-<div style="margin:24px auto 4px;text-align:center;max-width:640px;"><div data-i18n="llrLabel" style="font-family:'Inter','Noto Sans KR',sans-serif;font-size:10.5px;font-weight:700;letter-spacing:.26em;color:#A8842E;">LLR · 5개 분석 영역</div><div style="margin-top:14px;display:flex;flex-wrap:wrap;justify-content:center;gap:8px;"><span style="font-family:'Inter',sans-serif;font-size:12.5px;font-weight:600;color:#A8842E;background:#FBF3E0;border:1px solid rgba(184,144,47,.32);border-radius:999px;padding:6px 15px;">Progress</span><span style="font-family:'Inter',sans-serif;font-size:12.5px;font-weight:600;color:#A8842E;background:#FBF3E0;border:1px solid rgba(184,144,47,.32);border-radius:999px;padding:6px 15px;">Speaking</span><span style="font-family:'Inter',sans-serif;font-size:12.5px;font-weight:600;color:#A8842E;background:#FBF3E0;border:1px solid rgba(184,144,47,.32);border-radius:999px;padding:6px 15px;">Listening</span><span style="font-family:'Inter',sans-serif;font-size:12.5px;font-weight:600;color:#A8842E;background:#FBF3E0;border:1px solid rgba(184,144,47,.32);border-radius:999px;padding:6px 15px;">Vocabulary</span><span style="font-family:'Inter',sans-serif;font-size:12.5px;font-weight:600;color:#A8842E;background:#FBF3E0;border:1px solid rgba(184,144,47,.32);border-radius:999px;padding:6px 15px;">Corrections</span></div></div>
+<div style="margin:24px auto 4px;text-align:center;max-width:640px;"><div data-i18n="llrLabel" style="font-family:'Inter','Noto Sans KR',sans-serif;font-size:10.5px;font-weight:700;letter-spacing:.26em;color:#A8842E;">LLR · 5개 분석 영역</div><div class="llr-pills" style="margin-top:14px;display:flex;flex-wrap:wrap;justify-content:center;gap:8px;"><span style="font-family:'Inter',sans-serif;font-size:12.5px;font-weight:600;color:#A8842E;background:#FBF3E0;border:1px solid rgba(184,144,47,.32);border-radius:999px;padding:6px 15px;">Progress</span><span style="font-family:'Inter',sans-serif;font-size:12.5px;font-weight:600;color:#A8842E;background:#FBF3E0;border:1px solid rgba(184,144,47,.32);border-radius:999px;padding:6px 15px;">Speaking</span><span style="font-family:'Inter',sans-serif;font-size:12.5px;font-weight:600;color:#A8842E;background:#FBF3E0;border:1px solid rgba(184,144,47,.32);border-radius:999px;padding:6px 15px;">Listening</span><span style="font-family:'Inter',sans-serif;font-size:12.5px;font-weight:600;color:#A8842E;background:#FBF3E0;border:1px solid rgba(184,144,47,.32);border-radius:999px;padding:6px 15px;">Vocabulary</span><span style="font-family:'Inter',sans-serif;font-size:12.5px;font-weight:600;color:#A8842E;background:#FBF3E0;border:1px solid rgba(184,144,47,.32);border-radius:999px;padding:6px 15px;">Corrections</span></div></div>
 <div class="step-grid">
 <div class="step reveal"><div class="step-head"><div class="step-no">01</div><div><div class="step-en">PREPARE</div><div class="step-ko" data-i18n="step1ko"><b>사전 준비</b> · 세션 시작 전</div></div></div><ul><li data-i18n="step1l1">레벨에 맞춘 <b>1:1 학습 계획</b> 사전 수립</li><li data-i18n="step1l2">오디오·스크립트·이중언어(영/한) 자료 제공</li><li data-i18n="step1l3">사전 예습 확인으로 수업 준비도 관리</li></ul></div>
 <div class="step reveal"><div class="step-head"><div class="step-no">02</div><div><div class="step-en">TRAIN</div><div class="step-ko" data-i18n="step2ko"><b>세션 훈련</b> · 세션 진행 중</div></div></div><ul><li data-i18n="step2l1">1:1 실시간 — <b>구술시험 대비 퍼포먼스 훈련</b></li><li data-i18n="step2l2">정밀 스피킹 드릴 + <b>실시간 발음 교정</b></li><li data-i18n="step2l3">의학 용어를 정확한 맥락에서 구사하는 훈련</li></ul></div>
