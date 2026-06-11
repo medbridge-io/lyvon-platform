@@ -27,7 +27,7 @@
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
-body{font-family:var(--sans);color:var(--navy);background:linear-gradient(135deg,#F8EFD8 0%,#F1E6CF 100%);line-height:1.8;-webkit-font-smoothing:antialiased;}
+body{-webkit-text-size-adjust:100%;text-size-adjust:100%;font-family:var(--sans);color:var(--navy);background:linear-gradient(135deg,#F8EFD8 0%,#F1E6CF 100%);line-height:1.8;-webkit-font-smoothing:antialiased;}
 .wrap{max-width:720px;margin:0 auto;padding:0 26px;}
 a{color:inherit;}
 
@@ -80,6 +80,7 @@ footer .fcopy{margin-top:20px;font-size:11.5px;color:rgba(255,255,255,.4);}
   .hero h1{font-size:38px;} .eq{padding:24px 22px;} .eq .e1{font-size:26px;}.eq .e2{font-size:26px;}
   .block p{font-size:15px;} .closing .lines{font-size:21px;} .divider{margin:46px auto;}
 }
+.block p.after{margin-top:18px;font-size:14.5px;color:var(--navy-70);}
 </style>
 </head>
 <body>
@@ -98,11 +99,11 @@ footer .fcopy{margin-top:20px;font-size:11.5px;color:rgba(255,255,255,.4);}
 
 <header class="hero">
   <div class="wrap">
-    <div class="eyebrow">PHILOSOPHY · LYVON</div>
-    <h1>Everyone has a <b>V.</b></h1>
-    <p class="intro" data-i18n="phIntro">LYVON의 철학은 물리학의 라그랑지안(Lagrangian)과 최소작용 원리(Principle of Stationary Action)에서 영감을 받았습니다.</p>
-    <div class="eq"><div class="e1">L = T − V</div><div class="e2">δ ∫ L dt = 0</div><div class="leg" data-i18n="phEqLegend">T = 운동에너지 · V = 잠재에너지 (Potential Energy)</div></div>
-    <p class="bridge" data-i18n="phBridge">물리학에서 자연은 무수히 많은 가능성 속에서 하나의 경로를 선택하고, 그 경로를 따라 현실을 만들어 갑니다. 우리는 이 원리를 사람의 성장에 적용합니다.</p>
+    <div class="eyebrow" data-i18n="phEyebrow">PHILOSOPHY · LYVON</div>
+    <h1 data-i18n="phHero">모든 사람에게는 <b>V</b>가 있습니다.</h1>
+    <p class="intro" data-i18n="phIntro">LYVON의 철학은 물리학의 라그랑지안(Lagrangian)과 최소작용의 원리(Principle of Stationary Action)에서 영감을 받았습니다.</p>
+    <div class="eq"><div class="e1">L = T − V</div><div class="e2">δ ∫ L dt = 0</div><div class="leg" data-i18n="phEqLegend">T = 운동에너지 · V = 위치에너지</div></div>
+    <p class="bridge" data-i18n="phBridge">물리학에서 자연은 수많은 가능성 속에서 하나의 길을 선택하고, 그 길을 따라 현실을 만들어 갑니다. 우리는 사람의 성장 또한 이와 닮아 있다고 믿습니다.</p>
   </div>
 </header>
 
@@ -110,26 +111,33 @@ footer .fcopy{margin-top:20px;font-size:11.5px;color:rgba(255,255,255,.4);}
   <div class="divider"></div>
   <section class="block reveal">
     <div class="label">THE ONE</div>
-    <p data-i18n="phOne">모든 사람은 고유한 존재입니다. 세상에 같은 사람은 없습니다. 각자는 자신만의 꿈과 재능, 그리고 아직 펼쳐지지 않은 미래를 가지고 있습니다.</p>
-    <div class="tag">Every person is The One.</div>
+    <p data-i18n="phOne">모든 사람은 저마다 고유한 존재입니다. 세상에 똑같은 사람은 없습니다. 각자는 자신만의 꿈과 재능, 그리고 아직 펼쳐지지 않은 미래를 품고 살아갑니다.</p>
+    <div class="tag" data-i18n="phOneTag">모든 사람은 단 하나의 존재, The One입니다.</div>
   </section>
   <div class="divider"></div>
   <section class="block reveal">
     <div class="label">THE V</div>
-    <p data-i18n="phV">라그랑지안에서 V는 잠재에너지(Potential Energy)를 의미합니다. 아직 드러나지 않았지만 이미 존재하는 에너지, 아직 실현되지 않았지만 분명히 존재하는 가능성. 우리는 그것을 사람 안에 존재하는 잠재력으로 해석합니다.</p>
-    <p class="vlist" data-i18n="phVlist">아직 발견되지 않은 재능 · 아직 표현되지 않은 목소리 · 아직 실현되지 않은 미래.</p>
-    <div class="tag">Everyone has a V.</div>
+    <p data-i18n="phV">라그랑지안에서 V는 위치에너지를 의미합니다. 아직 드러나지 않았지만 이미 존재하는 에너지, 아직 실현되지 않았지만 분명히 존재하는 가능성입니다. LYVON은 이 V를 사람 안에 존재하는 잠재력으로 해석합니다.</p>
+    <p class="vlist" data-i18n="phVlist">아직 발견되지 않은 재능. 아직 표현되지 않은 목소리. 아직 실현되지 않은 미래.</p>
+    <div class="tag" data-i18n="phVTag">모든 사람에게는 V가 있습니다.</div>
+  </section>
+  <div class="divider"></div>
+  <section class="block reveal">
+    <div class="label">THE PATH</div>
+    <p data-i18n="phPath">잠재력만으로 삶은 변화하지 않습니다. 중요한 것은 잠재력이 현실이 되어가는 길입니다. 최소작용의 원리는 자연이 수많은 가능성 속에서 자신만의 길을 따라 움직인다고 말합니다. 사람의 성장도 마찬가지입니다.</p>
+    <div class="tag" data-i18n="phPathTag">모든 V에는 Path가 있습니다.</div>
+    <p class="after" data-i18n="phPath2">LYVON은 각자가 자신의 길을 발견하고, 그 길을 따라 성장할 수 있도록 돕습니다.</p>
   </section>
   <div class="divider"></div>
   <section class="block reveal">
     <div class="label">THE LYVON</div>
-    <p data-i18n="phLyvon">최소작용 원리는 말합니다 — 자연은 수많은 가능성 중에서 자신의 경로를 따른다고. 가능성만으로는 삶이 바뀌지 않습니다. 중요한 것은 가능성의 크기가 아니라, 그 가능성이 어떤 길을 따라 현실이 되는가입니다. LYVON은 가능성을 만들어내지 않습니다. 우리는 이미 존재하는 가능성을 발견하고, 성장시키고, 세상과 연결하며, 각자가 자신의 길을 찾도록 함께합니다. 그것이 LYVON의 존재 이유입니다.</p>
-    <div class="tag">This is The LYVON.</div>
+    <p data-i18n="phLyvon">우리는 잠재력을 만들어내지 않습니다. 이미 존재하는 가능성을 발견하고, 성장시키며, 세상과 연결합니다. 그리고 가능성이 현실이 되는 여정을 함께 걸어갑니다.</p>
+    <div class="tag" data-i18n="phLyvonTag">그것이 LYVON이 존재하는 이유입니다.</div>
   </section>
   <div class="divider"></div>
   <section class="closing reveal">
-    <div class="ce">THE ONE · THE V · THE LYVON</div>
-    <div class="lines">The One has a V.<br>Every V has a Path.<br>LYVON helps bring it to life.</div>
+    <div class="ce">THE ONE · THE V · THE PATH · LYVON</div>
+    <div class="lines" data-i18n="phClose">The One은 V를 가지고 있습니다.<br>모든 V에는 Path가 있습니다.<br>LYVON은 그것이 현실이 되도록 돕습니다.</div>
     <div class="journey">Learn <b>On.</b> · Grow <b>On.</b> · Connect <b>On.</b> · Live <b>On.</b></div>
   </section>
 </main>
@@ -146,23 +154,41 @@ footer .fcopy{margin-top:20px;font-size:11.5px;color:rgba(255,255,255,.4);}
 const I18N={
  en:{
   back:`← lyvon.io`,
+  phEyebrow:`PHILOSOPHY · LYVON`,
+  phHero:`Everyone has a <b>V.</b>`,
   phIntro:`The philosophy of LYVON is inspired by the Lagrangian and the Principle of Stationary Action in physics.`,
   phEqLegend:`T = kinetic energy · V = potential energy`,
-  phBridge:`In physics, nature selects a single path among countless possibilities and builds reality along it. We apply this principle to human growth.`,
-  phOne:`Every person is unique. No two people are the same. Each carries their own dreams, talents, and a future not yet unfolded.`,
-  phV:`In the Lagrangian, V stands for potential energy — energy that already exists though not yet revealed, possibility surely present though not yet realized. We read it as the potential within each person.`,
-  phVlist:`Talent not yet discovered · a voice not yet expressed · a future not yet realized.`,
-  phLyvon:`The Principle of Stationary Action says nature follows its own path among countless possibilities. Possibility alone does not change a life. What matters is not the size of the potential, but the path along which it becomes real. LYVON does not create potential. We discover the potential that already exists, grow it, connect it to the world, and walk with each person as they find their own path. That is why LYVON exists.`
+  phBridge:`In physics, nature chooses a single path among countless possibilities and reality unfolds along that path. We believe human growth follows a similar principle.`,
+  phOne:`Every person is unique. No two people are the same. Each person carries their own dreams, talents, and a future not yet revealed.`,
+  phOneTag:`Every person is The One.`,
+  phV:`In the Lagrangian, V represents potential energy. Energy that already exists, even before it is seen. Possibility that is real, even before it becomes visible. We see V as the potential within every person.`,
+  phVlist:`A talent not yet discovered. A voice not yet expressed. A future not yet realized.`,
+  phVTag:`Everyone has a V.`,
+  phPath:`Potential alone does not change a life. What matters is the path through which potential becomes reality. The Principle of Stationary Action teaches that among countless possibilities, nature follows its own path. Growth is no different.`,
+  phPathTag:`Every V has a Path.`,
+  phPath2:`LYVON exists to help people discover that path and move forward on it.`,
+  phLyvon:`We do not create potential. We uncover it. We grow it. We connect it to the world. And we walk alongside each person as they turn possibility into reality.`,
+  phLyvonTag:`That is LYVON.`,
+  phClose:`The One has a V.<br>Every V has a Path.<br>LYVON helps bring it to life.`
  },
  ja:{
   back:`← lyvon.io`,
-  phIntro:`LYVONの哲学は、物理学のラグランジアンと最小作用の原理から着想を得ています。`,
-  phEqLegend:`T = 運動エネルギー · V = 位置エネルギー (Potential Energy)`,
-  phBridge:`物理学では、自然は無数の可能性の中から一つの経路を選び、その経路に沿って現実をつくります。私たちはこの原理を人の成長に応用します。`,
-  phOne:`すべての人は固有の存在です。同じ人は世界に一人もいません。それぞれが自分だけの夢と才能、そしてまだ開かれていない未来を持っています。`,
-  phV:`ラグランジアンにおいてVは位置エネルギー（Potential Energy）を意味します。まだ現れていないが既に存在するエネルギー、まだ実現していないが確かに存在する可能性。私たちはそれを人の中に存在する潜在力として解釈します。`,
-  phVlist:`まだ発見されていない才能 · まだ表現されていない声 · まだ実現されていない未来。`,
-  phLyvon:`最小作用の原理はこう語ります — 自然は無数の可能性の中から自らの経路をたどる、と。可能性だけでは人生は変わりません。重要なのは可能性の大きさではなく、その可能性がどの道をたどって現実になるかです。LYVONは可能性を生み出しません。私たちは既に存在する可能性を発見し、成長させ、世界とつなぎ、それぞれが自分の道を見つけられるよう共に歩みます。それがLYVONの存在理由です。`
+  phEyebrow:`PHILOSOPHY · LYVON`,
+  phHero:`すべての人には、<b>V</b>があります。`,
+  phIntro:`LYVONの哲学は、物理学におけるラグランジアン（Lagrangian）と最小作用の原理（Principle of Stationary Action）から着想を得ています。`,
+  phEqLegend:`T = 運動エネルギー · V = 位置エネルギー`,
+  phBridge:`自然界は無数の可能性の中から一つの道を選び、その道に沿って現実を形づくります。私たちは、人の成長もまた同じだと考えています。`,
+  phOne:`一人ひとりは、かけがえのない存在です。同じ人は誰ひとりとして存在しません。それぞれが自分だけの夢や才能、そしてまだ開かれていない未来を持っています。`,
+  phOneTag:`すべての人は、唯一無二の存在。それが The One です。`,
+  phV:`ラグランジアンにおいて、Vは位置エネルギーを表します。まだ現れていないけれど、すでに存在しているエネルギー。まだ実現していないけれど、確かに存在する可能性。LYVONは、このVを人の中にある可能性として捉えます。`,
+  phVlist:`まだ見つかっていない才能。まだ表現されていない声。まだ実現していない未来。`,
+  phVTag:`すべての人には、Vがあります。`,
+  phPath:`可能性だけでは人生は変わりません。大切なのは、その可能性が現実へと変わる道です。最小作用の原理は、自然が無数の可能性の中から自らの道を選ぶことを示しています。人の成長も同じです。`,
+  phPathTag:`すべてのVには、Pathがあります。`,
+  phPath2:`LYVONは、一人ひとりが自分自身の道を見つけ、その道を歩み続けられるよう支援します。`,
+  phLyvon:`私たちは可能性を創り出すのではありません。すでに存在する可能性を見つけ、育み、世界とつなげます。そして、その可能性が現実になるまで共に歩みます。`,
+  phLyvonTag:`それがLYVONの存在理由です。`,
+  phClose:`The OneにはVがあります。<br>すべてのVにはPathがあります。<br>LYVONは、その実現を支えます。`
  }
 };
 const els=document.querySelectorAll('[data-i18n]');
