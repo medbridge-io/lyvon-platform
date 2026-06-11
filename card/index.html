@@ -5,15 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="format-detection" content="telephone=no,date=no,address=no,email=no">
 <title>Patrick Noh · LYVON</title>
-<meta name="description" content="Patrick Noh · Founder & Program Designer · LYVON designs learning & communication systems that turn potential into a clear path — starting in medical, built to grow beyond.">
+<meta name="description" content="Patrick Noh · Founder & Program Designer · LYVON designs systems that turn potential into progress through learning, communication, and connection — starting in medicine and expanding beyond it.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Patrick Noh · LYVON">
-<meta property="og:description" content="Founder & Program Designer · LYVON designs learning & communication systems that turn potential into a clear path — starting in medical, built to grow beyond.">
-<meta name="twitter:description" content="Founder & Program Designer · LYVON designs learning & communication systems that turn potential into a clear path — starting in medical, built to grow beyond.">
-<meta property="og:image" content="https://lyvon.io/card/card-og-v4.png">
+<meta property="og:description" content="Founder & Program Designer · LYVON designs systems that turn potential into progress through learning, communication, and connection — starting in medicine and expanding beyond it.">
+<meta name="twitter:description" content="Founder & Program Designer · LYVON designs systems that turn potential into progress through learning, communication, and connection — starting in medicine and expanding beyond it.">
+<meta property="og:image" content="https://lyvon.io/card/card-og-v5.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta name="twitter:image" content="https://lyvon.io/card/card-og-v4.png">
+<meta name="twitter:image" content="https://lyvon.io/card/card-og-v5.png">
 <meta property="og:url" content="https://lyvon.io/card">
 <meta name="twitter:card" content="summary_large_image">
 <link href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600;700&family=Inter:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
@@ -125,7 +125,7 @@
     </div>
   </div>
 
-  <p class="intro" data-i18n="intro"><b>LYVON</b> designs learning &amp; communication systems that turn potential into a clear path — starting in medical, built to grow beyond.</p>
+  <p class="intro" data-i18n="intro"><b>LYVON</b> designs systems that turn potential into progress through learning, communication, and connection — starting in medicine and expanding beyond it.</p>
 
   <a class="save" href="patrick.vcf" data-i18n="save">Save Contact (vCard)</a>
   <div class="links">
@@ -163,7 +163,7 @@
   var VCARD=["BEGIN:VCARD","VERSION:3.0","N:Noh;Patrick;;;","FN:Patrick Noh","ORG:LYVON",
     "TITLE:Founder & Program Designer","EMAIL;TYPE=INTERNET:patrick@lyvon.io",
     "TEL;TYPE=CELL:+82-10-4083-9227","TEL;TYPE=WORK:+81-80-7226-9227","URL:https://lyvon.io",
-    "NOTE:LYVON \u2014 learning & communication systems that turn potential into a clear path. Starting in medical \u2014 built to grow beyond.","END:VCARD"].join("\r\n");
+    "NOTE:LYVON \u2014 systems that turn potential into progress through learning\, communication\, and connection. Starting in medicine \u2014 expanding beyond it.","END:VCARD"].join("\r\n");
   function saveContact(){try{var b=new Blob([VCARD],{type:"text/vcard;charset=utf-8"});var u=URL.createObjectURL(b);
     var a=document.createElement("a");a.href=u;a.download="Patrick_Noh_LYVON.vcf";document.body.appendChild(a);a.click();
     document.body.removeChild(a);setTimeout(function(){URL.revokeObjectURL(u);},2000);}
@@ -172,15 +172,15 @@
   function copyLink(){var u=window.location.href;if(navigator.clipboard){navigator.clipboard.writeText(u).then(function(){toast(window.__toast||"Link copied");},function(){toast(u);});}else{toast(u);}}
   var I18N={
     en:{hint:"Tap to flip", role:"Founder & Program Designer",
-        intro:"<b>LYVON</b> designs learning & communication systems that turn potential into a clear path — starting in medical, built to grow beyond.",
+        intro:"<b>LYVON</b> designs systems that turn potential into progress through learning, communication, and connection — starting in medicine and expanding beyond it.",
         save:"Save Contact (vCard)", callkr:"Call · KR", calljp:"Call · JP", email:"Email", kakao:"KakaoTalk", website:"Website",
         copy:"Copy card link", qrcap:"Scan to open this card", toast:"Link copied"},
-    ko:{hint:"탭하여 뒤집기", role:"파운더 & 프로그램 디자이너",
-        intro:"<b>LYVON</b>은 잠재력을 분명한 길로 바꾸는 학습·커뮤니케이션 시스템을 설계합니다. 의료에서 출발해, 그 너머로 확장해 나갑니다.",
+    ko:{hint:"탭하여 뒤집기", role:"Founder & Program Designer",
+        intro:"<b>LYVON</b>은 학습과 소통, 그리고 연결을 통해 잠재력을 성장으로 이끄는 시스템을 설계합니다. 의학에서 시작해 그 너머의 가능성으로 확장합니다.",
         save:"연락처 저장 (vCard)", callkr:"전화 · 한국", calljp:"전화 · 일본", email:"이메일", kakao:"카카오톡", website:"웹사이트",
         copy:"카드 링크 복사", qrcap:"스캔하여 카드 열기", toast:"링크가 복사되었습니다"},
-    ja:{hint:"タップして裏返す", role:"創業者 & プログラムデザイナー",
-        intro:"<b>LYVON</b> は、可能性を確かな道筋へと変える学習・コミュニケーションシステムを設計します。医療を起点に、その先へと広がっていきます。",
+    ja:{hint:"タップして裏返す", role:"Founder & Program Designer",
+        intro:"<b>LYVON</b>は、学びとコミュニケーション、そしてつながりを通じて、可能性を成長へと導くシステムを設計します。医学から始まり、その先の可能性へと広がります。",
         save:"連絡先を保存 (vCard)", callkr:"電話 · 韓国", calljp:"電話 · 日本", email:"メール", kakao:"カカオトーク", website:"ウェブサイト",
         copy:"カードリンクをコピー", qrcap:"スキャンしてカードを開く", toast:"リンクをコピーしました"}
   };
