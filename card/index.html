@@ -10,15 +10,15 @@
 <meta property="og:title" content="Patrick Noh · LYVON">
 <meta property="og:description" content="Founder & Program Designer · LYVON designs systems that turn potential into progress through learning, communication, and connection — starting in medicine and expanding beyond it.">
 <meta name="twitter:description" content="Founder & Program Designer · LYVON designs systems that turn potential into progress through learning, communication, and connection — starting in medicine and expanding beyond it.">
-<meta property="og:image" content="https://lyvon.io/card/card-og-v5.png">
+<meta property="og:image" content="https://lyvon.io/card/card-og-v6.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta name="twitter:image" content="https://lyvon.io/card/card-og-v5.png">
+<meta name="twitter:image" content="https://lyvon.io/card/card-og-v6.png">
 <meta property="og:url" content="https://lyvon.io/card">
 <meta name="twitter:card" content="summary_large_image">
 <link href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600;700&family=Inter:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-  :root{--navy:#0B2545;--gold:#C2A24E;--gold-l:#E0C17C;--muted:#5A6472;--ink:#EAE6DC;}
+  :root{--navy:#0B2545;--gold:#C2A24E;--gold-l:#E0C17C;--gold-d:#A9822A;--muted:#5A6472;--ink:#EAE6DC;}
   *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
   body{font-family:'Inter','Noto Sans KR',sans-serif;min-height:100vh;
     background:radial-gradient(130% 110% at 30% 12%, #1b2c47 0%, #112135 46%, #0a1626 78%, #070f1c 100%);
@@ -86,6 +86,30 @@
   .lang span[data-lang]{cursor:pointer;color:#8c97a8;padding:1px 3px;transition:color .15s;}
   .lang span[data-lang].on{color:var(--gold-l);}
   .lang .ld{color:#465469;}
+
+  /* v2 FRONT */
+  .vf .vf-brand{position:absolute;left:9mm;top:7mm;font-family:'Lora',serif;font-size:11pt;letter-spacing:2.2px;font-weight:700;}
+  .vf .vf-v{position:absolute;right:8mm;top:5.6mm;font-family:'Lora',serif;font-size:17.5pt;font-weight:700;line-height:1;}
+  .vf .vf-name{position:absolute;left:9mm;top:16.5mm;font-family:'Lora',serif;font-size:18pt;font-weight:600;color:var(--navy);line-height:1;}
+  .vf .vf-role{position:absolute;left:9mm;top:24mm;font-size:6.2pt;letter-spacing:1.8px;color:var(--gold);text-transform:uppercase;font-weight:700;}
+  .vf .vf-rule{position:absolute;left:9mm;top:27.5mm;width:15mm;height:.4mm;background:var(--gold);}
+  .vf .vf-journey{position:absolute;left:9mm;top:31mm;font-family:'Lora',serif;font-size:7.2pt;color:var(--navy);}
+  .vf .vf-journey span{color:var(--gold);font-weight:600;}
+  .vf .vf-c{position:absolute;left:9mm;bottom:6mm;font-size:6.2pt;color:#33405a;line-height:1.72;}
+  .vf .vf-c .s{color:var(--gold);margin:0 3px;}
+  .vf .vf-qr{position:absolute;right:8mm;bottom:5.5mm;width:11mm;height:11mm;mix-blend-mode:multiply;opacity:.92;}
+  /* v2 BACK */
+  .vb{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;}
+  .vb .vb-wm{font-family:'Lora',serif;font-size:20pt;font-weight:700;letter-spacing:5.5px;line-height:1;}
+  .vb .vb-triad{font-size:5.2pt;letter-spacing:3.6px;color:var(--gold);font-weight:700;text-transform:uppercase;margin-top:1.9mm;}
+  .vb .vb-rule{width:19mm;height:.32mm;background:var(--gold);opacity:.85;margin:2.5mm 0;}
+  .vb .vb-lead{font-family:'Lora',serif;font-style:italic;font-size:7pt;color:var(--navy);letter-spacing:.9px;margin-top:2.3mm;}
+  .vb .vb-lead .v{color:var(--gold);font-weight:700;}
+  .vb .vb-phil{font-family:'Lora',serif;font-size:6.4pt;line-height:1.68;letter-spacing:.5px;color:var(--navy);}
+  .vb .vb-phil .v{color:var(--gold);font-weight:700;}
+  .vb .vb-eqn{font-family:'Lora',serif;font-style:italic;font-size:5.4pt;color:var(--muted);letter-spacing:.8px;margin-top:2.6mm;}
+  .vb .vb-eqn .g{color:var(--gold);font-weight:700;font-style:normal;}
+  .vb .vb-eqn .sep{color:var(--gold);margin:0 3px;font-style:normal;}
 </style>
 </head>
 <body>
@@ -102,24 +126,23 @@
   <div class="stage">
     <div class="scaler" id="scaler">
       <div class="flip" id="flip" onclick="document.getElementById('flip').classList.toggle('flipped')">
-        <div class="face front cover f">
-          <div class="since">Live On</div>
-          <div class="brand foilgold">LYVON</div>
-          <div class="name">Patrick Noh</div>
-          <div class="role" data-i18n="role">Founder &amp; Program Designer</div>
-          <div class="hair"></div>
-          <div class="c">patrick@lyvon.io <span class="s">&middot;</span> lyvon.io<br>KR +82 10-4083-9227 <span class="s">&middot;</span> JP +81 80-7226-9227</div>
-          <img class="qr" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAlIAAAJSCAYAAAAI3ytzAAANK0lEQVR4nO3ZUY4iORZA0WbEH+tgKayapbAOvpmfGalbrcqsummwMecsIPTCdgQ3M/76CwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHiWw+wBVnc6Xx6zZ2CO++3q+Xiykc/XSvu14ntjxPqseF+8xkrP12r+M3sAAIB3JaQAACIhBQAQCSkAgEhIAQBEQgoAIBJSAACRkAIAiIQUAEAkpAAAIiEFABAJKQCASEgBAERCCgAgElIAAJGQAgCIhBQAQHScPQDwvdP58hh1rfvtehh1LYBPJ6ReyA/Y840MDqg869+zRs/nffgaPu0BAERCCgAgElIAAJGQAgCIhBQAQCSkAAAiIQUAEAkpAIBISAEAREIKACASUgAAkZACAIiEFABAJKQAACIhBQAQCSkAgOg4ewD+zOl8ecye4Vnut+th9gyj7bxfOxq5XyPO82rzrGbn52vH/dqV/0gBAERCCgAgElIAAJGQAgCIhBQAQCSkAAAiIQUAEAkpAIBISAEAREIKACASUgAAkZACAIiEFABAJKQAACIhBQAQCSkAgEhIAQBEx9kDAK91Ol8eI65zv10PI64D8M6EFLyJEeEyKqJ2tVocrjYP8G8+7QEAREIKACASUgAAkZACAIiEFABAJKQAACIhBQAQCSkAgEhIAQBEQgoAIBJSAACRkAIAiIQUAEAkpAAAIiEFABAJKQCA6Dh7AOA9nc6Xx+wZ/m61eUa5366H2TMAv+Y/UgAAkZACAIiEFABAJKQAACIhBQAQCSkAgEhIAQBEQgoAIBJSAACRkAIAiIQUAEAkpAAAIiEFABAJKQCASEgBAERCCgAgElIAANFx9gDA7zmdL4/ZM/B6o/b9frseRlwH+Cch9Wa8DPmpEWdoZNStNg/vw/uQFfi0BwAQCSkAgEhIAQBEQgoAIBJSAACRkAIAiIQUAEAkpAAAIiEFABAJKQCASEgBAERCCgAgElIAAJGQAgCIhBQAQCSkAACi4+wBPsnpfHnMngFWO4erzcNr2Hd2IaTgTdxv18NPrzHyx8s8X1ttHuA5fNoDAIiEFABAJKQAACIhBQAQCSkAgEhIAQBEQgoAIBJSAACRkAIAiIQUAEAkpAAAIiEFABAJKQCASEgBAERCCgAgElIAANFx9gDA7zmdL4/ZM/ydeQCE1Lfut+th9gywsxHP2MiI8sz/mrWBf/NpDwAgElIAAJGQAgCIhBQAQCSkAAAiIQUAEAkpAIBISAEAREIKACASUgAAkZACAIiEFABAJKQAACIhBQAQCSkAgEhIAQBEx9kDrO50vjxGXet+ux5+eo2R8/C1EfvF+xn1jO14frx/XmfH87MrIQVPNOplKOi/tuI6j+DHFNbn0x4AQCSkAAAiIQUAEAkpAIBISAEAREIKACASUgAAkZACAIiEFABAJKQAACIhBQAQCSkAgEhIAQBEQgoAIBJSAACRkAIAiI6zB/gkp/PlMXsGft+o/brfrocR19mVdf4174zP5bl4H0LqG6MO4c4vxB0f1NX2a8c1XpF1/t6INRr5fO24Z6u9f/iaT3sAAJGQAgCIhBQAQCSkAAAiIQUAEAkpAIBISAEAREIKACASUgAAkZACAIiEFABAJKQAACIhBQAQCSkAgEhIAQBEQgoAIDrOHmB1p/PlMXuGT2Cdv2Z93ov9ei8j9+t+ux5GXWuEUfe22n2tREh9MA/G16wPO1npPK80C/yUT3sAAJGQAgCIhBQAQCSkAAAiIQUAEAkpAIBISAEAREIKACASUgAAkZACAIiEFABAJKQAACIhBQAQCSkAgEhIAQBEQgoAIDrOHoB5TufLY/YMKxu1Pvfb9TDiOjzfzs/EzvcGMwmpNzTih3nnl6r1YSfO82us9AfPqFns+2v4tAcAEAkpAIBISAEAREIKACASUgAAkZACAIiEFABAJKQAACIhBQAQCSkAgEhIAQBEQgoAIBJSAACRkAIAiIQUAEAkpAAAouPsAfhzp/PlMXuGla22PqvNAzyHZ/0zCSl+7H67Hn56DS+g7+26ziPua5SVZtndrueZz+PTHgBAJKQAACIhBQAQCSkAgEhIAQBEQgoAIBJSAACRkAIAiIQUAEAkpAAAIiEFABAJKQCASEgBAERCCgAgElIAAJGQAgCIDrMHWN3pfHnMngF4P/fb9cfvV+8fVjHiPO/qOHuAT7LjQRz5ol9pffyAfU8ofKbV9t08X1vpvborn/YAACIhBQAQCSkAgEhIAQBEQgoAIBJSAACRkAIAiIQUAEAkpAAAIiEFABAJKQCASEgBAERCCgAgElIAAJGQAgCIhBQAQHScPQB/5nS+PEZd6367HkZda4SR9waz7XqeV7uv1eZZzaj1We33YiVCih8Z9XB5GX5vxFqvts7Oz/d23HfYiU97AACRkAIAiIQUAEAkpAAAIiEFABAJKQCASEgBAERCCgAgElIAAJGQAgCIhBQAQCSkAAAiIQUAEAkpAIBISAEAREIKACA6zh6AeU7ny2P2DPy+Hfdrx3sazRrB2oTUm7nfrocR19n55TxqjVay836tZqXzM3Lfd72vUVZaH+/59+LTHgBAJKQAACIhBQAQCSkAgEhIAQBEQgoAIBJSAACRkAIAiIQUAEAkpAAAIiEFABAJKQCASEgBAERCCgAgElIAAJGQAgCIjrMH4M+czpfH7BlWN2qN7rfrYZVZeJ2Vzs9IzuLzjVzj1c4PvyakPthqobDaPLva9QXt/MA/7fqsr8anPQCASEgBAERCCgAgElIAAJGQAgCIhBQAQCSkAAAiIQUAEAkpAIBISAEAREIKACASUgAAkZACAIiEFABAJKQAACIhBQAQHWcPALCj0/nymD0Dv89+UR1mDwA7W/HlfL9dPfdPZt9fwzqzAp/2AAAiIQUAEAkpAIBISAEAREIKACASUgAAkZACAIiEFABAJKQAACIhBQAQCSkAgEhIAQBEQgoAIBJSAACRkAIAiIQUAEB0nD3A6k7ny2P2DMxxv10Ps2d4hl3P9K77tZKRZ2fX/fJ8fR4hBU806uWz68t5V/b9/YzYM/v1mXzaAwCIhBQAQCSkAAAiIQUAEAkpAIBISAEAREIKACASUgAAkZACAIiEFABAJKQAACIhBQAQCSkAgEhIAQBEQgoAIBJSAADRcfYAsLPT+fKYPQO/z359LntPJaRe6H67HmbPsLudX4YrnZ+R67zSffE1e/W9ldZo5/fhSnzaAwCIhBQAQCSkAAAiIQUAEAkpAIBISAEAREIKACASUgAAkZACAIiEFABAJKQAACIhBQAQCSkAgEhIAQBEQgoAIBJSAADRcfYA/JnT+fKYPcOz3G/Xw+wZVrbz3vN8zs9rjFpn78P3IaQA/mfUj5doeT8j9t6+fyaf9gAAIiEFABAJKQCASEgBAERCCgAgElIAAJGQAgCIhBQAQCSkAAAiIQUAEAkpAIBISAEAREIKACASUgAAkZACAIiEFABAdJw9APDZTufLY/YMsNo5XG0efk1IwYe5366H2TP8nx+LzzXiHDo/rMCnPQCASEgBAERCCgAgElIAAJGQAgCIhBQAQCSkAAAiIQUAEAkpAIBISAEAREIKACASUgAAkZACAIiEFABAJKQAACIhBQAQHWcPALzW6Xx5jLjO/XY9jLgOwDsTUsA0o2JsVByONOLeRt7XjuHr/HxtxfvakU97AACRkAIAiIQUAEAkpAAAIiEFABAJKQCASEgBAERCCgAgElIAAJGQAgCIhBQAQCSkAAAiIQUAEAkpAIBISAEAREIKACA6zh4A+Fyn8+Uxe4ZnWe3eRs1zv10Pq8wCKxBSb2bES4zXsV/vRyjwE575z+PTHgBAJKQAACIhBQAQCSkAgEhIAQBEQgoAIBJSAACRkAIAiIQUAEAkpAAAIiEFABAJKQCASEgBAERCCgAgElIAAJGQAgCIjrMH+CSn8+UxewZea8U9v9+uh9kzrGzFPeN9OD+fR0gBWxgRiCN/BFcKVj/u8Dw+7QEAREIKACASUgAAkZACAIiEFABAJKQAACIhBQAQCSkAgEhIAQBEQgoAIBJSAACRkAIAiIQUAEAkpAAAIiEFABAJKQCASEgBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADA8/wXXdYj8qCfiJYAAAAASUVORK5CYII=" alt="lyvon.io QR">
+        <div class="face front cover vf">
+          <div class="vf-brand foilgold">LYVON</div>
+          <div class="vf-v foilgold">V</div>
+          <div class="vf-name">Patrick Noh</div>
+          <div class="vf-role" data-i18n="role">Founder &amp; Program Designer</div>
+          <div class="vf-rule"></div>
+          <div class="vf-journey">Learn <span>On</span>. Grow <span>On</span>. Connect <span>On</span>. Live <span>On</span>.</div>
+          <div class="vf-c">patrick@lyvon.io <span class="s">&middot;</span> lyvon.io<br>KR +82 10-4083-9227<br>JP +81 80-7226-9227</div>
+          <img class="vf-qr" src="data:image/png;base64,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" alt="lyvon.io">
         </div>
-        <div class="face back cover b">
-          <div class="wm foilgold">LYVON</div>
-          <div class="vee">Everyone has a <span class="gv">V</span>.</div>
-          <div class="eqn">L = T &minus; <span class="g">V</span> <span class="sep">&middot;</span> <span class="g">&delta;</span>&#8747; L&#8202;dt = 0</div>
-          <div class="hair"></div>
-          <div class="sys">BRIDGE <span class="ar">&rarr;</span> PATH <span class="ar">&rarr;</span> CONNECT</div>
-          <div class="t">Academic &amp; Professional Communication System</div>
-    <div class="vert"><span class="vk">MEDICAL</span> <span class="vd">&middot;</span> MedBridge <span class="vd">&middot;</span> MedPath <span class="vd">&middot;</span> MedConnect</div>
-          <div class="since">Live On</div>
+        <div class="face back cover vb">
+          <div class="vb-wm foilgold">LYVON</div>
+          <div class="vb-triad">The ONE &middot; The V &middot; The PATH</div>
+          <div class="vb-lead">Everyone has a <span class="v">V</span>.</div>
+          <div class="vb-rule"></div>
+          <div class="vb-phil">The One has a <span class="v">V</span>.<br>Every <span class="v">V</span> has a Path.<br><span class="foilgold" style="font-weight:700">LYVON</span> helps bring it to life.</div>
+          <div class="vb-eqn">L = T &minus; <span class="g">V</span> <span class="sep">&middot;</span> <span class="g">&delta;</span>&#8747; L dt = 0</div>
         </div>
       </div>
     </div>
