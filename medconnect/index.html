@@ -33,7 +33,7 @@ a{color:inherit;}
 b{font-weight:700;}
 
 /* NAV */
-.nav{position:sticky;top:0;z-index:50;background:rgba(252,251,247,.86);backdrop-filter:blur(10px);border-bottom:1px solid rgba(11,37,69,.08);}
+.nav{position:sticky;top:40px;z-index:50;background:rgba(252,251,247,.86);backdrop-filter:blur(10px);border-bottom:1px solid rgba(11,37,69,.08);}
 .nav-in{max-width:1080px;margin:0 auto;padding:14px 26px;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;}
 .brand{display:flex;flex-direction:column;gap:2px;text-decoration:none;}
 .brand .mark{font-family:var(--en);font-weight:900;font-size:22px;letter-spacing:.04em;color:var(--navy);}
@@ -123,9 +123,14 @@ footer{background:var(--navy);color:rgba(255,255,255,.7);padding:56px 0 40px;}
   .nav-r{width:100%;justify-content:flex-start;}
 }
 @media(max-width:480px){ .hero h1{font-size:38px;} .pill a{padding:6px 8px;} }
+.guide-banner{position:fixed;top:0;left:0;right:0;z-index:200;display:block;width:100%;background:#2E8BC0;color:#fff;text-align:center;padding:0 16px;height:40px;line-height:40px;font-family:var(--en,'Inter',sans-serif);font-size:13px;font-weight:600;letter-spacing:.02em;text-decoration:none;transition:background .2s;}
+.guide-banner:hover{background:#246FA0;color:#fff;}
+.guide-banner .gb-label{opacity:.72;font-weight:500;margin-right:6px;font-size:12px;}
+@media(max-width:560px){.guide-banner{font-size:12px;height:36px;line-height:36px;}}
 </style>
 </head>
 <body>
+<a href="https://drive.google.com/drive/folders/1dyH7LQnKzhB4FqKo7yaoEynBpm0zycVq" target="_blank" rel="noopener" class="guide-banner"><span class="gb-label">FREE</span><span data-i18n="guideBtn">LYVON Welcome Guide 받기 →</span></a>
 
 <!-- NAV -->
 <nav class="nav">
@@ -238,7 +243,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.7);padding:56px 0 40px;}
 
 <script>
 const I18N={
- en:{
+ en:{guideBtn:`Get the LYVON Welcome Guide →`,
   navKakao:`KakaoTalk`,
   badge:`Pilot launching July 2026`, badge2:`Pilot launching July 2026`,
   tagline:`Growth beyond admission.`,
@@ -262,7 +267,7 @@ const I18N={
   footF1:`Programs`, footF2:`Who it's for`, footF3:`Register interest`,
   footRights:`© 2024–2026 LYVON · MedConnect — Connect. Grow. Belong.`, footPilot:`Pilot · July 2026`
  },
- ja:{
+ ja:{guideBtn:`LYVON Welcome Guide を受け取る →`,
   navKakao:`カカオトーク`,
   badge:`2026年7月 パイロット開始`, badge2:`2026年7月 パイロット開始`,
   tagline:`合格、その先の成長。`,
