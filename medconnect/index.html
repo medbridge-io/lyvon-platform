@@ -34,14 +34,14 @@ b{font-weight:700;}
 
 /* NAV */
 .nav{position:sticky;top:40px;z-index:50;background:rgba(252,251,247,.86);backdrop-filter:blur(10px);border-bottom:1px solid rgba(11,37,69,.08);}
-.nav-in{max-width:1080px;margin:0 auto;padding:14px 26px;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;}
+.nav-in{max-width:1080px;margin:0 auto;padding:14px 26px;display:flex;align-items:center;justify-content:space-between;gap:12px;}
 .brand{display:flex;flex-direction:column;gap:2px;text-decoration:none;}
 .brand .mark{font-family:var(--en);font-weight:900;font-size:22px;letter-spacing:.04em;color:var(--navy);}
 .brand .mark b{color:var(--sky-d);font-weight:inherit;}
 .brand .kicker{font-family:var(--en);font-size:9.5px;font-weight:700;letter-spacing:.22em;color:var(--navy-40);}
 .nav-r{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
 .pill{display:flex;background:rgba(11,37,69,.05);border-radius:8px;padding:3px;}
-.pill a{font-size:12.5px;font-weight:600;text-decoration:none;color:var(--navy-55);padding:6px 11px;border-radius:6px;transition:.2s;}
+.pill a{font-size:12px;font-weight:600;text-decoration:none;color:var(--navy-55);padding:6px 9px;border-radius:6px;transition:.2s;}
 .pill a:hover{color:var(--navy);}
 .pill a.active{background:var(--sky);color:#fff;}
 .lang{display:flex;background:rgba(11,37,69,.05);border-radius:8px;padding:3px;}
@@ -120,27 +120,64 @@ footer{background:var(--navy);color:rgba(255,255,255,.7);padding:56px 0 40px;}
   .hero h1{font-size:44px;}
   .prog-grid{grid-template-columns:1fr;}
   .foot-grid{grid-template-columns:1fr;gap:28px;}
-  .nav-r{width:100%;justify-content:flex-start;}
 }
 @media(max-width:480px){ .hero h1{font-size:38px;} .pill a{padding:6px 8px;} }
 .guide-banner{position:fixed;top:0;left:0;right:0;z-index:200;display:block;width:100%;background:#2E8BC0;color:#fff;text-align:center;padding:0 16px;height:40px;line-height:40px;font-family:var(--en,'Inter',sans-serif);font-size:13px;font-weight:600;letter-spacing:.02em;text-decoration:none;transition:background .2s;}
 .guide-banner:hover{background:#246FA0;color:#fff;}
 .guide-banner .gb-label{opacity:.72;font-weight:500;margin-right:6px;font-size:12px;}
 @media(max-width:560px){.guide-banner{font-size:12px;height:36px;line-height:36px;}}
+
+
+/* MedConnect nav 모바일 햄버거 */
+.nav-toggle{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;padding:4px;flex-shrink:0;}
+.nav-toggle span{width:24px;height:2px;background:var(--navy);display:block;border-radius:2px;transition:.3s;}
+.nav-links{display:flex;align-items:center;gap:8px;flex-wrap:nowrap;}
+@media(max-width:600px){
+  .nav-in{flex-wrap:nowrap;}
+
+  .nav-toggle{display:flex;z-index:101;}
+  .nav-links{
+    display:none;position:absolute;top:100%;left:0;right:0;
+    flex-direction:column;align-items:stretch;gap:14px;
+    background:rgba(252,251,247,.99);padding:20px 22px 22px;
+    border-bottom:1px solid rgba(11,37,69,.1);
+    box-shadow:0 8px 24px rgba(11,37,69,.08);
+  }
+  .nav-links.open{display:flex;}
+  .nav-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+  .nav-toggle.open span:nth-child(2){opacity:0;}
+  .nav-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+  .nav-links .switch{display:grid;grid-template-columns:1fr 1fr;width:100%;gap:0;}
+  .nav-links .switch a{flex:none;text-align:center;padding:9px 4px;font-size:12px;}
+  .nav-links .lang{width:100%;}
+  .nav-links .lang button{flex:1;}
+  .nav-links .nav-cta{text-align:center;width:100%;}
+}
+
+@media(min-width:601px) and (max-width:900px){
+  .nav-in{flex-wrap:nowrap;}
+  .nav-links{flex-wrap:nowrap;gap:8px;}
+  .nav-links .lang button{white-space:nowrap;padding:6px 8px;font-size:11px;}
+  .nav-links .pill a{padding:7px 9px;font-size:12px;}
+  .nav-links .btn-k{font-size:12px;padding:8px 12px;}
+}
 </style>
 </head>
 <body>
 <a href="https://drive.google.com/drive/folders/1dyH7LQnKzhB4FqKo7yaoEynBpm0zycVq" target="_blank" rel="noopener" class="guide-banner"><span class="gb-label">FREE</span><span data-i18n="guideBtn">LYVON Welcome Guide 받기 →</span></a>
 
 <!-- NAV -->
-<nav class="nav">
+<nav class="nav" id="nav">
   <div class="nav-in">
     <a href="#top" class="brand">
       <span class="mark">Med<b>Connect</b></span>
       <span class="kicker">LYVON MEDICAL · CONNECTION NETWORK</span>
     </a>
-    <div class="nav-r">
-      <div class="pill">
+    <button class="nav-toggle" id="navToggle" aria-label="menu">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links" id="navLinks">
+      <div class="pill switch">
         <a href="https://lyvon.io">LYVON</a>
         <a href="https://medbridgeedu.io">MedBridge</a>
         <a href="https://medpathglobal.io">MedPath</a>
@@ -151,7 +188,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.7);padding:56px 0 40px;}
         <button data-lang="en">EN</button>
         <button data-lang="ja">日本語</button>
       </div>
-      <a href="https://open.kakao.com/o/sh3TzOsi" target="_blank" rel="noopener" class="btn-k" data-i18n="navKakao">카카오톡 문의</a>
+      <a href="https://open.kakao.com/o/sh3TzOsi" target="_blank" rel="noopener" class="btn-k nav-cta" data-i18n="navKakao">카카오톡 문의</a>
     </div>
   </div>
 </nav>
@@ -307,6 +344,19 @@ document.querySelectorAll('#langSwitch button').forEach(b=>b.addEventListener('c
 
 const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+// 햄버거 토글
+document.getElementById('navToggle').addEventListener('click',function(){
+  this.classList.toggle('open');
+  document.getElementById('navLinks').classList.toggle('open');
+});
+// 링크 클릭 시 닫기
+document.querySelectorAll('#navLinks a').forEach(function(a){
+  a.addEventListener('click',function(){
+    document.getElementById('navToggle').classList.remove('open');
+    document.getElementById('navLinks').classList.remove('open');
+  });
+});
 </script>
 </body>
 </html>
