@@ -31,7 +31,7 @@ html{scroll-behavior:smooth;}
 body{font-family:'Pretendard','Noto Sans KR','Noto Sans JP','Inter',sans-serif;color:var(--navy);
 background:linear-gradient(160deg,#FBF9F4 0%,#F5EFE4 100%);min-height:100vh;padding:0 0 40px;-webkit-font-smoothing:antialiased;}
 :lang(ja) body, [lang="ja"]{font-family:'Noto Sans JP','Noto Sans KR','Inter',sans-serif;}
-.wrap{max-width:860px;margin:0 auto;padding:62px 30px 8px;}
+.wrap{max-width:1100px;margin:0 auto;padding:62px 30px 8px;}
 
 .eyebrow{font-family:'Inter',sans-serif;font-size:9.5px;letter-spacing:.32em;color:var(--gold);font-weight:700;}
 
@@ -47,7 +47,7 @@ background:linear-gradient(160deg,#FBF9F4 0%,#F5EFE4 100%);min-height:100vh;padd
 
 /* essence */
 .ess{text-align:center;padding:34px 0 8px;}
-.ess .q{font-family:'Lora','Pretendard',Georgia,serif;font-style:italic;font-size:20px;color:var(--navy2);line-height:1.6;}
+.ess .q{font-family:'Lora','Pretendard',Georgia,serif;font-style:italic;font-size:20px;color:var(--navy2);line-height:1.6;max-width:880px;margin-left:auto;margin-right:auto;}
 .ess .s{font-size:13.5px;color:var(--ink);line-height:1.8;margin:13px auto 0;max-width:600px;}
 .philo{display:inline-flex;align-items:center;gap:10px;margin-top:18px;font-family:'Inter',sans-serif;font-size:9.5px;letter-spacing:.16em;color:var(--gold);font-weight:600;flex-wrap:wrap;justify-content:center;}
 .philo .eq{font-family:'Lora','Pretendard',serif;font-style:italic;font-size:15px;letter-spacing:0;color:var(--navy);}
@@ -106,6 +106,21 @@ background:linear-gradient(160deg,#FBF9F4 0%,#F5EFE4 100%);min-height:100vh;padd
 .foot{text-align:center;margin-top:30px;font-family:'Inter',sans-serif;font-size:9px;letter-spacing:.13em;color:var(--muted);}
 
 /* ===== responsive ===== */
+
+@media(min-width:1024px){
+  .wrap{padding:84px 46px 8px;}
+  .wm{font-size:66px;}
+  .ess{padding:48px 0 10px;}
+  .q{font-size:25px;max-width:920px;}
+  .ess .s{font-size:15px;max-width:700px;}
+  .path{margin:48px 0 10px;gap:16px;}
+  .stats{margin:50px 0 4px;padding:30px 0;}
+  .stat .n{font-size:42px;}
+  .progs{gap:22px;margin-top:44px;}
+  .why{padding:34px 42px;margin-top:46px;}
+  .qrs{gap:22px;margin-top:36px;}
+}
+
 @media(max-width:720px){
   .wrap{padding:60px 20px 8px;}
   .wm{font-size:42px;}
