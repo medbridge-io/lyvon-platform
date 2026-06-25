@@ -1,295 +1,253 @@
 <!DOCTYPE html>
-<html lang="ko">
-<head>
+<html lang="ko"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>LYVON — 헝가리 의대로 가는 영어</title>
-<meta name="description" content="LYVON · Medical Academic English Communication System. MedBridge · MedPath · MedConnect.">
+<meta name="description" content="헝가리 의대 입시의 핵심인 영어 말하기·구술시험을 전문 원어민과 1:1로 훈련하는 LYVON 글로벌 교육 생태계.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="LYVON">
+<meta property="og:title" content="LYVON — 헝가리 의대로 가는 영어">
+<meta property="og:description" content="헝가리 의대 입시의 핵심인 영어 말하기·구술시험을 전문 원어민과 1:1로 훈련하는 LYVON 글로벌 교육 생태계.">
+<meta property="og:url" content="https://lyvon.io/start">
+<meta property="og:image" content="https://lyvon.io/start/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:locale:alternate" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="LYVON — 헝가리 의대로 가는 영어">
+<meta name="twitter:description" content="헝가리 의대 입시의 핵심인 영어 말하기·구술시험을 전문 원어민과 1:1로 훈련하는 LYVON 글로벌 교육 생태계.">
+<meta name="twitter:image" content="https://lyvon.io/start/og.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;1,500&family=Noto+Sans+KR:wght@400;500;700;900&family=Noto+Sans+JP:wght@400;500;700&family=Inter:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <style>
-:root{
-  --navy:#0B2545;--navy2:#15325A;--gold:#B8902F;--gold2:#C2A24E;
-  --cream:#FBF9F4;--cream2:#F5EFE4;--border:#EDE4D3;--ink:#3A4250;--muted:#8A8170;
-  --mb:#1A7A6A;--mp:#3E4F8A;--mc:#2E8BC0;
-}
 *{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
-body{
-  font-family:'Noto Sans KR','Inter',sans-serif;color:var(--navy);
-  background:linear-gradient(180deg,#FBF9F4 0%,#F1E9DA 100%);
-  background-attachment:fixed;line-height:1.6;-webkit-font-smoothing:antialiased;
-  text-rendering:optimizeLegibility;
-}
-.wrap{max-width:1060px;margin:0 auto;padding:clamp(34px,5vw,68px) clamp(20px,4vw,48px) 56px;}
-.eyebrow{font-family:'Inter',sans-serif;font-weight:700;letter-spacing:.3em;color:var(--gold);
-  font-size:clamp(9.5px,1.5vw,11.5px);text-transform:uppercase;}
+:root{--navy:#0B2545;--navy2:#15325A;--gold:#B8902F;--gold2:#C2A24E;--cream:#FBF9F4;--cream2:#F5EFE4;--border:#EDE4D3;--ink:#3A4250;--muted:#8A8170;
+--mb:#1A7A6A;--mp:#3E4F8A;--mc:#2E8BC0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Pretendard','Noto Sans KR','Noto Sans JP','Inter',sans-serif;color:var(--navy);
+background:linear-gradient(160deg,#FBF9F4 0%,#F5EFE4 100%);min-height:100vh;padding:0 0 40px;-webkit-font-smoothing:antialiased;}
+:lang(ja) body, [lang="ja"]{font-family:'Noto Sans JP','Noto Sans KR','Inter',sans-serif;}
+.wrap{max-width:860px;margin:0 auto;padding:62px 30px 8px;}
+
+.eyebrow{font-family:'Inter',sans-serif;font-size:9.5px;letter-spacing:.32em;color:var(--gold);font-weight:700;}
+
+/* lang toggle */
+.langbar{position:fixed;top:14px;right:14px;display:flex;gap:3px;background:rgba(255,255,255,.86);border:1px solid var(--border);border-radius:999px;padding:3px;z-index:20;backdrop-filter:blur(6px);box-shadow:0 2px 10px rgba(11,37,69,.06);}
+.langbar button{border:none;background:transparent;font-family:'Inter',sans-serif;font-size:11px;font-weight:600;color:var(--muted);padding:6px 11px;border-radius:999px;cursor:pointer;transition:.15s;}
+.langbar button.on{background:var(--navy);color:#fff;}
 
 /* header */
-.hdr{text-align:center;border-bottom:1px solid var(--border);padding-bottom:clamp(22px,3vw,30px);}
-.wm{font-family:'Lora',Georgia,serif;font-weight:600;letter-spacing:.06em;line-height:1;color:var(--navy);
-  font-size:clamp(52px,11vw,94px);margin:clamp(10px,1.6vw,16px) 0 clamp(8px,1.4vw,14px);}
-.tag{font-size:clamp(14px,2.5vw,17px);color:var(--ink);letter-spacing:.01em;}
+.hdr{text-align:center;border-bottom:1px solid var(--border);padding-bottom:18px;}
+.wm{font-family:'Lora','Pretendard',Georgia,serif;font-size:54px;font-weight:600;letter-spacing:.06em;color:var(--navy);line-height:1;margin:9px 0 9px;}
+.tag{font-size:14px;color:var(--ink);letter-spacing:.01em;}
 
 /* essence */
-.ess{text-align:center;padding:clamp(34px,5vw,54px) 0 6px;}
-.ess .q{font-family:'Lora',Georgia,serif;font-style:italic;color:var(--navy2);line-height:1.5;
-  font-size:clamp(20px,3.6vw,30px);}
-.ess .s{font-size:clamp(14px,2.3vw,16.5px);color:var(--ink);line-height:1.85;
-  margin:clamp(16px,2vw,22px) auto 0;max-width:680px;}
-.philo{display:inline-flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:10px;
-  margin-top:clamp(18px,2.4vw,26px);font-family:'Inter',sans-serif;font-weight:600;
-  letter-spacing:.16em;color:var(--gold);font-size:clamp(9px,1.5vw,11px);}
-.philo .eq{font-family:'Lora',serif;font-style:italic;letter-spacing:0;color:var(--navy);
-  font-size:clamp(14px,2vw,17px);}
-.philo .mid{color:var(--gold2);font-weight:400;opacity:.55;}
+.ess{text-align:center;padding:34px 0 8px;}
+.ess .q{font-family:'Lora','Pretendard',Georgia,serif;font-style:italic;font-size:20px;color:var(--navy2);line-height:1.6;}
+.ess .s{font-size:13.5px;color:var(--ink);line-height:1.8;margin:13px auto 0;max-width:600px;}
+.philo{display:inline-flex;align-items:center;gap:10px;margin-top:18px;font-family:'Inter',sans-serif;font-size:9.5px;letter-spacing:.16em;color:var(--gold);font-weight:600;flex-wrap:wrap;justify-content:center;}
+.philo .eq{font-family:'Lora','Pretendard',serif;font-style:italic;font-size:15px;letter-spacing:0;color:var(--navy);}
+.philo .mid{color:var(--gold2);opacity:.6;}
 
 /* pathway */
-.path{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;
-  gap:clamp(8px,1.6vw,16px);margin:clamp(36px,4.5vw,48px) 0 6px;}
-.pnode{font-size:clamp(12px,1.9vw,15px);font-weight:700;color:var(--navy);text-align:center;}
-.pnode small{display:block;font-weight:500;font-size:clamp(9px,1.4vw,11px);color:var(--muted);
-  margin-top:3px;letter-spacing:.01em;}
+.path{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;margin:34px 0 8px;}
+.pnode{font-size:12px;font-weight:700;color:var(--navy);text-align:center;white-space:nowrap;}
+.pnode small{display:block;font-weight:500;font-size:9px;color:var(--muted);margin-top:2px;}
 .pnode.mb{color:var(--mb);}.pnode.mp{color:var(--mp);}.pnode.mc{color:var(--mc);}
-.parr{color:#C7CCD4;font-size:clamp(13px,2vw,17px);}
+.parr{color:#C7CCD4;font-size:13px;}
 
 /* stats */
-.stats{display:grid;grid-template-columns:repeat(4,1fr);
-  margin:clamp(36px,4.5vw,48px) 0 4px;border-top:1px solid var(--border);
-  border-bottom:1px solid var(--border);padding:clamp(20px,3vw,28px) 0;}
-.stat{text-align:center;border-right:1px solid var(--border);padding:4px 6px;}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);margin:34px 0 4px;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:20px 0;}
+.stat{text-align:center;border-right:1px solid var(--border);}
 .stat:last-child{border-right:none;}
-.stat .n{font-family:'Lora',Georgia,serif;font-weight:600;color:var(--gold);line-height:1;
-  font-size:clamp(34px,6vw,54px);}
-.stat .l{font-size:clamp(11px,1.7vw,13px);color:var(--ink);margin-top:8px;letter-spacing:.02em;}
-.stat .tagp{font-family:'Inter',sans-serif;font-weight:700;letter-spacing:.05em;margin-top:6px;
-  color:var(--gold);font-size:clamp(9px,1.4vw,11px);}
-.stat .tagp.mb{color:var(--mb);}.stat .tagp.mp{color:var(--mp);}
-.stat .tagp.mc{color:var(--mc);}.stat .tagp.all{color:var(--muted);}
-
-/* section heading */
-.shead{text-align:center;margin:clamp(48px,6vw,68px) 0 clamp(20px,2.6vw,28px);}
-.shead .eyebrow{display:block;margin-bottom:9px;}
-.shead h2{font-family:'Lora',Georgia,serif;font-weight:600;color:var(--navy);
-  font-size:clamp(22px,3.4vw,30px);}
+.stat .n{font-family:'Lora','Pretendard',Georgia,serif;font-size:33px;font-weight:600;color:var(--gold);line-height:1;}
+.stat .l{font-size:10.5px;color:var(--ink);margin-top:6px;letter-spacing:.03em;}
+.stat .tagp{font-family:'Inter',sans-serif;font-size:8px;font-weight:700;letter-spacing:.05em;margin-top:5px;color:var(--gold);}
+.stat .tagp.mb{color:var(--mb);}.stat .tagp.mp{color:var(--mp);}.stat .tagp.mc{color:var(--mc);}.stat .tagp.all{color:var(--muted);}
 
 /* programs */
-.progs{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,2vw,20px);}
-.card{background:#fff;border:1px solid var(--border);border-radius:14px;border-top:3px solid var(--gold);
-  padding:clamp(20px,2.4vw,26px) clamp(18px,2.2vw,24px);text-decoration:none;color:inherit;display:flex;flex-direction:column;
-  transition:transform .18s ease, box-shadow .18s ease;}
-.card:hover{transform:translateY(-4px);box-shadow:0 14px 36px rgba(11,37,69,.10);}
-.card:focus-visible{outline:3px solid var(--gold2);outline-offset:3px;}
-.card.mp{border-top-color:var(--mp);}.card.mc{border-top-color:var(--mc);}.card.mb{border-top-color:var(--mb);}
-.card .k{font-family:'Inter',sans-serif;font-weight:700;letter-spacing:.14em;color:var(--gold);
-  font-size:clamp(9.5px,1.4vw,11px);}
+.progs{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin:30px 0 0;}
+.card{background:#fff;border:1px solid var(--border);border-radius:13px;border-top:3px solid var(--gold);padding:20px 19px;text-decoration:none;color:inherit;display:flex;flex-direction:column;transition:.18s;box-shadow:0 1px 3px rgba(11,37,69,.03);}
+.card:hover{transform:translateY(-3px);box-shadow:0 10px 26px rgba(11,37,69,.10);}
+.card.mb{border-top-color:var(--mb);}.card.mp{border-top-color:var(--mp);}.card.mc{border-top-color:var(--mc);}
+.card .k{font-family:'Inter',sans-serif;font-size:8px;letter-spacing:.14em;font-weight:700;color:var(--gold);}
 .card.mb .k{color:var(--mb);}.card.mp .k{color:var(--mp);}.card.mc .k{color:var(--mc);}
-.card h3{font-family:'Lora',Georgia,serif;font-weight:600;color:var(--navy);
-  font-size:clamp(21px,2.6vw,26px);margin:6px 0 9px;}
-.card .lead{font-size:clamp(13px,1.8vw,15px);color:var(--navy2);font-weight:700;line-height:1.45;margin-bottom:9px;}
-.card .desc{font-size:clamp(12.5px,1.7vw,14px);color:var(--ink);line-height:1.65;margin-bottom:16px;}
-.card .cmeta{display:flex;flex-direction:column;gap:7px;margin-top:auto;border-top:1px solid var(--border);padding-top:14px;}
-.cmeta .row{display:flex;gap:9px;font-size:clamp(12px,1.6vw,13px);color:var(--ink);line-height:1.45;}
-.cmeta .row b{flex-shrink:0;width:46px;white-space:nowrap;color:var(--gold);font-weight:700;
-  font-size:clamp(10px,1.4vw,11px);letter-spacing:.04em;padding-top:1px;}
+.card h3{font-family:'Lora','Pretendard',Georgia,serif;font-size:22px;font-weight:600;color:var(--navy);margin:5px 0 8px;}
+.card .lead{font-size:12px;color:var(--navy2);font-weight:700;line-height:1.45;margin-bottom:8px;}
+.card .desc{font-size:11px;color:var(--ink);line-height:1.6;padding-bottom:11px;border-bottom:1px solid var(--border);margin-bottom:11px;}
+.card .cmeta{display:flex;flex-direction:column;gap:6px;}
+.cmeta .row{display:flex;gap:8px;font-size:10px;color:var(--ink);line-height:1.4;}
+.cmeta .row b{flex-shrink:0;width:34px;color:var(--gold);font-weight:700;font-size:8.5px;letter-spacing:.04em;padding-top:1px;}
 .card.mb .cmeta .row b{color:var(--mb);}.card.mp .cmeta .row b{color:var(--mp);}.card.mc .cmeta .row b{color:var(--mc);}
-.card .csite{margin-top:15px;font-family:'Inter',sans-serif;font-weight:700;letter-spacing:.02em;
-  color:var(--gold);font-size:clamp(11px,1.5vw,12.5px);}
+.card .csite{margin-top:auto;padding-top:14px;font-family:'Inter',sans-serif;font-size:9px;font-weight:700;letter-spacing:.02em;color:var(--gold);}
 .card.mb .csite{color:var(--mb);}.card.mp .csite{color:var(--mp);}.card.mc .csite{color:var(--mc);}
 
 /* why */
-.why{background:linear-gradient(105deg,var(--navy),var(--navy2));border-radius:16px;
-  padding:clamp(24px,3.2vw,36px) clamp(22px,3vw,38px);margin-top:clamp(44px,5.5vw,64px);color:#fff;}
-.why .wk{font-family:'Inter',sans-serif;font-weight:700;letter-spacing:.2em;color:var(--gold2);
-  font-size:clamp(10px,1.5vw,12px);margin-bottom:clamp(14px,1.8vw,20px);}
-.wgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,1.8vw,18px);align-items:start;}
-.wgrid .t{font-size:clamp(14px,1.9vw,16px);font-weight:700;margin-bottom:6px;}
-.wgrid .d{font-size:clamp(12px,1.5vw,13px);color:rgba(255,255,255,.74);line-height:1.65;}
+.why{background:linear-gradient(105deg,var(--navy),var(--navy2));border-radius:14px;padding:24px 26px;margin-top:30px;color:#fff;}
+.why .wk{font-family:'Inter',sans-serif;font-size:9px;letter-spacing:.2em;color:var(--gold2);font-weight:700;margin-bottom:13px;}
+.wgrid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;}
+.wgrid .t{font-size:12px;font-weight:700;margin-bottom:4px;}
+.wgrid .d{font-size:10px;color:rgba(255,255,255,.74);line-height:1.6;}
 
-/* QR */
-.qrs{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,2vw,20px);margin-top:clamp(36px,4.5vw,48px);}
-.qr{display:flex;align-items:center;gap:15px;background:rgba(255,255,255,.66);
-  border:1px solid var(--border);border-radius:13px;padding:clamp(15px,1.8vw,18px);
-  text-decoration:none;transition:transform .18s ease, box-shadow .18s ease, background .18s ease;}
-.qr:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(11,37,69,.10);background:#fff;}
-.qr:focus-visible{outline:3px solid var(--gold2);outline-offset:3px;}
-.qr img{width:74px;height:74px;background:#fff;padding:5px;border-radius:8px;display:block;flex-shrink:0;}
-.qr .lab{line-height:1.35;}
-.qr .lab b{display:block;font-size:clamp(14px,1.9vw,16px);color:var(--navy);font-weight:700;}
-.qr .lab span{display:block;font-size:clamp(11px,1.5vw,13px);color:var(--muted);margin-top:4px;}
-.qr .lab .u{font-family:'Inter',sans-serif;font-weight:600;letter-spacing:.02em;color:var(--gold);
-  font-size:clamp(11px,1.4vw,12px);margin-top:7px;}
+/* QR row */
+.qrs{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-top:24px;}
+.qr{display:flex;align-items:center;gap:13px;background:rgba(255,255,255,.65);border:1px solid var(--border);border-radius:12px;padding:15px 16px;text-decoration:none;transition:.18s;}
+.qr:hover{background:#fff;box-shadow:0 8px 22px rgba(11,37,69,.09);transform:translateY(-2px);}
+.qr img{width:78px;height:78px;background:#fff;padding:5px;border-radius:7px;display:block;flex-shrink:0;}
+.qr .lab{line-height:1.3;}
+.qr .lab b{display:block;font-size:13px;color:var(--navy);font-weight:700;}
+.qr .lab span{display:block;font-size:10px;color:var(--muted);margin-top:3px;}
+.qr .lab .u{font-family:'Inter',sans-serif;font-size:9px;color:var(--gold);font-weight:700;letter-spacing:.02em;margin-top:5px;}
 
-.foot{text-align:center;margin-top:clamp(34px,4vw,46px);padding-top:clamp(22px,2.6vw,30px);
-  border-top:1px solid var(--border);font-family:'Inter',sans-serif;font-weight:500;
-  letter-spacing:.12em;color:var(--muted);font-size:clamp(10px,1.4vw,12px);}
+.foot{text-align:center;margin-top:30px;font-family:'Inter',sans-serif;font-size:9px;letter-spacing:.13em;color:var(--muted);}
 
-/* ---------- TABLET ---------- */
-@media (max-width:860px){
-  .progs{grid-template-columns:1fr;max-width:520px;margin-left:auto;margin-right:auto;}
-}
-/* ---------- MOBILE ---------- */
-@media (max-width:600px){
-  .stats{grid-template-columns:repeat(2,1fr);row-gap:clamp(18px,4vw,24px);}
-  .stat:nth-child(2){border-right:none;}
-  .stat:nth-child(1),.stat:nth-child(2){border-bottom:1px solid var(--border);padding-bottom:18px;}
-  .stat:nth-child(3),.stat:nth-child(4){padding-top:4px;}
-  .wgrid{grid-template-columns:1fr;gap:18px;}
-  .qrs{grid-template-columns:1fr;max-width:440px;margin-left:auto;margin-right:auto;}
+/* ===== responsive ===== */
+@media(max-width:720px){
+  .wrap{padding:60px 20px 8px;}
+  .wm{font-size:42px;}
+  .ess .q{font-size:17px;}
+  .progs{grid-template-columns:1fr;gap:12px;}
+  .wgrid{grid-template-columns:1fr;gap:16px;}
+  .qrs{grid-template-columns:1fr;gap:11px;}
+  .stats{grid-template-columns:repeat(2,1fr);gap:18px 0;}
+  .stat{border-right:none;}
+  .stat:nth-child(odd){border-right:1px solid var(--border);}
+  .path{gap:8px;}
   .parr{display:none;}
-  .path{gap:10px 14px;}
-  .pnode{background:#fff;border:1px solid var(--border);border-radius:9px;padding:9px 13px;}
+  .pnode{background:rgba(255,255,255,.6);border:1px solid var(--border);border-radius:999px;padding:7px 14px;}
 }
-@media (prefers-reduced-motion:reduce){*{transition:none!important;}}
+@media(max-width:380px){
+  .stats{grid-template-columns:1fr 1fr;}
+  .wm{font-size:36px;}
+}
 
-/* language switcher */
-.langbar{position:fixed;top:14px;right:14px;z-index:60;display:flex;gap:2px;
-  background:rgba(255,255,255,.82);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
-  border:1px solid var(--border);border-radius:999px;padding:3px;box-shadow:0 4px 18px rgba(11,37,69,.10);}
-.langbar button{font-family:'Inter',sans-serif;font-weight:700;font-size:11.5px;letter-spacing:.04em;
-  color:var(--muted);background:none;border:none;cursor:pointer;border-radius:999px;
-  padding:6px 11px;transition:background .15s,color .15s;line-height:1;}
-.langbar button:hover{color:var(--navy);}
-.langbar button[aria-pressed="true"]{background:var(--navy);color:#fff;}
-.langbar button:focus-visible{outline:2px solid var(--gold2);outline-offset:2px;}
-html[lang="ja"] .wm{letter-spacing:.06em;}
-@media (max-width:600px){.langbar{top:10px;right:10px;padding:2px;}.langbar button{padding:5px 9px;font-size:11px;}}
-@media print{.langbar{display:none;}}
-
-/* clean Korean word-boundary wrapping (avoid mid-word splits like 언/어) */
-html[lang="ko"] .wgrid .d, html[lang="ko"] .card .desc, html[lang="ko"] .card .lead,
-html[lang="ko"] .ess .s, html[lang="ko"] .cmeta .row span, html[lang="ko"] .qr .lab span { word-break:keep-all; }
-</style>
-</head>
+/* ── Korean typography: Pretendard (modern) ── */
+html[lang="ja"], html[lang="ja"] body{font-family:'Noto Sans JP','Pretendard',sans-serif;}
+html[lang="ko"]{letter-spacing:-0.006em;}
+html[lang="ko"] .q{font-family:'Pretendard',sans-serif;font-style:normal;font-weight:600;letter-spacing:-0.018em;}
+</style></head>
 <body>
-<div class="langbar" role="group" aria-label="Language">
-  <button data-lang="ko" aria-pressed="true">KO</button>
-  <button data-lang="en" aria-pressed="false">EN</button>
-  <button data-lang="ja" aria-pressed="false">JA</button>
+
+<div class="langbar">
+  <button data-lang="ko">한국어</button>
+  <button data-lang="en">EN</button>
+  <button data-lang="ja">日本語</button>
 </div>
 
 <div class="wrap">
 
-  <header class="hdr">
+  <div class="hdr">
     <div class="eyebrow">THE ONE LYVON GLOBAL EDUCATIONAL ECOSYSTEM</div>
     <div class="wm">LYVON</div>
-    <div class="tag" data-i18n="tag">헝가리 의대로 가는 영어, 전문 원어민과 1:1로</div>
-  </header>
-
-  <section class="ess">
-    <div class="q" data-i18n="ess_q">"면접관은 외운 답이 아니라, 스스로 설명하는 힘을 봅니다."</div>
-    <div class="s" data-i18n="ess_s"><b>헝가리 의대 입시의 핵심</b>인 영어 말하기·구술시험의 기초와 심화 과정을, <b>전문 원어민과 1:1 집중 훈련</b>하는 프로그램입니다.</div>
-    <div class="philo"><span class="eq">L = T − V</span><span class="mid">·</span><span class="eq">δ∫L dt = 0</span><span class="mid">·</span><span>EVERYONE HAS A V</span></div>
-  </section>
-
-  <section class="path">
-    <div class="pnode" data-i18n="p_premed">예비 의대생<small>고등학생 · 입문자</small></div><div class="parr">→</div>
-    <div class="pnode mb" data-i18n="p_bridge">MedBridge<small>기초</small></div><div class="parr">→</div>
-    <div class="pnode mp" data-i18n="p_path">MedPath<small>심화 · 의대 합격</small></div><div class="parr">→</div>
-    <div class="pnode mc" data-i18n="p_connect">MedConnect<small>합격 이후</small></div><div class="parr">→</div>
-    <div class="pnode" data-i18n="p_pro">의료 전문가<small>글로벌 무대</small></div>
-  </section>
-
-  <section class="stats">
-    <div class="stat"><div class="n">30</div><div class="l" data-i18n="st1_l">토픽</div><div class="tagp mb">MedBridge</div></div>
-    <div class="stat"><div class="n">50</div><div class="l" data-i18n="st2_l">레슨 · 3 티어</div><div class="tagp mp">MedPath</div></div>
-    <div class="stat"><div class="n">6</div><div class="l" data-i18n="st3_l">실전 프로그램</div><div class="tagp mc">MedConnect</div></div>
-    <div class="stat"><div class="n">1:1</div><div class="l" data-i18n="st4_l">원어민 맞춤</div><div class="tagp all" data-i18n="st4_t">전 과정 공통</div></div>
-  </section>
-
-  <div class="shead">
-    <span class="eyebrow" data-i18n="sh_eyebrow">THREE PROGRAMS · ONE PATH</span>
-    <h2 data-i18n="sh_h2">기초부터 합격, 그 이후까지</h2>
+    <div class="tag" data-i18n="tagline"></div>
   </div>
 
-  <section class="progs">
+  <div class="ess">
+    <div class="q" data-i18n="quote"></div>
+    <div class="s" data-i18n="ess_desc"></div>
+    <div class="philo"><span class="eq">L = T &minus; V</span><span class="mid">&middot;</span><span class="eq">&delta;&int;L dt = 0</span><span class="mid">&middot;</span><span>EVERYONE HAS A V</span></div>
+  </div>
+
+  <div class="path">
+    <div class="pnode"><span data-i18n="p1"></span><small data-i18n="p1s"></small></div><div class="parr">&rarr;</div>
+    <div class="pnode mb">MedBridge<small data-i18n="p2s"></small></div><div class="parr">&rarr;</div>
+    <div class="pnode mp">MedPath<small data-i18n="p3s"></small></div><div class="parr">&rarr;</div>
+    <div class="pnode mc">MedConnect<small data-i18n="p4s"></small></div><div class="parr">&rarr;</div>
+    <div class="pnode"><span data-i18n="p5"></span><small data-i18n="p5s"></small></div>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><div class="n">30</div><div class="l" data-i18n="st1l"></div><div class="tagp mb">MedBridge</div></div>
+    <div class="stat"><div class="n">50</div><div class="l" data-i18n="st2l"></div><div class="tagp mp">MedPath</div></div>
+    <div class="stat"><div class="n">6</div><div class="l" data-i18n="st3l"></div><div class="tagp mc">MedConnect</div></div>
+    <div class="stat"><div class="n">1:1</div><div class="l" data-i18n="st4l"></div><div class="tagp all" data-i18n="st4t"></div></div>
+  </div>
+
+  <div class="progs">
     <a class="card mb" href="https://medbridgeedu.io" target="_blank" rel="noopener">
       <div class="k">FOUNDATION</div><h3>MedBridge</h3>
-      <div class="lead" data-i18n="mb_lead">메디컬 영어 커뮤니케이션 기초</div>
-      <div class="desc" data-i18n="mb_desc">핵심 어휘·발음·문장 구조를 익히고, 입을 여는 습관을 만드는 출발점.</div>
+      <div class="lead" data-i18n="mb_lead"></div>
+      <div class="desc" data-i18n="mb_desc"></div>
       <div class="cmeta">
-        <div class="row" data-i18n="mb_r1"><b>구성</b><span>Medical English 3세트 · 30개 토픽</span></div>
-        <div class="row" data-i18n="mb_r2"><b>기간</b><span>3개월 · 주 2~4회</span></div>
-        <div class="row" data-i18n="mb_r3"><b>대상</b><span>고등학생 · 입문자</span></div>
+        <div class="row"><b data-i18n="lbl_fmt"></b><span data-i18n="mb_fmt"></span></div>
+        <div class="row"><b data-i18n="lbl_dur"></b><span data-i18n="mb_dur"></span></div>
+        <div class="row"><b data-i18n="lbl_tgt"></b><span data-i18n="mb_tgt"></span></div>
       </div>
-      <div class="csite">medbridgeedu.io ↗</div>
+      <div class="csite">medbridgeedu.io &#8599;</div>
     </a>
     <a class="card mp" href="https://medpathglobal.io" target="_blank" rel="noopener">
-      <div class="k">ADMISSIONS · 3 TIER</div><h3>MedPath</h3>
-      <div class="lead" data-i18n="mp_lead">3티어 50레슨 심화 커리큘럼</div>
-      <div class="desc" data-i18n="mp_desc">정의(Starter) → 설명(Core) → 논증(Pro)으로 깊어지는 의대 합격 커리큘럼.</div>
+      <div class="k">ADMISSIONS &middot; 3 TIER</div><h3>MedPath</h3>
+      <div class="lead" data-i18n="mp_lead"></div>
+      <div class="desc" data-i18n="mp_desc"></div>
       <div class="cmeta">
-        <div class="row" data-i18n="mp_r1"><b>구성</b><span>Biology·Chemistry 50개 레슨 · 3티어</span></div>
-        <div class="row" data-i18n="mp_r2"><b>기간</b><span>티어당 3개월 · 주 4회</span></div>
-        <div class="row" data-i18n="mp_r3"><b>대상</b><span>해외 의대 구술·면접 준비 학생</span></div>
+        <div class="row"><b data-i18n="lbl_fmt"></b><span data-i18n="mp_fmt"></span></div>
+        <div class="row"><b data-i18n="lbl_dur"></b><span data-i18n="mp_dur"></span></div>
+        <div class="row"><b data-i18n="lbl_tgt"></b><span data-i18n="mp_tgt"></span></div>
       </div>
-      <div class="csite">medpathglobal.io ↗</div>
+      <div class="csite">medpathglobal.io &#8599;</div>
     </a>
     <a class="card mc" href="https://lyvon.io/medconnect" target="_blank" rel="noopener">
       <div class="k">MEMBERSHIP</div><h3>MedConnect</h3>
-      <div class="lead" data-i18n="mc_lead">합격 이후 영어 커뮤니케이션 멤버십</div>
-      <div class="desc" data-i18n="mc_desc">6개 실전 프로그램으로 의료 현장의 영어를 평생 곁에서 함께 훈련합니다.</div>
+      <div class="lead" data-i18n="mc_lead"></div>
+      <div class="desc" data-i18n="mc_desc"></div>
       <div class="cmeta">
-        <div class="row" data-i18n="mc_r1"><b>구성</b><span>6 프로그램 · 라이브 1:1 + 소그룹</span></div>
-        <div class="row" data-i18n="mc_r2"><b>기간</b><span>월 단위 구독형 멤버십</span></div>
-        <div class="row" data-i18n="mc_r3"><b>대상</b><span>의대 재학생 · 합격 이후 멤버</span></div>
+        <div class="row"><b data-i18n="lbl_fmt"></b><span data-i18n="mc_fmt"></span></div>
+        <div class="row"><b data-i18n="lbl_dur"></b><span data-i18n="mc_dur"></span></div>
+        <div class="row"><b data-i18n="lbl_tgt"></b><span data-i18n="mc_tgt"></span></div>
       </div>
-      <div class="csite">lyvon.io/medconnect ↗</div>
+      <div class="csite">lyvon.io/medconnect &#8599;</div>
     </a>
-  </section>
+  </div>
 
-  <section class="why">
-    <div class="wk" data-i18n="why_wk">WHY LYVON · 하나의 생태계인 이유</div>
+  <div class="why">
+    <div class="wk" data-i18n="wk"></div>
     <div class="wgrid">
-      <div><div class="t" data-i18n="why_t1">전문 분석 + AI</div><div class="d" data-i18n="why_d1">전문 강사가 직접 분석·측정하고 AI 머신러닝과 통합해 정밀하게 진단합니다.</div></div>
-      <div><div class="t" data-i18n="why_t2">1:1 퍼스널 트레이닝</div><div class="d" data-i18n="why_d2">메디컬 영어의 틀린 문법·표현을 짚어 주고, 바른 표현으로 말하도록 1:1로 반복 훈련합니다.</div></div>
-      <div><div class="t" data-i18n="why_t3">글로벌 의대 진학</div><div class="d" data-i18n="why_d3">헝가리 의대 등 해외 의대 진학에 필요한 실제 언어 경쟁력을 설계합니다.</div></div>
+      <div><div class="t" data-i18n="w1t"></div><div class="d" data-i18n="w1d"></div></div>
+      <div><div class="t" data-i18n="w2t"></div><div class="d" data-i18n="w2d"></div></div>
+      <div><div class="t" data-i18n="w3t"></div><div class="d" data-i18n="w3d"></div></div>
     </div>
-  </section>
+  </div>
 
-  <section class="qrs">
+  <div class="qrs">
     <a class="qr" href="https://open.kakao.com/o/sh3TzOsi" target="_blank" rel="noopener">
-      <img src="data:image/webp;base64,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" alt="QR">
-      <div class="lab"><b data-i18n="qr_kakao_b">카카오톡 상담</b><span data-i18n="qr_kakao_s">1:1 오픈 채팅 문의</span><div class="u">open.kakao.com ↗</div></div>
+      <img src="data:image/webp;base64,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" alt="KakaoTalk QR">
+      <div class="lab"><b data-i18n="qr1t"></b><span data-i18n="qr1s"></span><div class="u">open.kakao.com &#8599;</div></div>
     </a>
     <a class="qr" href="https://drive.google.com/drive/folders/1dyH7LQnKzhB4FqKo7yaoEynBpm0zycVq?usp=sharing" target="_blank" rel="noopener">
-      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAhwAAAIcCAIAAAAynOArAAAL0ElEQVR4nO3csa0jyxVFUY0wpuJQKApaoSgO+ZQ93xgUNBuXt7rXCoCsJvneRjnnx+fz+RsAFP7+7QMA8ByiAkBGVADIiAoAGVEBICMqAGREBYCMqACQERUAMqICQEZUAMiICgAZUQEgIyoAZEQFgIyoAJARFQAyogJARlQAyIgKABlRASAjKgBkRAWAjKgAkBEVADKiAkBGVADIiAoAGVEBICMqAGREBYCMqACQERUAMqICQEZUAMiICgAZUQEgIyoAZEQFgIyoAJARFQAyogJARlQAyIgKABlRASAjKgBkRAWAzM9vH+Cv/vHPf337CF/z3//8e+y9Tj7nk/Ns+76qM2979ht/G5Pvte13OGnyt3HCTQWAjKgAkBEVADKiAkBGVADIiAoAGVEBICMqAGREBYCMqACQERUAMuu2v05s27o5UW0TTe4yndi2yzS5JeV3+Oe2/Va3uXHTzE0FgIyoAJARFQAyogJARlQAyIgKABlRASAjKgBkRAWAjKgAkBEVADJXbn+dmNzMuXG/qHqdyQ2oyT2uyfNs2xl787M/9f/GJDcVADKiAkBGVADIiAoAGVEBICMqAGREBYCMqACQERUAMqICQEZUAMg8dvvrqW7cJqo2oCqTe1Pb3mvb6zx1/+rN3FQAyIgKABlRASAjKgBkRAWAjKgAkBEVADKiAkBGVADIiAoAGVEBIGP76zLVjtbkrlf1OifPVT37ti2yyrbfj32w53FTASAjKgBkRAWAjKgAkBEVADKiAkBGVADIiAoAGVEBICMqAGREBYDMY7e/nroXdOMm1badsW3PNXmeG7fRJj31/8YkNxUAMqICQEZUAMiICgAZUQEgIyoAZEQFgIyoAJARFQAyogJARlQAyFy5/fXU3aHKjRtQk+d56nNts+25bvwMb+SmAkBGVADIiAoAGVEBICMqAGREBYCMqACQERUAMqICQEZUAMiICgCZddtfJ3tBb3bjbtWNque6ca/sxLbvfdt53sxNBYCMqACQERUAMqICQEZUAMiICgAZUQEgIyoAZEQFgIyoAJARFQAyPz6fz7fP8IvJ/aLKtl2mE5ObVG/21O+9eq8Tk9toN77ONm4qAGREBYCMqACQERUAMqICQEZUAMiICgAZUQEgIyoAZEQFgIyoAJD5+e0DbFdt72zbAprcL5o0uZW0bQNq22ZXZdt5Tmz7u5jkpgJARlQAyIgKABlRASAjKgBkRAWAjKgAkBEVADKiAkBGVADIiAoAmR+fz+fbZ/jF5P5VZdvOz407Y9vcuLG2bfds0lN36rZ97yfcVADIiAoAGVEBICMqAGREBYCMqACQERUAMqICQEZUAMiICgAZUQEgs27768S2PaUb93kq1Z7SU7e2Jj+fG7+LE9uefdtvbBs3FQAyogJARlQAyIgKABlRASAjKgBkRAWAjKgAkBEVADKiAkBGVADIrNv+eup+0YltZ962g3Ri25m3fafb3PjbqGz7jVXcVADIiAoAGVEBICMqAGREBYCMqACQERUAMqICQEZUAMiICgAZUQEgs277a5sbt3e27adNevMel+/rrvc6ceN36qYCQEZUAMiICgAZUQEgIyoAZEQFgIyoAJARFQAyogJARlQAyIgKAJl121+TmznbtoC27Q5VnvoZvvm9tv2dTtp25m37YG4qAGREBYCMqACQERUAMqICQEZUAMiICgAZUQEgIyoAZEQFgIyoAJBZt/1Vmdw42rbLVLnx2bd9hidu3InatiG2zbbPeZKbCgAZUQEgIyoAZEQFgIyoAJARFQAyogJARlQAyIgKABlRASAjKgBkfn77AG9RbRzZSvrz16k+wxu3rSbPs+1znvy+btzsqripAJARFQAyogJARlQAyIgKABlRASAjKgBkRAWAjKgAkBEVADKiAkDmx+fz+fYZuNjkltRTd72qDajJvanJra1tZ67e68SN+2BuKgBkRAWAjKgAkBEVADKiAkBGVADIiAoAGVEBICMqAGREBYCMqACQuXL7a9uuzrbzbDO5D1Z56ndxYnLXq7Jtq23bs09yUwEgIyoAZEQFgIyoAJARFQAyogJARlQAyIgKABlRASAjKgBkRAWAzM9vH+D/Mbl1U+0gVe816cY9pRt/G2/+DLftVlWe+j/hhJsKABlRASAjKgBkRAWAjKgAkBEVADKiAkBGVADIiAoAGVEBICMqAGTWbX9N7im9eSdq0rbvq3qv6jw37oNV73Vi27Pf+Dc4yU0FgIyoAJARFQAyogJARlQAyIgKABlRASAjKgBkRAWAjKgAkBEVADI/Pp/Pt8/wi227Qye27VadmPx8Jj11822bGzf6tn0X285TcVMBICMqAGREBYCMqACQERUAMqICQEZUAMiICgAZUQEgIyoAZEQFgMzPbx/gLarNrhNP3Rm7cStp27NPfqfbdr0mX2fb9z7JTQWAjKgAkBEVADKiAkBGVADIiAoAGVEBICMqAGREBYCMqACQERUAMuu2vyb3i7bt/NzozRtHk3tulRu/r8nds8nf2OT/ukluKgBkRAWAjKgAkBEVADKiAkBGVADIiAoAGVEBICMqAGREBYCMqACQWbf9NbnrNbnzM7nhs20j68S2HaTqM3zzb2zyPNv2wW7c7Kq4qQCQERUAMqICQEZUAMiICgAZUQEgIyoAZEQFgIyoAJARFQAyogJAZt321wnbVn/uxo2jye2myrbP50R15m3f1437YDf+r3NTASAjKgBkRAWAjKgAkBEVADKiAkBGVADIiAoAGVEBICMqAGREBYDMj8/n8+0z/GLbJtWNu0OVbVtS2zx1J2rbb+ypz17Ztg/mpgJARlQAyIgKABlRASAjKgBkRAWAjKgAkBEVADKiAkBGVADIiAoAmcduf1XvdWLb9s6JbVtk2zagJm3b2jqxbSNr22+1cuNv3k0FgIyoAJARFQAyogJARlQAyIgKABlRASAjKgBkRAWAjKgAkBEVADJXbn9N2rYptG0L6M0bYjee+cS2z+eptm12VdxUAMiICgAZUQEgIyoAZEQFgIyoAJARFQAyogJARlQAyIgKABlRASCzbvuL35vcm7rRto2sE9t2tG48T+WpzzXJTQWAjKgAkBEVADKiAkBGVADIiAoAGVEBICMqAGREBYCMqACQERUAMj+/fYC/mtze2cbG0e9t2/WqNrK2PdeJbeeZ/Ay3Pfu2DTE3FQAyogJARlQAyIgKABlRASAjKgBkRAWAjKgAkBEVADKiAkBGVADIrNv+OrFt6+bE5M7PU3e93mxy2+rEtvPc+D9h299yxU0FgIyoAJARFQAyogJARlQAyIgKABlRASAjKgBkRAWAjKgAkBEVADJXbn+duHH/6oQNsT9343OdnLl6rqe+zqQbz1xxUwEgIyoAZEQFgIyoAJARFQAyogJARlQAyIgKABlRASAjKgBkRAWAzGO3v/i9k22iG/fBJrfRTmw7zzZv/v08dR/MTQWAjKgAkBEVADKiAkBGVADIiAoAGVEBICMqAGREBYCMqACQERUAMra/XqrakprcOLKjtUe1HXdi8vt682ZXxU0FgIyoAJARFQAyogJARlQAyIgKABlRASAjKgBkRAWAjKgAkBEVADKP3f56877T5LO/eY9rcgOq2tqqXmfb5tu2Z6/cuDPmpgJARlQAyIgKABlRASAjKgBkRAWAjKgAkBEVADKiAkBGVADIiAoAmSu3v27cw3mzyZ2oSrXvVL3OyeczuZFVqc6zbYftzdxUAMiICgAZUQEgIyoAZEQFgIyoAJARFQAyogJARlQAyIgKABlRASDz4/P5fPsMADyEmwoAGVEBICMqAGREBYCMqACQERUAMqICQEZUAMiICgAZUQEgIyoAZEQFgIyoAJARFQAyogJARlQAyIgKABlRASAjKgBkRAWAjKgAkBEVADKiAkBGVADIiAoAGVEBICMqAGREBYCMqACQERUAMqICQEZUAMiICgAZUQEgIyoAZEQFgIyoAJARFQAyogJARlQAyIgKABlRASAjKgBkRAWAjKgAkBEVADKiAkDmf1Yj0UQF1r3XAAAAAElFTkSuQmCC" alt="QR">
-      <div class="lab"><b data-i18n="qr_pdf_b">PDF 자료</b><span data-i18n="qr_pdf_s">커리큘럼 가이드</span><div class="u">Google Drive ↗</div></div>
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAhwAAAIcCAIAAAAynOArAAAL0ElEQVR4nO3csa0jyxVFUY0wpuJQKApaoSgO+ZQ93xgUNBuXt7rXCoCsJvneRjnnx+fz+RsAFP7+7QMA8ByiAkBGVADIiAoAGVEBICMqAGREBYCMqACQERUAMqICQEZUAMiICgAZUQEgIyoAZEQFgIyoAJARFQAyogJARlQAyIgKABlRASAjKgBkRAWAjKgAkBEVADKiAkBGVADIiAoAGVEBICMqAGREBYCMqACQERUAMqICQEZUAMiICgAZUQEgIyoAZEQFgIyoAJARFQAyogJARlQAyIgKABlRASAjKgBkRAWAzM9vH+Cv/vHPf337CF/z3//8e+y9Tj7nk/Ns+76qM2979ht/G5Pvte13OGnyt3HCTQWAjKgAkBEVADKiAkBGVADIiAoAGVEBICMqAGREBYCMqACQERUAMuu2v05s27o5UW0TTe4yndi2yzS5JeV3+Oe2/Va3uXHTzE0FgIyoAJARFQAyogJARlQAyIgKABlRASAjKgBkRAWAjKgAkBEVADJXbn+dmNzMuXG/qHqdyQ2oyT2uyfNs2xl787M/9f/GJDcVADKiAkBGVADIiAoAGVEBICMqAGREBYCMqACQERUAMqICQEZUAMg8dvvrqW7cJqo2oCqTe1Pb3mvb6zx1/+rN3FQAyIgKABlRASAjKgBkRAWAjKgAkBEVADKiAkBGVADIiAoAGVEBIGP76zLVjtbkrlf1OifPVT37ti2yyrbfj32w53FTASAjKgBkRAWAjKgAkBEVADKiAkBGVADIiAoAGVEBICMqAGREBYDMY7e/nroXdOMm1badsW3PNXmeG7fRJj31/8YkNxUAMqICQEZUAMiICgAZUQEgIyoAZEQFgIyoAJARFQAyogJARlQAyFy5/fXU3aHKjRtQk+d56nNts+25bvwMb+SmAkBGVADIiAoAGVEBICMqAGREBYCMqACQERUAMqICQEZUAMiICgCZddtfJ3tBb3bjbtWNque6ca/sxLbvfdt53sxNBYCMqACQERUAMqICQEZUAMiICgAZUQEgIyoAZEQFgIyoAJARFQAyPz6fz7fP8IvJ/aLKtl2mE5ObVG/21O+9eq8Tk9toN77ONm4qAGREBYCMqACQERUAMqICQEZUAMiICgAZUQEgIyoAZEQFgIyoAJD5+e0DbFdt72zbAprcL5o0uZW0bQNq22ZXZdt5Tmz7u5jkpgJARlQAyIgKABlRASAjKgBkRAWAjKgAkBEVADKiAkBGVADIiAoAmR+fz+fbZ/jF5P5VZdvOz407Y9vcuLG2bfds0lN36rZ97yfcVADIiAoAGVEBICMqAGREBYCMqACQERUAMqICQEZUAMiICgAZUQEgs27768S2PaUb93kq1Z7SU7e2Jj+fG7+LE9uefdtvbBs3FQAyogJARlQAyIgKABlRASAjKgBkRAWAjKgAkBEVADKiAkBGVADIrNv+eup+0YltZ962g3Ri25m3fafb3PjbqGz7jVXcVADIiAoAGVEBICMqAGREBYCMqACQERUAMqICQEZUAMiICgAZUQEgs277a5sbt3e27adNevMel+/rrvc6ceN36qYCQEZUAMiICgAZUQEgIyoAZEQFgIyoAJARFQAyogJARlQAyIgKAJl121+TmznbtoC27Q5VnvoZvvm9tv2dTtp25m37YG4qAGREBYCMqACQERUAMqICQEZUAMiICgAZUQEgIyoAZEQFgIyoAJBZt/1Vmdw42rbLVLnx2bd9hidu3InatiG2zbbPeZKbCgAZUQEgIyoAZEQFgIyoAJARFQAyogJARlQAyIgKABlRASAjKgBkfn77AG9RbRzZSvrz16k+wxu3rSbPs+1znvy+btzsqripAJARFQAyogJARlQAyIgKABlRASAjKgBkRAWAjKgAkBEVADKiAkDmx+fz+fYZuNjkltRTd72qDajJvanJra1tZ67e68SN+2BuKgBkRAWAjKgAkBEVADKiAkBGVADIiAoAGVEBICMqAGREBYCMqACQuXL7a9uuzrbzbDO5D1Z56ndxYnLXq7Jtq23bs09yUwEgIyoAZEQFgIyoAJARFQAyogJARlQAyIgKABlRASAjKgBkRAWAzM9vH+D/Mbl1U+0gVe816cY9pRt/G2/+DLftVlWe+j/hhJsKABlRASAjKgBkRAWAjKgAkBEVADKiAkBGVADIiAoAGVEBICMqAGTWbX9N7im9eSdq0rbvq3qv6jw37oNV73Vi27Pf+Dc4yU0FgIyoAJARFQAyogJARlQAyIgKABlRASAjKgBkRAWAjKgAkBEVADI/Pp/Pt8/wi227Qye27VadmPx8Jj11822bGzf6tn0X285TcVMBICMqAGREBYCMqACQERUAMqICQEZUAMiICgAZUQEgIyoAZEQFgMzPbx/gLarNrhNP3Rm7cStp27NPfqfbdr0mX2fb9z7JTQWAjKgAkBEVADKiAkBGVADIiAoAGVEBICMqAGREBYCMqACQERUAMuu2vyb3i7bt/NzozRtHk3tulRu/r8nds8nf2OT/ukluKgBkRAWAjKgAkBEVADKiAkBGVADIiAoAGVEBICMqAGREBYCMqACQWbf9NbnrNbnzM7nhs20j68S2HaTqM3zzb2zyPNv2wW7c7Kq4qQCQERUAMqICQEZUAMiICgAZUQEgIyoAZEQFgIyoAJARFQAyogJAZt321wnbVn/uxo2jye2myrbP50R15m3f1437YDf+r3NTASAjKgBkRAWAjKgAkBEVADKiAkBGVADIiAoAGVEBICMqAGREBYDMj8/n8+0z/GLbJtWNu0OVbVtS2zx1J2rbb+ypz17Ztg/mpgJARlQAyIgKABlRASAjKgBkRAWAjKgAkBEVADKiAkBGVADIiAoAmcduf1XvdWLb9s6JbVtk2zagJm3b2jqxbSNr22+1cuNv3k0FgIyoAJARFQAyogJARlQAyIgKABlRASAjKgBkRAWAjKgAkBEVADJXbn9N2rYptG0L6M0bYjee+cS2z+eptm12VdxUAMiICgAZUQEgIyoAZEQFgIyoAJARFQAyogJARlQAyIgKABlRASCzbvuL35vcm7rRto2sE9t2tG48T+WpzzXJTQWAjKgAkBEVADKiAkBGVADIiAoAGVEBICMqAGREBYCMqACQERUAMj+/fYC/mtze2cbG0e9t2/WqNrK2PdeJbeeZ/Ay3Pfu2DTE3FQAyogJARlQAyIgKABlRASAjKgBkRAWAjKgAkBEVADKiAkBGVADIrNv+OrFt6+bE5M7PU3e93mxy2+rEtvPc+D9h299yxU0FgIyoAJARFQAyogJARlQAyIgKABlRASAjKgBkRAWAjKgAkBEVADJXbn+duHH/6oQNsT9343OdnLl6rqe+zqQbz1xxUwEgIyoAZEQFgIyoAJARFQAyogJARlQAyIgKABlRASAjKgBkRAWAzGO3v/i9k22iG/fBJrfRTmw7zzZv/v08dR/MTQWAjKgAkBEVADKiAkBGVADIiAoAGVEBICMqAGREBYCMqACQERUAMra/XqrakprcOLKjtUe1HXdi8vt682ZXxU0FgIyoAJARFQAyogJARlQAyIgKABlRASAjKgBkRAWAjKgAkBEVADKP3f56877T5LO/eY9rcgOq2tqqXmfb5tu2Z6/cuDPmpgJARlQAyIgKABlRASAjKgBkRAWAjKgAkBEVADKiAkBGVADIiAoAmSu3v27cw3mzyZ2oSrXvVL3OyeczuZFVqc6zbYftzdxUAMiICgAZUQEgIyoAZEQFgIyoAJARFQAyogJARlQAyIgKABlRASDz4/P5fPsMADyEmwoAGVEBICMqAGREBYCMqACQERUAMqICQEZUAMiICgAZUQEgIyoAZEQFgIyoAJARFQAyogJARlQAyIgKABlRASAjKgBkRAWAjKgAkBEVADKiAkBGVADIiAoAGVEBICMqAGREBYCMqACQERUAMqICQEZUAMiICgAZUQEgIyoAZEQFgIyoAJARFQAyogJARlQAyIgKABlRASAjKgBkRAWAjKgAkBEVADKiAkDmf1Yj0UQF1r3XAAAAAElFTkSuQmCC" alt="PDF QR">
+      <div class="lab"><b data-i18n="qr2t"></b><span data-i18n="qr2s"></span><div class="u">Google Drive &#8599;</div></div>
     </a>
     <a class="qr" href="https://lyvon.io" target="_blank" rel="noopener">
-      <img src="data:image/png;base64,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" alt="QR">
-      <div class="lab"><b data-i18n="qr_web_b">LYVON 웹사이트</b><span data-i18n="qr_web_s">프로그램 전체 안내</span><div class="u">lyvon.io ↗</div></div>
+      <img src="data:image/png;base64,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" alt="LYVON QR">
+      <div class="lab"><b data-i18n="qr3t"></b><span data-i18n="qr3s"></span><div class="u">lyvon.io &#8599;</div></div>
     </a>
-  </section>
+  </div>
 
-  <div class="foot">HELLO@LYVON.IO · LYVON.IO · © 2026 LYVON · ALL RIGHTS RESERVED</div>
+  <div class="foot">HELLO@LYVON.IO &middot; LYVON.IO &middot; &copy; 2026 LYVON &middot; ALL RIGHTS RESERVED</div>
 
 </div>
+
 <script>
-const I18N={"tag": {"ko": "헝가리 의대로 가는 영어, 전문 원어민과 1:1로", "en": "English for the road to Hungarian medical school — 1:1 with expert native speakers", "ja": "ハンガリー医学部への英語、専門ネイティブと1:1で"}, "ess_q": {"ko": "\"면접관은 외운 답이 아니라, 스스로 설명하는 힘을 봅니다.\"", "en": "\"Examiners look for the power to explain on your own — not memorized answers.\"", "ja": "「面接官は覚えた答えではなく、自ら説明する力を見ます。」"}, "ess_s": {"ko": "<b>헝가리 의대 입시의 핵심</b>인 영어 말하기·구술시험의 기초와 심화 과정을, <b>전문 원어민과 1:1 집중 훈련</b>하는 프로그램입니다.", "en": "A program that trains the speaking and oral-exam skills <b>at the heart of Hungarian medical admissions</b> — foundations through advanced — <b>1:1 with expert native speakers</b>.", "ja": "<b>ハンガリー医学部入試の核心</b>である英語スピーキング・口述試験の基礎と発展を、<b>専門ネイティブと1:1で集中訓練</b>するプログラムです。"}, "p_premed": {"ko": "예비 의대생<small>고등학생 · 입문자</small>", "en": "Pre-med<small>High-schoolers · Beginners</small>", "ja": "医学部志望<small>高校生・入門者</small>"}, "p_bridge": {"ko": "MedBridge<small>기초</small>", "en": "MedBridge<small>Foundation</small>", "ja": "MedBridge<small>基礎</small>"}, "p_path": {"ko": "MedPath<small>심화 · 의대 합격</small>", "en": "MedPath<small>Advanced · Admission</small>", "ja": "MedPath<small>発展・合格</small>"}, "p_connect": {"ko": "MedConnect<small>합격 이후</small>", "en": "MedConnect<small>After Admission</small>", "ja": "MedConnect<small>合格後</small>"}, "p_pro": {"ko": "의료 전문가<small>글로벌 무대</small>", "en": "Medical Pro<small>Global Stage</small>", "ja": "医療専門家<small>グローバル舞台</small>"}, "st1_l": {"ko": "토픽", "en": "Topics", "ja": "トピック"}, "st2_l": {"ko": "레슨 · 3 티어", "en": "Lessons · 3 Tiers", "ja": "レッスン・3ティア"}, "st3_l": {"ko": "실전 프로그램", "en": "Programs", "ja": "実践プログラム"}, "st4_l": {"ko": "원어민 맞춤", "en": "Native 1:1", "ja": "ネイティブ1:1"}, "st4_t": {"ko": "전 과정 공통", "en": "All programs", "ja": "全課程共通"}, "sh_eyebrow": {"ko": "THREE PROGRAMS · ONE PATH", "en": "THREE PROGRAMS · ONE PATH", "ja": "THREE PROGRAMS · ONE PATH"}, "sh_h2": {"ko": "기초부터 합격, 그 이후까지", "en": "From foundations to admission — and beyond", "ja": "基礎から合格、その先まで"}, "mb_lead": {"ko": "메디컬 영어 커뮤니케이션 기초", "en": "Medical English communication foundations", "ja": "メディカル英語コミュニケーション基礎"}, "mb_desc": {"ko": "핵심 어휘·발음·문장 구조를 익히고, 입을 여는 습관을 만드는 출발점.", "en": "The starting point — master core vocabulary, pronunciation, and sentence structure, and build the habit of speaking up.", "ja": "核心語彙・発音・文構造を身につけ、口を開く習慣を作る出発点。"}, "mb_r1": {"ko": "<b>구성</b><span>Medical English 3세트 · 30개 토픽</span>", "en": "<b>Format</b><span>Medical English 3 sets · 30 topics</span>", "ja": "<b>構成</b><span>Medical English 3セット・30トピック</span>"}, "mb_r2": {"ko": "<b>기간</b><span>3개월 · 주 2~4회</span>", "en": "<b>Length</b><span>3 months · 2–4×/week</span>", "ja": "<b>期間</b><span>3ヶ月・週2〜4回</span>"}, "mb_r3": {"ko": "<b>대상</b><span>고등학생 · 입문자</span>", "en": "<b>For</b><span>High-schoolers · Beginners</span>", "ja": "<b>対象</b><span>高校生・入門者</span>"}, "mp_lead": {"ko": "3티어 50레슨 심화 커리큘럼", "en": "3-tier, 50-lesson advanced curriculum", "ja": "3ティア50レッスンの発展カリキュラム"}, "mp_desc": {"ko": "정의(Starter) → 설명(Core) → 논증(Pro)으로 깊어지는 의대 합격 커리큘럼.", "en": "An admissions curriculum that deepens Define (Starter) → Explain (Core) → Justify (Pro).", "ja": "定義(Starter)→説明(Core)→論証(Pro)へ深まる合格カリキュラム。"}, "mp_r1": {"ko": "<b>구성</b><span>Biology·Chemistry 50개 레슨 · 3티어</span>", "en": "<b>Format</b><span>Biology·Chemistry 50 lessons · 3 tiers</span>", "ja": "<b>構成</b><span>Biology・Chemistry 50レッスン・3ティア</span>"}, "mp_r2": {"ko": "<b>기간</b><span>티어당 3개월 · 주 4회</span>", "en": "<b>Length</b><span>3 months per tier · 4×/week</span>", "ja": "<b>期間</b><span>ティアごと3ヶ月・週4回</span>"}, "mp_r3": {"ko": "<b>대상</b><span>해외 의대 구술·면접 준비 학생</span>", "en": "<b>For</b><span>Students prepping overseas med orals & interviews</span>", "ja": "<b>対象</b><span>海外医学部の口述・面接準備生</span>"}, "mc_lead": {"ko": "합격 이후 영어 커뮤니케이션 멤버십", "en": "Post-admission English communication membership", "ja": "合格後の英語コミュニケーション・メンバーシップ"}, "mc_desc": {"ko": "6개 실전 프로그램으로 의료 현장의 영어를 평생 곁에서 함께 훈련합니다.", "en": "Six hands-on programs that train real medical-field English by your side, for life.", "ja": "6つの実践プログラムで医療現場の英語を生涯そばで訓練します。"}, "mc_r1": {"ko": "<b>구성</b><span>6 프로그램 · 라이브 1:1 + 소그룹</span>", "en": "<b>Format</b><span>6 programs · live 1:1 + small group</span>", "ja": "<b>構成</b><span>6プログラム・ライブ1:1+少人数</span>"}, "mc_r2": {"ko": "<b>기간</b><span>월 단위 구독형 멤버십</span>", "en": "<b>Length</b><span>Monthly subscription membership</span>", "ja": "<b>期間</b><span>月単位のサブスク型メンバーシップ</span>"}, "mc_r3": {"ko": "<b>대상</b><span>의대 재학생 · 합격 이후 멤버</span>", "en": "<b>For</b><span>Med students · post-admission members</span>", "ja": "<b>対象</b><span>医学部在学生・合格後メンバー</span>"}, "why_wk": {"ko": "WHY LYVON · 하나의 생태계인 이유", "en": "WHY LYVON · One connected ecosystem", "ja": "WHY LYVON · ひとつの生態系である理由"}, "why_t1": {"ko": "전문 분석 + AI", "en": "Expert analysis + AI", "ja": "専門分析 + AI"}, "why_d1": {"ko": "전문 강사가 직접 분석·측정하고 AI 머신러닝과 통합해 정밀하게 진단합니다.", "en": "Expert instructors analyze and measure directly, integrated with AI machine learning for precise diagnosis.", "ja": "専門講師が直接分析・測定し、AI機械学習と統合して精密に診断します。"}, "why_t2": {"ko": "1:1 퍼스널 트레이닝", "en": "1:1 personal training", "ja": "1:1パーソナルトレーニング"}, "why_d2": {"ko": "메디컬 영어의 틀린 문법·표현을 짚어 주고, 바른 표현으로 말하도록 1:1로 반복 훈련합니다.", "en": "We pinpoint incorrect medical-English grammar and expressions, and drill 1:1 until you say them right.", "ja": "メディカル英語の誤った文法・表現を指摘し、正しい表現で話せるよう1:1で反復訓練します。"}, "why_t3": {"ko": "글로벌 의대 진학", "en": "Global med-school admission", "ja": "グローバル医学部進学"}, "why_d3": {"ko": "헝가리 의대 등 해외 의대 진학에 필요한 실제 언어 경쟁력을 설계합니다.", "en": "We build the real language competitiveness needed for Hungarian and other overseas med schools.", "ja": "ハンガリー医学部など海外医学部進学に必要な実際の言語競争力を設計します。"}, "qr_kakao_b": {"ko": "카카오톡 상담", "en": "KakaoTalk consultation", "ja": "KakaoTalk相談"}, "qr_kakao_s": {"ko": "1:1 오픈 채팅 문의", "en": "1:1 open-chat inquiry", "ja": "1:1オープンチャット"}, "qr_pdf_b": {"ko": "PDF 자료", "en": "PDF materials", "ja": "PDF資料"}, "qr_pdf_s": {"ko": "커리큘럼 가이드", "en": "Curriculum guide", "ja": "カリキュラムガイド"}, "qr_web_b": {"ko": "LYVON 웹사이트", "en": "LYVON website", "ja": "LYVONウェブサイト"}, "qr_web_s": {"ko": "프로그램 전체 안내", "en": "Full program guide", "ja": "プログラム全体案内"}};
-function setLang(lang){
-  if(!["ko","en","ja"].includes(lang)) lang="ko";
-  document.documentElement.lang=lang;
-  document.querySelectorAll("[data-i18n]").forEach(el=>{
-    const t=I18N[el.getAttribute("data-i18n")];
-    if(t&&t[lang]!=null) el.innerHTML=t[lang];
+const T = {"ko": {"tagline": "헝가리 의대로 가는 영어, 전문 원어민과 1:1로", "quote": "“면접관은 외운 답이 아니라, 스스로 설명하는 힘을 봅니다.”", "ess_desc": "<b>헝가리 의대 입시의 핵심</b>인 영어 말하기·구술시험의 기초와 심화 과정을, <b>전문 원어민과 1:1 집중 훈련</b>하는 프로그램입니다.", "p1": "예비 의대생", "p1s": "고등학생 · 입문자", "p2s": "기초", "p3s": "심화 · 의대 합격", "p4s": "합격 이후", "p5": "의료 전문가", "p5s": "글로벌 무대", "st1l": "토픽", "st2l": "레슨 · 3 티어", "st3l": "실전 프로그램", "st4l": "원어민 맞춤", "st4t": "전 과정 공통", "mb_lead": "의료 영어 커뮤니케이션 기초", "mb_desc": "핵심 어휘·발음·문장 구조를 익히고, 입을 여는 습관을 만드는 출발점.", "mb_fmt": "Medical English 3세트 · 30개 토픽", "mb_dur": "3개월 · 주 2~4회", "mb_tgt": "고등학생 · 입문자", "mp_lead": "3티어 50레슨 심화 커리큘럼", "mp_desc": "정의(Starter) → 설명(Core) → 논증(Pro)으로 깊어지는 의대 합격 커리큘럼.", "mp_fmt": "Biology·Chemistry 50개 레슨 · 3티어", "mp_dur": "티어당 3개월 · 주 4회", "mp_tgt": "해외 의대 구술·면접 준비 학생", "mc_lead": "합격 이후 영어 커뮤니케이션 멤버십", "mc_desc": "6개 실전 프로그램으로 의료 현장의 영어를 평생 곁에서 함께 훈련합니다.", "mc_fmt": "6 프로그램 · 라이브 1:1 + 소그룹", "mc_dur": "월 단위 구독형 멤버십", "mc_tgt": "의대 재학생 · 합격 이후 멤버", "lbl_fmt": "구성", "lbl_dur": "기간", "lbl_tgt": "대상", "wk": "WHY LYVON · 하나의 생태계인 이유", "w1t": "전문 분석 + AI", "w1d": "전문 감사가 직접 분석·측정하고 AI 머신러닝과 통합해 정밀하게 진단합니다.", "w2t": "1:1 퍼스널 트레이닝", "w2d": "틀린 문법·표현을 짚어 주고, 바른 표현으로 말하도록 1:1로 반복 훈련합니다.", "w3t": "글로벌 의대 진학", "w3d": "헝가리 의대 등 해외 의대 진학에 필요한 실제 언어 경쟁력을 설계합니다.", "qr1t": "카카오톡 상담", "qr1s": "1:1 오픈 채팅 문의", "qr2t": "PDF 자료", "qr2s": "커리큘럼 가이드", "qr3t": "LYVON 웹사이트", "qr3s": "프로그램 전체 안내"}, "en": {"tagline": "English for Hungarian medical school — 1:1 with expert native speakers", "quote": "“Interviewers look for the power to explain on your own — not memorized answers.”", "ess_desc": "A program that trains the speaking and oral-exam skills at the <b>heart of Hungarian medical admissions</b> — from foundations to advanced, <b>1:1 with expert native speakers.</b>", "p1": "Future med students", "p1s": "High schoolers · Beginners", "p2s": "Foundation", "p3s": "Advanced · Admission", "p4s": "After admission", "p5": "Medical professional", "p5s": "Global stage", "st1l": "Topics", "st2l": "Lessons · 3 Tiers", "st3l": "Programs", "st4l": "Native-speaker 1:1", "st4t": "All programs", "mb_lead": "Medical English communication basics", "mb_desc": "Build core vocabulary, pronunciation and sentence structure — the starting point for speaking up.", "mb_fmt": "Medical English 3 sets · 30 topics", "mb_dur": "3 months · 2–4×/week", "mb_tgt": "High schoolers · Beginners", "mp_lead": "3-tier, 50-lesson advanced curriculum", "mp_desc": "Define (Starter) → Explain (Core) → Argue (Pro): a deepening curriculum built for admission.", "mp_fmt": "Biology·Chemistry 50 lessons · 3 tiers", "mp_dur": "3 months/tier · 4×/week", "mp_tgt": "Students prepping overseas med oral & interview", "mc_lead": "Post-admission English communication membership", "mc_desc": "Six practical programs that train real clinical English by your side, for life.", "mc_fmt": "6 programs · Live 1:1 + small group", "mc_dur": "Monthly subscription membership", "mc_tgt": "Med students · Post-admission members", "lbl_fmt": "Format", "lbl_dur": "Duration", "lbl_tgt": "For", "wk": "WHY LYVON · One ecosystem", "w1t": "Expert analysis + AI", "w1d": "Expert auditors analyze and measure directly, integrated with AI machine learning for precise diagnosis.", "w2t": "1:1 personal training", "w2d": "We pinpoint grammar and phrasing errors and drill correct expression 1:1, repeatedly.", "w3t": "Global med admissions", "w3d": "We design the real language competitiveness needed for Hungarian and other overseas medical schools.", "qr1t": "KakaoTalk consult", "qr1s": "1:1 open chat", "qr2t": "PDF materials", "qr2s": "Curriculum guide", "qr3t": "LYVON website", "qr3s": "All programs"}, "ja": {"tagline": "ハンガリー医学部進学のための英語、専門ネイティブと1:1で", "quote": "「面接官が見るのは、暗記した答えではなく、自分で説明する力です。」", "ess_desc": "<b>ハンガリー医学部入試の核心</b>である英語スピーキング・口述試験の基礎から応用までを、<b>専門ネイティブと1:1で集中トレーニング</b>するプログラムです。", "p1": "医学部志望者", "p1s": "高校生 · 入門者", "p2s": "基礎", "p3s": "応用 · 合格", "p4s": "合格後", "p5": "医療プロフェッショナル", "p5s": "グローバル舞台", "st1l": "トピック", "st2l": "レッスン · 3ティア", "st3l": "実践プログラム", "st4l": "ネイティブ1:1", "st4t": "全課程共通", "mb_lead": "医療英語コミュニケーションの基礎", "mb_desc": "重要語彙・発音・文構造を身につけ、話す習慣をつくる出発点。", "mb_fmt": "Medical English 3セット · 30トピック", "mb_dur": "3ヶ月 · 週2〜4回", "mb_tgt": "高校生 · 入門者", "mp_lead": "3ティア50レッスンの応用カリキュラム", "mp_desc": "定義(Starter) → 説明(Core) → 論証(Pro)へ深まる、医学部合格カリキュラム。", "mp_fmt": "生物・化学 50レッスン · 3ティア", "mp_dur": "ティアごと3ヶ月 · 週4回", "mp_tgt": "海外医学部の口述・面接準備の学生", "mc_lead": "合格後の英語コミュニケーション・メンバーシップ", "mc_desc": "6つの実践プログラムで、医療現場の英語を生涯そばで共にトレーニング。", "mc_fmt": "6プログラム · ライブ1:1 + 少人数", "mc_dur": "月額サブスク型メンバーシップ", "mc_tgt": "医学部在学生 · 合格後メンバー", "lbl_fmt": "構成", "lbl_dur": "期間", "lbl_tgt": "対象", "wk": "WHY LYVON · 一つのエコシステムである理由", "w1t": "専門分析 + AI", "w1d": "専門監査が直接分析・測定し、AI機械学習と統合して精密に診断します。", "w2t": "1:1 パーソナルトレーニング", "w2d": "誤った文法・表現を指摘し、正しい表現で話せるよう1:1で反復訓練します。", "w3t": "グローバル医学部進学", "w3d": "ハンガリー医学部など海外医学部進学に必要な実践的言語力を設計します。", "qr1t": "カカオトーク相談", "qr1s": "1:1 オープンチャット", "qr2t": "PDF資料", "qr2s": "カリキュラムガイド", "qr3t": "LYVONサイト", "qr3s": "全プログラム案内"}};
+function setLang(l){
+  document.documentElement.lang = l;
+  document.querySelectorAll('[data-i18n]').forEach(function(el){
+    var k = el.getAttribute('data-i18n');
+    if(T[l] && T[l][k] !== undefined) el.innerHTML = T[l][k];
   });
-  document.querySelectorAll(".langbar button").forEach(b=>{
-    b.setAttribute("aria-pressed", b.dataset.lang===lang ? "true":"false");
-  });
-  try{localStorage.setItem("lyvon_lang",lang);}catch(e){}
+  document.querySelectorAll('.langbar button').forEach(function(b){ b.classList.toggle('on', b.dataset.lang === l); });
+  try{ localStorage.setItem('lyvon_lang', l); }catch(e){}
 }
 (function init(){
-  let saved=null; try{saved=localStorage.getItem("lyvon_lang");}catch(e){}
-  let lang=saved;
-  if(!lang){const n=(navigator.language||"ko").toLowerCase();
-    lang=n.startsWith("ja")?"ja":n.startsWith("en")?"en":"ko";}
-  setLang(lang);
-  document.querySelectorAll(".langbar button").forEach(b=>{
-    b.addEventListener("click",()=>setLang(b.dataset.lang));
-  });
+  var l='';
+  try{ l = localStorage.getItem('lyvon_lang') || ''; }catch(e){}
+  if(!l){ var n=(navigator.language||'ko').toLowerCase(); l = n.indexOf('ja')===0?'ja':(n.indexOf('en')===0?'en':'ko'); }
+  document.querySelectorAll('.langbar button').forEach(function(b){ b.addEventListener('click', function(){ setLang(b.dataset.lang); }); });
+  setLang(l);
 })();
 </script>
-</body>
-</html>
+</body></html>
