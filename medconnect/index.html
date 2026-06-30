@@ -161,6 +161,10 @@ footer{background:var(--navy);color:rgba(255,255,255,.7);padding:56px 0 40px;}
   .nav-links .pill a{padding:7px 9px;font-size:12px;}
   .nav-links .btn-k{font-size:12px;padding:8px 12px;}
 }
+.foot-bottom .legal{display:flex;align-items:center;gap:8px;}
+.foot-bottom .legal a{color:rgba(255,255,255,.6);text-decoration:none;transition:.2s;}
+.foot-bottom .legal a:hover{color:#fff;}
+.foot-bottom .legal span{color:rgba(255,255,255,.3);}
 </style>
 </head>
 <body>
@@ -272,6 +276,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.7);padding:56px 0 40px;}
       </div>
     </div>
     <div class="foot-bottom">
+      <div class="legal"><a href="legal.html#privacy" data-i18n="footPrivacy">개인정보처리방침</a><span>·</span><a href="legal.html#terms" data-i18n="footTerms">이용약관</a></div>
       <span data-i18n="footRights">© 2024–2026 LYVON · MedConnect — Connect. Grow. Belong.</span>
       <span data-i18n="footPilot">Pilot · 2026.07</span>
     </div>
@@ -280,7 +285,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.7);padding:56px 0 40px;}
 
 <script>
 const I18N={
- en:{guideBtn:`Get the LYVON Welcome Guide →`,
+ en:{footPrivacy:`Privacy Policy`,footTerms:`Terms of Use`,guideBtn:`Get the LYVON Welcome Guide →`,
   navKakao:`KakaoTalk`,
   badge:`Pilot launching July 2026`, badge2:`Pilot launching July 2026`,
   tagline:`Growth beyond admission.`,
@@ -304,7 +309,7 @@ const I18N={
   footF1:`Programs`, footF2:`Who it's for`, footF3:`Register interest`,
   footRights:`© 2024–2026 LYVON · MedConnect — Connect. Grow. Belong.`, footPilot:`Pilot · July 2026`
  },
- ja:{guideBtn:`LYVON Welcome Guide を受け取る →`,
+ ja:{footPrivacy:`プライバシーポリシー`,footTerms:`利用規約`,guideBtn:`LYVON Welcome Guide を受け取る →`,
   navKakao:`カカオトーク`,
   badge:`2026年7月 パイロット開始`, badge2:`2026年7月 パイロット開始`,
   tagline:`合格、その先の成長。`,
