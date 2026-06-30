@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- LYVON 홈 (시스템 허브) -->
+  <url>
+    <loc>https://lyvon.io/</loc>
+    <lastmod>2026-06-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://lyvon.io/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://lyvon.io/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://lyvon.io/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lyvon.io/" />
+  </url>
+
+  <!-- LYVON Philosophy -->
+  <url>
+    <loc>https://lyvon.io/philosophy/</loc>
+    <lastmod>2026-06-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://lyvon.io/philosophy/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://lyvon.io/philosophy/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://lyvon.io/philosophy/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lyvon.io/philosophy/" />
+  </url>
+
+  <!-- MedConnect (2026.07 파일럿) -->
+  <url>
+    <loc>https://lyvon.io/medconnect/</loc>
+    <lastmod>2026-06-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://lyvon.io/medconnect/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://lyvon.io/medconnect/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://lyvon.io/medconnect/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lyvon.io/medconnect/" />
+  </url>
+
+  <!-- LYVON 약관/개인정보처리방침 -->
+  <url>
+    <loc>https://lyvon.io/legal.html</loc>
+    <lastmod>2026-06-30</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <!-- MedConnect 약관/개인정보처리방침 -->
+  <url>
+    <loc>https://lyvon.io/medconnect/legal.html</loc>
+    <lastmod>2026-06-30</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+</urlset>
