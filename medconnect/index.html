@@ -129,7 +129,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.7);padding:56px 0 40px;}
 
 
 /* MedConnect nav 모바일 햄버거 */
-.nav-toggle{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;padding:4px;flex-shrink:0;}
+.nav-toggle{display:none;background:none;border:none;cursor:pointer;flex-direction:column;justify-content:center;gap:5px;padding:12px 10px;margin:-8px -6px;min-width:44px;min-height:44px;flex-shrink:0;-webkit-tap-highlight-color:transparent;}
 .nav-toggle span{width:24px;height:2px;background:var(--navy);display:block;border-radius:2px;transition:.3s;}
 .nav-links{display:flex;align-items:center;gap:8px;flex-wrap:nowrap;}
 @media(max-width:600px){
@@ -328,6 +328,14 @@ const io = new IntersectionObserver((entries) => {
   entries.forEach(e => { if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
 }, { threshold: 0.12 });
 document.querySelectorAll('.reveal:not(.in)').forEach(el => io.observe(el));
+</script>
+<script>
+(function(){
+  var nt=document.getElementById('navToggle'), nl=document.getElementById('navLinks');
+  if(!nt||!nl) return;
+  nt.addEventListener('click',function(){nt.classList.toggle('open');nl.classList.toggle('open');});
+  nl.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){nt.classList.remove('open');nl.classList.remove('open');});});
+})();
 </script>
 </body>
 </html>
