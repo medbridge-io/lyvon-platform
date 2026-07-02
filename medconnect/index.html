@@ -14,7 +14,7 @@
 <meta property="og:title" content="MedConnect · LYVON Medical Connection Network">
 <meta property="og:description" content="의대 합격 이후에도 이어지는 영어 커뮤니케이션 멤버십 — 2026년 7월 파일럿 시작.">
 <meta property="og:image" content="https://lyvon.io/medconnect/og.png">
-<meta name="description" content="MedConnect — 의대 합격 이후에도 영어 커뮤니케이션 역량을 이어가는 LYVON의 멤버십. 의대·치대·약대·수의대생 및 예비 의료 전문가를 위한 실전 의료 영어 네트워크. 2026년 7월 파일럿 시작.">
+<meta name="description" content="MedConnect — 의대 합격 이후에도 영어 커뮤니케이션 역량을 이어가는 LYVON의 멤버십. 의대·치대·약대·수의대생 및 예비 의료 전문가를 위한 실전 의학 영어 네트워크. 2026년 7월 파일럿 시작.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Sans+KR:wght@400;500;700;900&family=Inter:wght@400;500;600;700;800;900&family=Lora:wght@500;600;700&display=swap" rel="stylesheet">
@@ -165,6 +165,22 @@ footer{background:var(--navy);color:rgba(255,255,255,.7);padding:56px 0 40px;}
 .foot-bottom .legal a{color:rgba(255,255,255,.6);text-decoration:none;transition:.2s;}
 .foot-bottom .legal a:hover{color:#fff;}
 .foot-bottom .legal span{color:rgba(255,255,255,.3);}
+
+.newsletter{background:var(--cream);}
+.nl-card{max-width:640px;margin:0 auto;text-align:center;background:var(--cream-l);border:1px solid rgba(11,37,69,.1);border-radius:18px;padding:50px 48px;}
+.nl-eyebrow{font-size:11px;font-weight:700;letter-spacing:.2em;color:var(--sky);margin-bottom:14px;}
+.nl-title{font-size:30px;font-weight:600;color:var(--navy);margin-bottom:14px;letter-spacing:-.01em;line-height:1.2;}
+.nl-desc{font-size:14.5px;line-height:1.85;color:rgba(11,37,69,.75);max-width:480px;margin:0 auto 28px;}
+.nl-form{display:flex;gap:10px;max-width:440px;margin:0 auto;}
+.nl-input{flex:1;min-width:0;padding:14px 18px;border:1px solid rgba(11,37,69,.2);border-radius:8px;font-size:14px;font-family:inherit;color:var(--navy);background:#fff;outline:none;transition:.2s;}
+.nl-input::placeholder{color:rgba(11,37,69,.4);}
+.nl-input:focus{border-color:var(--sky);}
+.nl-btn{white-space:nowrap;background:var(--sky);color:#fff;border:none;font-weight:700;font-size:14px;padding:14px 26px;border-radius:8px;cursor:pointer;font-family:inherit;transition:.2s;}
+.nl-btn:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(11,37,69,.2);}
+.nl-done{display:none;font-size:15px;color:var(--navy);font-weight:600;padding:6px 0;}
+.nl-note{margin-top:20px;font-size:13px;color:rgba(11,37,69,.55);}
+.nl-note a{color:var(--sky);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(46,139,192,.4);}
+@media(max-width:600px){.nl-card{padding:38px 24px;}.nl-form{flex-direction:column;}.nl-title{font-size:25px;}}
 </style>
 </head>
 <body>
@@ -205,7 +221,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.7);padding:56px 0 40px;}
     <div class="eyebrow">LYVON ECOSYSTEM · CONNECT</div>
     <h1>Med<b>Connect</b></h1>
     <div class="tagline" data-i18n="tagline">합격, 그 이후의 성장.</div>
-    <p class="intro" data-i18n="intro">의대 합격 이후에도 영어 커뮤니케이션 역량을 이어가는 멤버십입니다. 의대·치대·약대·수의대생 및 예비 의료 전문가를 위해 실전 의료 영어를 함께 훈련합니다.</p>
+    <p class="intro" data-i18n="intro">의대 합격 이후에도 영어 커뮤니케이션 역량을 이어가는 멤버십입니다. 의대·치대·약대·수의대생 및 예비 의료 전문가를 위해 실전 의학 영어를 함께 훈련합니다.</p>
     <div class="hero-cta">
       <a href="https://open.kakao.com/o/sh3TzOsi" target="_blank" rel="noopener" class="btn btn-sky" data-i18n="heroBtn">사전 관심 등록하기 →</a>
       <a href="#programs" class="btn btn-ghost" data-i18n="heroBtn2">프로그램 보기</a>
@@ -218,7 +234,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.7);padding:56px 0 40px;}
   <div class="wrap">
     <div class="reveal">
       <div class="sec-tag">PROGRAMS</div>
-      <h2 class="sec-title" data-i18n="progTitle">실전 의료 영어, 함께 훈련합니다</h2>
+      <h2 class="sec-title" data-i18n="progTitle">실전 의학 영어, 함께 훈련합니다</h2>
       <p class="sec-lead" data-i18n="progLead">합격 이후에도 멈추지 않습니다. 토론에서 학회 발표까지, 의료 현장의 영어를 단계적으로 이어갑니다.</p>
     </div>
     <div class="prog-grid">
@@ -248,11 +264,27 @@ footer{background:var(--navy);color:rgba(255,255,255,.7);padding:56px 0 40px;}
     <h2 data-i18n="ctaTitle">합격은 끝이 아니라 시작입니다</h2>
     <p class="cta-sub" data-i18n="ctaSub">MedConnect는 2026년 7월 파일럿으로 문을 엽니다. 가장 먼저 소식을 받아보고 싶다면 사전 관심을 등록해 주세요.</p>
     <div class="cta-actions">
-      <a href="https://open.kakao.com/o/sh3TzOsi" target="_blank" rel="noopener" class="btn btn-skyc" data-i18n="ctaBtn1">사전 관심 등록하기 →</a>
+      <a href="apply.html" class="btn btn-skyc" data-i18n="ctaBtn1">멤버십 신청하기 →</a>
       <a href="mailto:hello@lyvon.io" class="btn btn-line" data-i18n="ctaBtn2">문의하기</a>
     </div>
   </div>
 </section>
+
+
+<!-- NEWSLETTER -->
+<section class="newsletter"><div class="wrap">
+  <div class="nl-card">
+    <div class="nl-eyebrow">LYVON NEWSLETTER</div>
+    <h2 class="nl-title" data-i18n="nlTitle">LYVON 뉴스레터</h2>
+    <p class="nl-desc" data-i18n="nlDesc">합격 후 성장을 위한 의학 영어 팁·MedConnect 소식·인사이트를 정기적으로 받아보세요.</p>
+    <div class="nl-form" id="nlForm">
+      <input type="email" id="nlEmail" class="nl-input" placeholder="you@email.com" aria-label="email">
+      <button type="button" class="nl-btn" onclick="lyvonSubscribe()" data-i18n="nlBtn">구독하기 →</button>
+    </div>
+    <div class="nl-done" id="nlDone" data-i18n="nlDone">구독 신청이 완료되었습니다 — 폼에서 이름을 입력하고 제출해 주세요.</div>
+    <div class="nl-note" data-i18n="nlNote">궁금한 점이 있으신가요? <a href="mailto:hello@lyvon.io">편하게 문의 주세요</a></div>
+  </div>
+</div></section>
 
 <!-- FOOTER -->
 <footer>
@@ -284,84 +316,18 @@ footer{background:var(--navy);color:rgba(255,255,255,.7);padding:56px 0 40px;}
 </footer>
 
 <script>
-const I18N={
- en:{footPrivacy:`Privacy Policy`,footTerms:`Terms of Use`,guideBtn:`Get the LYVON Welcome Guide →`,
-  navKakao:`KakaoTalk`,
-  badge:`Pilot launching July 2026`, badge2:`Pilot launching July 2026`,
-  tagline:`Growth beyond admission.`,
-  intro:`A membership that carries your English communication skills beyond medical-school admission. For students of medicine, dentistry, pharmacy, and veterinary science — and future medical professionals — we train real-world medical English together.`,
-  heroBtn:`Register your interest →`, heroBtn2:`See the programs`,
-  progTitle:`Real-world medical English, trained together`,
-  progLead:`The journey doesn't stop at admission. From discussion to conference presentation, we carry medical English forward, step by step.`,
-  mcd1:`English discussion on medical topics`,
-  mcd2:`Reading & presenting the latest medical papers`,
-  mcd3:`Academic communication of research findings`,
-  mcd4:`Presenting clinical cases in English`,
-  mcd5:`International conference talks & Q&A`,
-  mcd6:`English communication in clinical practice`,
-  targetTitle:`Who it's for`,
-  targetCard:`For · <b>medical, dental, pharmacy & veterinary students and future medical professionals</b>`,
-  ctaTitle:`Admission is not the end — it's the beginning`,
-  ctaSub:`MedConnect opens as a pilot in July 2026. Register your interest to be the first to hear.`,
-  ctaBtn1:`Register your interest →`, ctaBtn2:`Contact us`,
-  footAbout:`An English communication membership that continues beyond medical-school admission — the Connect stage of the LYVON ecosystem.`,
-  ecoLY:`LYVON (system hub)`, ecoMB:`MedBridge (communication foundation)`, ecoMP:`MedPath (admissions track)`, ecoMC:`MedConnect (membership)`,
-  footF1:`Programs`, footF2:`Who it's for`, footF3:`Register interest`,
-  footRights:`© 2024–2026 LYVON · MedConnect — Connect. Grow. Belong.`, footPilot:`Pilot · July 2026`
- },
- ja:{footPrivacy:`プライバシーポリシー`,footTerms:`利用規約`,guideBtn:`LYVON Welcome Guide を受け取る →`,
-  navKakao:`カカオトーク`,
-  badge:`2026年7月 パイロット開始`, badge2:`2026年7月 パイロット開始`,
-  tagline:`合格、その先の成長。`,
-  intro:`医学部合格後も英語コミュニケーション力を継続するメンバーシップです。医学・歯学・薬学・獣医学部生および将来の医療専門家のために、実践的な医療英語を共に訓練します。`,
-  heroBtn:`事前登録する →`, heroBtn2:`プログラムを見る`,
-  progTitle:`実践的な医療英語を、共に訓練する`,
-  progLead:`合格後も止まりません。ディスカッションから学会発表まで、医療現場の英語を段階的につなげます。`,
-  mcd1:`医学テーマの英語ディスカッション`,
-  mcd2:`最新医学論文の読解・発表`,
-  mcd3:`研究成果の学術コミュニケーション`,
-  mcd4:`臨床症例の英語発表`,
-  mcd5:`国際学会での発表・質疑応答`,
-  mcd6:`医療現場の英語コミュニケーション`,
-  targetTitle:`誰のためのメンバーシップか`,
-  targetCard:`対象 · <b>医学・歯学・薬学・獣医学部生および将来の医療専門家</b>`,
-  ctaTitle:`合格は終わりではなく、始まりです`,
-  ctaSub:`MedConnectは2026年7月にパイロットとして開始します。いち早くお知らせを受け取りたい方は事前登録してください。`,
-  ctaBtn1:`事前登録する →`, ctaBtn2:`お問い合わせ`,
-  footAbout:`医学部合格後も続く英語コミュニケーションのメンバーシップ — LYVONエコシステムのConnect段階です。`,
-  ecoLY:`LYVON(システムハブ)`, ecoMB:`MedBridge(コミュニケーション基礎)`, ecoMP:`MedPath(入試深化)`, ecoMC:`MedConnect(メンバーシップ)`,
-  footF1:`プログラム`, footF2:`対象`, footF3:`事前登録`,
-  footRights:`© 2024–2026 LYVON · MedConnect — Connect. Grow. Belong.`, footPilot:`Pilot · 2026年7月`
- }
-};
-const i18nEls=document.querySelectorAll('[data-i18n]');
-const koBase=new Map(); i18nEls.forEach(el=>koBase.set(el, el.innerHTML));
-function setLang(lang){
-  i18nEls.forEach(el=>{ const k=el.getAttribute('data-i18n');
-    if(lang==='ko'||!I18N[lang]||I18N[lang][k]===undefined){ el.innerHTML=koBase.get(el); }
-    else { el.innerHTML=I18N[lang][k]; } });
-  document.documentElement.lang=lang;
-  document.querySelectorAll('#langSwitch button').forEach(b=>b.classList.toggle('active', b.dataset.lang===lang));
+function lyvonSubscribe(){
+  var el=document.getElementById('nlEmail'); var v=(el.value||'').trim();
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)){ el.style.borderColor='#C0392B'; el.focus(); return; }
+  var url='https://docs.google.com/forms/d/e/1FAIpQLSdT_QDLMZvm9XtK49lBfmXQF8XPIOvJzthlpZX-OwP50QYMMg/viewform?usp=pp_url&entry.140912921='+encodeURIComponent(v);
+  window.open(url,'_blank','noopener');
+  document.getElementById('nlForm').style.display='none';
+  document.getElementById('nlDone').style.display='block';
 }
-document.querySelectorAll('#langSwitch button').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.lang)));
-/* 브라우저 언어 자동감지: ko→KO, ja→JA, 그 외→EN */
-(function(){try{var l=(navigator.language||navigator.userLanguage||'en').toLowerCase();setLang(l.indexOf('ko')===0?'ko':l.indexOf('ja')===0?'ja':'en');}catch(e){}})();
-
-const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.12});
-document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-
-// 햄버거 토글
-document.getElementById('navToggle').addEventListener('click',function(){
-  this.classList.toggle('open');
-  document.getElementById('navLinks').classList.toggle('open');
-});
-// 링크 클릭 시 닫기
-document.querySelectorAll('#navLinks a').forEach(function(a){
-  a.addEventListener('click',function(){
-    document.getElementById('navToggle').classList.remove('open');
-    document.getElementById('navLinks').classList.remove('open');
-  });
-});
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal:not(.in)').forEach(el => io.observe(el));
 </script>
 </body>
 </html>
