@@ -900,7 +900,7 @@ function render(){
   const ddEl=document.getElementById('today-dday');
   if(dd!==null){ ddEl.querySelector('.n').textContent = dd>0?('D-'+dd):(dd===0?'D-DAY':'진행'); }
   document.getElementById('today-lesson').innerHTML=`${d.lessonDone} <span class="u">/ ${d.lessonTotal}세션</span>`;
-  document.getElementById('today-att').textContent=`${Math.round(d.attDone/d.attTotal*100)}%`;
+  document.getElementById('today-att').textContent = d.attTotal>0 ? `${Math.round(d.attDone/d.attTotal*100)}%` : '—';
   document.getElementById('today-taskpct').textContent=todayPct()+'%';
 
   // PROGRESS
@@ -909,10 +909,12 @@ function render(){
   document.getElementById('p-lesson-pct').textContent=lp+'%';
   document.getElementById('p-lesson-bar').style.width=lp+'%';
   document.getElementById('p-lesson-sub').textContent=`전체 ${d.lessonDone} / ${d.lessonTotal}세션 · Biology 파트 진행 중 (28) → Chemistry (24)`;
-  const ap=Math.round(d.attDone/d.attTotal*100);
+  const ap = d.attTotal>0 ? Math.round(d.attDone/d.attTotal*100) : 0;
   document.getElementById('p-att-pct').textContent=ap+'%';
   document.getElementById('p-att-bar').style.width=ap+'%';
-  document.getElementById('p-att-sub').textContent=`${d.attDone}/${d.attTotal}회 · 결석 ${d.absent}`;
+  document.getElementById('p-att-sub').textContent = d.attTotal>0
+    ? `${d.attDone}/${d.attTotal}회 · 결석 ${d.absent}`
+    : '첫 수업 후부터 집계됩니다';
   document.getElementById('p-journey-pct').textContent=d.journeyPct+'%';
   document.getElementById('p-journey-bar').style.width=d.journeyPct+'%';
 
