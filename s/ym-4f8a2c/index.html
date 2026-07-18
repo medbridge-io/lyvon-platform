@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=no">
+<title>허유민 · LYVON</title>
+<meta name="description" content="허유민 학생 전용 학습 대시보드 · LYVON">
+<meta name="theme-color" content="#2C6B57">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="LYVON">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --gold:#C2A24E; --gold-l:#E4C874; --gold-d:#A9822A;
+    --card:#FFFFFF; --line:#ECE4D4;
+    --ink:#20304C; --body:#4C566B; --mut:#8A93A3;
+    --ok:#2E9E6B; --okbg:#E7F5EE; --sky:#0369A1; --indigo:#4338CA; --teal:#0F766E;
+    --safe-b:env(safe-area-inset-bottom,0px);
+
+    /* ── LEVEL THEME 기본값 (네이비). body[data-level]에서 덮어씀 ── */
+    --lv:#0B2545; --lv2:#12315A; --lv-d:#081B34; --lv-tint:#FBF8F2; --lv-tint2:#F1EEE4;
+  }
+  /* 하위호환 매핑을 body에 두어 data-level 오버라이드가 자식까지 전파되게 함 */
+  body{ --navy:var(--lv); --navy2:var(--lv2); --navy-d:var(--lv-d); --cream:var(--lv-tint); }
+
+  /* ── 레벨별 팔레트 (배경까지 전체 톤) ── */
+  body[data-level="starter"]{ /* MedPath Starter = 녹색 (BiOLiS 연락처 저장 톤) */
+    --lv:#2C6B57; --lv2:#3E8C71; --lv-d:#245A49; --lv-tint:#F1F7F3; --lv-tint2:#E4EFE8;
+  }
+  body[data-level="bridge"]{  /* MedBridge = teal */
+    --lv:#0F766E; --lv2:#159488; --lv-d:#0C5F58; --lv-tint:#EFF6F5; --lv-tint2:#E1EFEC;
+  }
+  body[data-level="core"],body[data-level="pro"]{ /* MedPath = indigo */
+    --lv:#3730A3; --lv2:#4F46C4; --lv-d:#2E2984; --lv-tint:#F1F1FA; --lv-tint2:#E5E5F4;
+  }
+  body[data-level="ace"]{     /* MedConnect = sky */
+    --lv:#075985; --lv2:#0C74A8; --lv-d:#064968; --lv-tint:#EEF6FB; --lv-tint2:#DFEFF6;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+  html,body{height:100%;}
+  body{font-family:'Inter','Noto Sans KR',sans-serif; color:var(--ink);
+    background:radial-gradient(130% 80% at 50% 0%, var(--lv-tint) 0%, var(--lv-tint) 40%, var(--lv-tint2) 100%);
+    -webkit-font-smoothing:antialiased; overscroll-behavior-y:none;
+    transition:background .5s ease;}
+
+  /* ── Top bar ── */
+  .appbar{position:sticky; top:0; z-index:30; background:linear-gradient(160deg,var(--navy) 0%,var(--navy-d) 100%);
+    color:#fff; padding:calc(env(safe-area-inset-top,0px) + 16px) 20px 15px; }
+  .appbar-row{display:flex; align-items:center; justify-content:space-between; gap:12px;}
+  .brandmark{font-family:'Lora',serif; font-weight:700; font-size:17px; letter-spacing:3px;
+    background:linear-gradient(100deg,#C9A85E,#F1E4BC 50%,#C9A85E); -webkit-background-clip:text; background-clip:text; color:transparent;}
+  .hello{font-size:12px; color:#A9B6CC; margin-top:2px;}
+  .hello b{color:#fff; font-weight:700;}
+  .avatar-wrap{position:relative; width:48px; height:48px; flex:none; cursor:pointer; border:none; padding:0;
+    background:conic-gradient(var(--gold-l) 0deg, rgba(255,255,255,.18) 0deg);
+    border-radius:50%; display:flex; align-items:center; justify-content:center;
+    transition:background .5s cubic-bezier(.3,.9,.3,1);}
+  .avatar-wrap:active{transform:scale(.95);}
+  .avatar{width:38px; height:38px; border-radius:50%; flex:none; display:flex; align-items:center; justify-content:center;
+    background:linear-gradient(135deg,var(--gold-l),var(--gold-d)); color:var(--navy); font-weight:800; font-size:13.5px;
+    letter-spacing:.3px; font-family:'Inter',sans-serif; box-shadow:0 3px 10px -4px rgba(169,130,42,.6);}
+  .avatar-pct{position:absolute; bottom:-15px; left:50%; transform:translateX(-50%);
+    font-size:9px; font-weight:700; color:var(--gold-l); letter-spacing:.2px; white-space:nowrap;}
+  .synced{font-size:10.5px; color:#8FA0BC; margin-top:11px; display:flex; align-items:center; gap:6px;}
+  .synced .dot{width:6px; height:6px; border-radius:50%; background:var(--gold-l);}
+  .synced.live .dot{background:#5FD39A;}
+
+  /* ── Scroll area ── */
+  .screen{padding:18px 16px calc(96px + var(--safe-b)); max-width:520px; margin:0 auto;}
+  .tabpage{display:none;} .tabpage.on{display:block; animation:fade .25s ease;}
+  @keyframes fade{from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:none;}}
+
+  .sect{font-family:'Inter',sans-serif; font-size:11px; font-weight:800; letter-spacing:2px; text-transform:uppercase;
+    color:var(--gold-d); margin:26px 4px 12px; display:flex; align-items:center; gap:8px;}
+  .sect:first-child{margin-top:6px;}
+  .sect .ln{flex:1; height:1px; background:linear-gradient(90deg,var(--line),transparent);}
+
+  .card{background:var(--card); border:1px solid var(--line); border-radius:18px; padding:18px;
+    box-shadow:0 6px 20px -14px rgba(60,45,20,.3);}
+  .card + .card{margin-top:12px;}
+
+  /* ── Hero today ── */
+  .hero{background:linear-gradient(155deg,var(--navy2),var(--navy) 70%); color:#fff; border:none; position:relative; overflow:hidden;}
+  .hero::after{content:none;}
+  .hero .hero-eyebrow-row{display:flex; align-items:center; gap:10px; flex-wrap:wrap;}
+  .hero .eyebrow{font-size:11px; font-weight:700; letter-spacing:1.5px; color:var(--gold-l); text-transform:uppercase;}
+  .hero .course-pill{font-size:11px; font-weight:700; letter-spacing:.3px; color:#fff;
+    background:rgba(255,255,255,.16); border:1px solid rgba(255,255,255,.28); border-radius:999px; padding:4px 11px;
+    display:inline-flex; align-items:center; gap:6px;}
+  .hero .course-pill::before{content:""; width:6px; height:6px; border-radius:50%; background:var(--gold-l);}
+  .hero .big{font-family:'Lora',serif; font-size:23px; font-weight:600; margin-top:8px; line-height:1.35;}
+  .hero .sub{font-size:13px; color:#B8C4D8; margin-top:6px;}
+  .hero .meta{display:flex; gap:18px; margin-top:16px; flex-wrap:wrap; position:relative; z-index:1;}
+  .hero .meta div{font-size:12px; color:#9FB0C9;}
+  .hero .meta b{display:block; font-size:16px; color:#fff; font-weight:700; margin-top:2px; font-family:'Inter',sans-serif;}
+  .hero .meta b .u{font-size:11px; color:#B8C4D8; font-weight:500;}
+
+  /* ── D-day pill ── */
+  .dday{display:inline-flex; align-items:baseline; gap:7px; background:rgba(228,200,116,.16); border:1px solid rgba(228,200,116,.3);
+    padding:7px 13px; border-radius:999px; margin-top:14px; position:relative; z-index:1;}
+  .dday .n{font-family:'Lora',serif; font-weight:700; font-size:17px; color:var(--gold-l);}
+  .dday .t{font-size:11px; color:#C9D3E3;}
+
+  /* ── Progress bar ── */
+  .prog-wrap{margin-top:4px;}
+  .prog-top{display:flex; justify-content:space-between; align-items:baseline; margin-bottom:9px;}
+  .prog-top .lbl{font-size:13px; font-weight:600; color:var(--ink);}
+  .prog-top .pct{font-family:'Lora',serif; font-weight:700; font-size:15px; color:var(--gold-d);}
+  .bar{height:10px; border-radius:999px; background:#EFE8DA; overflow:hidden;}
+  .bar > i{display:block; height:100%; border-radius:999px; background:linear-gradient(90deg,var(--gold),var(--gold-l));
+    transition:width .8s cubic-bezier(.3,.9,.3,1);}
+  .bar.navy > i{background:linear-gradient(90deg,var(--navy2),#2E6BB0);}
+  .prog-sub{font-size:11.5px; color:var(--mut); margin-top:8px;}
+
+  /* ── Checklist ── */
+  .flowhint{font-size:12px; color:var(--body); line-height:1.7; background:#F6F1E6; border:1px solid var(--line);
+    border-radius:12px; padding:12px 14px; margin-bottom:12px;}
+  .flowhint b{color:var(--gold-d);}
+  .task{display:flex; align-items:center; gap:13px; padding:14px 8px; border-bottom:1px solid var(--line); cursor:pointer; user-select:none;}
+  .task:last-child{border-bottom:none;}
+  .task .box{width:26px; height:26px; border-radius:8px; border:2px solid #D5CBB6; flex:none; display:flex; align-items:center; justify-content:center;
+    transition:.18s; background:#fff;}
+  .task .box svg{width:15px; height:15px; stroke:#fff; fill:none; stroke-width:3; opacity:0; transition:.18s;}
+  .task.done .box{background:linear-gradient(135deg,var(--gold),var(--gold-d)); border-color:var(--gold-d);}
+  .task.done .box svg{opacity:1;}
+  .task .txt{flex:1;}
+  .task .txt .t1{font-size:14px; font-weight:600; color:var(--ink); transition:.18s;}
+  .task .txt .t2{font-size:11.5px; color:var(--mut); margin-top:1px;}
+  .task.done .txt .t1{color:var(--mut); text-decoration:line-through; text-decoration-color:var(--gold);}
+  .task .step{font-family:'Lora',serif; font-weight:700; font-size:13px; color:var(--gold-d); width:20px; text-align:center; flex:none;}
+
+  .checkhead{display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;}
+  .checkhead .cnt{font-size:12px; font-weight:700; color:var(--gold-d);}
+  .savechip{font-size:10.5px; color:var(--mut); display:flex; align-items:center; gap:5px; opacity:0; transition:.3s;}
+  .savechip.show{opacity:1;}
+  .savechip.saved{color:var(--ok);}
+
+  /* ── Timeline ── */
+  .tl{position:relative; padding-left:8px;}
+  .tl-item{display:flex; gap:14px; padding:11px 0; position:relative;}
+  .tl-item::before{content:""; position:absolute; left:6px; top:26px; bottom:-11px; width:2px; background:var(--line);}
+  .tl-item:last-child::before{display:none;}
+  .tl-dot{width:14px; height:14px; border-radius:50%; border:2px solid #D5CBB6; background:#fff; flex:none; margin-top:4px; z-index:1;}
+  .tl-item.done .tl-dot{background:var(--ok); border-color:var(--ok);}
+  .tl-item.next .tl-dot{background:var(--gold); border-color:var(--gold-d); box-shadow:0 0 0 4px rgba(194,162,78,.2);}
+  .tl-body .s{font-size:11px; font-weight:700; color:var(--mut); letter-spacing:.5px;}
+  .tl-body .l{font-size:13.5px; font-weight:600; color:var(--ink); margin-top:2px;}
+  .tl-body .d{font-size:11.5px; color:var(--mut); margin-top:1px;}
+  .tl-item.next .tl-body .s{color:var(--gold-d);}
+  .tl-badge{margin-left:auto; align-self:center; font-size:10px; font-weight:700; padding:3px 9px; border-radius:999px;}
+  .tl-badge.done{background:var(--okbg); color:var(--ok);}
+  .tl-badge.next{background:rgba(194,162,78,.16); color:var(--gold-d);}
+
+  /* ── Journey steps ── */
+  .journey{display:flex; flex-direction:column; gap:10px;}
+  .jstep{display:flex; align-items:center; gap:14px; padding:14px; border-radius:14px; border:1px solid var(--line); background:#fff;}
+  .jstep.active{border-color:var(--gold); background:linear-gradient(100deg,#FFFdF8,#FBF4E4);}
+  .jstep.done{background:#F4FAF6; border-color:#CDE8D8;}
+  .jstep .ic{width:40px; height:40px; border-radius:11px; flex:none; display:flex; align-items:center; justify-content:center; font-size:20px;
+    background:#F3EEE2;}
+  .jstep.done .ic{background:var(--okbg);} .jstep.active .ic{background:rgba(194,162,78,.18);}
+  .jstep .jt{flex:1;}
+  .jstep .jt .n{font-size:14px; font-weight:700; color:var(--ink);}
+  .jstep .jt .n small{font-weight:500; color:var(--mut); font-size:11.5px;}
+  .jstep .jt .p{font-size:11.5px; color:var(--body); margin-top:3px;}
+  .jstep .stat{font-size:10.5px; font-weight:700; padding:4px 10px; border-radius:999px; flex:none; white-space:nowrap;}
+  .jstep.done .stat{background:var(--okbg); color:var(--ok);}
+  .jstep.active .stat{background:rgba(194,162,78,.18); color:var(--gold-d);}
+  .jstep.lock .stat{background:#F0EDE6; color:var(--mut);}
+  .jstep.has-links{cursor:pointer;}
+  .jstep .chev{margin-left:4px; flex:none; transition:transform .25s; color:var(--mut);}
+  .jstep.open .chev{transform:rotate(180deg);}
+  .jlinks{overflow:hidden; max-height:0; transition:max-height .3s ease; margin-top:0;}
+  .jlinks.open{max-height:240px; margin-top:8px;}
+  .jlink{display:flex; align-items:center; gap:11px; padding:11px 12px; border-radius:12px; background:#F9F5EC;
+    border:1px solid var(--line); text-decoration:none; color:var(--ink); margin-top:7px;}
+  .jlink:active{transform:scale(.98);}
+  .jlink .li{width:32px; height:32px; border-radius:9px; flex:none; display:flex; align-items:center; justify-content:center; font-size:15px;}
+  .jlink .lx{flex:1; font-size:13px; font-weight:600;}
+  .jlink .arr{color:var(--mut); font-size:16px;}
+
+  /* ── Link rows ── */
+  .linkrow{display:flex; align-items:center; gap:13px; padding:15px 4px; border-bottom:1px solid var(--line); text-decoration:none; color:var(--ink);}
+  .linkrow:last-child{border-bottom:none;}
+  .linkrow.disabled{opacity:.5; pointer-events:none;}
+  .linkrow .lic{width:40px; height:40px; border-radius:11px; flex:none; display:flex; align-items:center; justify-content:center; font-size:19px;}
+  .linkrow .lt{flex:1;}
+  .linkrow .lt .a{font-size:14px; font-weight:600;}
+  .linkrow .lt .b{font-size:11.5px; color:var(--mut); margin-top:1px;}
+  .linkrow .arr{color:var(--mut); font-size:18px;}
+  .lic.blue{background:#EAF1FB;} .lic.green{background:var(--okbg);} .lic.orange{background:#FCF1E4;} .lic.kakao{background:#FEF3C7;}
+  .gmail-badge{display:inline-block; font-size:9.5px; font-weight:700; color:var(--gold-d); background:rgba(194,162,78,.14);
+    border:1px solid rgba(194,162,78,.3); border-radius:999px; padding:1px 7px; margin-left:5px; vertical-align:1px; letter-spacing:.2px;}
+  .rgroup{border:1px solid var(--line); border-radius:14px; overflow:hidden; margin-bottom:11px; background:#FEFDFB;}
+  .rgroup:last-child{margin-bottom:0;}
+  .rgroup-head{display:flex; align-items:center; gap:12px; padding:15px 14px; cursor:pointer; user-select:none;}
+  .rgroup.open .rgroup-head{background:#F9F5EC;}
+  .rgroup .ric{width:38px; height:38px; border-radius:11px; flex:none; display:flex; align-items:center; justify-content:center; font-size:19px; background:var(--okbg);}
+  .rgroup .rgt{flex:1;} .rgroup .rgn{font-size:14px; font-weight:700; color:var(--ink);} .rgroup .rgs{font-size:11.5px; color:var(--mut); margin-top:2px;}
+  .rgstat{font-size:10.5px; font-weight:700; padding:4px 10px; border-radius:999px; flex:none; background:var(--okbg); color:var(--ok);}
+  .rgstat.active{background:rgba(194,162,78,.16); color:var(--gold-d);}
+  .rgroup .chev{color:var(--mut); flex:none; transition:transform .25s;}
+  .rgroup.open .chev{transform:rotate(180deg);}
+  .rgroup-body{max-height:0; overflow:hidden; transition:max-height .3s ease; padding:0 14px;}
+  .rgroup.open .rgroup-body{max-height:280px; padding:2px 14px 8px;}
+  .rgroup-body.static{max-height:none; padding:2px 14px 8px;}
+  .rgroup-title{display:flex; align-items:center; gap:8px; padding:14px 14px 4px; font-size:13.5px; font-weight:700; color:var(--ink);}
+  .rgroup-title .ric-sm{font-size:17px;}
+  .rgroup-body .linkrow{border-bottom:1px solid var(--line);}
+  .rgroup-body .linkrow:last-child{border-bottom:none;}
+
+  /* ── Info list ── */
+  .info-list{display:flex; flex-direction:column;}
+  .info-item{display:flex; justify-content:space-between; gap:16px; padding:12px 2px; border-bottom:1px solid var(--line); font-size:13.5px;}
+  .info-item:last-child{border-bottom:none;}
+  .info-item .k{color:var(--mut); font-weight:500; flex:none;}
+  .info-item .v{color:var(--ink); font-weight:600; text-align:right;}
+
+  .eval-item{display:flex; align-items:center; gap:12px; padding:11px 2px; border-bottom:1px solid var(--line);}
+  .eval-item:last-child{border-bottom:none;}
+  .eval-item .en{flex:1; font-size:13px; color:var(--body);}
+  .eval-item .ev{font-family:'Lora',serif; font-weight:700; font-size:15px; color:var(--gold-d); min-width:44px; text-align:right;}
+  .eval-item .ev.na{color:var(--mut); font-weight:500; font-family:'Inter',sans-serif; font-size:13px;}
+
+  /* 영어 평가 — 5점 게이지 */
+  .ev-row{padding:13px 2px; border-bottom:1px solid var(--line);}
+  .ev-row:last-child{border-bottom:none;}
+  .ev-row.total{background:var(--lv-tint); margin:6px -18px -18px; padding:15px 18px; border-bottom:none;
+    border-radius:0 0 18px 18px; border-top:1px solid var(--line);}
+  .ev-top{display:flex; align-items:baseline; justify-content:space-between; gap:10px; margin-bottom:8px;}
+  .ev-name{font-size:13.5px; color:var(--body); font-weight:500;}
+  .ev-row.total .ev-name{font-weight:800; color:var(--ink); font-size:14px;}
+  .ev-score{display:flex; align-items:baseline; gap:7px; flex:none;}
+  .ev-num{font-family:'Lora',serif; font-weight:700; font-size:17px; color:var(--lv);}
+  .ev-max{font-size:11px; color:var(--mut);}
+  .ev-delta{font-size:11px; font-weight:700; padding:2px 7px; border-radius:999px;}
+  .ev-delta.up{color:#1E7A52; background:#E3F4EC;}
+  .ev-delta.down{color:#B4553C; background:#FBEDE8;}
+  .ev-delta.same{color:var(--mut); background:#F1EEE7;}
+  .ev-gauge{height:8px; border-radius:999px; background:#EFEAE0; overflow:hidden; display:flex;}
+  .ev-gauge > i{display:block; height:100%; border-radius:999px;
+    background:linear-gradient(90deg,var(--lv2),var(--lv)); transition:width .8s cubic-bezier(.3,.9,.3,1);}
+  .ev-ticks{display:flex; justify-content:space-between; margin-top:4px;}
+  .ev-ticks span{font-size:9px; color:#BFB6A6;}
+  .ev-empty{text-align:center; padding:28px 16px; color:var(--mut); font-size:13px; line-height:1.7;}
+  .ev-empty b{display:block; color:var(--ink); font-size:14px; font-weight:700; margin-bottom:6px;}
+  .ev-meta{font-size:11px; color:var(--mut); text-align:right; margin-bottom:10px;}
+
+  /* 데일리 태스크 완료율 (학생이 직접 올리는 지표) */
+  .task-rate{display:flex; align-items:center; gap:15px;}
+  .task-ring{width:64px; height:64px; flex:none; border-radius:50%; display:flex; align-items:center; justify-content:center;
+    font-family:'Lora',serif; font-weight:700; font-size:16px; color:var(--lv);}
+  .task-txt{flex:1;} .task-txt .a{font-size:13.5px; font-weight:700; color:var(--ink);}
+  .task-txt .b{font-size:11.5px; color:var(--mut); margin-top:3px; line-height:1.5;}
+
+  /* ── News ── */
+  .news-item{padding:13px 2px; border-bottom:1px solid var(--line);}
+  .news-item:last-child{border-bottom:none;}
+  .news-item .nt{font-size:13.5px; font-weight:600; color:var(--ink);}
+  .news-item .nd{font-size:12px; color:var(--body); margin-top:4px; line-height:1.5;}
+  .video-wrap{position:relative; width:100%; padding-top:56.25%; border-radius:14px; overflow:hidden;
+    background:#000; box-shadow:0 6px 20px -12px rgba(60,45,20,.5);}
+  .video-wrap iframe{position:absolute; inset:0; width:100%; height:100%; border:0;}
+  .video-cap{font-size:11.5px; color:var(--mut); margin-top:9px; line-height:1.5;}
+  .fb-card{background:var(--card); border:1px solid var(--line); border-radius:18px; padding:16px 18px; margin-bottom:11px;
+    box-shadow:0 6px 20px -14px rgba(60,45,20,.3); position:relative; overflow:hidden;}
+  .fb-card::before{content:""; position:absolute; left:0; top:0; bottom:0; width:4px; background:linear-gradient(180deg,var(--lv2),var(--lv));}
+  .fb-card:last-child{margin-bottom:0;}
+  .fb-head{display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:9px;}
+  .fb-week{font-size:13px; font-weight:800; color:var(--lv);}
+  .fb-date{font-size:11px; color:var(--mut);}
+  .fb-body{font-size:13.5px; line-height:1.72; color:var(--body); white-space:pre-line;}
+  .fb-tag{display:inline-block; font-size:10.5px; font-weight:700; color:var(--lv); background:var(--lv-tint2);
+    border-radius:999px; padding:3px 10px; margin-bottom:8px;}
+  .fb-empty{text-align:center; padding:26px 16px; color:var(--mut); font-size:13px; background:var(--card);
+    border:1px dashed var(--line); border-radius:16px; line-height:1.6;}
+
+  /* ── Bottom nav ── */
+  .nav{position:fixed; bottom:0; left:0; right:0; z-index:40; display:flex; justify-content:space-around;
+    background:rgba(251,248,242,.92); backdrop-filter:blur(14px); border-top:1px solid var(--line);
+    padding:9px 6px calc(9px + var(--safe-b)); max-width:520px; margin:0 auto;}
+  .nav button{flex:1; background:none; border:none; display:flex; flex-direction:column; align-items:center; gap:4px; cursor:pointer; padding:4px; color:var(--mut);}
+  .nav button svg{width:23px; height:23px; stroke:currentColor; fill:none; stroke-width:1.7;}
+  .nav button span{font-size:10px; font-weight:600; letter-spacing:.2px;}
+  .nav button.on{color:var(--gold-d);}
+  .nav button.on svg{stroke-width:2.1;}
+
+  /* BiOLiS 명함 연락처 저장 버튼 스타일 (녹색 그라데이션 + 시머) */
+  .biolis-save{display:flex; align-items:center; justify-content:center; gap:9px; text-decoration:none;
+    position:relative; overflow:hidden; width:100%; border:none; cursor:pointer; padding:16px; border-radius:14px;
+    margin-top:14px;
+    background:linear-gradient(100deg,#2C6B57,#3E8C71 45%,#347A61 55%,#265E4C);
+    color:#fff; font:700 14px/1 'Inter','Noto Sans KR',sans-serif; letter-spacing:1px;
+    box-shadow:0 8px 22px -8px rgba(38,94,76,.62);}
+  .biolis-save::after{content:""; position:absolute; top:0; left:-60%; width:45%; height:100%;
+    background:linear-gradient(100deg,transparent,rgba(255,255,255,.42),transparent);
+    transform:skewX(-20deg); animation:sweepBtn 3.6s ease-in-out infinite;}
+  .biolis-save:active{transform:scale(.99);}
+  .biolis-save svg{width:19px; height:19px; stroke:#fff; fill:none; stroke-width:1.8;}
+  @keyframes sweepBtn{0%,55%{left:-60%;} 85%{left:120%;} 100%{left:120%;}}
+  .toast{position:fixed; bottom:calc(88px + var(--safe-b)); left:50%; transform:translateX(-50%) translateY(16px);
+    background:#265E4C; color:#fff; padding:12px 20px; border-radius:999px; font-size:12.5px; font-weight:600;
+    box-shadow:0 10px 30px -8px rgba(38,94,76,.6); opacity:0; transition:.28s; pointer-events:none; z-index:60; white-space:nowrap;}
+  .toast.show{opacity:1; transform:translateX(-50%) translateY(0);}
+  .loading{text-align:center; padding:30px; color:var(--mut); font-size:13px;}
+  .foot{text-align:center; padding:22px 0 8px; color:var(--mut); font-size:10.5px; letter-spacing:1.5px;}
+  .foot b{font-family:'Lora',serif; color:var(--gold-d); letter-spacing:2px;}
+</style>
+</head>
+<body data-level="starter">
+
+<div class="appbar">
+  <div class="appbar-row">
+    <div>
+      <div class="brandmark">LYVON</div>
+      <div class="hello">안녕하세요, <b id="hi-name">허유민</b>님</div>
+    </div>
+    <button class="avatar-wrap" id="avatar-wrap" onclick="go('progress')" aria-label="피드백 보기">
+      <div class="avatar" id="avatar">허</div>
+      <span class="avatar-pct" id="avatar-pct"></span>
+    </button>
+  </div>
+  <div class="synced" id="synced"><span class="dot"></span><span id="synced-txt">최신 정보 불러오는 중…</span></div>
+</div>
+
+<div class="screen">
+
+  <!-- ══ TODAY ══ -->
+  <div class="tabpage on" id="tab-today">
+    <div class="card hero">
+      <div class="hero-eyebrow-row">
+        <span class="eyebrow" id="today-eyebrow">오늘</span>
+        <span class="course-pill" id="today-course">MedPath Starter</span>
+      </div>
+      <div class="big" id="today-title">다음 수업을 준비해요</div>
+      <div class="sub" id="today-sub">월·수 21:00 (KST)</div>
+      <div class="dday" id="today-dday"><span class="n">D-?</span><span class="t">다음 수업까지</span></div>
+      <div class="meta">
+        <div>레슨 진도<b id="today-lesson">— <span class="u"></span></b></div>
+        <div>출석률<b id="today-att">—</b></div>
+        <div>태스크 완료<b id="today-taskpct">—</b></div>
+      </div>
+    </div>
+
+    <div class="sect">데일리 태스크 <span class="ln"></span></div>
+    <div class="card">
+      <div class="flowhint">
+        <b>수업일 학습 흐름</b><br>
+        ① 예습 → ② 오디오 리스닝 → 🎓 정규수업 → ③ 복습 → ④ 단어 → ⑤ 스피킹 → ⑥ 셰도잉 → ⑦ 의학 자료 읽기
+      </div>
+      <div class="checkhead">
+        <span class="cnt" id="check-count">0 / 7 완료</span>
+        <span class="savechip" id="savechip"><span>저장 중…</span></span>
+      </div>
+      <div id="checklist"></div>
+    </div>
+
+    <button class="biolis-save" onclick="saveToday()">
+      <svg viewBox="0 0 24 24"><path d="M12 4v10m0 0 4-4m-4 4-4-4"/><path d="M5 18h14"/></svg>
+      <span>오늘 학습 저장</span>
+    </button>
+  </div>
+
+  <!-- ══ PROGRESS ══ -->
+  <div class="tabpage" id="tab-progress">
+    <div class="sect">현재 진행 상황 <span class="ln"></span></div>
+    <div class="card">
+      <div class="prog-wrap">
+        <div class="prog-top"><span class="lbl" id="p-course">MedPath Starter</span><span class="pct" id="p-lesson-pct">2%</span></div>
+        <div class="bar"><i id="p-lesson-bar" style="width:2%"></i></div>
+        <div class="prog-sub" id="p-lesson-sub">1 / 52세션 · Biology 진행 중</div>
+      </div>
+      <div class="prog-wrap" style="margin-top:20px;">
+        <div class="prog-top"><span class="lbl">출석률</span><span class="pct" id="p-att-pct">100%</span></div>
+        <div class="bar navy"><i id="p-att-bar" style="width:100%"></i></div>
+        <div class="prog-sub" id="p-att-sub">1/1회 · 결석 0</div>
+      </div>
+    </div>
+
+    <div class="sect">영어 평가 <span class="ln"></span></div>
+    <div class="card" id="eval-card"><div class="loading">불러오는 중…</div></div>
+
+    <div class="sect">데일리 태스크 <span class="ln"></span></div>
+    <div class="card" id="task-rate"></div>
+
+    <div class="sect">주간 피드백 <span class="ln"></span></div>
+    <div id="feedback-list"></div>
+
+    <div class="sect">나의 학습 여정 <span class="ln"></span></div>
+    <div class="card">
+      <div class="prog-wrap" style="margin-bottom:16px;">
+        <div class="prog-top"><span class="lbl">전체 여정</span><span class="pct" id="p-journey-pct">20%</span></div>
+        <div class="bar"><i id="p-journey-bar" style="width:20%"></i></div>
+        <div class="prog-sub">5단계 중 1단계 완료</div>
+      </div>
+      <div class="journey" id="journey"></div>
+    </div>
+  </div>
+
+  <!-- ══ SCHEDULE ══ -->
+  <div class="tabpage" id="tab-schedule">
+    <div class="sect">수업 일정 · Biology <span class="ln"></span></div>
+    <div class="card" id="sched-card"><div class="loading">불러오는 중…</div></div>
+
+    <div class="sect">진도 로드맵 <span class="ln"></span></div>
+    <div class="card">
+      <div id="roadmap"></div>
+    </div>
+  </div>
+
+  <!-- ══ REPORTS ══ -->
+  <div class="tabpage" id="tab-reports">
+    <div class="sect">학습 자료 <span class="ln"></span></div>
+    <div class="card">
+      <div id="reports-links"></div>
+    </div>
+  </div>
+
+  <!-- ══ INFO ══ -->
+  <div class="tabpage" id="tab-info">
+    <div class="sect">학생 정보 <span class="ln"></span></div>
+    <div class="card"><div class="info-list" id="info-list"></div></div>
+
+    <div class="sect">MedPath · 문의 <span class="ln"></span></div>
+    <div class="card">
+      <a class="linkrow" href="https://medpathglobal.io" target="_blank" rel="noopener">
+        <div class="lic blue">🌐</div>
+        <div class="lt"><div class="a">MedPath 홈페이지</div><div class="b">프로그램 안내 · 커리큘럼</div></div>
+        <div class="arr">›</div>
+      </a>
+      <a class="linkrow" href="https://open.kakao.com/o/ssa94Eyi" target="_blank" rel="noopener">
+        <div class="lic kakao">💬</div>
+        <div class="lt"><div class="a">MedPath 카카오톡 채널</div><div class="b">수업·학습 관련 문의</div></div>
+        <div class="arr">›</div>
+      </a>
+    </div>
+
+    <div class="sect">헝가리 의대 소식 <span class="ln"></span></div>
+    <div class="card" id="video-card"></div>
+    <div class="card" id="news-card"><div class="loading">불러오는 중…</div></div>
+
+    <div class="foot"><b>LYVON</b> · LIVE ON</div>
+  </div>
+
+</div>
+
+<div class="toast" id="toast"></div>
+
+<div class="nav">
+  <button class="on" data-tab="today" onclick="go('today')">
+    <svg viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V20h14V9.5"/><path d="M9 20v-6h6v6"/></svg><span>오늘</span></button>
+  <button data-tab="progress" onclick="go('progress')">
+    <svg viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.5 7.2L4 21l1.8-5.5A8 8 0 1 1 21 12z"/><path d="M8.5 11.5h7M8.5 14h4"/></svg><span>피드백</span></button>
+  <button data-tab="schedule" onclick="go('schedule')">
+    <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 9h18M8 3v4M16 3v4"/></svg><span>일정</span></button>
+  <button data-tab="reports" onclick="go('reports')">
+    <svg viewBox="0 0 24 24"><path d="M6 2h9l5 5v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z"/><path d="M14 2v6h6M8 13h8M8 17h5"/></svg><span>학습자료</span></button>
+  <button data-tab="info" onclick="go('info')">
+    <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg><span>정보</span></button>
+</div>
+
+<script>
+/* ═══════════════════════════════════════════════════════════
+   CONFIG — 구글 앱스스크립트 배포 후 이 URL만 교체하세요
+   (배포 → 웹앱 → URL 복사 → 아래 GAS_URL 에 붙여넣기)
+   ═══════════════════════════════════════════════════════════ */
+/* LLR 채점 시트에 붙인 Apps Script의 웹앱 URL을 여기에 넣으세요.
+   (LLR 시트 → 확장 프로그램 → Apps Script → 배포 → 웹 앱 → URL 복사)
+   비워두면 아래 폴백 데이터로 표시됩니다. */
+const GAS_URL = "";
+const STUDENT_ID = "yumin";   // CONFIG.STUDENT_MAP의 키와 일치해야 함
+
+/* ── 폴백 데이터 (연동 전/오프라인 시 표시) ── */
+const FALLBACK = {
+  name:"허유민", nameEn:"Yumin Heo", initial:"YM",   /* 이름(유민)의 이니셜 */
+  program:"MedPath Starter", level:"starter", track:"Pharmacy", university:"Semmelweis 🇭🇺",
+  days:"월·수 (주 2회)", time:"월·수 21:00 (KST)",
+  startDate:"2026.07.08", totalSessions:52, structure:"Biology 28세션 + Chemistry 24세션",
+  lessonDone:1, lessonTotal:52, attDone:2, attTotal:2, absent:0,
+  taskPct:0, journeyPct:20,
+  nextSession:"S02", nextDate:"2026-07-15", nextLesson:"L02 탄수화물",
+  /* 영어 평가: 5점 만점 · 0.5 단위. v=이번 점수, prev=지난 점수(변화 표시용). 비어있으면 미평가 */
+  evalDate:"2026.07.15", evalSession:"S02 · L02",
+  eval:[
+    {k:"전반 진행·태도", v:5.0, prev:5.0},
+    {k:"스피킹·발음",   v:4.0, prev:4.5},
+    {k:"리스닝",       v:4.5, prev:4.5},
+    {k:"어휘·독해",     v:4.5, prev:4.5},
+    {k:"종합 점수",     v:4.5, prev:4.6, total:true}
+  ],
+  schedule:[
+    {s:"S01", iso:"2026-07-08", date:"7/08 (수)", lesson:"L01 단백질 구조"},
+    {s:"S02", iso:"2026-07-15", date:"7/15 (수) 21:00", lesson:"L02 탄수화물"},
+    {s:"S03", iso:"2026-07-20", date:"7/20 (월) 21:00", lesson:"L03 지질"},
+    {s:"S04", iso:"2026-07-22", date:"7/22 (수) 21:00", lesson:"L04 핵산"},
+    {s:"S05", iso:"2026-07-27", date:"7/27 (월) 21:00", lesson:"L05 비타민"},
+    {s:"S06", iso:"2026-07-29", date:"7/29 (수) 21:00", lesson:"L06 효소 조절"},
+    {s:"S07", iso:"2026-08-03", date:"8/03 (월) 21:00", lesson:"L07 DNA 복제"},
+    {s:"S08", iso:"2026-08-05", date:"8/05 (수) 21:00", lesson:"L08 전사"}
+  ],
+  roadmap:[
+    {m:"1개월차 · L01–L08", d:"생체분자 · 분자생물학 기초", block:8, blockStart:0, active:true},
+    {m:"2개월차 · L09–L16", d:"대사 · 세포 · 유전", block:8, blockStart:8},
+    {m:"3개월차 · L17–L24", d:"생리 · 조직", block:8, blockStart:16},
+    {m:"4개월차 · L25–L28 + 리뷰", d:"파트 완성 → Chemistry 24세션", block:4, blockStart:24}
+  ],
+  journey:[
+    {ic:"🗣️", n:"MedBridge 101", sub:"의료 영어 기초", p:"24/24강 (100%)", status:"done"},
+    {ic:"🧬", n:"MedPath Starter", sub:"기초 의학 영어 · What", p:"{done}/{total}세션 · 월·수 21:00", status:"active"},
+    {ic:"🔬", n:"MedPath Core", sub:"심화 의학 영어 · How", p:"예정 · 3개월 · 주 4회", status:"lock"},
+    {ic:"🩺", n:"MedPath Pro", sub:"면접·인터뷰 대비 · Why", p:"예정 · 3개월 · 주 4회", status:"lock"},
+    {ic:"🎓", n:"MedConnect Ace", sub:"합격 후 실전 영어 · Live", p:"입학 후 멤버십", status:"lock"}
+  ],
+  reports:[
+    {course:"MedBridge 101", done:true, ic:"🗣️", items:[
+      {ic:"📂", cls:"orange", t:"학습 자료", b:"수업 자료 모음",
+       url:"https://drive.google.com/drive/folders/1LkBCX7aaCkpdf5XZiJfvRDDVZfNGuwLc"},
+      {ic:"📈", cls:"green", t:"피드백", b:"코스 피드백 리포트",
+       url:"https://drive.google.com/drive/folders/1j2U-SsnpbC2CJWssY9_EmKRWTrfmid3w"},
+      {ic:"📄", cls:"blue", t:"LLR", gmail:true, b:"레슨별 학습 기록",
+       url:"https://docs.google.com/spreadsheets/d/16rRTcNB5drJbge4OX8WWSz4ED3VUkKEwxEMC0AMD0E4/edit?gid=264794432#gid=264794432"}
+    ]},
+    {course:"MedPath Starter", done:false, ic:"🧬", items:[
+      {ic:"📂", cls:"orange", t:"학습 자료", b:"수업 자료 모음",
+       url:"https://drive.google.com/drive/folders/10x3y1rfuMBDrFQiRC-DDsdme3mLP9aX9"},
+      {ic:"📈", cls:"green", t:"피드백", b:"코스 피드백 리포트",
+       url:"https://drive.google.com/drive/folders/1HgqPk_mFe9hUJBUsCcI_lnhOlsxD8NTC"},
+      {ic:"📄", cls:"blue", t:"LLR", gmail:true, b:"레슨별 학습 기록",
+       url:"https://docs.google.com/spreadsheets/d/16rRTcNB5drJbge4OX8WWSz4ED3VUkKEwxEMC0AMD0E4/edit?gid=131111792#gid=131111792"}
+    ]}
+  ],
+  video:{ id:"xcRHIPvp0g4", cap:"Semmelweis University 소개 영상" },
+  news:[
+    {t:"입학시험 안내", d:"Biology · Chemistry 시험 범위와 형식 — 지금 배우는 과목이에요",
+     url:"https://semmelweis.hu/admission/process/entrance-exam-medicine-dentistry-and-pharmaceutical-sciences/", ic:"📝"},
+    {t:"지원 절차 · 요건", d:"Pharmaceutical Sciences 입학 정보 (영문)",
+     url:"https://semmelweis.hu/admission/programs/pharmaceutical-sciences/", ic:"🎓"},
+    {t:"약학부 소개", d:"Semmelweis University 약학부 공식 페이지 (영문)",
+     url:"https://semmelweis.hu/english/faculties/pharmacy/", ic:"🇭🇺"}
+  ],
+  feedback:[
+    {week:"S02 · L02 피드백", date:"2026.07.15", tag:"MedPath Starter · Jee",
+     body:"더 어려운 의학 개념을 설명하려는 노력이 좋았어요.\n스피킹·발음은 난이도가 올라가면서 잠시 조정 중이에요 — 다음 세션 전에 오디오 리스닝을 반복하면 금세 회복됩니다."},
+    {week:"S01 · L01 피드백", date:"2026.07.08", tag:"MedPath Starter · Jee",
+     body:"가장 크게 향상된 부분은 새로운 어휘를 이해하고 말하기에 적용하는 능력이었어요."}
+  ]
+};
+
+/* 수업일: 전체 학습 흐름 7개 · 비수업일: 복습 중심 4개 (일정 기준 자동 전환) */
+const TASKS_CLASS = [
+  {step:"①", t1:"예습", t2:"수업 전 레슨 미리보기"},
+  {step:"②", t1:"오디오 리스닝", t2:"오디오 스크립트 듣기"},
+  {step:"③", t1:"복습", t2:"수업 내용 다시 보기"},
+  {step:"④", t1:"단어 공부", t2:"핵심 어휘 암기"},
+  {step:"⑤", t1:"스피킹 연습", t2:"소리 내어 말하기"},
+  {step:"⑥", t1:"셰도잉", t2:"따라 말하기"},
+  {step:"⑦", t1:"의학 자료 읽기", t2:"관련 아티클 읽기"}
+];
+const TASKS_REST = [
+  {step:"①", t1:"단어 공부", t2:"핵심 어휘 복습"},
+  {step:"②", t1:"스피킹 연습", t2:"소리 내어 말하기"},
+  {step:"③", t1:"셰도잉", t2:"따라 말하기"},
+  {step:"④", t1:"의학 자료 읽기", t2:"관련 아티클 읽기"}
+];
+function isClassToday(){
+  const sch = (DATA && DATA.schedule) || [];
+  const now = new Date();
+  const today = now.getFullYear()+'-'+String(now.getMonth()+1).padStart(2,'0')+'-'+String(now.getDate()).padStart(2,'0');
+  return sch.some(s=>s.iso===today);
+}
+let TASKS = TASKS_CLASS; // render() 시점에 오늘 기준으로 결정
+
+let DATA = FALLBACK;
+
+/* ── 오늘 날짜 기준으로 일정 상태·진도 자동 계산 ──
+   세션에 iso 날짜가 있으면: 지난 세션=완료, 다음 예정=next, 진도·다음수업도 자동 갱신.
+   시트에 status를 직접 넣으면 그 값을 우선 존중(수동 override 가능). */
+function applyAutoStatus(d){
+  if(!d.schedule || !d.schedule.length) return d;
+  const now=new Date();
+  const hasManual = d.schedule.some(s=>s.status);
+  if(!hasManual){
+    let nextIdx=-1, doneCount=0;
+    d.schedule.forEach((s,i)=>{
+      if(!s.iso){ return; }
+      // 세션 시간(21:00 KST)까지 지나면 완료로 간주
+      const end=new Date(s.iso+'T22:30:00+09:00');
+      if(end < now){ s.status='done'; doneCount++; }
+      else if(nextIdx===-1){ s.status='next'; nextIdx=i; }
+      else { s.status=''; }
+    });
+    // 진도/다음수업을 실제 진행에 맞춰 자동 갱신 (시트가 명시 안 했을 때만)
+    if(d._autoLesson!==false){
+      d.lessonDone = doneCount;
+    }
+    if(nextIdx>=0){
+      const ns=d.schedule[nextIdx];
+      d.nextSession=ns.s; d.nextDate=ns.iso; d.nextLesson=ns.lesson;
+    }
+  }
+
+  // 학습 여정 표기의 {done}/{total} 치환
+  if(d.journey){
+    d.journey.forEach(j=>{
+      if(j.p && j.p.indexOf('{done}')>-1){
+        j.p = j.p.replace('{done}', d.lessonDone).replace('{total}', d.lessonTotal);
+      }
+    });
+  }
+  // 로드맵 각 구간 진행률 자동 계산
+  if(d.roadmap){
+    d.roadmap.forEach(r=>{
+      if(r.block!=null){
+        const inBlock = Math.max(0, Math.min(r.block, d.lessonDone - r.blockStart));
+        r.pct = Math.round(inBlock / r.block * 100);
+      }
+    });
+  }
+  return d;
+}
+
+/* ── 오늘 학습 저장 (BiOLiS 저장 버튼 스타일) ── */
+function saveToday(){
+  const done=loadChecks();
+  saveChecks(done);           // 폰에 저장 (이미 자동 저장되지만 명시적 저장 UX)
+  syncTasksToServer(done);    // 연동 시 서버에도
+  const t=document.getElementById('toast');
+  t.textContent = `오늘 학습 저장됨 · ${done.length}/${TASKS.length} 완료`;
+  t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),1800);
+}
+
+/* ── 학습자료 탭: 완료 코스 그룹 펼치기 ── */
+function toggleReport(gi){
+  const body=document.getElementById('rgroup-'+gi);
+  const group=body.parentElement;
+  group.classList.toggle('open');
+}
+
+/* ── 완료 코스: 자료 3개 펼치기 (학습 여정) ── */
+function toggleJourney(i){
+  const panel=document.getElementById('jlinks-'+i);
+  const step=panel.previousElementSibling;
+  const isOpen=panel.classList.toggle('open');
+  step.classList.toggle('open', isOpen);
+}
+
+/* ── Tab nav ── */
+function go(tab){
+  document.querySelectorAll('.tabpage').forEach(p=>p.classList.toggle('on', p.id==='tab-'+tab));
+  document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('on', b.dataset.tab===tab));
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+/* ── D-day ── */
+function dday(dateStr){
+  if(!dateStr) return null;
+  const t=new Date(dateStr+'T21:00:00+09:00'); const now=new Date();
+  return Math.ceil((t-now)/(1000*60*60*24));
+}
+
+/* ── Today's task check key (per date, local) ── */
+function todayKey(){ const d=new Date(); return 'lyvon_'+STUDENT_ID+'_tasks_'+d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate(); }
+function loadChecks(){ try{return JSON.parse(localStorage.getItem(todayKey())||'[]');}catch(e){return [];} }
+function todayPct(){ return Math.round(loadChecks().length / TASKS.length * 100); }
+function saveChecks(arr){ try{localStorage.setItem(todayKey(), JSON.stringify(arr));}catch(e){} }
+
+/* ── Render checklist ── */
+function renderChecklist(){
+  const done = loadChecks();
+  const el = document.getElementById('checklist'); el.innerHTML='';
+  TASKS.forEach((tk,i)=>{
+    const row=document.createElement('div');
+    row.className='task'+(done.includes(i)?' done':'');
+    row.innerHTML=`<div class="step">${tk.step}</div>
+      <div class="box"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg></div>
+      <div class="txt"><div class="t1">${tk.t1}</div><div class="t2">${tk.t2}</div></div>`;
+    row.onclick=()=>toggleTask(i);
+    el.appendChild(row);
+  });
+  updateCount();
+}
+function toggleTask(i){
+  let done=loadChecks();
+  if(done.includes(i)) done=done.filter(x=>x!==i); else done.push(i);
+  saveChecks(done);
+  renderChecklist();
+  refreshTaskRate();          // 완료율 즉시 반영
+  syncTasksToServer(done);
+  showSave();
+}
+
+/* 오늘 체크 → 완료율 표시 즉시 갱신 (히어로 칩 + 원형 게이지) */
+function refreshTaskRate(){
+  const tp = todayPct();
+  const chip = document.getElementById('today-taskpct');
+  if(chip) chip.textContent = tp + '%';
+  const ring = document.querySelector('#task-rate .task-ring');
+  const num  = document.querySelector('#task-rate .task-ring > div');
+  if(ring) ring.style.background = `conic-gradient(var(--lv) ${tp*3.6}deg, #EFEAE0 0deg)`;
+  if(num)  num.textContent = tp + '%';
+  refreshAvatarRing(tp);
+}
+
+/* 상단 아바타 링 — 오늘 체크할수록 골드 링이 채워짐 */
+function refreshAvatarRing(tp){
+  if(tp==null) tp = todayPct();
+  const w = document.getElementById('avatar-wrap');
+  const p = document.getElementById('avatar-pct');
+  if(w) w.style.background = `conic-gradient(var(--gold-l) ${tp*3.6}deg, rgba(255,255,255,.18) 0deg)`;
+  if(p) p.textContent = tp>0 ? tp+'%' : '';
+}
+function updateCount(){
+  const done=loadChecks().length;
+  document.getElementById('check-count').textContent=`${done} / ${TASKS.length} 완료`;
+}
+let saveTimer;
+function showSave(){
+  const c=document.getElementById('savechip');
+  c.className='savechip show'; c.querySelector('span').textContent='저장됨';
+  c.classList.add('saved');
+  clearTimeout(saveTimer);
+  saveTimer=setTimeout(()=>c.classList.remove('show'),1800);
+}
+
+/* ── Render everything from DATA ── */
+function render(){
+  const d=applyAutoStatus(DATA);
+  if(d.level) document.body.setAttribute('data-level', d.level);
+
+  // 오늘이 수업일인지에 따라 태스크 세트 전환
+  const classDay = isClassToday();
+  TASKS = classDay ? TASKS_CLASS : TASKS_REST;
+  const fh = document.querySelector('.flowhint');
+  if(fh){
+    fh.innerHTML = classDay
+      ? '<b>수업일 학습 흐름</b><br>① 예습 → ② 오디오 리스닝 → 🎓 정규수업 → ③ 복습 → ④ 단어 → ⑤ 스피킹 → ⑥ 셰도잉 → ⑦ 의학 자료 읽기'
+      : '<b>오늘은 복습의 날</b><br>수업이 없는 날의 반복이 실력을 만듭니다 — 단어 → 스피킹 → 셰도잉 → 읽기';
+  }
+  document.getElementById('hi-name').textContent=d.name;
+  const initials = d.initial
+    || (d.nameEn ? d.nameEn.trim().split(/\s+/)[0].charAt(0).toUpperCase() : d.name.charAt(1) || d.name.charAt(0));
+  document.getElementById('avatar').textContent = initials;
+  refreshAvatarRing();
+
+  // TODAY
+  const dd=dday(d.nextDate);
+  document.getElementById('today-title').textContent=`다음 수업 · ${d.nextLesson}`;
+  document.getElementById('today-sub').textContent=`${d.nextSession} · ${d.time}`;
+  document.getElementById('today-course').textContent=d.program;
+  const ddEl=document.getElementById('today-dday');
+  if(dd!==null){ ddEl.querySelector('.n').textContent = dd>0?('D-'+dd):(dd===0?'D-DAY':'진행'); }
+  document.getElementById('today-lesson').innerHTML=`${d.lessonDone} <span class="u">/ ${d.lessonTotal}세션</span>`;
+  document.getElementById('today-att').textContent=`${Math.round(d.attDone/d.attTotal*100)}%`;
+  document.getElementById('today-taskpct').textContent=todayPct()+'%';
+
+  // PROGRESS
+  const lp=Math.round(d.lessonDone/d.lessonTotal*100);
+  document.getElementById('p-course').textContent=d.program;
+  document.getElementById('p-lesson-pct').textContent=lp+'%';
+  document.getElementById('p-lesson-bar').style.width=lp+'%';
+  document.getElementById('p-lesson-sub').textContent=`전체 ${d.lessonDone} / ${d.lessonTotal}세션 · Biology 파트 진행 중 (28) → Chemistry (24)`;
+  const ap=Math.round(d.attDone/d.attTotal*100);
+  document.getElementById('p-att-pct').textContent=ap+'%';
+  document.getElementById('p-att-bar').style.width=ap+'%';
+  document.getElementById('p-att-sub').textContent=`${d.attDone}/${d.attTotal}회 · 결석 ${d.absent}`;
+  document.getElementById('p-journey-pct').textContent=d.journeyPct+'%';
+  document.getElementById('p-journey-bar').style.width=d.journeyPct+'%';
+
+  // EVAL — 5점 만점(0.5 단위) 게이지 + 지난회 대비 변화
+  const ec=document.getElementById('eval-card'); ec.innerHTML='';
+  const evs = d.eval || [];
+  const scored = evs.filter(e=>e.v!=null && e.v!=='' && e.v!=='—');
+  if(!scored.length){
+    // 아직 평가 전 — 빈 표 대신 안내
+    const nextS = d.nextSession || '다음';
+    ec.innerHTML = `<div class="ev-empty"><b>아직 등록된 평가가 없어요</b>
+      첫 평가는 <b style="display:inline;font-size:13px;">${nextS} 수업</b> 이후 LLR 리포트와 함께 등록됩니다.<br>
+      발음 · 유창성 · 어휘 · 전달력을 5점 만점으로 평가해요.</div>`;
+  } else {
+    if(d.evalDate||d.evalSession){
+      ec.insertAdjacentHTML('beforeend',
+        `<div class="ev-meta">${d.evalSession||''}${d.evalSession&&d.evalDate?' · ':''}${d.evalDate||''} 기준</div>`);
+    }
+    evs.forEach(e=>{
+      const has = (e.v!=null && e.v!=='' && e.v!=='—');
+      const v = has ? parseFloat(e.v) : 0;
+      const pct = Math.max(0, Math.min(100, v/5*100));
+      let delta='';
+      if(has && e.prev!=null && e.prev!=='' ){
+        const dv = +(v - parseFloat(e.prev)).toFixed(1);
+        if(dv>0) delta=`<span class="ev-delta up">▲ +${dv}</span>`;
+        else if(dv<0) delta=`<span class="ev-delta down">▼ ${dv}</span>`;
+        else delta=`<span class="ev-delta same">유지</span>`;
+      }
+      ec.insertAdjacentHTML('beforeend',
+        `<div class="ev-row ${e.total?'total':''}">
+           <div class="ev-top">
+             <span class="ev-name">${e.k}</span>
+             <span class="ev-score">${delta}
+               <span class="ev-num">${has? v.toFixed(1) : '—'}</span><span class="ev-max">/ 5</span></span>
+           </div>
+           <div class="ev-gauge"><i style="width:${pct}%"></i></div>
+         </div>`);
+    });
+  }
+
+  // 데일리 태스크 완료율 — 오늘 체크 상태에서 즉시 계산 (학생이 체크하면 바로 반영)
+  const trEl=document.getElementById('task-rate');
+  if(trEl){
+    const tp = todayPct();
+    trEl.innerHTML = `<div class="task-rate">
+      <div class="task-ring" style="background:conic-gradient(var(--lv) ${tp*3.6}deg, #EFEAE0 0deg);">
+        <div style="width:50px;height:50px;border-radius:50%;background:var(--card);display:flex;align-items:center;justify-content:center;">${tp}%</div>
+      </div>
+      <div class="task-txt"><div class="a">데일리 태스크 완료율</div>
+        <div class="b">'오늘' 탭에서 매일 체크하면 올라갑니다.<br>꾸준함이 평가에도 반영돼요.</div></div>
+    </div>`;
+  }
+
+  // FEEDBACK (주간 피드백)
+  const fbEl=document.getElementById('feedback-list'); fbEl.innerHTML='';
+  const fbs = d.feedback || [];
+  if(!fbs.length){
+    fbEl.innerHTML='<div class="fb-empty">아직 등록된 피드백이 없어요.<br>매주 월요일에 새 피드백이 올라옵니다.</div>';
+  } else {
+    fbs.forEach(f=>{
+      const tag = f.tag ? `<div class="fb-tag">${f.tag}</div>` : '';
+      fbEl.insertAdjacentHTML('beforeend',
+        `<div class="fb-card">
+           <div class="fb-head"><div class="fb-week">${f.week||'피드백'}</div><div class="fb-date">${f.date||''}</div></div>
+           ${tag}<div class="fb-body">${f.body||''}</div>
+         </div>`);
+    });
+  }
+
+  // JOURNEY
+  const jw=document.getElementById('journey'); jw.innerHTML='';
+  const smap={done:'수료',active:'진행 중',lock:'🔒'};
+  d.journey.forEach((j,ji)=>{
+    const hasLinks = j.links && j.links.length;
+    const chev = hasLinks ? '<svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>' : '';
+    let linksHtml='';
+    if(hasLinks){
+      linksHtml = `<div class="jlinks" id="jlinks-${ji}">` + j.links.map(l=>
+        `<a class="jlink" href="${l.url}" target="_blank" rel="noopener" onclick="event.stopPropagation()">
+           <div class="li ${l.cls}">${l.ic}</div><div class="lx">${l.t}</div><div class="arr">›</div></a>`).join('') + `</div>`;
+    }
+    jw.insertAdjacentHTML('beforeend',
+      `<div class="jstep ${j.status} ${hasLinks?'has-links':''}" ${hasLinks?`onclick="toggleJourney(${ji})"`:''}>
+         <div class="ic">${j.ic}</div>
+         <div class="jt"><div class="n">${j.n} <small>${j.sub}</small></div><div class="p">${j.p}</div></div>
+         <div class="stat">${smap[j.status]||''}</div>${chev}
+       </div>${linksHtml}`);
+  });
+
+  // SCHEDULE
+  const sc=document.getElementById('sched-card'); sc.innerHTML='<div class="tl"></div>';
+  const tl=sc.querySelector('.tl');
+  d.schedule.forEach(s=>{
+    const badge = s.status==='done'?'<div class="tl-badge done">완료</div>':(s.status==='next'?'<div class="tl-badge next">다음</div>':'');
+    tl.insertAdjacentHTML('beforeend',
+      `<div class="tl-item ${s.status}"><div class="tl-dot"></div>
+       <div class="tl-body"><div class="s">${s.s}</div><div class="l">${s.lesson}</div><div class="d">${s.date}</div></div>${badge}</div>`);
+  });
+
+  // ROADMAP
+  const rm=document.getElementById('roadmap'); rm.innerHTML='';
+  d.roadmap.forEach((r,i)=>{
+    rm.insertAdjacentHTML('beforeend',
+      `<div class="prog-wrap" style="${i>0?'margin-top:16px':''}">
+       <div class="prog-top"><span class="lbl">${r.m}${r.active?' <span style="color:var(--gold-d);font-size:11px;">· 진행 중</span>':''}</span><span class="pct">${r.pct}%</span></div>
+       <div class="bar navy"><i style="width:${r.pct}%"></i></div>
+       <div class="prog-sub">${r.d}</div></div>`);
+  });
+
+  // REPORTS — 코스별 그룹. 완료 코스는 접힘 카드, 진행 코스는 펼쳐진 목록.
+  const rl=document.getElementById('reports-links'); rl.innerHTML='';
+  const linkHtml = (l)=>{
+    const dis=!l.url;
+    const badge = l.gmail ? '<span class="gmail-badge">Gmail 로그인</span>' : '';
+    return `<a class="linkrow ${dis?'disabled':''}" href="${l.url||'#'}" ${l.url?'target="_blank" rel="noopener"':''} onclick="event.stopPropagation()">
+       <div class="lic ${l.cls}">${l.ic}</div>
+       <div class="lt"><div class="a">${l.t} ${badge}</div><div class="b">${l.b||''}</div></div>
+       <div class="arr">${dis?'':'›'}</div></a>`;
+  };
+  d.reports.forEach((grp,gi)=>{
+    if(grp.done){
+      // 완료 코스: 접히는 카드 하나
+      rl.insertAdjacentHTML('beforeend',
+        `<div class="rgroup">
+           <div class="rgroup-head" onclick="toggleReport(${gi})">
+             <div class="ric">${grp.ic}</div>
+             <div class="rgt"><div class="rgn">${grp.course}</div><div class="rgs">수료 · 자료 ${grp.items.length}개</div></div>
+             <span class="rgstat">수료</span>
+             <svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+           </div>
+           <div class="rgroup-body" id="rgroup-${gi}">${grp.items.map(linkHtml).join('')}</div>
+         </div>`);
+    } else {
+      // 진행 중 코스: 제목 + 펼쳐진 목록
+      rl.insertAdjacentHTML('beforeend',
+        `<div class="rgroup open-static">
+           <div class="rgroup-title"><span class="ric-sm">${grp.ic}</span>${grp.course} <span class="rgstat active">진행 중</span></div>
+           <div class="rgroup-body static">${grp.items.map(linkHtml).join('')}</div>
+         </div>`);
+    }
+  });
+
+  // INFO
+  const il=document.getElementById('info-list');
+  il.innerHTML=[
+    ['이름', `${d.name} (${d.nameEn})`],['프로그램', d.program],['의료 트랙', d.track],
+    ['목표 대학', d.university],['수업 요일', d.days],['수업 시간', d.time],
+    ['총 세션', `${d.totalSessions}세션`],['과정 구성', d.structure],
+    ['시작일', d.startDate]
+  ].map(([k,v])=>`<div class="info-item"><div class="k">${k}</div><div class="v">${v}</div></div>`).join('');
+
+  // NEWS
+  // VIDEO (유튜브 임베드)
+  const vc=document.getElementById('video-card');
+  if(vc){
+    if(d.video && d.video.id){
+      vc.style.display='';
+      vc.innerHTML=`<div class="video-wrap">
+        <iframe src="https://www.youtube.com/embed/${d.video.id}?rel=0&modestbranding=1"
+          title="${d.video.cap||'video'}" loading="lazy"
+          allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen></iframe></div>
+        ${d.video.cap?`<div class="video-cap">▶︎ ${d.video.cap}</div>`:''}`;
+    } else { vc.style.display='none'; }
+  }
+
+  const nc=document.getElementById('news-card'); nc.innerHTML='';
+  (d.news||[]).forEach(n=>{
+    if(n.url){
+      nc.insertAdjacentHTML('beforeend',
+        `<a class="linkrow" href="${n.url}" target="_blank" rel="noopener">
+           <div class="lic blue">${n.ic||'🔗'}</div>
+           <div class="lt"><div class="a">${n.t}</div><div class="b">${n.d||''}</div></div>
+           <div class="arr">›</div>
+         </a>`);
+    } else {
+      nc.insertAdjacentHTML('beforeend',`<div class="news-item"><div class="nt">${n.t}</div><div class="nd">${n.d}</div></div>`);
+    }
+  });
+
+  renderChecklist();
+}
+
+/* ── Fetch from Google Apps Script ── */
+async function loadData(){
+  const s=document.getElementById('synced'), t=document.getElementById('synced-txt');
+  if(!GAS_URL){ t.textContent='시범 데이터 표시 중 (연동 대기)'; render(); return; }
+  try{
+    const res=await fetch(GAS_URL+'?student='+STUDENT_ID, {method:'GET'});
+    const json=await res.json();
+    // 서버가 준 값만 덮어쓰기 — 빈 배열/누락 필드는 폴백 유지
+    const merged={...FALLBACK};
+    Object.keys(json).forEach(k=>{
+      const v=json[k];
+      if(v===null||v===undefined) return;
+      if(Array.isArray(v) && v.length===0) return;
+      merged[k]=v;
+    });
+    DATA=merged;
+    s.classList.add('live'); t.textContent='최신 정보 · 방금 업데이트됨';
+    render();
+  }catch(e){
+    t.textContent='오프라인 · 저장된 정보 표시 중'; render();
+  }
+}
+
+/* ── Sync task checks to server (2차 백엔드용 · 지금은 조용히 대기) ── */
+async function syncTasksToServer(done){
+  if(!GAS_URL) return; // 연동 전엔 폰에만 저장
+  try{
+    await fetch(GAS_URL, {method:'POST', headers:{'Content-Type':'text/plain;charset=utf-8'},
+      body:JSON.stringify({action:'saveTasks', student:STUDENT_ID, date:todayKey(),
+        dayType:isClassToday()?'class':'rest', total:TASKS.length,
+        done:done, doneNames:done.map(i=>TASKS[i]?TASKS[i].t1:i)})});
+  }catch(e){/* 실패해도 폰 저장은 유지됨 */}
+}
+
+loadData();
+</script>
+</body>
+</html>
