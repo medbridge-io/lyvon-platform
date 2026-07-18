@@ -11,5 +11,7 @@ item2.X-ABLabel:JP
 EMAIL;TYPE=INTERNET,PREF:patrick@lyvon.io
 item3.URL:https://lyvon.io
 item3.X-ABLabel:Website
+item4.URL:https://lyvon.io/card
+item4.X-ABLabel:Digital Card
 NOTE:LYVON — Everyone has a V.
 END:VCARD
