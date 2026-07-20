@@ -16,6 +16,8 @@
 <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="apple-mobile-web-app-title" content="LYVON">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="theme-color" content="#0B2545">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -33,8 +35,8 @@ img{display:block;}
 .serif{font-family:'Lora','Pretendard',Georgia,serif;}
 
 /* ===== fixed header ===== */
-.gnav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(18px,4vw,48px);height:74px;transition:.35s;color:#fff;}
-.gnav.solid{background:rgba(251,249,244,.92);backdrop-filter:blur(12px);color:var(--navy);box-shadow:0 1px 0 rgba(11,37,69,.08);height:62px;}
+.gnav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:env(safe-area-inset-top) clamp(18px,4vw,48px) 0;height:calc(74px + env(safe-area-inset-top));transition:.35s;color:#fff;}
+.gnav.solid{background:rgba(251,249,244,.92);backdrop-filter:blur(12px);color:var(--navy);box-shadow:0 1px 0 rgba(11,37,69,.08);height:calc(62px + env(safe-area-inset-top));}
 .gnav .logo{font-family:'Lora',Georgia,serif;font-size:23px;font-weight:500;letter-spacing:.2em;text-decoration:none;color:inherit;}
 .gnav nav{display:flex;align-items:center;gap:clamp(14px,2.6vw,34px);}
 .gnav nav a{font-family:'Inter','Pretendard',sans-serif;font-size:11.5px;font-weight:600;letter-spacing:.18em;text-decoration:none;color:inherit;opacity:.85;transition:.2s;position:relative;padding:4px 0;}
