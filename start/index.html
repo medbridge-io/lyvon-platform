@@ -354,13 +354,19 @@ html[lang="ko"] .acct .at,html[lang="ko"] .acct .ad{word-break:keep-all;}
 .dcell .dk{font-size:15px;font-weight:700;color:var(--navy);margin-bottom:9px;line-height:1.5;}
 .dcell .dd{font-size:12.5px;color:var(--ink);line-height:1.9;}
 html[lang="ko"] .dcell .dk,html[lang="ko"] .dcell .dd{word-break:keep-all;}
-/* dashboard screenshots */
-.shotstrip{display:grid;grid-template-columns:repeat(5,1fr);gap:clamp(10px,1.5vw,18px);margin:clamp(28px,3.4vw,40px) 0 clamp(26px,3.2vw,38px);}
-@media(max-width:1000px){
-  .shotstrip{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding-bottom:12px;margin-left:calc(-1 * clamp(20px,5vw,48px));margin-right:calc(-1 * clamp(20px,5vw,48px));padding-left:clamp(20px,5vw,48px);padding-right:clamp(20px,5vw,48px);}
-  .shot{flex:0 0 46%;min-width:210px;scroll-snap-align:start;}
-}
-@media(max-width:560px){.shot{flex-basis:70%;}}
+/* dashboard screenshots — 큰 카드 + 가로 스크롤 */
+.shotstrip{display:flex;gap:clamp(14px,2vw,24px);overflow-x:auto;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;
+  margin:clamp(26px,3.2vw,38px) calc(-1 * clamp(20px,5vw,48px)) clamp(14px,1.8vw,22px);
+  padding:4px clamp(20px,5vw,48px) 18px;scrollbar-width:thin;scrollbar-color:var(--border) transparent;}
+.shotstrip::-webkit-scrollbar{height:7px;}
+.shotstrip::-webkit-scrollbar-track{background:transparent;}
+.shotstrip::-webkit-scrollbar-thumb{background:var(--border);border-radius:99px;}
+.shotstrip::-webkit-scrollbar-thumb:hover{background:var(--gold2);}
+.shot{flex:0 0 330px;scroll-snap-align:start;}
+@media(max-width:900px){.shot{flex-basis:300px;}}
+@media(max-width:560px){.shot{flex-basis:74vw;max-width:300px;}}
+.shothint{display:flex;align-items:center;gap:8px;font-size:11.5px;color:var(--muted);letter-spacing:.02em;margin-bottom:clamp(22px,2.8vw,32px);}
+.shothint::before{content:"";width:22px;height:1px;background:var(--border);flex-shrink:0;}
 .shot figure{margin:0;border-radius:14px;overflow:hidden;border:1px solid var(--border);background:#fff;box-shadow:0 10px 30px rgba(11,37,69,.12);transition:.28s;}
 .shot:hover figure{transform:translateY(-5px);box-shadow:0 18px 44px rgba(11,37,69,.18);}
 .shot img{width:100%;height:auto;display:block;}
@@ -818,7 +824,12 @@ html[lang="ko"] .foot .disc{word-break:keep-all;}
         <div class="cp"><span class="tagp2">STUDENT</span><b data-i18n="sh3t"></b><span data-i18n="sh3d"></span></div></div>
       <div class="shot"><figure><img src="dash-4.png" alt="LYVON student dashboard — Progress roadmap" loading="lazy"></figure>
         <div class="cp"><span class="tagp2">STUDENT</span><b data-i18n="sh4t"></b><span data-i18n="sh4d"></span></div></div>
+      <div class="shot"><figure><img src="dash-5.png" alt="LYVON student dashboard — Schedule" loading="lazy"></figure>
+        <div class="cp"><span class="tagp2">STUDENT</span><b data-i18n="sh6t"></b><span data-i18n="sh6d"></span></div></div>
+      <div class="shot"><figure><img src="dash-6.png" alt="LYVON student dashboard — Materials" loading="lazy"></figure>
+        <div class="cp"><span class="tagp2">STUDENT</span><b data-i18n="sh7t"></b><span data-i18n="sh7d"></span></div></div>
     </div>
+    <div class="shothint rv" data-i18n="shot_hint"></div>
     <div class="shotnote rv" data-i18n="shot_note"></div>
     <div class="dgrid">
       <div class="dcell rv"><div class="dn">01</div><div class="dk" data-i18n="d1k"></div><div class="dd" data-i18n="d1d"></div></div>
@@ -1089,6 +1100,9 @@ const T = {
 "sh2t": "피드백", "sh2d": "종합 평점과 스피킹·리스닝·어휘 영역별 점수",
 "sh3t": "주간 피드백", "sh3d": "레슨마다 원어민 강사의 코멘트가 기록됩니다",
 "sh4t": "진도 로드맵", "sh4d": "4개월 커리큘럼 진행률을 한눈에",
+"sh6t": "일정", "sh6d": "레슨별 진행 상황과 다음 수업 일정",
+"sh7t": "학습자료", "sh7d": "과정별 수업 자료 · 피드백 · LLR 기록",
+"shot_hint": "좌우로 밀어서 7개 화면을 모두 보실 수 있습니다",
 "sh5t": "학부모용", "sh5d": "자녀의 학습 현황을 별도 계정으로 직접 확인합니다",
 "shot_note": "※ 실제 서비스 화면입니다. 학생 이름과 이니셜은 가명으로 대체했으며, 그 외 데이터는 실제 화면 그대로입니다.",
 "acct1t": "학생 — 오늘 무엇을 해야 하는지",
@@ -1243,6 +1257,9 @@ const T = {
 "sh2t": "Feedback", "sh2d": "Overall score plus speaking, listening and vocabulary breakdowns",
 "sh3t": "Weekly feedback", "sh3d": "A native tutor's written comment after every lesson",
 "sh4t": "Progress roadmap", "sh4d": "Four-month curriculum progress at a glance",
+"sh6t": "Schedule", "sh6d": "Lesson-by-lesson status and the next session",
+"sh7t": "Materials", "sh7d": "Course materials, feedback reports and LLR records",
+"shot_hint": "Scroll sideways to see all seven screens",
 "sh5t": "Parent view", "sh5d": "Parents check their child's status from a separate account",
 "shot_note": "※ Real product screens. The student's name and initials have been replaced with a pseudonym; all other data is exactly as shown in the app.",
 "acct1t": "Student — what to do today",
@@ -1397,6 +1414,9 @@ const T = {
 "sh2t": "フィードバック", "sh2d": "総合評価とスピーキング・リスニング・語彙の項目別スコア",
 "sh3t": "週間フィードバック", "sh3d": "レッスンごとにネイティブ講師のコメントが残ります",
 "sh4t": "進捗ロードマップ", "sh4d": "4ヶ月カリキュラムの進捗を一目で",
+"sh6t": "スケジュール", "sh6d": "レッスンごとの進行状況と次回の予定",
+"sh7t": "学習資料", "sh7d": "課程ごとの授業資料・フィードバック・LLR記録",
+"shot_hint": "左右にスワイプして7つの画面をすべてご覧いただけます",
 "sh5t": "保護者用", "sh5d": "お子さまの学習状況を別アカウントで直接確認",
 "shot_note": "※ 実際のサービス画面です。学生の氏名とイニシャルは仮名に置き換えており、その他のデータは実画面のままです。",
 "acct1t": "学生 — 今日、何をすべきか",
