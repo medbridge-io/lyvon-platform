@@ -154,20 +154,28 @@ html[lang="ko"] .intro .s{word-break:keep-all;}
 .pathwrap .pen{text-align:center;font-family:'Lora',Georgia,serif;font-size:clamp(19px,2.3vw,25px);font-weight:500;letter-spacing:.2em;color:var(--navy);margin-bottom:clamp(32px,4.5vw,46px);}
 .pathwrap .pen::after{content:"";display:block;width:36px;height:2px;background:var(--gold);margin:16px auto 0;}
 .path{position:relative;display:grid;grid-template-columns:repeat(5,1fr);}
-.path::before{content:"";position:absolute;top:5px;left:10%;right:10%;height:1px;background:var(--border);}
-.pnode{position:relative;text-align:center;padding:0 10px;}
-.pnode .dot{width:11px;height:11px;border-radius:50%;background:var(--navy);border:2px solid var(--cream);box-shadow:0 0 0 1px var(--border);margin:0 auto 16px;}
-.pnode.mb .dot{background:var(--mb);}.pnode.mp .dot{background:var(--mp);}.pnode.mc .dot{background:var(--mc);}
-.pnode:last-child .dot{background:var(--gold);}
-.pnode .pl span{display:block;font-size:13.5px;font-weight:700;letter-spacing:.01em;color:var(--navy);line-height:1.45;}
+.path::before{content:"";position:absolute;top:29px;left:10%;right:10%;height:1.5px;background:var(--border);}
+.pnode{position:relative;text-align:center;padding:0 8px;}
+.pnode .ic{position:relative;z-index:2;width:60px;height:60px;border-radius:50%;background:#fff;border:1.5px solid var(--border);
+  display:flex;align-items:center;justify-content:center;margin:0 auto 18px;transition:.3s;
+  font-size:27px;line-height:1;font-family:'Apple Color Emoji','Segoe UI Emoji','Noto Color Emoji',sans-serif;
+  box-shadow:0 2px 10px rgba(11,37,69,.06);}
+/* 배경은 반드시 불투명 — 반투명이면 뒤의 연결선이 비쳐 원 가운데를 관통해 보임 */
+.pnode.mb .ic{border-color:rgba(26,122,106,.45);background:#EFF6F5;}
+.pnode.mp .ic{border-color:rgba(62,79,138,.45);background:#F2F3F7;}
+.pnode.mc .ic{border-color:rgba(46,139,192,.45);background:#F0F7FB;}
+.pnode:last-child .ic{border-color:var(--gold);background:#F8F3E3;box-shadow:0 4px 16px rgba(201,162,39,.22);}
+.pathwrap:hover .pnode .ic{transform:translateY(-2px);}
+.pnode .pl span{display:block;font-size:14px;font-weight:700;letter-spacing:.01em;color:var(--navy);line-height:1.45;}
 html[lang="ko"] .pnode .pl span{word-break:keep-all;}
 .pnode.mb .pl span{color:var(--mb);}.pnode.mp .pl span{color:var(--mp);}.pnode.mc .pl span{color:var(--mc);}
 .pnode .pl small{display:block;font-weight:500;font-size:10.5px;letter-spacing:.03em;color:var(--muted);margin-top:5px;line-height:1.5;}
 @media(max-width:720px){
-.path{grid-template-columns:1fr;gap:24px;}
-.path::before{top:8px;bottom:8px;left:5px;right:auto;width:1px;height:auto;}
-.pnode{display:flex;align-items:flex-start;gap:16px;text-align:left;padding:0;}
-.pnode .dot{margin:3px 0 0;flex-shrink:0;}
+.path{grid-template-columns:1fr;gap:20px;}
+.path::before{top:20px;bottom:20px;left:28px;right:auto;width:1.5px;height:auto;}
+.pnode{display:flex;align-items:center;gap:18px;text-align:left;padding:0;}
+.pnode .ic{margin:0;flex-shrink:0;width:56px;height:56px;}
+.pnode .pl span{font-size:15px;}
 }
 
 /* ===== stats band ===== */
@@ -355,16 +363,19 @@ html[lang="ko"] .acct .at,html[lang="ko"] .acct .ad{word-break:keep-all;}
 .dcell .dd{font-size:12.5px;color:var(--ink);line-height:1.9;}
 html[lang="ko"] .dcell .dk,html[lang="ko"] .dcell .dd{word-break:keep-all;}
 /* dashboard screenshots — 큰 카드 + 가로 스크롤 */
-.shotstrip{display:flex;gap:clamp(14px,2vw,24px);overflow-x:auto;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;
+.shotstrip{display:flex;gap:clamp(14px,2vw,24px);overflow-x:auto;overflow-y:hidden;overscroll-behavior-x:contain;
+  scroll-snap-type:x proximity;scroll-padding-left:clamp(20px,5vw,48px);
   margin:clamp(26px,3.2vw,38px) calc(-1 * clamp(20px,5vw,48px)) clamp(14px,1.8vw,22px);
-  padding:4px clamp(20px,5vw,48px) 18px;scrollbar-width:thin;scrollbar-color:var(--border) transparent;}
+  padding:4px 0 18px clamp(20px,5vw,48px);scrollbar-width:thin;scrollbar-color:var(--border) transparent;}
+/* Safari 는 스크롤 영역의 padding-right 를 무시 → 마지막 카드에 도달 못 함. 스페이서로 대체 */
+.shotstrip::after{content:"";flex:0 0 clamp(20px,5vw,48px);}
 .shotstrip::-webkit-scrollbar{height:7px;}
 .shotstrip::-webkit-scrollbar-track{background:transparent;}
 .shotstrip::-webkit-scrollbar-thumb{background:var(--border);border-radius:99px;}
 .shotstrip::-webkit-scrollbar-thumb:hover{background:var(--gold2);}
 .shot{flex:0 0 330px;scroll-snap-align:start;}
 @media(max-width:900px){.shot{flex-basis:300px;}}
-@media(max-width:560px){.shot{flex-basis:74vw;max-width:300px;}}
+@media(max-width:560px){.shot{flex:0 0 74vw;max-width:300px;}}
 .shothint{display:flex;align-items:center;gap:8px;font-size:11.5px;color:var(--muted);letter-spacing:.02em;margin-bottom:clamp(22px,2.8vw,32px);}
 .shothint::before{content:"";width:22px;height:1px;background:var(--border);flex-shrink:0;}
 .shot figure{margin:0;border-radius:14px;overflow:hidden;border:1px solid var(--border);background:#fff;box-shadow:0 10px 30px rgba(11,37,69,.12);transition:.28s;}
@@ -814,11 +825,11 @@ html[lang="ko"] .foot .disc{word-break:keep-all;}
       <div class="acct p rv"><div class="ak">PARENT ACCOUNT</div><div class="at" data-i18n="acct2t"></div><div class="ad" data-i18n="acct2d"></div></div>
     </div>
     <div class="shotstrip rv">
-      <div class="shot pr"><figure><img src="dash-parent.png" alt="LYVON parent dashboard" loading="lazy"></figure>
+      <div class="shot pr"><figure><img src="dash-parent.png" alt="LYVON parent dashboard" decoding="async"></figure>
         <div class="cp"><span class="tagp2">PARENT</span><b data-i18n="sh5t"></b><span data-i18n="sh5d"></span></div></div>
-      <div class="shot"><figure><img src="dash-1.png" alt="LYVON student dashboard — Today" loading="lazy"></figure>
+      <div class="shot"><figure><img src="dash-1.png" alt="LYVON student dashboard — Today" decoding="async"></figure>
         <div class="cp"><span class="tagp2">STUDENT</span><b data-i18n="sh1t"></b><span data-i18n="sh1d"></span></div></div>
-      <div class="shot"><figure><img src="dash-2.png" alt="LYVON student dashboard — Scores" loading="lazy"></figure>
+      <div class="shot"><figure><img src="dash-2.png" alt="LYVON student dashboard — Scores" decoding="async"></figure>
         <div class="cp"><span class="tagp2">STUDENT</span><b data-i18n="sh2t"></b><span data-i18n="sh2d"></span></div></div>
       <div class="shot"><figure><img src="dash-3.png" alt="LYVON student dashboard — Weekly feedback" loading="lazy"></figure>
         <div class="cp"><span class="tagp2">STUDENT</span><b data-i18n="sh3t"></b><span data-i18n="sh3d"></span></div></div>
@@ -850,11 +861,21 @@ html[lang="ko"] .foot .disc{word-break:keep-all;}
     <div class="pkr" data-i18n="sec_path_kr"></div>
     <div class="pen">LYVON ROADMAP</div>
     <div class="path">
-      <div class="pnode"><div class="dot"></div><div class="pl"><span data-i18n="p1"></span><small data-i18n="p1s"></small></div></div>
-      <div class="pnode mb"><div class="dot"></div><div class="pl"><span>MedBridge</span><small data-i18n="p2s"></small></div></div>
-      <div class="pnode mp"><div class="dot"></div><div class="pl"><span>MedPath</span><small data-i18n="p3s"></small></div></div>
-      <div class="pnode mc"><div class="dot"></div><div class="pl"><span>MedConnect</span><small data-i18n="p4s"></small></div></div>
-      <div class="pnode"><div class="dot"></div><div class="pl"><span data-i18n="p5"></span><small data-i18n="p5s"></small></div></div>
+      <div class="pnode">
+        <div class="ic" aria-hidden="true">&#128218;</div>
+        <div class="pl"><span data-i18n="p1"></span><small data-i18n="p1s"></small></div></div>
+      <div class="pnode mb">
+        <div class="ic" aria-hidden="true">&#128483;&#65039;</div>
+        <div class="pl"><span>MedBridge</span><small data-i18n="p2s"></small></div></div>
+      <div class="pnode mp">
+        <div class="ic" aria-hidden="true">&#129516;</div>
+        <div class="pl"><span>MedPath</span><small data-i18n="p3s"></small></div></div>
+      <div class="pnode mc">
+        <div class="ic" aria-hidden="true">&#129309;</div>
+        <div class="pl"><span>MedConnect</span><small data-i18n="p4s"></small></div></div>
+      <div class="pnode">
+        <div class="ic" aria-hidden="true">&#129658;</div>
+        <div class="pl"><span data-i18n="p5"></span><small data-i18n="p5s"></small></div></div>
     </div>
     </div>
   </div>
