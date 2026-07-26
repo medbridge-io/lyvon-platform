@@ -808,16 +808,16 @@ html[lang="ko"] .foot .disc{word-break:keep-all;}
       <div class="acct p rv"><div class="ak">PARENT ACCOUNT</div><div class="at" data-i18n="acct2t"></div><div class="ad" data-i18n="acct2d"></div></div>
     </div>
     <div class="shotstrip rv">
-      <div class="shot"><figure><img src="dash-1.png" alt="LYVON student dashboard — Today" loading="lazy"></figure>
-        <div class="cp"><span class="tagp2">STUDENT</span><b data-i18n="sh1t"></b><span data-i18n="sh1d"></span></div></div>
-      <div class="shot"><figure><img src="dash-2.png" alt="LYVON student dashboard — Feedback" loading="lazy"></figure>
-        <div class="cp"><span class="tagp2">STUDENT</span><b data-i18n="sh2t"></b><span data-i18n="sh2d"></span></div></div>
-      <div class="shot"><figure><img src="dash-3.png" alt="LYVON student dashboard — Schedule" loading="lazy"></figure>
-        <div class="cp"><span class="tagp2">STUDENT</span><b data-i18n="sh3t"></b><span data-i18n="sh3d"></span></div></div>
-      <div class="shot"><figure><img src="dash-4.png" alt="LYVON student dashboard — Materials" loading="lazy"></figure>
-        <div class="cp"><span class="tagp2">STUDENT</span><b data-i18n="sh4t"></b><span data-i18n="sh4d"></span></div></div>
       <div class="shot pr"><figure><img src="dash-parent.png" alt="LYVON parent dashboard" loading="lazy"></figure>
         <div class="cp"><span class="tagp2">PARENT</span><b data-i18n="sh5t"></b><span data-i18n="sh5d"></span></div></div>
+      <div class="shot"><figure><img src="dash-1.png" alt="LYVON student dashboard — Today" loading="lazy"></figure>
+        <div class="cp"><span class="tagp2">STUDENT</span><b data-i18n="sh1t"></b><span data-i18n="sh1d"></span></div></div>
+      <div class="shot"><figure><img src="dash-2.png" alt="LYVON student dashboard — Scores" loading="lazy"></figure>
+        <div class="cp"><span class="tagp2">STUDENT</span><b data-i18n="sh2t"></b><span data-i18n="sh2d"></span></div></div>
+      <div class="shot"><figure><img src="dash-3.png" alt="LYVON student dashboard — Weekly feedback" loading="lazy"></figure>
+        <div class="cp"><span class="tagp2">STUDENT</span><b data-i18n="sh3t"></b><span data-i18n="sh3d"></span></div></div>
+      <div class="shot"><figure><img src="dash-4.png" alt="LYVON student dashboard — Progress roadmap" loading="lazy"></figure>
+        <div class="cp"><span class="tagp2">STUDENT</span><b data-i18n="sh4t"></b><span data-i18n="sh4d"></span></div></div>
     </div>
     <div class="shotnote rv" data-i18n="shot_note"></div>
     <div class="dgrid">
@@ -1087,9 +1087,9 @@ const T = {
 "dash_sub": "LYVON은 수업만 제공하지 않습니다. <b>학생과 학부모가 각자의 계정</b>으로 접속하는 전용 대시보드에서, 오늘 해야 할 과제부터 종합 평점까지 학습의 전 과정이 기록되고 보입니다.",
 "sh1t": "오늘", "sh1d": "다음 수업 D-day · 진도 · 출석률 · 데일리 태스크",
 "sh2t": "피드백", "sh2d": "종합 평점과 스피킹·리스닝·어휘 영역별 점수",
-"sh3t": "일정", "sh3d": "레슨별 진행 상황과 다음 수업 일정",
-"sh4t": "학습자료", "sh4d": "과정별 수업 자료 · 피드백 · LLR 기록",
-"sh5t": "학부모용", "sh5d": "자녀의 학습 현황을 별도 계정으로 직접 확인",
+"sh3t": "주간 피드백", "sh3d": "레슨마다 원어민 강사의 코멘트가 기록됩니다",
+"sh4t": "진도 로드맵", "sh4d": "4개월 커리큘럼 진행률을 한눈에",
+"sh5t": "학부모용", "sh5d": "자녀의 학습 현황을 별도 계정으로 직접 확인합니다",
 "shot_note": "※ 실제 서비스 화면입니다. 학생 이름과 이니셜은 가명으로 대체했으며, 그 외 데이터는 실제 화면 그대로입니다.",
 "acct1t": "학생 — 오늘 무엇을 해야 하는지",
 "acct1d": "데일리 태스크, 진도율, 학습 자료, 종합 평점을 한 화면에서 확인합니다. 매일 무엇을 해야 하는지 헤매지 않습니다.",
@@ -1241,8 +1241,8 @@ const T = {
 "dash_sub": "LYVON does not just deliver lessons. <b>Students and parents each get their own account</b> on a dedicated dashboard where everything — from today's task to overall scores — is recorded and visible.",
 "sh1t": "Today", "sh1d": "Next lesson D-day, progress, attendance and daily tasks",
 "sh2t": "Feedback", "sh2d": "Overall score plus speaking, listening and vocabulary breakdowns",
-"sh3t": "Schedule", "sh3d": "Lesson-by-lesson status and the next session",
-"sh4t": "Materials", "sh4d": "Course materials, feedback reports and LLR records",
+"sh3t": "Weekly feedback", "sh3d": "A native tutor's written comment after every lesson",
+"sh4t": "Progress roadmap", "sh4d": "Four-month curriculum progress at a glance",
 "sh5t": "Parent view", "sh5d": "Parents check their child's status from a separate account",
 "shot_note": "※ Real product screens. The student's name and initials have been replaced with a pseudonym; all other data is exactly as shown in the app.",
 "acct1t": "Student — what to do today",
@@ -1395,8 +1395,8 @@ const T = {
 "dash_sub": "LYVONはレッスンを提供するだけではありません。<b>学生と保護者がそれぞれのアカウント</b>でアクセスする専用ダッシュボードで、今日やるべき課題から総合評価まで、学習の全過程が記録され、見えるようになります。",
 "sh1t": "今日", "sh1d": "次のレッスンまでのD-day・進捗・出席率・デイリータスク",
 "sh2t": "フィードバック", "sh2d": "総合評価とスピーキング・リスニング・語彙の項目別スコア",
-"sh3t": "スケジュール", "sh3d": "レッスンごとの進行状況と次回の予定",
-"sh4t": "学習資料", "sh4d": "課程ごとの授業資料・フィードバック・LLR記録",
+"sh3t": "週間フィードバック", "sh3d": "レッスンごとにネイティブ講師のコメントが残ります",
+"sh4t": "進捗ロードマップ", "sh4d": "4ヶ月カリキュラムの進捗を一目で",
 "sh5t": "保護者用", "sh5d": "お子さまの学習状況を別アカウントで直接確認",
 "shot_note": "※ 実際のサービス画面です。学生の氏名とイニシャルは仮名に置き換えており、その他のデータは実画面のままです。",
 "acct1t": "学生 — 今日、何をすべきか",
