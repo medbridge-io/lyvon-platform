@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>8월 LYVON Medical English 신규 모집 | 해외 의대 스피킹 캠페인</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+    background: linear-gradient(180deg, #aee3f5 0%, #d9f2fb 45%, #fdf3d8 100%);
+    color: #2d3748;
+    line-height: 1.7;
+    padding: 24px 16px;
+    min-height: 100vh;
+  }
+  .container {
+    max-width: 640px;
+    margin: 0 auto;
+    background: #ffffff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  }
+
+  /* ── 긴급 바 ── */
+  .urgency-bar {
+    background: #e11d48;
+    color: #ffffff;
+    text-align: center;
+    padding: 12px 16px;
+    font-size: 15px;
+    font-weight: 700;
+  }
+  .urgency-bar .dday {
+    background: #ffffff;
+    color: #e11d48;
+    border-radius: 6px;
+    padding: 2px 10px;
+    margin-left: 6px;
+    font-weight: 800;
+  }
+
+  /* ── 히어로 ── */
+  .header {
+    background: linear-gradient(135deg, #0e7490 0%, #06b6d4 55%, #22d3ee 100%);
+    color: #ffffff;
+    padding: 44px 32px;
+    text-align: center;
+    position: relative;
+  }
+  .header .sun {
+    position: absolute; top: 18px; right: 24px;
+    font-size: 34px;
+    filter: drop-shadow(0 2px 6px rgba(0,0,0,0.15));
+  }
+  .badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.2);
+    border-radius: 999px;
+    padding: 6px 16px;
+    font-size: 14px;
+    margin-bottom: 14px;
+  }
+  .header h1 {
+    font-size: 27px;
+    font-weight: 800;
+    line-height: 1.4;
+    margin-bottom: 12px;
+  }
+  .header h1 em {
+    font-style: normal;
+    color: #fde047;
+  }
+  .header p { font-size: 15px; opacity: 0.95; }
+  .header-cta { margin-top: 22px; }
+  .btn-header {
+    display: inline-block;
+    background: #f5b041;
+    color: #1a2530;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 800;
+    padding: 14px 36px;
+    border-radius: 999px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  }
+  .hero-img { width: 100%; height: 250px; object-fit: cover; display: block; }
+
+  .content { padding: 32px; }
+  .section-label {
+    display: inline-block;
+    background: #e0f7fa;
+    color: #0e7490;
+    font-size: 13px;
+    font-weight: 800;
+    border-radius: 999px;
+    padding: 4px 14px;
+    margin-bottom: 12px;
+  }
+  h2.section-title {
+    font-size: 21px;
+    font-weight: 800;
+    color: #1e293b;
+    margin-bottom: 14px;
+    line-height: 1.4;
+  }
+
+  /* ── 문제 제기 ── */
+  .hook { margin-bottom: 36px; }
+  .highlight-box {
+    background: #e0f7fa;
+    border-left: 4px solid #06b6d4;
+    border-radius: 8px;
+    padding: 16px 20px;
+    font-size: 15px;
+  }
+
+  /* ── 프로그램 ── */
+  .programs { margin-bottom: 36px; }
+  .program {
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 16px;
+  }
+  .program-img {
+    width: 100%; height: 150px; object-fit: cover;
+    border-radius: 8px; margin-bottom: 16px; display: block;
+  }
+  .program h3 { font-size: 19px; color: #0e7490; margin-bottom: 4px; }
+  .program .subtitle { font-size: 14px; color: #718096; margin-bottom: 12px; }
+  .program ul { list-style: none; }
+  .program li { padding: 5px 0 5px 26px; position: relative; font-size: 15px; }
+  .program li::before {
+    content: "•"; color: #06b6d4; font-weight: bold;
+    position: absolute; left: 8px;
+  }
+
+  /* ── 특징 ── */
+  .features {
+    background: #f7fafc;
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-bottom: 36px;
+    list-style: none;
+  }
+  .features li {
+    padding: 6px 0 6px 28px; position: relative;
+    font-size: 15px; font-weight: 500;
+  }
+  .features li::before { content: "✅"; position: absolute; left: 0; font-size: 14px; }
+
+  /* ── D-day 카운트다운 ── */
+  .countdown-box {
+    background: linear-gradient(135deg, #fff4e0 0%, #ffe8cc 100%);
+    border: 1px dashed #f39c12;
+    border-radius: 12px;
+    text-align: center;
+    padding: 24px;
+    margin-bottom: 36px;
+  }
+  .countdown-box .big {
+    font-size: 19px; font-weight: 800; color: #d35400;
+    display: block; margin-bottom: 10px;
+  }
+  .countdown {
+    display: flex; justify-content: center; gap: 10px; margin-bottom: 10px;
+  }
+  .countdown .unit {
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 10px 0;
+    width: 72px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  }
+  .countdown .num { font-size: 24px; font-weight: 800; color: #d35400; display: block; line-height: 1.2; }
+  .countdown .lbl { font-size: 12px; color: #a04000; }
+  .countdown-box .small { font-size: 14px; color: #a04000; }
+
+  /* ── 신청 절차 ── */
+  .steps { margin-bottom: 36px; }
+  .step {
+    display: flex; align-items: flex-start; gap: 14px;
+    padding: 14px 0;
+  }
+  .step + .step { border-top: 1px solid #edf2f7; }
+  .step .num {
+    flex-shrink: 0;
+    width: 36px; height: 36px;
+    background: linear-gradient(135deg, #0891b2 0%, #06b6d4 100%);
+    color: #ffffff;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 16px;
+  }
+  .step h4 { font-size: 16px; color: #1e293b; margin-bottom: 2px; }
+  .step p { font-size: 14px; color: #64748b; }
+
+  /* ── 트라이얼 ── */
+  .trial {
+    background: linear-gradient(135deg, #fdf6ec 0%, #fcf3cf 100%);
+    border: 1px solid #f5d76e;
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 32px;
+  }
+  .trial h3 { font-size: 18px; color: #b7770d; margin-bottom: 12px; }
+  .trial ul { list-style: none; }
+  .trial li { padding: 5px 0 5px 26px; position: relative; font-size: 15px; }
+  .trial li::before {
+    content: "✔"; color: #b7770d; font-weight: bold;
+    position: absolute; left: 6px;
+  }
+
+  /* ── CTA ── */
+  .cta { text-align: center; padding: 8px 0 4px; }
+  .cta p { font-size: 15px; margin-bottom: 16px; }
+  .cta a {
+    display: inline-block;
+    text-decoration: none;
+    font-size: 16px; font-weight: 700;
+    padding: 14px 36px;
+    border-radius: 999px;
+    margin: 6px 4px;
+  }
+  .btn-primary {
+    background: linear-gradient(135deg, #0891b2 0%, #06b6d4 100%);
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(6,182,212,0.4);
+  }
+  .btn-kakao {
+    background: #FEE500;
+    color: #191919;
+    box-shadow: 0 4px 12px rgba(254,229,0,0.5);
+  }
+  .btn-secondary {
+    background: #ffffff;
+    color: #0891b2;
+    border: 2px solid #0891b2;
+  }
+
+  .footer {
+    background: linear-gradient(135deg, #0e7490 0%, #06b6d4 100%);
+    color: rgba(255,255,255,0.85);
+    text-align: center;
+    font-size: 13px;
+    padding: 18px;
+  }
+  .footer a { color: #fde047; text-decoration: none; font-weight: 700; }
+
+  @media (max-width: 480px) {
+    .content { padding: 24px 20px; }
+    .header { padding: 36px 20px; }
+    .header h1 { font-size: 22px; }
+    .countdown .unit { width: 60px; }
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- 긴급 바 -->
+    <div class="urgency-bar">
+      ⏰ 8월 신규 모집 마감까지 <span class="dday" id="dday">D-?</span> · 선착순 마감
+    </div>
+
+    <!-- 히어로 -->
+    <div class="header">
+      <span class="sun">☀️</span>
+      <span class="badge">🌊 여름방학 특집 · 8월 신규 수강생 모집</span>
+      <h1>영어는 잘하는데,<br>영어로 <em>Biology</em>를 설명할 수 있나요?</h1>
+      <p>해외 의대 합격을 가르는 건 Medical English Speaking입니다.<br>이번 여름방학, LYVON 1:1 수업으로 시작하세요.</p>
+      <div class="header-cta">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScrFb1WOfgQ02_P_LHLHajRiiI6M7aFgCYo7dc1c6TcsnRLnQ/viewform" target="_blank" class="btn-header">🎁 무료 트라이얼 수업 신청</a>
+      </div>
+    </div>
+
+    <img class="hero-img" src="https://images.unsplash.com/photo-1513258496099-48168024aec0?auto=format&fit=crop&w=1280&q=80" alt="밝은 햇살 아래 즐겁게 공부하는 학생">
+
+    <div class="content">
+
+      <!-- 문제 제기 -->
+      <div class="hook">
+        <span class="section-label">WHY LYVON</span>
+        <h2 class="section-title">영어 실력 ≠ 의대 구술시험 실력</h2>
+        <div class="highlight-box">
+          영어를 잘하는 것과 영어로 <strong>Biology, Chemistry를 설명하는 것</strong>은 다릅니다.<br>
+          LYVON은 헝가리 의대 등 해외 의대 <strong>구술시험(Oral Exam)과 인터뷰</strong>에서 필요한
+          Medical English Speaking을 체계적으로 훈련합니다.
+        </div>
+      </div>
+
+      <!-- 프로그램 -->
+      <div class="programs">
+        <span class="section-label">PROGRAMS</span>
+        <h2 class="section-title">목표에 맞는 2가지 과정</h2>
+
+        <div class="program">
+          <img class="program-img" src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=1280&q=80" alt="노트에 필기하며 공부하는 학생">
+          <h3>🎓 MedBridge</h3>
+          <p class="subtitle">기초 Medical General English 과정</p>
+          <ul>
+            <li>Medical English 기초 훈련</li>
+            <li>의학 영어 어휘 및 개념 학습</li>
+            <li>1:1 원어민 수업</li>
+          </ul>
+        </div>
+
+        <div class="program">
+          <img class="program-img" src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1280&q=80" alt="온라인으로 의학 수업 중인 모습">
+          <h3>🎓 MedPath</h3>
+          <p class="subtitle">해외 의대 구술시험 대비 과정</p>
+          <ul>
+            <li>Biology &amp; Chemistry 영어 스피킹</li>
+            <li>Define → Explain → Justify 말하기 훈련</li>
+            <li>실제 Oral Exam 및 Interview 중심</li>
+            <li>학생 맞춤형 피드백 제공</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 특징 -->
+      <ul class="features">
+        <li>100% 1:1 원어민 수업</li>
+        <li>학생별 맞춤 커리큘럼</li>
+        <li>해외 의대 입시에 특화된 Medical English</li>
+        <li>초급부터 수강 가능</li>
+      </ul>
+
+      <!-- 카운트다운 -->
+      <div class="countdown-box">
+        <span class="big">🏖️ 8월 신규 모집 마감 8/21(금)까지</span>
+        <div class="countdown">
+          <div class="unit"><span class="num" id="cd-days">0</span><span class="lbl">일</span></div>
+          <div class="unit"><span class="num" id="cd-hours">0</span><span class="lbl">시간</span></div>
+          <div class="unit"><span class="num" id="cd-mins">0</span><span class="lbl">분</span></div>
+        </div>
+        <span class="small">선착순 마감 — 여름방학이 시작하기 가장 좋은 타이밍입니다</span>
+      </div>
+
+      <!-- 신청 절차 -->
+      <div class="steps">
+        <span class="section-label">HOW TO START</span>
+        <h2 class="section-title">시작은 간단합니다</h2>
+        <div class="step">
+          <div class="num">1</div>
+          <div>
+            <h4>트라이얼 신청</h4>
+            <p>신청 폼 작성 또는 카카오톡으로 간편 문의</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="num">2</div>
+          <div>
+            <h4>레벨 진단 &amp; 상담</h4>
+            <p>현재 영어 실력 진단 후 학습 방향과 맞춤 프로그램 제안</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="num">3</div>
+          <div>
+            <h4>트라이얼 수업 체험</h4>
+            <p>실제 1:1 원어민 수업 방식을 직접 경험하고 시작 여부 결정</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 트라이얼 혜택 -->
+      <div class="trial">
+        <h3>🎁 트라이얼(체험) 수업에서 받는 것</h3>
+        <ul>
+          <li>학생의 현재 영어 실력 진단</li>
+          <li>Medical English 학습 방향 제시</li>
+          <li>실제 수업 방식 체험</li>
+          <li>학습 목표에 맞는 맞춤 프로그램 상담</li>
+        </ul>
+      </div>
+
+      <!-- 최종 CTA -->
+      <div class="cta">
+        <p><strong>8월 정원이 차기 전에</strong> 트라이얼 수업으로 먼저 경험해 보세요. 😊</p>
+        <a class="btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLScrFb1WOfgQ02_P_LHLHajRiiI6M7aFgCYo7dc1c6TcsnRLnQ/viewform" target="_blank">🎁 트라이얼 수업 신청하기</a>
+        <a class="btn-kakao" href="https://open.kakao.com/o/sh3TzOsi" target="_blank">💬 카카오톡 문의하기</a>
+        <a class="btn-secondary" href="https://lyvon.io/start/" target="_blank">🌐 LYVON 홈페이지 보기</a>
+      </div>
+
+    </div>
+
+    <div class="footer">
+      LYVON Medical English · 해외 의대 진학 전문 1:1 영어 프로그램<br>
+      <a href="https://lyvon.io/start/" target="_blank">lyvon.io/start</a>
+    </div>
+
+  </div>
+
+<script>
+  var deadline = new Date('2026-08-21T23:59:59+09:00').getTime();
+  function updateCountdown() {
+    var diff = deadline - Date.now();
+    if (diff < 0) diff = 0;
+    var days = Math.floor(diff / 86400000);
+    var hours = Math.floor(diff % 86400000 / 3600000);
+    var mins = Math.floor(diff % 3600000 / 60000);
+    document.getElementById('cd-days').textContent = days;
+    document.getElementById('cd-hours').textContent = hours;
+    document.getElementById('cd-mins').textContent = mins;
+    document.getElementById('dday').textContent = days > 0 ? 'D-' + days : 'D-DAY';
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 60000);
+</script>
+</body>
+</html>
