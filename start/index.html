@@ -249,11 +249,16 @@ html[lang="ko"] .contactnote{word-break:keep-all;}
 /* ===== universities strip ===== */
 .unis{background:#fff;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:38px clamp(20px,4vw,48px) 36px;}
 .unis .ut{font-family:'Inter',sans-serif;font-size:10px;letter-spacing:.26em;color:var(--muted);font-weight:700;text-align:center;margin-bottom:26px;}
-.unis .row{display:grid;grid-template-columns:repeat(5,1fr);max-width:1140px;margin:0 auto;}
-.unis .u{font-family:'Lora',Georgia,serif;font-size:clamp(14px,1.5vw,17px);font-weight:500;letter-spacing:.02em;line-height:1.4;color:var(--navy);opacity:.85;text-align:center;padding:4px 16px;border-left:1px solid var(--border);display:flex;flex-direction:column;justify-content:center;}
+.unis .row{display:grid;grid-template-columns:repeat(4,1fr);max-width:1140px;margin:0 auto;}
+.unis .u{font-family:'Lora',Georgia,serif;font-size:clamp(14px,1.5vw,17px);font-weight:500;letter-spacing:.02em;line-height:1.4;color:var(--navy);opacity:.9;text-align:center;padding:4px 16px;border-left:1px solid var(--border);display:flex;flex-direction:column;justify-content:flex-start;}
 .unis .u:first-child{border-left:none;}
 .unis .u small{display:block;font-family:'Pretendard',sans-serif;font-size:10.5px;color:var(--muted);letter-spacing:.02em;margin-top:6px;font-weight:500;line-height:1.4;}
-@media(max-width:960px){.unis .row{grid-template-columns:1fr;gap:20px;}.unis .u{border-left:none;padding:0;}}
+.unis .u .cnt{display:block;margin-top:12px;font-family:'Pretendard',sans-serif;font-size:12.5px;font-weight:700;color:var(--gold-ink);letter-spacing:.01em;}
+.unis .u .cnt b{font-family:'Lora',Georgia,serif;font-size:21px;font-weight:600;color:var(--gold);margin-right:4px;letter-spacing:0;}
+.unis .ubase{max-width:1140px;margin:26px auto 0;padding-top:18px;border-top:1px solid var(--border);text-align:center;font-size:11.5px;color:var(--muted);line-height:1.8;letter-spacing:.01em;}
+html[lang="ko"] .unis .ubase{word-break:keep-all;}
+@media(max-width:960px){.unis .row{grid-template-columns:1fr 1fr;gap:24px 0;}.unis .u{padding:0 10px;}.unis .u:nth-child(odd){border-left:none;}}
+@media(max-width:520px){.unis .row{grid-template-columns:1fr;gap:22px;}.unis .u{border-left:none;padding:0;}}
 
 /* ===== video ===== */
 .vidsec{background:var(--cream);}
@@ -695,14 +700,14 @@ html[lang="ko"] .foot .disc{word-break:keep-all;}
 
 <!-- ===== UNIVERSITIES STRIP ===== -->
 <div class="unis">
-  <div class="ut">HUNGARIAN MEDICAL &amp; VETERINARY UNIVERSITIES</div>
+  <div class="ut" data-i18n="uni_kicker"></div>
   <div class="row">
-    <div class="u">Semmelweis University<small data-i18n="u1s"></small></div>
-    <div class="u">University of Debrecen<small data-i18n="u2s"></small></div>
-    <div class="u">University of Szeged<small data-i18n="u3s"></small></div>
-    <div class="u">University of P&eacute;cs<small data-i18n="u4s"></small></div>
-    <div class="u">Univ. of Veterinary Medicine Budapest<small data-i18n="u5s"></small></div>
+    <div class="u">Semmelweis University<small data-i18n="u1s"></small><span class="cnt"><b>12</b><span data-i18n="uni_unit"></span></span></div>
+    <div class="u">University of Szeged<small data-i18n="u3s"></small><span class="cnt"><b>6</b><span data-i18n="uni_unit"></span></span></div>
+    <div class="u">University of P&eacute;cs<small data-i18n="u4s"></small><span class="cnt"><b>3</b><span data-i18n="uni_unit"></span></span></div>
+    <div class="u">Univ. of Veterinary Medicine Budapest<small data-i18n="u5s"></small><span class="cnt"><b>1</b><span data-i18n="uni_unit"></span></span></div>
   </div>
+  <div class="ubase" data-i18n="uni_base"></div>
 </div>
 
 <!-- ===== PROGRAMS ===== -->
@@ -1038,7 +1043,7 @@ html[lang="ko"] .foot .disc{word-break:keep-all;}
 const T = {
 "ko": {
 "tagline": "합격을 가르는 것은 지식의 양이 아니라, 아는 것을 영어로 설명하는 힘입니다. 전문 원어민과 1:1로, 12개월 안에 구술시험 실전력을 완성합니다.",
-"hero_proof": "2025·2026 연속 합격생 배출 · 정원 제한 1:1 · 헝가리 5개 의·수의대 대비",
+"hero_proof": "2025 응시생 11명 전원 합격 · 2026 13명 중 11명 합격 · 헝가리 4개 대학 진학",
 "cta_trial": "50분 무료 수업 신청 →",
 "cta_kakao": "카카오톡으로 수준 진단받기",
 "hero_note": "무료 수업은 실제 정규 수업과 동일한 50분 형식으로 진행됩니다. 판매 상담이 아닙니다.",
@@ -1082,7 +1087,10 @@ const T = {
 "st2l": "레슨 · 토픽", "st2t": "MEDBRIDGE 30 + MEDPATH 50",
 "st3l": "전용 교재", "st3t": "CLASS · STUDENT · TEACHER'S",
 "st4l": "원어민 50분", "st4t": "세션당",
-"u1s": "세멜바이스 의과대학", "u2s": "데브레첸 의과대학", "u3s": "세게드 의과대학", "u4s": "페치 의과대학", "u5s": "부다페스트 수의과대학",
+"uni_kicker": "2025 · 2026 · 실제 합격 대학",
+"uni_unit": "명 합격",
+"uni_base": "2025·2026년 LYVON 수강생 합격자 22명의 진학 대학입니다. 의대 18 · 약대 2 · 치대 1 · 수의대 1.",
+"u1s": "세멜바이스 의과대학",  "u3s": "세게드 의과대학", "u4s": "페치 의과대학", "u5s": "부다페스트 수의과대학",
 "sec_prog_kr": "의대 합격까지, 그리고 그 이후까지 함께하는 프로그램",
 "mb_lead": "의학 영어 커뮤니케이션 기초",
 "mb_desc": "핵심 어휘·발음·문장 구조를 익히고, 입을 여는 습관을 만드는 출발점.",
@@ -1190,12 +1198,12 @@ const T = {
 "f_desc": "LYVON은 헝가리 의대 입시의 핵심인 영어 말하기·구술시험을 전문 원어민과 1:1로 훈련하는 글로벌 교육 생태계입니다.",
 "f_info_h": "COMPANY", "f_co": "상호", "f_ceo": "대표", "f_biz": "사업자등록번호", "f_addr": "주소", "f_addr_v": "서울특별시 OO구 OO로 00, 0층 (주소 입력)",
 "f_cs_h": "CONTACT", "f_kakao": "카카오톡 오픈채팅 상담",
-"f_disc": "※ LYVON은 영어 교육 서비스를 제공하는 기관으로, 입학 지원 대행이나 합격을 보장하지 않습니다. 게재된 합격 실적은 과거 수강생의 사례이며 개인의 결과는 다를 수 있습니다. 해외 의과대학 진학 및 의사면허 관련 사항은 각 대학·관계 기관의 공식 안내를 확인해 주시기 바랍니다.",
+"f_disc": "※ 합격 실적은 입학시험에 응시한 수강생 기준입니다 — 2025년 11명 중 11명, 2026년 13명 중 11명(2년 누적 24명 중 22명, 91.7%). 중도 이탈·재수강 학생은 모수에서 제외했습니다. LYVON은 영어 교육 서비스를 제공하는 기관으로, 입학 지원 대행이나 합격을 보장하지 않습니다. 게재된 합격 실적은 과거 수강생의 사례이며 개인의 결과는 다를 수 있습니다. 해외 의과대학 진학 및 의사면허 관련 사항은 각 대학·관계 기관의 공식 안내를 확인해 주시기 바랍니다.",
 "f_priv": "개인정보처리방침", "f_terms": "이용약관"
 },
 "en": {
 "tagline": "What decides admission is not how much you know, but your power to explain it in English. 1:1 with expert native speakers — oral-exam readiness in 12 months.",
-"hero_proof": "Admitted students in both 2025 & 2026 · Capped 1:1 enrollment · Built for 5 Hungarian medical & veterinary universities",
+"hero_proof": "2025: all 11 applicants admitted · 2026: 11 of 13 · Four Hungarian universities",
 "cta_trial": "Book a free 50-min lesson →",
 "cta_kakao": "Get a level check on KakaoTalk",
 "hero_note": "The free lesson runs in the exact 50-minute format of a regular class. It is not a sales call.",
@@ -1239,7 +1247,10 @@ const T = {
 "st2l": "Lessons · Topics", "st2t": "MEDBRIDGE 30 + MEDPATH 50",
 "st3l": "Dedicated books", "st3t": "CLASS · STUDENT · TEACHER'S",
 "st4l": "Native 50-min", "st4t": "PER SESSION",
-"u1s": "Budapest", "u2s": "Debrecen", "u3s": "Szeged", "u4s": "P&eacute;cs", "u5s": "Budapest &middot; Veterinary",
+"uni_kicker": "WHERE OUR STUDENTS WERE ADMITTED · 2025 &amp; 2026",
+"uni_unit": " admitted",
+"uni_base": "Universities attended by the 22 LYVON students admitted in 2025 and 2026 — 18 medicine, 2 pharmacy, 1 dentistry, 1 veterinary.",
+"u1s": "Budapest",  "u3s": "Szeged", "u4s": "P&eacute;cs", "u5s": "Budapest &middot; Veterinary",
 "sec_prog_kr": "Programs that walk with you to admission — and beyond",
 "mb_lead": "Medical English communication basics",
 "mb_desc": "Build core vocabulary, pronunciation and sentence structure — the starting point for speaking up.",
@@ -1347,12 +1358,12 @@ const T = {
 "f_desc": "LYVON is a global education ecosystem training the speaking and oral-exam skills at the heart of Hungarian medical admissions, 1:1 with expert native speakers.",
 "f_info_h": "COMPANY", "f_co": "Company", "f_ceo": "CEO", "f_biz": "Business Reg. No.", "f_addr": "Address", "f_addr_v": "Seoul, Korea (enter address)",
 "f_cs_h": "CONTACT", "f_kakao": "KakaoTalk open chat",
-"f_disc": "※ LYVON provides English education services. We do not act as an admissions agent and do not guarantee admission. Admission results shown are past student outcomes; individual results may differ. For overseas medical study and licensing, please confirm details with each university and the relevant authorities.",
+"f_disc": "※ Admission figures count students who sat the entrance exam: 11 of 11 in 2025 and 11 of 13 in 2026 (22 of 24 across both years, 91.7%). Students who withdrew or are retaking are excluded from the denominator. LYVON provides English education services. We do not act as an admissions agent and do not guarantee admission. Admission results shown are past student outcomes; individual results may differ. For overseas medical study and licensing, please confirm details with each university and the relevant authorities.",
 "f_priv": "Privacy Policy", "f_terms": "Terms of Service"
 },
 "ja": {
 "tagline": "合否を分けるのは知識量ではなく、それを英語で説明する力です。専門ネイティブと1:1で、12ヶ月で口述試験の実戦力を完成させます。",
-"hero_proof": "2025・2026年 連続合格者輩出 · 定員制マンツーマン · ハンガリー5大学（医・獣医）対応",
+"hero_proof": "2025年 受験11名 全員合格 · 2026年 13名中11名合格 · ハンガリー4大学へ進学",
 "cta_trial": "50分 無料レッスンを予約 →",
 "cta_kakao": "カカオトークでレベル診断",
 "hero_note": "無料レッスンは実際の正規授業と同じ50分の形式で行います。販売のための面談ではありません。",
@@ -1396,7 +1407,10 @@ const T = {
 "st2l": "レッスン · トピック", "st2t": "MEDBRIDGE 30 + MEDPATH 50",
 "st3l": "専用教材", "st3t": "CLASS · STUDENT · TEACHER'S",
 "st4l": "ネイティブ50分", "st4t": "1セッションあたり",
-"u1s": "センメルワイス大学", "u2s": "デブレツェン大学", "u3s": "セゲド大学", "u4s": "ペーチ大学", "u5s": "ブダペスト獣医科大学",
+"uni_kicker": "2025・2026年 実際の合格大学",
+"uni_unit": "名 合格",
+"uni_base": "2025・2026年のLYVON受講生の合格者22名が進学した大学です。医学部18・薬学部2・歯学部1・獣医学部1。",
+"u1s": "センメルワイス大学",  "u3s": "セゲド大学", "u4s": "ペーチ大学", "u5s": "ブダペスト獣医科大学",
 "sec_prog_kr": "医学部合格まで、そしてその先まで共に歩むプログラム",
 "mb_lead": "医学英語コミュニケーションの基礎",
 "mb_desc": "重要語彙・発音・文構造を身につけ、話す習慣をつくる出発点。",
@@ -1504,7 +1518,7 @@ const T = {
 "f_desc": "LYVONは、ハンガリー医学部入試の核心である英語スピーキング・口述試験を専門ネイティブと1:1で訓練するグローバル教育エコシステムです。",
 "f_info_h": "COMPANY", "f_co": "社名", "f_ceo": "代表", "f_biz": "事業者登録番号", "f_addr": "住所", "f_addr_v": "ソウル特別市（住所入力）",
 "f_cs_h": "CONTACT", "f_kakao": "カカオトーク オープンチャット",
-"f_disc": "※ LYVONは英語教育サービスを提供する機関であり、出願代行や合格の保証は行いません。掲載している合格実績は過去の受講生の事例であり、個人の結果は異なる場合があります。海外医学部進学および医師免許に関する事項は、各大学・関係機関の公式案内をご確認ください。",
+"f_disc": "※ 合格実績は入学試験を受験した受講生が基準です — 2025年は11名中11名、2026年は13名中11名（2年累計24名中22名、91.7%）。途中離脱・再受講の学生は母数から除外しています。LYVONは英語教育サービスを提供する機関であり、出願代行や合格の保証は行いません。掲載している合格実績は過去の受講生の事例であり、個人の結果は異なる場合があります。海外医学部進学および医師免許に関する事項は、各大学・関係機関の公式案内をご確認ください。",
 "f_priv": "プライバシーポリシー", "f_terms": "利用規約"
 }};
 
